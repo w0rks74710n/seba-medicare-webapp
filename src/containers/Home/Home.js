@@ -1,3 +1,5 @@
+"use strict";
+
 import React, { Component } from 'react'
 import { FilterSidebar } from '../'
 
@@ -9,7 +11,7 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-        <FilterSidebar/>
+        <FilterSidebar />
       </div>
     )
   }

@@ -1,32 +1,29 @@
-import React from 'react';
-import styled from 'styled-components';
+"use strict";
 
-const ChannelWrapper = styled.div`
-  grid-column: 2;
-  grid-row: 1 / 4;
-  background-color: #4e3a4c;
-  color: #958993;
+import React, { Component } from 'react'
+import styled from 'styled-components'
+import FilterInsuranceType from "../../components/FilterSidebar/FilterInsuranceType";
+
+const FilterSidebarComponent = styled.div`
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: WhiteSmoke;
+  overflow-x: hidden;
+  padding-top: 20px;
 `;
 
-export default ({ teamName, username, channels, users, }) => (
-  <ChannelWrapper>
-    <PushLeft>
-      <TeamNameHeader>{teamName}</TeamNameHeader>
-      {username}
-    </PushLeft>
-    <div>
-      <SideBarList>
-        <SideBarListHeader>Channels</SideBarListHeader>
-        <SideBarListItem key={'channel-1'}># {'My Channel'}</SideBarListItem>
-      </SideBarList>
-    </div>
-    <div>
-      <SideBarList>
-        <SideBarListHeader>Direct Messages</SideBarListHeader>
-        {<SideBarListItem key={`user-2`}>
-          <Bubble /> {'Marco'}
-        </SideBarListItem>}
-      </SideBarList>
-    </div>
-  </ChannelWrapper>
-);
+class FilterSidebar extends Component {
+  render() {
+    return(
+      <FilterSidebarComponent>
+        <FilterInsuranceType/>
+      </FilterSidebarComponent>
+    )
+  }
+}
+
+export default FilterSidebar
