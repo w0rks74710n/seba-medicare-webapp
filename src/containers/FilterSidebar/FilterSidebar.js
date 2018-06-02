@@ -3,6 +3,7 @@ import styled from "styled-components";
 import FilterInsuranceType from "../../components/FilterSidebar/FilterInsuranceType";
 import FilterLanguage from "../../components/FilterSidebar/FilterLanguage";
 import FilterRadius from "../../components/FilterSidebar/FilterRadius";
+import FilterRating from "../../components/FilterSidebar/FilterRating";
 
 const FilterSidebarComponent = styled.div`
   height: 100%;
@@ -16,6 +17,7 @@ const FilterSidebarComponent = styled.div`
   padding-top: 10px;
   padding-right: 10px;
   padding-left:10px;
+  box-shadow: 2px 1px 1px rgba(0,0,0,.2)
 `;
 
 class FilterSidebar extends Component {
@@ -25,6 +27,7 @@ class FilterSidebar extends Component {
         <FilterInsuranceType/>
         <FilterLanguage/>
         <FilterRadius/>
+        <FilterRating/>
       </FilterSidebarComponent>
     )
   }
