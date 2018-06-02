@@ -6,7 +6,7 @@ const FilterTitleComponent = styled.h1`
   text-align: left;
   color: black;
   margin: 0 0 5px 0;
-  border-bottom: 1px solid #bbb;
+  border-bottom: 1px solid #BBBBBB;
 `;
 
 class FilterTitle extends Component {

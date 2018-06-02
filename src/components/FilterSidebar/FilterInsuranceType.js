@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import FilterTitle from "./FilterTitle";
+import FilterRadioButton from "./FilterRadioButton";
 
 const FilterInsuranceTypeComponent = styled.section`
   width: 100%;
@@ -8,95 +9,31 @@ const FilterInsuranceTypeComponent = styled.section`
   padding-right: 10px;
 `;
 
-const RadioButtonForm = styled.form`
-  
-`;
-
-const RadioLabel = styled.label`
-  display: block;
-  position: relative;
-  padding-left: 20px;
-  font-size: 1em;
-  &:hover span {
-    border: 1px solid #bbb;
-  }
-`;
-
-const RadioSpan = styled.span`
-  background: #fff;
-  width: 14px;
-  height: 14px;
-  display: inline-block;
-  border: 1px solid #eaeaea;
-  position: absolute;
-  top: 3px;
-  left: 0;
-  transition: all .2s linear;
-`;
-
-const RadioButton = styled.input`
-  display: none;
-  
-  + span {
-    border-radius: 50%;
-  }
-  
-  &:checked + span {
-    border: 3px solid #8BC34A;
-  }
-`;
-
 class FilterInsuranceType extends Component {
 
   constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this)
-
+    super(props)
+    this.props = props;
     this.state = {
-      selectedOption: 'noPreference'
+      isSelected: 'noPreference'
     }
+    this.handleChange = this.handleChange.bind(this);
   }
-
 
   handleChange(event) {
     this.setState({
-      selectedOption: event.target.value
+      isSelected: event.target.value
     });
   }
 
   render() {
     return(
       <FilterInsuranceTypeComponent>
-        <FilterTitle name = { 'Insurance Type' }/>
+        <FilterTitle name={'Insurance Type'}/>
         <form>
-          <div className="radio">
-            <RadioLabel>
-              <RadioButton type="radio" value="noPreference"
-                     checked={this.state.selectedOption === 'noPreference'}
-                     onChange={this.handleChange} />
-              <RadioSpan/>
-              No preference
-            </RadioLabel>
-          </div>
-          <div className = "radio">
-            <RadioLabel>
-              <RadioButton type="radio" value="publicInsurance"
-                     checked={this.state.selectedOption === 'publicInsurance'}
-                     onChange={this.handleChange} />
-              <RadioSpan/>
-              Public Health Insurance
-            </RadioLabel>
-          </div>
-          <div className="radio">
-            <RadioLabel>
-              <RadioButton type="radio"
-                     value="privateInsurance"
-                     checked={this.state.selectedOption === 'privateInsurance'}
-                     onChange = {this.handleChange} />
-              <RadioSpan/>
-              Private Health Insurance
-            </RadioLabel>
-          </div>
+          <FilterRadioButton value={'noPreference'} name={'No preference'} isSelected={this.state.isSelected} onClick={this.handleChange} />
+          <FilterRadioButton value={'publicInsurance'} name={'Public Health Insurance'} isSelected={this.state.isSelected} onClick={this.handleChange} />
+          <FilterRadioButton value={'privateInsurance'} name={'Private Health Insurance'} isSelected={this.state.isSelected} onClick={this.handleChange} />
         </form>
       </FilterInsuranceTypeComponent>
     )
