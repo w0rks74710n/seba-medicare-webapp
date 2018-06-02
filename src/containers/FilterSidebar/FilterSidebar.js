@@ -1,5 +1,3 @@
-"use strict";
-
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import FilterInsuranceType from "../../components/FilterSidebar/FilterInsuranceType";
@@ -13,7 +11,9 @@ const FilterSidebarComponent = styled.div`
   left: 0;
   background-color: WhiteSmoke;
   overflow-x: hidden;
-  padding-top: 20px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left:10px;
 `;
 
 class FilterSidebar extends Component {
