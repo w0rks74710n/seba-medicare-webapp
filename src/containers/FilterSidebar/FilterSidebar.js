@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import FilterInsuranceType from "../../components/FilterSidebar/FilterInsuranceType";
 import FilterLanguage from "../../components/FilterSidebar/FilterLanguage";
+import FilterRadius from "../../components/FilterSidebar/FilterRadius";
 
 const FilterSidebarComponent = styled.div`
   height: 100%;
@@ -21,8 +22,9 @@ class FilterSidebar extends Component {
   render() {
     return(
       <FilterSidebarComponent>
-        <FilterInsuranceType />
-        <FilterLanguage />
+        <FilterInsuranceType/>
+        <FilterLanguage/>
+        <FilterRadius/>
       </FilterSidebarComponent>
     )
   }
