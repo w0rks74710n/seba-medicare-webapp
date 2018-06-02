@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { FilterSidebar } from '../'
+import React, { Component } from "react";
+import { FilterSidebar } from "../";
 
 class Home extends Component {
   componentWillMount() {
