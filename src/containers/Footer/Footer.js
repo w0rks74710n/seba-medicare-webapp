@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import ColorPalette from '../../constants/ColorPalette'
 
 const FooterDiv = styled.div`
     bottom: 0px;
 	border-top: 1px solid black;
     padding: 5px;
-	background: -webkit-linear-gradient(45deg, #f5fafd, #bdf9d3);
+	background: ${ ColorPalette.primary };
 	
     height: auto;
     width: 100%;		
@@ -22,7 +23,7 @@ const Copyrights = styled.p`
 	font-famiy: Calibri Light;
 	font-style: normal;
     font-size: 12px;
-	color: #424242;
+	color: ${ ColorPalette.primaryNavigationText };
 `;
 
 const Terms_Privacy = styled.nav`
@@ -41,7 +42,7 @@ const Terms_Privacy_Divider = styled.li`
 	font-famiy: Calibri Light;
 	font-style: normal;
     font-size: 14px;
-	color: #424242;
+	color: ${ ColorPalette.primaryNavigationText };
 `;
 
 const Terms_Privacy_Item = styled.li`
@@ -54,10 +55,10 @@ const Terms_Privacy_Item = styled.li`
 	font-famiy: Calibri Light;
 	font-style: normal;
     font-size: 14px;
-	color: #424242;
+	color: ${ ColorPalette.primaryNavigationText };
 	
 	&:hover {
-        color: #ea7c41;
+        color: ${ ColorPalette.linksHover };
 	}	
 `;
 

@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import ColorPalette from "../../constants/ColorPalette"
+
+const RadioContainer = styled.div`
+  margin-bottom: 5px;
+`;
 
 const RadioLabel = styled.label`
   display: block;
   position: relative;
   padding-left: 20px;
-  font-size: 1em;
+  font-size: 14px;
   &:hover span {
     border: 1px solid #BBBBBB;
   }
@@ -31,7 +36,7 @@ const RadioButton = styled.input`
   }
   
   &:checked + span {
-    border: 3px solid #8BC34A;
+    border: 3px solid ${ ColorPalette.accent };
   }
 `;
 
@@ -43,7 +48,7 @@ class FilterRadioButton extends Component {
 
   render() {
     return(
-      <div className="radio">
+      <RadioContainer className="radio">
         <RadioLabel>
           <RadioButton type="radio" value={this.props.value}
                        checked={this.props.isSelected === this.props.value}
@@ -51,7 +56,7 @@ class FilterRadioButton extends Component {
           <RadioSpan/>
           {this.props.name}
         </RadioLabel>
-      </div>
+      </RadioContainer>
     )
   }
 }

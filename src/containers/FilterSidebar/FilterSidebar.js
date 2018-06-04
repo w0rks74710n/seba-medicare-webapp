@@ -7,7 +7,7 @@ import FilterRating from "../../components/FilterSidebar/FilterRating";
 
 const FilterSidebarComponent = styled.div`
   height: 100%;
-  width: 250px;
+  width: 210px;
   z-index: 1;
   top: 0;
   left: 0;
