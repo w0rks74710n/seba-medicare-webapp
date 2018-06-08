@@ -37,12 +37,12 @@ class FilterRating extends Component {
                              isSelected={this.state.isSelected}
                              onClick={this.handleChange} />
           <FilterRadioButton value={'1'}
-                             name={[<i className="material-icons" style={{width: '24px'}}>star_rate</i>]}
+                             name={[<i className="material-icons" key={1} style={{width: '24px'}}>star_rate</i>]}
                              isSelected={this.state.isSelected}
                              onClick={this.handleChange} />
           <FilterRadioButton value={'2'}
-                             name={[<i className="material-icons" style={{width: '24px'}}>star_rate</i>,
-                                    <i className="material-icons" style={{width: '24px'}}>star_rate</i>]}
+                             name={[<i className="material-icons" key={2} style={{width: '24px'}}>star_rate</i>,
+                                    <i className="material-icons" key={3} style={{width: '24px'}}>star_rate</i>]}
                              isSelected={this.state.isSelected}
                              onClick={this.handleChange} />
           <FilterRadioButton value={'3'}

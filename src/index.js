@@ -8,7 +8,7 @@ import WebFont from 'webfontloader'
 
 WebFont.load({
   google: {
-    families: ['Nunito Sans:400, 500, 700, 900', 'Material Icons'],
+    families: ['Quicksand:400, 500, 700, 900', 'Material Icons'],
   },
 });
 
