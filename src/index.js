@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './containers/App/App'
 import registerServiceWorker from './registerServiceWorker'
+import 'react-md/dist/react-md.indigo-pink.min.css'
 import WebFont from 'webfontloader'
 
 WebFont.load({
