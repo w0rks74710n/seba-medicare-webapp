@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import styled from 'styled-components';
-import { Home, Header, Footer, TermsAndConditions, PrivacyPolicy, DoctorDescription } from "../";
+import { Home, Header, Footer, TermsAndConditions, PrivacyPolicy } from "../";
 
 const PageContainer = styled.div`
     width: 100%;
@@ -23,12 +23,11 @@ class App extends Component {
       <PageContainer className="app">
         <Header/>
         <ContentContainer>
-          <DoctorDescription/>
-          /*<Switch>
+          <Switch>
             <Route exact path="/terms-and-conditions" component = { TermsAndConditions }/>
             <Route exact path="/privacy-policy" component = { PrivacyPolicy }/>
             <Route exact path="/" component = { Home }/>
-          </Switch>*/
+          </Switch>
         </ContentContainer>
         <Footer/>
       </PageContainer>

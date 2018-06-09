@@ -20,6 +20,7 @@ const Copyrights = styled.p`
     margin: auto;
     margin-left: 75px;
         
+	font-famiy: Calibri Light;
 	font-style: normal;
     font-size: 12px;
 	color: ${ ColorPalette.primaryNavigationText };
@@ -38,6 +39,7 @@ const Terms_Privacy_Divider = styled.li`
 	
 	padding-left: 15px;
 	
+	font-famiy: Calibri Light;
 	font-style: normal;
     font-size: 14px;
 	color: ${ ColorPalette.primaryNavigationText };
@@ -50,6 +52,7 @@ const Terms_Privacy_Item = styled.li`
 	
 	padding-left: 15px;
 	
+	font-famiy: Calibri Light;
 	font-style: normal;
     font-size: 14px;
 	color: ${ ColorPalette.primaryNavigationText };
