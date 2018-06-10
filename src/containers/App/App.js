@@ -24,7 +24,11 @@ class App extends Component {
       <PageContainer className="app">
         <Header/>
         <ContentContainer>
-          <DashboardTemplate/>
+          <Switch>
+            <Route exact path="/terms-and-conditions" component = { TermsAndConditions }/>
+            <Route exact path="/privacy-policy" component = { PrivacyPolicy }/>
+            <Route exact path="/" component = { Home }/>
+          </Switch>
         </ContentContainer>
         <Footer/>
       </PageContainer>
