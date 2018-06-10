@@ -17,7 +17,7 @@ const ContentsDiv = styled.div`
 `;
 
 const Content = styled.div`
-  margin-left: 220px;
+  margin-left: 240px;
 `;
 
 class DashboardTemplate extends Component {
