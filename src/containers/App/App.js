@@ -22,9 +22,11 @@ class App extends Component {
   render() {
     return (
       <PageContainer className="app">
+        <Header/>
         <ContentContainer>
           <DashboardTemplate/>
         </ContentContainer>
+        <Footer/>
       </PageContainer>
     );
   }
