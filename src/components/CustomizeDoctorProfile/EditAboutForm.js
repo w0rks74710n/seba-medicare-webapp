@@ -2,44 +2,33 @@ import React, { Component } from "react";
 import { Field, reduxForm } from 'redux-form';
 import { TextField, Card, CardTitle, CardText, Cell, Button } from 'react-md';
 
-class EditAboutForm extends Component {
+const renderTextField = ({ input, meta: { touched, error }, ...others }) => (
+  <TextField {...input} {...others} error={touched && !!error} errorText={error} />
+);
 
-  constructor(props) {
-    super();
+export const EditAboutForm = ({ handleSubmit, onSubmit }) => {
+  return(
+    <Card>
+      <CardTitle title={'About'} style={{paddingBottom: 0}}/>
+      <CardText style={{paddingTop: 0}}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Field
+            id="floating-label-focus-help-text-field"
+            name="floating-label-focus-help-text-field"
+            component={renderTextField}
+            label="Description"
+            rows={3}
+            maxLength={2000}
+            className="md-cell--top"
+            helpText="Here you can enter a short description about yourself, your practice, your interests and anything you consider relevant for the visitors of your profile."
+          />
+          <Cell size={12}>
+            <Button raised children="Submit" type="submit" />
+          </Cell>
+        </form>
+      </CardText>
+    </Card>
+  );
+};
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-
-  }
-
-  handleSubmit = values => {
-    console.log('values:', values);
-  };
-
-  render() {
-    return(
-      <Card>
-        <CardTitle title={'About'} style={{paddingBottom: 0}}/>
-        <CardText style={{paddingTop: 0}}>
-          <form onSubmit={this.handleSubmit}>
-            <TextField
-              id="floating-label-focus-help-text-field"
-              label="Description"
-              rows={3}
-              maxLength={2000}
-              className="md-cell--top"
-              helpText="Here you can enter a short description about yourself, your practice, your interests and anything you consider relevant for the visitors of your profile."
-            />
-            <Cell size={12}>
-              <Button raised children="Submit" type="submit" />
-            </Cell>
-          </form>
-        </CardText>
-      </Card>
-    );
-  }
-}
-
-
-export default reduxForm({
-  form: 'about' // a unique identifier for this form
-})(EditAboutForm)
+export default EditAboutForm;
