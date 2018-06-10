@@ -10,9 +10,11 @@ class DashboardTemplate extends Component {
   render() {
     return (
       <Router>
-        <DashboardHeader/>
-        <DashboardSideBar/>
-        <DashboardContents/>
+        <div>
+          <DashboardHeader/>
+          <DashboardSideBar/>
+          <DashboardContents/>
+        </div>
       </Router>
     );
   }

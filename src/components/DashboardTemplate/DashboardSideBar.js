@@ -1,101 +1,144 @@
 import React, { Component } from 'react';
 import logo from '../../resources/medicare_logo.png';
+import manage from '../../resources/manage.png';
+import settings from '../../resources/settings.png';
+import help from '../../resources/help.png';
+import dashboard from '../../resources/dashboard.png';
+import schedule from '../../resources/schedule.png';
+import statistics from '../../resources/statistics.png';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import ColorPalette from '../../constants/ColorPalette'
 
 const SideBar = styled.div`
+  margin: 0px;
+  padding: 0px;
+  background-color: #ebedef;
+`;
+
+const NavSideMenu = styled.div`
+  overflow-x: hidden;
+  background-color: #2e353d;
+  position: fixed;
+  top: 0px;
+  width: 220px;
   height: 100%;
-  width: auto;
-  top: 0;
-  left: 0;
-  background-color: ${ ColorPalette.primaryDark };
+  color: #e1ffff;
 `;
 
 const Logo = styled.img`
-  text-align: left !important;
-  font-size: 22px;
-  padding-left: 20px;
-  line-height: 50px !important;
+  background-color: #23282e;
+  display: block;
+  text-align: center;
+  margin: auto; 
+  padding: 10px; 
+  width: 100%;
+`;
+
+const ToggleBtn = styled.i`
+  display: none;
+`;
+
+const MenuList = styled.div`
+
+`;
+
+const NavSideMenuUL = styled.ul`
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  line-height: 4rem;
+  cursor: pointer;
+  visibility: visible !important;
+  
+`;
+
+const NavSideMenuLI = styled.li`
+  padding-left: 0px;
+  border-left: 3px solid #2e353d;
+  border-bottom: 1px solid #23282e;
+  display: flex;
+  
+  &:active {
+    border-left: 3px solid #e1ffff;
+    background-color: #4f5b69;
+	}
+	
+	&:hover {
+    border-left: 3px solid #e1ffff;
+    background-color: #4f5b69;
+    -webkit-transition: all .6s ease;
+    -moz-transition: all .6s ease;
+    -o-transition: all .6s ease;
+    -ms-transition: all .6s ease;
+    transition: all .6s ease;
+	}	
+`;
+
+const ListItemA = styled.a`
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  color: #e1ffff;
+`;
+
+const Icon = styled.img`
+  width: 50px;
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 10px;
+  padding-right: 10px;
 `;
 
 class DashboardSideBar extends Component {
+  componentDidMount () {
+    const script1 = document.createElement("script");
+    script1.src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js";
+    script1.async = true;
+    const script2 = document.createElement("script");
+    script2.src="//code.jquery.com/jquery-1.11.1.min.js";
+    script2.async = true;
+
+    document.body.appendChild(script1);
+    document.body.appendChild(script2);
+  }
+
   render() {
     return (
       <Router>
         <SideBar>
-          <div className="nav-side-menu">
+          <NavSideMenu>
             <Logo src={logo} alt="MediCare_Logo" />
-            <i className="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+            <ToggleBtn data-toggle="collapse" data-target="#menu-content"></ToggleBtn>
 
-            <div className="menu-list">
+            <MenuList>
+              <NavSideMenuUL id="menu-content" className="menu-content collapse out">
+                <NavSideMenuLI>
+                  <ListItemA href="#"><Icon src={dashboard} alt="Dashboard" /> Dashboard</ListItemA>
+                </NavSideMenuLI>
 
-              <ul id="menu-content" className="menu-content collapse out">
-                <li>
-                  <a href="#"><i className="fa fa-dashboard fa-lg fa-fw sidebar-icon"></i> Dashboard</a>
-                </li>
+                <NavSideMenuLI>
+                  <ListItemA href="#"><Icon src={schedule} alt="Schedule" /> Schedule</ListItemA>
+                </NavSideMenuLI>
 
-                <li>
-                  <a href="#"><i className="fa fa-calendar fa-lg fa-fw sidebar-icon"></i> Scheduler</a>
-                </li>
+                <NavSideMenuLI>
+                  <ListItemA href="#"><Icon src={statistics} alt="Statistics" /> Statistics</ListItemA>
+                </NavSideMenuLI>
 
-                <li>
-                  <a href="#"><i className="fa fa-bar-chart fa-lg fa-fw sidebar-icon"></i> Statistics</a>
-                </li>
+                <NavSideMenuLI data-toggle="collapse" data-target="#manage" className="collapsed">
+                  <ListItemA href="#"><Icon src={manage} alt="Manage" /> Manage</ListItemA>
+                </NavSideMenuLI>
 
-                <li data-toggle="collapse" data-target="#manage" className="collapsed">
-                  <a href="#"><i className="fa fa-puzzle-piece fa-lg fa-fw sidebar-icon"></i> Manage <span
-                    className="arrow"></span></a>
-                </li>
-                <ul className="sub-menu collapse" id="manage">
-                  <li><a href="#"><i className="fa fa-angle-double-right"></i> Devices</a></li>
-                  <li><a href="#"><i className="fa fa-angle-double-right"></i> Groups</a></li>
-                  <li><a href="#"><i className="fa fa-angle-double-right"></i> SIM Cards</a></li>
-                  <li><a href="#"><i className="fa fa-angle-double-right"></i> Users</a></li>
-                </ul>
+                <NavSideMenuLI data-toggle="collapse" data-target="#settings" className="collapsed">
+                  <ListItemA href="#"><Icon src={settings} alt="Settings" /> Settings</ListItemA>
+                </NavSideMenuLI>
 
-                <li data-toggle="collapse" data-target="#settings" className="collapsed">
-                  <a href="#"><i className="fa fa-sliders fa-lg fa-fw sidebar-icon"></i> Settings <span
-                    className="arrow"></span></a>
-                </li>
-                <ul className="sub-menu collapse" id="settings">
-                  <li><a href="#"><i className="fa fa-angle-double-right"></i> General</a></li>
-                  <li><a href="#"><i className="fa fa-angle-double-right"></i> Security</a></li>
-                  <li><a href="#"><i className="fa fa-angle-double-right"></i> Notifications</a></li>
-                </ul>
+                <NavSideMenuLI data-toggle="collapse" data-target="#maintenance" className="collapsed">
+                  <ListItemA href="#"><Icon src={help} alt="Help" /> Help</ListItemA>
+                </NavSideMenuLI>
+              </NavSideMenuUL>
 
-                <li data-toggle="collapse" data-target="#maintenance" className="collapsed">
-                  <a href="#"><i className="fa fa-cogs fa-lg fa-fw sidebar-icon"></i> Maintenance <span
-                    className="arrow"></span></a>
-                </li>
-                <ul className="sub-menu collapse" id="maintenance">
-                  <li><a href="#"><i className="fa fa-angle-double-right"></i> Operation Logs</a></li>
-                  <li><a href="#"><i className="fa fa-angle-double-right"></i> Events and Alarms</a></li>
-                  <li><a href="#"><i className="fa fa-angle-double-right"></i> Backup and Restore</a></li>
-                </ul>
-
-                <li data-toggle="collapse" data-target="#tools" className="collapsed">
-                  <a href="#"><i className="fa fa-wrench fa-lg fa-fw sidebar-icon"></i> Tools <span
-                    className="arrow"></span></a>
-                </li>
-                <ul className="sub-menu collapse" id="tools">
-                  <li><a href="#"><i className="fa fa-angle-double-right"></i> Manual SMS</a></li>
-                  <li><a href="#"><i className="fa fa-angle-double-right"></i> Import</a></li>
-                  <li><a href="#"><i className="fa fa-angle-double-right"></i> Export</a></li>
-                </ul>
-
-                <li data-toggle="collapse" data-target="#help" className="collapsed">
-                  <a href="#"><i className="fa fa-life-ring fa-lg fa-fw sidebar-icon"></i> Help <span
-                    className="arrow"></span></a>
-                </li>
-                <ul className="sub-menu collapse" id="help">
-                  <li><a href="#"><i className="fa fa-angle-double-right"></i> Documentation</a></li>
-                  <li><a href="#"><i className="fa fa-angle-double-right"></i> Customer Support <small><i
-                    className="fa fa-external-link"></i></small></a></li>
-                </ul>
-              </ul>
-            </div>
-          </div>
+            </MenuList>
+          </NavSideMenu>
         </SideBar>
       </Router>
     );
