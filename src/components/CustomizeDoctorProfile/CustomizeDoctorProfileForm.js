@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { TextField, Card, CardTitle, CardText, Cell, Button } from 'react-md';
+import { Field, reduxForm } from 'redux-form';
+import { TextField, Card, CardTitle, CardText, Cell, Button } from "react-md";
+import EditAboutForm from "./EditAboutForm"
 
 const CustomizeDoctorProfileFormComponent = styled.div`
   max-width: 900px;
@@ -14,7 +16,7 @@ class CustomizeDoctorProfileForm extends Component {
   render() {
     return (
       <CustomizeDoctorProfileFormComponent>
-
+        <EditAboutForm />
         <br />
         <Card>
           <CardTitle title={'Contact Information'} style={{paddingBottom: 0}}/>
@@ -80,7 +82,7 @@ class CustomizeDoctorProfileForm extends Component {
             <TextField
               id="floating-label-focus-help-text-field"
               label="Previous Experiences"
-              rows="5"
+              rows={5}
               maxLength={5000}
               className="md-cell--top"
               helpText="Here you can describe which relevant achievements you have accomplished during your career, such
@@ -88,7 +90,7 @@ class CustomizeDoctorProfileForm extends Component {
             <TextField
               id="floating-label-focus-help-text-field"
               label="Treatment Focus"
-              rows="3"
+              rows={3}
               maxLength={1000}
               className="md-cell--top"
               helpText="Here you can describe what are your treatment focuses"/>
