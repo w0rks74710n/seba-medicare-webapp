@@ -17,6 +17,7 @@ const SideBar = styled.div`
 
 const NavSideMenu = styled.div`
   overflow-x: hidden;
+  overflow-y: hidden;
   background-color: #2e353d;
   position: fixed;
   top: 0px;
@@ -32,10 +33,6 @@ const Logo = styled.img`
   margin: auto; 
   padding: 10px; 
   width: 100%;
-`;
-
-const ToggleBtn = styled.i`
-  display: none;
 `;
 
 const MenuList = styled.div`
@@ -108,7 +105,6 @@ class DashboardSideBar extends Component {
         <SideBar>
           <NavSideMenu>
             <Logo src={logo} alt="MediCare_Logo" />
-            <ToggleBtn data-toggle="collapse" data-target="#menu-content"></ToggleBtn>
 
             <MenuList>
               <NavSideMenuUL id="menu-content" className="menu-content collapse out">

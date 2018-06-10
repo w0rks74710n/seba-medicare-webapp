@@ -6,15 +6,27 @@ import DashboardContents from "../../components/DashboardTemplate/DashboardConte
 import DashboardHeader from "../../components/DashboardTemplate/DashboardHeader";
 import DashboardSideBar from "../../components/DashboardTemplate/DashboardSideBar";
 
+const ContainerDiv = styled.div`
+  display: flex;
+  flex-flow: column nowrap;		
+`;
+
+const ContentsDiv = styled.div`
+  display: flex;
+  flex-flow: row nowrap;		
+`;
+
 class DashboardTemplate extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <ContainerDiv>
           <DashboardHeader/>
-          <DashboardSideBar/>
-          <DashboardContents/>
-        </div>
+          <ContentsDiv>
+            <DashboardSideBar/>
+            <DashboardContents/>
+          </ContentsDiv>
+        </ContainerDiv>
       </Router>
     );
   }
