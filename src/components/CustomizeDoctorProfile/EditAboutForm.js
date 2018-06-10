@@ -13,8 +13,8 @@ export const EditAboutForm = ({ handleSubmit, onSubmit }) => {
       <CardText style={{paddingTop: 0}}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Field
-            id="floating-label-focus-help-text-field"
-            name="floating-label-focus-help-text-field"
+            id="description"
+            name="description"
             component={renderTextField}
             label="Description"
             rows={3}

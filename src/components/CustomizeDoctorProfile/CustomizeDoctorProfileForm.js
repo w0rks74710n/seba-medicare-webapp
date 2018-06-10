@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Field, reduxForm } from 'redux-form';
 import { TextField, Card, CardTitle, CardText, Cell, Button } from "react-md";
-import EditAboutFormContainer from "../../containers/CustomizeDoctorProfile/EditAboutFormContainer"
 
 const CustomizeDoctorProfileFormComponent = styled.div`
   max-width: 900px;
@@ -16,7 +15,6 @@ class CustomizeDoctorProfileForm extends Component {
   render() {
     return (
       <CustomizeDoctorProfileFormComponent>
-        <EditAboutFormContainer />
         <br />
         <Card>
           <CardTitle title={'Contact Information'} style={{paddingBottom: 0}}/>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 
-import  { EditAboutForm } from '../../components/CustomizeDoctorProfile/EditAboutForm';
+import EditAboutForm from '../../components/CustomizeDoctorProfile/EditAboutForm';
 
 const EditAboutFormContainer = ({ handleSubmit }) => {
 
