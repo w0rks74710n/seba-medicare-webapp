@@ -6,6 +6,8 @@ import FilterSidebar from './FilterSidebar/FilterSidebar'
 import PrivacyPolicy from './PrivacyPolicy/PrivacyPolicy'
 import TermsAndConditions from './TermsAndConditions/TermsAndConditions'
 import DoctorDescription from './DoctorDescription/DoctorDescription'
+import DoctorProfile from './DoctorProfile/DoctorProfile'
+import DoctorReview from './DoctorReview/DoctorProfileReview'
 
 export {
   App,
@@ -16,4 +18,6 @@ export {
   PrivacyPolicy,
   TermsAndConditions,
   DoctorDescription,
+  DoctorProfile,
+  DoctorReview
 }
