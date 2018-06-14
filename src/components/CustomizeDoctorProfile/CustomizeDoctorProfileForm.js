@@ -16,15 +16,7 @@ class CustomizeDoctorProfileForm extends Component {
     return (
       <CustomizeDoctorProfileFormComponent>
         <br />
-        <Card>
-          <CardTitle title={'Education'} style={{paddingBottom: 0}}/>
-          <CardText style={{paddingTop: 0}}>
-            <TextField
-              id="floating-label-focus-help-text-field"
-              label="University"
-              className="md-cell--top" />
-          </CardText>
-        </Card>
+
       </CustomizeDoctorProfileFormComponent>
     );
   }
