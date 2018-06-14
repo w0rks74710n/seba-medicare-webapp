@@ -12,7 +12,7 @@ export const EditEducationForm = ({ handleSubmit, onSubmit }) => {
       <CardTitle title={'Education'} style={{paddingBottom: 0}}/>
       <CardText style={{paddingTop: 0}}>
         <form onSubmit={handleSubmit(onSubmit)}>
-        <TextField
+        <Field
           id="education[university]"
           name="education[university]"
           label="University"
