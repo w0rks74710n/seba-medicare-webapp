@@ -13,8 +13,8 @@ export const EditAboutForm = ({ handleSubmit, onSubmit }) => {
       <CardText style={{paddingTop: 0}}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Field
-            id="description"
-            name="description"
+            id="about[description]"
+            name="about[description]"
             component={renderTextField}
             label="Description"
             rows={3}
