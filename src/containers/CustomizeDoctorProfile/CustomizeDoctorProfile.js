@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import ColorPalette from "../../constants/ColorPalette";
 import EditAboutFormContainer from "./EditAboutFormContainer";
+import EditContactInformationFormContainer from "./EditContactInformationFormContainer";
 
 const CustomizeDoctorProfileContainer = styled.div`
   width: 100%;
-  display: inline-flex;
-  background-color: ${ColorPalette.contentBackground}
+  display: block;
 `;
 
 class CustomizeDoctorProfile extends Component {
@@ -14,6 +14,8 @@ class CustomizeDoctorProfile extends Component {
     return(
       <CustomizeDoctorProfileContainer>
         <EditAboutFormContainer/>
+        <br />
+        <EditContactInformationFormContainer />
       </CustomizeDoctorProfileContainer>
     );
   }

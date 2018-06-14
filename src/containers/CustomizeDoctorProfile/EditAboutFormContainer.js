@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { reduxForm } from 'redux-form';
 
 import EditAboutForm from '../../components/CustomizeDoctorProfile/EditAboutForm';
@@ -15,7 +15,7 @@ const EditAboutFormContainer = ({ handleSubmit }) => {
       handleSubmit={handleSubmit}
     />
   );
-}
+};
 
 const formConfiguration = {
   form: 'about'
