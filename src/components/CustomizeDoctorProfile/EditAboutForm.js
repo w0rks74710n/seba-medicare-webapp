@@ -1,5 +1,5 @@
 import React from "react";
-import { Field, reduxForm } from 'redux-form';
+import { Field } from 'redux-form';
 import { TextField, Card, CardTitle, CardText, Cell, Button } from 'react-md';
 
 const renderTextField = ({ input, meta: { touched, error }, ...others }) => (

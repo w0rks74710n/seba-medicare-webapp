@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import ColorPalette from "../../constants/ColorPalette";
 import EditAboutFormContainer from "./EditAboutFormContainer";
-import EditContactInformationFormContainer from "./EditContactInformationFormContainer";
+import EditContactInformationFormContainer from "./EditContactInformationFormContainer"
+import EditSocialMediaFormContainer from "./EditSocialMediaFormContainer";
 
 const CustomizeDoctorProfileContainer = styled.div`
   width: 100%;
@@ -16,6 +17,8 @@ class CustomizeDoctorProfile extends Component {
         <EditAboutFormContainer/>
         <br />
         <EditContactInformationFormContainer />
+        <br />
+        <EditSocialMediaFormContainer />
       </CustomizeDoctorProfileContainer>
     );
   }

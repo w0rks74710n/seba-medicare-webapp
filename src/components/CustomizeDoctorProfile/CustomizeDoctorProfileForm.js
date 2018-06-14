@@ -17,56 +17,6 @@ class CustomizeDoctorProfileForm extends Component {
       <CustomizeDoctorProfileFormComponent>
         <br />
         <Card>
-          <CardTitle title={'Contact Information'} style={{paddingBottom: 0}}/>
-          <CardText style={{paddingTop: 0}}>
-            <TextField
-              id="floating-label-focus-help-text-field"
-              label="Full Name"
-              className="md-cell--top" />
-            <TextField
-              id="floating-label-focus-help-text-field"
-              label="E-mail"
-              type="email"
-              className="md-cell--top" />
-            <TextField
-              id="floating-label-focus-help-text-field"
-              label="Mobile"
-              type="tel"
-              className="md-cell--top" />
-            <TextField
-              id="floating-label-focus-help-text-field"
-              label="Practice Website"
-              className="md-cell--top" />
-            <TextField
-              id="floating-label-focus-help-text-field"
-              label="Address Line 1"
-              className="md-cell--top" />
-            <TextField
-              id="floating-label-focus-help-text-field"
-              label="Address Line 2"
-              className="md-cell--top" />
-          </CardText>
-        </Card>
-        <br />
-        <Card>
-          <CardTitle title={'Social Media'} style={{paddingBottom: 0}}/>
-          <CardText style={{paddingTop: 0}}>
-            <TextField
-              id="floating-label-focus-help-text-field"
-              label="Facebook"
-              className="md-cell--top" />
-            <TextField
-              id="floating-label-focus-help-text-field"
-              label="LinkedIn"
-              className="md-cell--top" />
-            <TextField
-              id="floating-label-focus-help-text-field"
-              label="Xing"
-              className="md-cell--top" />
-          </CardText>
-        </Card>
-        <br />
-        <Card>
           <CardTitle title={'Experience'} style={{paddingBottom: 0}}/>
           <CardText style={{paddingTop: 0}}>
             <TextField
