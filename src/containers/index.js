@@ -6,6 +6,7 @@ import FilterSidebar from './FilterSidebar/FilterSidebar'
 import PrivacyPolicy from './PrivacyPolicy/PrivacyPolicy'
 import TermsAndConditions from './TermsAndConditions/TermsAndConditions'
 import DoctorDescription from './DoctorDescription/DoctorDescription'
+import RegisterationPage from './RegisterationPage/RegisterationPage'
 
 export {
   App,
@@ -16,4 +17,5 @@ export {
   PrivacyPolicy,
   TermsAndConditions,
   DoctorDescription,
+  RegisterationPage
 }
