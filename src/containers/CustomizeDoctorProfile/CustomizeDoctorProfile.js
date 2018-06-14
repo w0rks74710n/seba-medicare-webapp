@@ -5,6 +5,7 @@ import EditContactInformationFormContainer from "./EditContactInformationFormCon
 import EditSocialMediaFormContainer from "./EditSocialMediaFormContainer";
 import EditExperienceFormContainer from "./EditExperienceFormContainer";
 import EditEducationFormContainer from "./EditEducationFormContainer";
+import EditPicturesFormContainer from "./EditPicturesFormContainer"
 
 const CustomizeDoctorProfileContainer = styled.div`
   width: 100%;
@@ -24,6 +25,8 @@ class CustomizeDoctorProfile extends Component {
         <EditExperienceFormContainer />
         <br />
         <EditEducationFormContainer />
+        <br />
+        <EditPicturesFormContainer />
       </CustomizeDoctorProfileContainer>
     );
   }
