@@ -7,6 +7,7 @@ import PrivacyPolicy from './PrivacyPolicy/PrivacyPolicy'
 import TermsAndConditions from './TermsAndConditions/TermsAndConditions'
 import DashboardTemplate from './DashboardTemplate/DashboardTemplate'
 import CustomizeDoctorProfile from './CustomizeDoctorProfile/CustomizeDoctorProfile'
+import DoctorDescription from './DoctorDescription/DoctorDescription'
 
 export {
   App,
@@ -18,4 +19,5 @@ export {
   TermsAndConditions,
   DashboardTemplate,
   CustomizeDoctorProfile
+  DoctorDescription,
 }
