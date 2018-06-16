@@ -5,6 +5,8 @@ import Header from './Header/Header'
 import FilterSidebar from './FilterSidebar/FilterSidebar'
 import PrivacyPolicy from './PrivacyPolicy/PrivacyPolicy'
 import TermsAndConditions from './TermsAndConditions/TermsAndConditions'
+import DashboardTemplate from './DashboardTemplate/DashboardTemplate'
+import CustomizeDoctorProfile from './CustomizeDoctorProfile/CustomizeDoctorProfile'
 
 export {
   App,
@@ -13,5 +15,7 @@ export {
   Header,
   FilterSidebar,
   PrivacyPolicy,
-  TermsAndConditions
+  TermsAndConditions,
+  DashboardTemplate,
+  CustomizeDoctorProfile
 }
