@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FilterSidebar } from "../";
+import { Header, Footer, FilterSidebar } from "../";
 
 class Home extends Component {
   componentWillMount() {
@@ -9,7 +9,9 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
+        <Header />
         <FilterSidebar />
+        <Footer />
       </div>
     )
   }
