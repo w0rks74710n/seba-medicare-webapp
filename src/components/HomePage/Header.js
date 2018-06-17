@@ -32,6 +32,13 @@ const StyledLink = styled(Link)`
 	}
 `;
 
+const ButtonLink = styled(Link)`
+  text-decoration: none;
+	font-style: normal;
+  font-size: 11px;
+	color: black;
+`;
+
 const Header_Horizontal_Navigation = styled.nav`
 	order: 2;
 	margin: auto;
@@ -56,8 +63,16 @@ const Header_Horizontal_Navigation_Item = styled.li`
 	}	
 `;
 
-const Header_Button = styled.button`    
-	order: 3;
+const Header_Button1 = styled.button`    
+	order: 2;
+	margin: auto;
+	margin-right: 80px;
+  height: 30px;
+  width: 100px;
+`;
+
+const Header_Button2 = styled.button`    
+	order: 4;
 	margin: auto;
 	margin-right: 80px;
   height: 30px;
@@ -69,6 +84,11 @@ class Header extends Component {
     return (
       <HeaderDiv>
         <Header_Logo src={logo} alt="MediCare_Logo" />
+
+        <Header_Button1>
+          <ButtonLink to="/join-us-as-a-doctor">Join As a Doctor</ButtonLink>
+        </Header_Button1>
+
         <Header_Horizontal_Navigation>
           <HeaderHorizontalNavigationList>
             <Header_Horizontal_Navigation_Item>
@@ -89,9 +109,9 @@ class Header extends Component {
           </HeaderHorizontalNavigationList>
         </Header_Horizontal_Navigation>
 
-        <Header_Button>
-          Login/Sign up
-        </Header_Button>
+        <Header_Button2>
+          <ButtonLink to="/register">Login/Sign up</ButtonLink>
+        </Header_Button2>
 
       </HeaderDiv>
     );
