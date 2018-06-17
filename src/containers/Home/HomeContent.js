@@ -19,7 +19,7 @@ class HomeContent extends Component {
           <Route exact path={"/"} component={FilterSidebar} />
           <Route path={"/home"} component={FilterSidebar} />
           <Route path={"/register"} component={SignIn} />
-          <Route path={"/join-us-as-a-doctor"} component={} />
+          <Route path={"/join-us-as-a-doctor"} component={SignIn} />
           <Route path={"/privacy-policy"} component={PrivacyPolicy} />
           <Route path={"/terms-and-conditions"} component={TermsAndConditions} />
         </Switch>
