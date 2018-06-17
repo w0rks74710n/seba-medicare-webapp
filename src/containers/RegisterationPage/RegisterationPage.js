@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import ColorPalette from '../../constants/ColorPalette'
-import DoctorRegisterationForm from "../../components/Registeration/DoctorRegisterationForm";
-import PatientRegisterationForm from "../../components/Registeration/PatientRegisterationForm";
+import DoctorRegisterationForm from "../../components/RegisterationLogin/DoctorRegisterationForm";
+import PatientRegisterationForm from "../../components/RegisterationLogin/PatientRegisterationForm";
 
 const RegisterationDiv = styled.div`
   padding: 5px;
