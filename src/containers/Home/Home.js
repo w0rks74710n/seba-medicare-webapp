@@ -1,17 +1,25 @@
 import React, { Component } from "react";
-import { FilterSidebar } from "../";
+import styled from "styled-components";
+import Header from "../../components/HomePage/Header";
+import Footer from "../../components/HomePage/Footer";
+import { HomeContent } from "../";
+
+const PageContainer = styled.div`
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 100%;
+`;
 
 class Home extends Component {
-  componentWillMount() {
-
-  }
-
   render() {
-    return (
-      <div className="home">
-        <FilterSidebar />
-      </div>
-    )
+    return(
+      <PageContainer>
+        <Header />
+        <HomeContent />
+        <Footer />
+      </PageContainer>
+    );
   }
 }
 

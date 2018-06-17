@@ -17,8 +17,8 @@ class RegisterationPage extends Component {
     return (
       <RegisterationDiv>
         <Switch>
-          <Route exact path="../doctor-registeration" component = { DoctorRegisterationForm }/>
-          <Route exact path="../patient-registeration" component = { PatientRegisterationForm }/>
+          <Route exact path="register/doctor-registeration" component = { DoctorRegisterationForm }/>
+          <Route exact path="register/patient-registeration" component = { PatientRegisterationForm }/>
         </Switch>
       </RegisterationDiv>
     );
