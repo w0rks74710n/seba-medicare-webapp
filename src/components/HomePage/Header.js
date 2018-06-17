@@ -15,10 +15,8 @@ const HeaderDiv = styled.div`
 `;
 
 const Header_Logo = styled.img`
-  margin: auto;
   margin-left: 40px;  
   height: 50px;
-	order: 1;
 `;
 
 const StyledLink = styled(Link)`
@@ -58,9 +56,19 @@ const Header_Horizontal_Navigation_Item = styled.li`
 
 const Header_Button = styled.button`    
 	margin-right: 80px;
-  height: 30px;
-  width: 100px;
-  font-size: 11px;
+  height: 35px;
+  width: 120px;
+  font-size: 13px;
+  border-radius: 15px;
+  
+  &:hover {
+    background-color: ${ ColorPalette.linksHover };
+	}	
+`;
+
+const ButtonLink0 = styled(Link)`
+	order: 1;
+	margin: auto;
 `;
 
 const ButtonLink1 = styled(Link)`
@@ -83,7 +91,9 @@ class Header extends Component {
   render() {
     return (
       <HeaderDiv>
-        <Header_Logo src={logo} alt="MediCare_Logo" />
+        <ButtonLink0 to="/home">
+          <Header_Logo src={logo} alt="MediCare_Logo" />
+        </ButtonLink0>
 
         <ButtonLink1 to="/join-us-as-a-doctor">
           <Header_Button>
