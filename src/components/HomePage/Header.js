@@ -32,13 +32,6 @@ const StyledLink = styled(Link)`
 	}
 `;
 
-const ButtonLink = styled(Link)`
-  text-decoration: none;
-	font-style: normal;
-  font-size: 11px;
-	color: black;
-`;
-
 const Header_Horizontal_Navigation = styled.nav`
 	order: 2;
 	margin: auto;
@@ -63,20 +56,27 @@ const Header_Horizontal_Navigation_Item = styled.li`
 	}	
 `;
 
-const Header_Button1 = styled.button`    
-	order: 2;
-	margin: auto;
+const Header_Button = styled.button`    
 	margin-right: 80px;
   height: 30px;
   width: 100px;
+  font-size: 11px;
 `;
 
-const Header_Button2 = styled.button`    
+const ButtonLink1 = styled(Link)`
+	order: 2;
+	margin: auto;
+  text-decoration: none;
+	font-style: normal;
+	color: black;
+`;
+
+const ButtonLink2 = styled(Link)`
 	order: 4;
 	margin: auto;
-	margin-right: 80px;
-  height: 30px;
-  width: 100px;
+  text-decoration: none;
+	font-style: normal;
+	color: black;
 `;
 
 class Header extends Component {
@@ -85,9 +85,11 @@ class Header extends Component {
       <HeaderDiv>
         <Header_Logo src={logo} alt="MediCare_Logo" />
 
-        <Header_Button1>
-          <ButtonLink to="/join-us-as-a-doctor">Join As a Doctor</ButtonLink>
-        </Header_Button1>
+        <ButtonLink1 to="/join-us-as-a-doctor">
+          <Header_Button>
+            Join As a Doctor
+          </Header_Button>
+        </ButtonLink1>
 
         <Header_Horizontal_Navigation>
           <HeaderHorizontalNavigationList>
@@ -109,9 +111,11 @@ class Header extends Component {
           </HeaderHorizontalNavigationList>
         </Header_Horizontal_Navigation>
 
-        <Header_Button2>
-          <ButtonLink to="/register">Login/Sign up</ButtonLink>
-        </Header_Button2>
+        <ButtonLink2 to="/join-us-as-a-doctor">
+          <Header_Button>
+            Login/Sign up
+          </Header_Button>
+        </ButtonLink2>
 
       </HeaderDiv>
     );
