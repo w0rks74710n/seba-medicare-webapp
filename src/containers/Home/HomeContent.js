@@ -17,7 +17,7 @@ class HomeContent extends Component {
     return(
       <ContentContainer>
         <Switch>
-          <Route path={"/"} component={FilterSidebar} />
+          <Route exact path={"/"} component={FilterSidebar} />
           <Route path={"/home"} component={FilterSidebar} />
           <Route path={"/register"} component={PatientRegisterationForm} />
           <Route path={"/join-us-as-a-doctor"} component={DoctorRegisterationForm} />

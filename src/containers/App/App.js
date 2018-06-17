@@ -22,8 +22,8 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route path="/" component = { Home }/>
           <Route path="/dashboard" component = {DashboardTemplate}/>
+          <Route path="/" component = { Home }/>
         </Switch>
       </Router>
     );

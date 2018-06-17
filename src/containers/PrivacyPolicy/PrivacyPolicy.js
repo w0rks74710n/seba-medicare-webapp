@@ -1,24 +1,36 @@
-  import React, { Component } from 'react';
-  import privacy from '../../resources/Privacy Policy.pdf';
-  import styled from 'styled-components';
+import React, { Component } from 'react';
+import privacy from '../../resources/Privacy Policy.pdf';
+import styled from 'styled-components';
 
-  const pdfObject = styled.object`
-    max-width: 1000px;
-    margin: auto;
-    padding: 15px;
-  `;
+const PDFDiv = styled.div`
+  width: 1000px;
+  display: flex;
+  margin: auto;
+  padding: 15px;
+`;
 
 
-  class PrivacyPolicy extends Component {
-    render() {
-      return (
-        <div className="privacyPolicy">
-          <pdfObject data={privacy} type="document/pdf">
-            <iframe src={privacy}></iframe>
-          </pdfObject>
-        </div>
-      );
-    }
+const pdfObject = styled.object`
+  width: 1000px;
+  margin: auto;
+`;
+
+const IFrame = styled.iframe`
+  width: 1000px;
+  height: 800px;
+  margin: auto;
+`;
+
+class PrivacyPolicy extends Component {
+  render() {
+    return (
+      <PDFDiv>
+        <pdfObject data={privacy} type="document/pdf">
+          <IFrame src={privacy}></IFrame>
+        </pdfObject>
+      </PDFDiv>
+    );
   }
+}
 
-  export default PrivacyPolicy;
+export default PrivacyPolicy;
