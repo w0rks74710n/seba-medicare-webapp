@@ -3,21 +3,21 @@ import 'firebase/auth';
 import 'firebase/database';
 
 const prodConfig = {
-  apiKey: "API Key",
-  authDomain: "Authontication Domain",
-  databaseURL: "Database URL",
-  projectId: "Project ID",
+  apiKey: "AIzaSyC0YovggdUrzBl-5ACqrUvxRkYJ-Pwxluk\n",
+  authDomain: "medicare.firebaseapp.com",
+  databaseURL: "https://medicare.firebaseio.com",
+  projectId: "medicare-1aad6",
   storageBucket: '',
-  messagingSenderId: "Message Sender ID",
+  messagingSenderId: "1022457139691",
 };
 
 const devConfig = {
-  apiKey: "API Key",
-  authDomain: "Authontication Domain",
-  databaseURL: "Database URL",
-  projectId: "Project ID",
+  apiKey: "AIzaSyC0YovggdUrzBl-5ACqrUvxRkYJ-Pwxluk\n",
+  authDomain: "medicare.firebaseapp.com",
+  databaseURL: "https://medicare.firebaseio.com",
+  projectId: "medicare-1aad6",
   storageBucket: '',
-  messagingSenderId: "Message Sender ID",
+  messagingSenderId: "1022457139691",
 };
 
 const config = process.env.NODE_ENV === 'production'

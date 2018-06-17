@@ -7,7 +7,6 @@ import TermsAndConditions from './TermsAndConditions/TermsAndConditions'
 import DashboardTemplate from './DashboardTemplate/DashboardTemplate'
 import CustomizeDoctorProfile from './CustomizeDoctorProfile/CustomizeDoctorProfile'
 import DoctorDescription from './DoctorDescription/DoctorDescription'
-import RegisterationPage from './RegisterationPage/RegisterationPage'
 
 export {
   App,
@@ -18,6 +17,5 @@ export {
   TermsAndConditions,
   DashboardTemplate,
   CustomizeDoctorProfile,
-  DoctorDescription,
-  RegisterationPage
+  DoctorDescription
 }
