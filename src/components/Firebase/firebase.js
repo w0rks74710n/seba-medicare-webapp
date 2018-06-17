@@ -3,21 +3,21 @@ import 'firebase/auth';
 import 'firebase/database';
 
 const prodConfig = {
-  apiKey: YOUR_API_KEY,
-  authDomain: YOUR_AUTH_DOMAIN,
-  databaseURL: YOUR_DATABASE_URL,
-  projectId: YOUR_PROJECT_ID,
+  apiKey: "API Key",
+  authDomain: "Authontication Domain",
+  databaseURL: "Database URL",
+  projectId: "Project ID",
   storageBucket: '',
-  messagingSenderId: YOUR_MESSAGING_SENDER_ID,
+  messagingSenderId: "Message Sender ID",
 };
 
 const devConfig = {
-  apiKey: YOUR_API_KEY,
-  authDomain: YOUR_AUTH_DOMAIN,
-  databaseURL: YOUR_DATABASE_URL,
-  projectId: YOUR_PROJECT_ID,
+  apiKey: "API Key",
+  authDomain: "Authontication Domain",
+  databaseURL: "Database URL",
+  projectId: "Project ID",
   storageBucket: '',
-  messagingSenderId: YOUR_MESSAGING_SENDER_ID,
+  messagingSenderId: "Message Sender ID",
 };
 
 const config = process.env.NODE_ENV === 'production'
