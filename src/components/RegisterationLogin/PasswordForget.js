@@ -12,13 +12,10 @@ const ContentDiv = styled.div`
 `;
 
 const Paragraph = styled.p`
-    text-align: justify;		
-    text-justify: inter-word;
-    
-    font-famiy: Calibri Light;
-	font-style: normal;
-    font-size: 14px;
+  text-align: center;   
+  font-size: 14px;
 	color: #424242;
+  margin-top: 5%;
 `;
 
 const PasswordForgetPage = () =>

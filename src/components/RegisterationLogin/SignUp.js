@@ -11,6 +11,13 @@ const ContentDiv = styled.div`
   border: 1px solid black;
 `;
 
+const Paragraph = styled.p`
+  text-align: center;   
+  font-size: 14px;
+	color: #424242;
+  margin-bottom: 5%;
+`;
+
 const SignUpPage = ({ history }) =>
   <ContentDiv>
     <h1>Sign Up</h1>
@@ -120,11 +127,11 @@ class SignUpForm extends Component {
 }
 
 const SignUpLink = () =>
-  <p>
+  <Paragraph>
     Don't have an account?
     {' '}
     <Link to="/sign-up">Sign Up</Link>
-  </p>
+  </Paragraph>
 export default withRouter(SignUpPage);
 export {
   SignUpForm,
