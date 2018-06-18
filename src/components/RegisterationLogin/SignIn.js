@@ -81,10 +81,17 @@ const LineDiv = styled.div`
   margin-top: 5%;
 `;
 
+const HorizontalDivider = styled.hr`
+  color: #a9a9a9;
+  opacity: 0.3;
+  width: 80%;
+  margin: auto;
+`;
+
 const SignInPage = ({ history }) =>
   <ContentDiv>
     <Title>Sign In</Title>
-    <hr/>
+    <HorizontalDivider/>
     <SignInForm history={history} />
     <PasswordForgetLink />
     <SignUpLink />
@@ -160,7 +167,7 @@ class SignInForm extends Component {
             placeholder="Password"
           />
         </LineDiv>
-        <hr/>
+        <HorizontalDivider/>
         <ButtonForm disabled={isInvalid} type="submit">
           Login
         </ButtonForm>

@@ -88,10 +88,17 @@ const Paragraph = styled.p`
   margin-bottom: 5%;
 `;
 
+const HorizontalDivider = styled.hr`
+  color: #a9a9a9;
+  opacity: 0.3;
+  width: 80%;
+  margin: auto;
+`;
+
 const SignUpPage = ({ history }) =>
   <ContentDiv>
     <Title>Sign Up</Title>
-    <hr/>
+    <HorizontalDivider/>
     <SignUpForm history={history} />
   </ContentDiv>
 
@@ -199,7 +206,7 @@ class SignUpForm extends Component {
             placeholder="Confirm Password"
           />
         </LineDiv>
-        <hr/>
+        <HorizontalDivider/>
         <ButtonForm disabled={isInvalid} type="submit">
           Sign Up
         </ButtonForm>

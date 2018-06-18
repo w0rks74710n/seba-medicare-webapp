@@ -86,10 +86,17 @@ const LineDiv = styled.div`
   margin-top: 5%;
 `;
 
+const HorizontalDivider = styled.hr`
+  color: #a9a9a9;
+  opacity: 0.3;
+  width: 80%;
+  margin: auto;
+`;
+
 const PasswordForgetPage = () =>
   <ContentDiv>
     <Title>Password Forgotten?</Title>
-    <hr/>
+    <HorizontalDivider/>
     <PasswordForgetForm />
   </ContentDiv>
 
@@ -142,6 +149,7 @@ class PasswordForgetForm extends Component {
             placeholder="Email Address"
           />
         </LineDiv>
+        <HorizontalDivider/>
         <ButtonForm disabled={isInvalid} type="submit">
           Reset My Password
         </ButtonForm>
