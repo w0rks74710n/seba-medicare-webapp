@@ -95,6 +95,16 @@ const HorizontalDivider = styled.hr`
   margin: auto;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+	color: ${ ColorPalette.primary };
+  margin: auto;
+
+	&:hover {
+    text-decoration: underline;
+	}
+`;
+
 const SignUpPage = ({ history }) =>
   <ContentDiv>
     <Title>Sign Up</Title>
@@ -206,6 +216,7 @@ class SignUpForm extends Component {
             placeholder="Confirm Password"
           />
         </LineDiv>
+        <Paragraph>By clicking Register, you agree on our <StyledLink to="/terms-and-conditions">terms and condition</StyledLink>.</Paragraph>
         <HorizontalDivider/>
         <ButtonForm disabled={isInvalid} type="submit">
           Sign Up
