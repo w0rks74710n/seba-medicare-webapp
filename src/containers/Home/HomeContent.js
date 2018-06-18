@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { FilterSidebar, PrivacyPolicy, TermsAndConditions } from "../";
 import SignIn from "../../components/RegisterationLogin/SignIn";
+import SignUp from "../../components/RegisterationLogin/SignUp";
+import PasswordForget from "../../components/RegisterationLogin/PasswordForget";
 
 const ContentContainer = styled.div`
     width: 100%;
@@ -19,6 +21,8 @@ class HomeContent extends Component {
           <Route exact path={"/"} component={FilterSidebar} />
           <Route path={"/home"} component={FilterSidebar} />
           <Route path={"/register"} component={SignIn} />
+          <Route path={"/sign-up"} component={SignUp} />
+          <Route path={"/password-forget"} component={PasswordForget} />
           <Route path={"/join-us-as-a-doctor"} component={SignIn} />
           <Route path={"/privacy-policy"} component={PrivacyPolicy} />
           <Route path={"/terms-and-conditions"} component={TermsAndConditions} />
