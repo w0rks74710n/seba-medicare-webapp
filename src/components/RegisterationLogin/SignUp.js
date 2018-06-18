@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import {  Link,  withRouter } from 'react-router-dom';
 import { auth, db } from '../Firebase';
+import styled from "styled-components";
+
+const ContentDiv = styled.div`
+  width: 600px;
+  display: flex column;
+  margin: auto;
+  padding: 15px;
+  border: 1px solid black;
+`;
 
 const SignUpPage = ({ history }) =>
-  <div>
-    <h1>SignUp</h1>
+  <ContentDiv>
+    <h1>Sign Up</h1>
     <SignUpForm history={history} />
-  </div>
+  </ContentDiv>
 
 const updateByPropertyName = (propertyName, value) => () => ({
   [propertyName]: value,

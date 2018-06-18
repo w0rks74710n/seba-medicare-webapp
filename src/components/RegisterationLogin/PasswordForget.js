@@ -1,12 +1,31 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { auth } from '../Firebase';
+import styled from "styled-components";
+
+const ContentDiv = styled.div`
+  width: 600px;
+  display: flex column;
+  margin: auto;
+  padding: 15px;
+  border: 1px solid black;
+`;
+
+const Paragraph = styled.p`
+    text-align: justify;		
+    text-justify: inter-word;
+    
+    font-famiy: Calibri Light;
+	font-style: normal;
+    font-size: 14px;
+	color: #424242;
+`;
 
 const PasswordForgetPage = () =>
-  <div>
-    <h1>PasswordForget</h1>
+  <ContentDiv>
+    <h1>Password Forget</h1>
     <PasswordForgetForm />
-  </div>
+  </ContentDiv>
 
 const updateByPropertyName = (propertyName, value) => () => ({
   [propertyName]: value,
@@ -65,9 +84,9 @@ class PasswordForgetForm extends Component {
 }
 
 const PasswordForgetLink = () =>
-  <p>
+  <Paragraph>
     <Link to="/password-forget">Forgot Password?</Link>
-  </p>
+  </Paragraph>
 
 export default PasswordForgetPage;
 
