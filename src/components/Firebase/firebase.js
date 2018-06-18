@@ -3,7 +3,7 @@ import 'firebase/auth';
 import 'firebase/database';
 
 const prodConfig = {
-  apiKey: "AIzaSyC0YovggdUrzBl-5ACqrUvxRkYJ-Pwxluk\n",
+  apiKey: "AIzaSyC0YovggdUrzBl-5ACqrUvxRkYJ-Pwxluk",
   authDomain: "medicare.firebaseapp.com",
   databaseURL: "https://medicare.firebaseio.com",
   projectId: "medicare-1aad6",
@@ -12,7 +12,7 @@ const prodConfig = {
 };
 
 const devConfig = {
-  apiKey: "AIzaSyC0YovggdUrzBl-5ACqrUvxRkYJ-Pwxluk\n",
+  apiKey: "AIzaSyC0YovggdUrzBl-5ACqrUvxRkYJ-Pwxluk",
   authDomain: "medicare.firebaseapp.com",
   databaseURL: "https://medicare.firebaseio.com",
   projectId: "medicare-1aad6",
