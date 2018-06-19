@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const DoctorProfileNavComponent = styled.section`
-
+  width: 200px;
+  clear: both;
+  float: left;
+  text-align: right;
 
   ul {
     list-style-type: none;
