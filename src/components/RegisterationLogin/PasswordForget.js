@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import email_icon from '../../resources/email-icon.png';
 import { Link } from 'react-router-dom';
-import { auth } from '../Firebase';
+import { auth } from '../../services/Firebase';
 import styled from "styled-components";
 import ColorPalette from "../../constants/ColorPalette";
 

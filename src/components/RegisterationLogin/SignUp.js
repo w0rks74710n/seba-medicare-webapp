@@ -3,7 +3,7 @@ import user_icon from '../../resources/user-icon.png';
 import email_icon from '../../resources/email-icon.png';
 import password_icon from '../../resources/pass-icon.png';
 import {  Link,  withRouter } from 'react-router-dom';
-import { auth, db } from '../Firebase';
+import { auth, db } from '../../services/Firebase';
 import styled from "styled-components";
 import ColorPalette from "../../constants/ColorPalette";
 

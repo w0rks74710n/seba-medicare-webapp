@@ -4,7 +4,7 @@ import password_icon from '../../resources/pass-icon.png';
 import { withRouter } from 'react-router-dom';
 import { SignUpLink } from './SignUp';
 import { PasswordForgetLink } from './PasswordForget';
-import { auth } from '../Firebase';
+import { auth } from '../../services/Firebase';
 import styled from "styled-components";
 import ColorPalette from "../../constants/ColorPalette";
 

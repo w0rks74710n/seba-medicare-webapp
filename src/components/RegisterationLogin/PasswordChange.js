@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { auth } from '../../firebase';
+import { auth } from '../../services/Firebase';
 
 const updateByPropertyName = (propertyName, value) => () => ({
   [propertyName]: value,
