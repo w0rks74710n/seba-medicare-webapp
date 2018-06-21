@@ -4,6 +4,7 @@ import FilterInsuranceType from "../../components/FilterSidebar/FilterInsuranceT
 import FilterLanguage from "../../components/FilterSidebar/FilterLanguage";
 import FilterRadius from "../../components/FilterSidebar/FilterRadius";
 import FilterRating from "../../components/FilterSidebar/FilterRating";
+import ColorPalette from "../../constants/ColorPalette"
 
 const FilterSidebarComponent = styled.div`
   height: 100%;
@@ -11,8 +12,10 @@ const FilterSidebarComponent = styled.div`
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: WhiteSmoke;
+  background-color: ${ColorPalette.primaryBackGorundContainer};
   overflow-x: hidden;
+  margin: 10px;
+  border-radius: 2px;
   padding-top: 10px;
   padding-right: 10px;
   padding-left:10px;
