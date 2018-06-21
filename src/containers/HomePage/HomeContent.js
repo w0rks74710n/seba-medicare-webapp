@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { FilterSidebar, PrivacyPolicy, TermsAndConditions } from "../";
+import { SearchDoctor, PrivacyPolicy, TermsAndConditions } from "../";
 import SignIn from "../../components/RegisterationLogin/SignIn";
 import SignUp from "../../components/RegisterationLogin/SignUp";
 import PasswordForget from "../../components/RegisterationLogin/PasswordForget";
@@ -18,8 +18,8 @@ class HomeContent extends Component {
     return(
       <ContentContainer>
         <Switch>
-          <Route exact path={"/"} component={FilterSidebar} />
-          <Route path={"/home"} component={FilterSidebar} />
+          <Route exact path={"/"} component={SearchDoctor} />
+          <Route path={"/home"} component={SearchDoctor} />
           <Route path={"/register"} component={SignIn} />
           <Route path={"/sign-up"} component={SignUp} />
           <Route path={"/password-forget"} component={PasswordForget} />

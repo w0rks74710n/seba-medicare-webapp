@@ -43,7 +43,6 @@ const RadioButton = styled.input`
 class FilterRadioButton extends Component {
   constructor(props) {
     super(props);
-    this.props = props;
   }
 
   render() {
