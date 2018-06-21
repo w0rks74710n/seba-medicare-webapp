@@ -2,7 +2,7 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 
 import EditAboutForm from '../../components/CustomizeDoctorProfile/EditAboutForm';
-import DoctorProfileInformationService from '../../services/DoctorProfileInformationService'
+import DoctorProfileInformationService from '../../services/DoctorProfileInformationService';
 
 const EditAboutFormContainer = ({ handleSubmit }) => {
 

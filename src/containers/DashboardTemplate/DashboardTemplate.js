@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import ColorPalette from '../../constants/ColorPalette'
+import { Route } from "react-router-dom";
 import DashboardHeader from "../../components/DashboardTemplate/DashboardHeader";
 import DashboardSideBar from "../../components/DashboardTemplate/DashboardSideBar";
 import DashboardSchedule from "../DashboardSchedule/DashboardSchedule";
@@ -24,19 +23,17 @@ const Content = styled.div`
 class DashboardTemplate extends Component {
   render() {
     return (
-      <Router>
-        <ContainerDiv>
 
-          <DashboardHeader/>
-          <ContentsDiv>
-            <DashboardSideBar/>
-            <Content>
-              <CustomizeDoctorProfile/>
-            </Content>
-          </ContentsDiv>
-
-        </ContainerDiv>
-      </Router>
+      <ContainerDiv>
+        <DashboardHeader/>
+        <ContentsDiv>
+          <DashboardSideBar/>
+          <Content>
+            <Route exact path="/dashboard/customizeProfile/:id" component={CustomizeDoctorProfile} />
+            <Route exact path="/dashboard/schedule/:id" component={DashboardSchedule} />
+          </Content>
+        </ContentsDiv>
+      </ContainerDiv>
     );
   }
 }
