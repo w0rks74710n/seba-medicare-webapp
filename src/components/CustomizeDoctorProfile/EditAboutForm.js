@@ -6,7 +6,8 @@ const renderTextField = ({ input, meta: { touched, error }, ...others }) => (
   <TextField {...input} {...others} error={touched && !!error} errorText={error} />
 );
 
-export const EditAboutForm = ({ handleSubmit, onSubmit }) => {
+export const EditAboutForm = ({ handleSubmit, onSubmit, about }) => {
+  console.log(about);
   return(
     <Card>
       <CardTitle title={'About'} style={{paddingBottom: 0}}/>
