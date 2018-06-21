@@ -13,7 +13,7 @@ class SearchDoctor extends Component {
   constructor(props) {
     super(props);
   }
-  
+
   /**
    * Workflow looks as follows:
    * SearchDoctor -> FilterSidebar -> SingleFilters -> RadioButtons
@@ -24,7 +24,7 @@ class SearchDoctor extends Component {
    * @param filterSelection: this object will be populated with the current states of all the filters
    * */
   retrieveFilterSidebarState(filterSelection) {
-    // ToDo: Here it's necessaty to execute a get request to the DoctorProfileInformationService and retrieve all the
+    // ToDo: Here it's necessary to execute a get request to the DoctorProfileInformationService and retrieve all the
     // ToDo: doctors that match the given filter criteria.
     console.log(filterSelection);
   }
