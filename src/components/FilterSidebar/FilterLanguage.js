@@ -14,17 +14,6 @@ class FilterLanguage extends Component {
 
   constructor(props) {
     super(props);
-    this.props = props;
-    this.state = {
-      isSelected: 'noPreference'
-    }
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({
-      isSelected: event.target.value
-    });
   }
 
   render() {
@@ -32,11 +21,11 @@ class FilterLanguage extends Component {
       <FilterLanguageComponent>
         <FilterTitle name={'Language'}/>
         <form>
-          <FilterRadioButton value={'noPreference'} name={'No preference'} isSelected={this.state.isSelected} onClick={this.handleChange} />
-          <FilterRadioButton value={'english'} name={'English'} isSelected={this.state.isSelected} onClick={this.handleChange} />
-          <FilterRadioButton value={'german'} name={'German'} isSelected={this.state.isSelected} onClick={this.handleChange} />
-          <FilterRadioButton value={'french'} name={'French'} isSelected={this.state.isSelected} onClick={this.handleChange} />
-          <FilterRadioButton value={'italian'} name={'Italian'} isSelected={this.state.isSelected} onClick={this.handleChange} />
+          <FilterRadioButton value={ 'noPreference' } name={ 'No preference' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
+          <FilterRadioButton value={ 'english' } name={ 'English' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
+          <FilterRadioButton value={ 'german' } name={ 'German' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
+          <FilterRadioButton value={ 'french' } name={ 'French' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
+          <FilterRadioButton value={ 'italian' } name={ 'Italian' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
         </form>
       </FilterLanguageComponent>
     )

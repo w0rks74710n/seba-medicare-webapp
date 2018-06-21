@@ -14,17 +14,6 @@ class FilterRating extends Component {
 
   constructor(props) {
     super(props);
-    this.props = props;
-    this.state = {
-      isSelected: 'noPreference'
-    }
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({
-      isSelected: event.target.value
-    });
   }
 
   render() {
@@ -34,38 +23,38 @@ class FilterRating extends Component {
         <form>
           <FilterRadioButton value={'noPreference'}
                              name={'No Preference'}
-                             isSelected={this.state.isSelected}
-                             onClick={this.handleChange} />
+                             isSelected={this.props.isSelected}
+                             onClick={this.props.handleChange} />
           <FilterRadioButton value={'1'}
                              name={[<i className="material-icons" key={1} style={{width: '24px'}}>star_rate</i>]}
-                             isSelected={this.state.isSelected}
-                             onClick={this.handleChange} />
+                             isSelected={this.props.isSelected}
+                             onClick={this.props.handleChange} />
           <FilterRadioButton value={'2'}
-                             name={[<i className="material-icons" key={2} style={{width: '24px'}}>star_rate</i>,
-                                    <i className="material-icons" key={3} style={{width: '24px'}}>star_rate</i>]}
-                             isSelected={this.state.isSelected}
-                             onClick={this.handleChange} />
+                             name={[<i className="material-icons" key={1} style={{width: '24px'}}>star_rate</i>,
+                                    <i className="material-icons" key={2} style={{width: '24px'}}>star_rate</i>]}
+                             isSelected={this.props.isSelected}
+                             onClick={this.props.handleChange} />
           <FilterRadioButton value={'3'}
-                             name={[<i className="material-icons" style={{width: '24px'}}>star_rate</i>,
-                                    <i className="material-icons" style={{width: '24px'}}>star_rate</i>,
-                                    <i className="material-icons" style={{width: '24px'}}>star_rate</i>]}
-                             isSelected={this.state.isSelected}
-                             onClick={this.handleChange} />
+                             name={[<i className="material-icons" key={1} style={{width: '24px'}}>star_rate</i>,
+                                    <i className="material-icons" key={2} style={{width: '24px'}}>star_rate</i>,
+                                    <i className="material-icons" key={3} style={{width: '24px'}}>star_rate</i>]}
+                             isSelected={this.props.isSelected}
+                             onClick={this.props.handleChange} />
           <FilterRadioButton value={'4'}
-                             name={[<i className="material-icons" style={{width: '24px'}}>star_rate</i>,
-                                    <i className="material-icons" style={{width: '24px'}}>star_rate</i>,
-                                    <i className="material-icons" style={{width: '24px'}}>star_rate</i>,
-                                    <i className="material-icons" style={{width: '24px'}}>star_rate</i>]}
-                             isSelected={this.state.isSelected}
-                             onClick={this.handleChange} />
+                             name={[<i className="material-icons" key={1} style={{width: '24px'}}>star_rate</i>,
+                                    <i className="material-icons" key={2} style={{width: '24px'}}>star_rate</i>,
+                                    <i className="material-icons" key={3} style={{width: '24px'}}>star_rate</i>,
+                                    <i className="material-icons" key={4} style={{width: '24px'}}>star_rate</i>]}
+                             isSelected={this.props.isSelected}
+                             onClick={this.props.handleChange} />
           <FilterRadioButton value={'5'}
-                             name={[<i className="material-icons" style={{width: '24px'}}>star_rate</i>,
-                                    <i className="material-icons" style={{width: '24px'}}>star_rate</i>,
-                                    <i className="material-icons" style={{width: '24px'}}>star_rate</i>,
-                                    <i className="material-icons" style={{width: '24px'}}>star_rate</i>,
-                                    <i className="material-icons" style={{width: '24px'}}>star_rate</i>]}
-                             isSelected={this.state.isSelected}
-                             onClick={this.handleChange} />
+                             name={[<i className="material-icons" key={1} style={{width: '24px'}}>star_rate</i>,
+                                    <i className="material-icons" key={2} style={{width: '24px'}}>star_rate</i>,
+                                    <i className="material-icons" key={3} style={{width: '24px'}}>star_rate</i>,
+                                    <i className="material-icons" key={4} style={{width: '24px'}}>star_rate</i>,
+                                    <i className="material-icons" key={5} style={{width: '24px'}}>star_rate</i>]}
+                             isSelected={this.props.isSelected}
+                             onClick={this.props.handleChange} />
         </form>
       </FilterRatingComponent>
     )

@@ -14,17 +14,6 @@ class FilterInsuranceType extends Component {
 
   constructor(props) {
     super(props);
-    this.props = props;
-    this.state = {
-      isSelected: 'noPreference'
-    }
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({
-      isSelected: event.target.value
-    });
   }
 
   render() {
@@ -32,9 +21,9 @@ class FilterInsuranceType extends Component {
       <FilterInsuranceTypeComponent>
         <FilterTitle name={'Insurance Type'}/>
         <form>
-          <FilterRadioButton value={'noPreference'} name={'No preference'} isSelected={this.state.isSelected} onClick={this.handleChange} />
-          <FilterRadioButton value={'publicInsurance'} name={'Public Health Insurance'} isSelected={this.state.isSelected} onClick={this.handleChange} />
-          <FilterRadioButton value={'privateInsurance'} name={'Private Health Insurance'} isSelected={this.state.isSelected} onClick={this.handleChange} />
+          <FilterRadioButton value={'noPreference'} name={'No preference'} isSelected={this.props.isSelected} onClick={this.props.handleChange} />
+          <FilterRadioButton value={'publicInsurance'} name={'Public Health Insurance'} isSelected={this.props.isSelected} onClick={this.props.handleChange} />
+          <FilterRadioButton value={'privateInsurance'} name={'Private Health Insurance'} isSelected={this.props.isSelected} onClick={this.props.handleChange} />
         </form>
       </FilterInsuranceTypeComponent>
     )

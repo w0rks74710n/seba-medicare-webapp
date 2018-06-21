@@ -23,13 +23,57 @@ const FilterSidebarComponent = styled.div`
 `;
 
 class FilterSidebar extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      // ToDo: Maybe use constants instead
+      isInsuranceSelected: 'noPreference',
+      isLanguageSelected: 'noPreference',
+      isRadiusSelected: 'wholeArea',
+      isRatingSelected: 'noPreference'
+    };
+  }
+
+  handleInsuranceChange(event) {
+    this.setState({
+      isInsuranceSelected: event.target.value
+    }, () => {
+      this.props.retrieveFilterSidebarState(this.state)
+    });
+  }
+
+  handleLanguageChange(event) {
+    this.setState({
+      isLanguageSelected: event.target.value
+    }, () => {
+      this.props.retrieveFilterSidebarState(this.state)
+    });
+  }
+
+  handleRadiusChange(event) {
+    this.setState({
+      isRadiusSelected: event.target.value
+    }, () => {
+      this.props.retrieveFilterSidebarState(this.state)
+    });
+  }
+
+  handleRatingChange(event) {
+    this.setState({
+      isRatingSelected: event.target.value
+    }, () => {
+      this.props.retrieveFilterSidebarState(this.state)
+    });
+  }
+
   render() {
     return(
       <FilterSidebarComponent>
-        <FilterInsuranceType/>
-        <FilterLanguage/>
-        <FilterRadius/>
-        <FilterRating/>
+        <FilterInsuranceType handleChange={ this.handleInsuranceChange.bind(this) } isSelected={ this.state.isInsuranceSelected } />
+        <FilterLanguage handleChange={ this.handleLanguageChange.bind(this) } isSelected={ this.state.isLanguageSelected } />
+        <FilterRadius handleChange={ this.handleRadiusChange.bind(this) } isSelected={ this.state.isRadiusSelected } />
+        <FilterRating handleChange={ this.handleRatingChange.bind(this) } isSelected={ this.state.isRatingSelected }/>
       </FilterSidebarComponent>
     )
   }

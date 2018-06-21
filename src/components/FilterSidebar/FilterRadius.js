@@ -14,29 +14,18 @@ class FilterRadius extends Component {
 
   constructor(props) {
     super(props);
-    this.props = props;
-    this.state = {
-      isSelected: 'wholeArea'
-    }
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({
-      isSelected: event.target.value
-    });
   }
 
   render() {
     return(
       <FilterRadiusComponent>
-        <FilterTitle name={'Radius'}/>
+        <FilterTitle name={ 'Radius' }/>
         <form>
-          <FilterRadioButton value={'wholeArea'} name={'Whole Area'} isSelected={this.state.isSelected} onClick={this.handleChange} />
-          <FilterRadioButton value={'1'} name={'1 Km'} isSelected={this.state.isSelected} onClick={this.handleChange} />
-          <FilterRadioButton value={'5'} name={'5 Km'} isSelected={this.state.isSelected} onClick={this.handleChange} />
-          <FilterRadioButton value={'10'} name={'10 Km'} isSelected={this.state.isSelected} onClick={this.handleChange} />
-          <FilterRadioButton value={'15'} name={'15 Km'} isSelected={this.state.isSelected} onClick={this.handleChange} />
+          <FilterRadioButton value={ 'wholeArea' } name={ 'Whole Area' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
+          <FilterRadioButton value={ '1' } name={ '1 Km' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
+          <FilterRadioButton value={ '5' } name={ '5 Km' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
+          <FilterRadioButton value={ '10' } name={ '10 Km' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
+          <FilterRadioButton value={ '15' } name={ '15 Km' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
         </form>
       </FilterRadiusComponent>
     )
