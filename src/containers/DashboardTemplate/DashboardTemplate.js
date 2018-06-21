@@ -5,6 +5,7 @@ import ColorPalette from '../../constants/ColorPalette'
 import DashboardHeader from "../../components/DashboardTemplate/DashboardHeader";
 import DashboardSideBar from "../../components/DashboardTemplate/DashboardSideBar";
 import DashboardSchedule from "../DashboardSchedule/DashboardSchedule";
+import CustomizeDoctorProfile from "../CustomizeDoctorProfile/CustomizeDoctorProfile";
 
 const ContainerDiv = styled.div`
   display: flex;
@@ -30,7 +31,7 @@ class DashboardTemplate extends Component {
           <ContentsDiv>
             <DashboardSideBar/>
             <Content>
-              <DashboardSchedule/>
+              <CustomizeDoctorProfile/>
             </Content>
           </ContentsDiv>
 
