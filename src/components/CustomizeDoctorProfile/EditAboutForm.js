@@ -7,7 +7,6 @@ const renderTextField = ({ input, meta: { touched, error }, ...others }) => (
 );
 
 export const EditAboutForm = ({ handleSubmit, onSubmit, about }) => {
-  console.log(about);
   return(
     <Card>
       <CardTitle title={'About'} style={{paddingBottom: 0}}/>

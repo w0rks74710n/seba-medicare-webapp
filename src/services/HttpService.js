@@ -7,17 +7,15 @@ export default class HttpService {
 
   static apiURL() { return "http://localhost:3001/api"; }
 
-  static get(url, data,  onSuccess, onError) {
+  static get(url, onSuccess, onError) {
     let header = new Headers();
-    header.append('Content-Type', 'application/json');
 
     fetch(url, {
       method: 'GET',
       headers: header,
-      body: JSON.stringify(data)
     }).then((resp) => {
       if(resp.ok) {
-        return resp.json();
+        onSuccess(resp.json());
       } else if(this.checkIfUnauthorized(resp)) {
         window.location = "/#login";
       } else {
@@ -40,7 +38,7 @@ export default class HttpService {
       body: JSON.stringify(data)
     }).then((resp) => {
       if(resp.ok) {
-        return resp.json();
+        onSuccess(resp.json());
       } else if(this.checkIfUnauthorized(resp)) {
         window.location = "/#login";
       } else {
@@ -63,7 +61,7 @@ export default class HttpService {
       body: JSON.stringify(data)
     }).then((resp) => {
       if(resp.ok) {
-        return resp.json();
+        onSuccess(resp.json());
       } else if(this.checkIfUnauthorized(resp)) {
         window.location = "/#login";
       } else {
@@ -90,7 +88,7 @@ export default class HttpService {
       headers: header
     }).then((resp) => {
       if (resp.ok) {
-        return resp.json();
+         onSuccess(resp.json());
       } else if (this.checkIfUnauthorized(resp)) {
         window.location = "/#login";
       } else {

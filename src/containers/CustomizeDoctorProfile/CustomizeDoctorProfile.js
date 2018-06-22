@@ -1,3 +1,5 @@
+"use strict";
+
 import React, { Component } from "react";
 import styled from "styled-components";
 import EditAboutFormContainer from "./EditAboutFormContainer";
@@ -20,7 +22,7 @@ class CustomizeDoctorProfile extends Component {
     super(props);
 
     this.state = {
-      loading: false,
+      loading: true,
       data: []
     };
   }
@@ -32,7 +34,7 @@ class CustomizeDoctorProfile extends Component {
 
     DoctorProfileInformationService.getDoctorProfile(this.props.match.params.id).then((data) => {
       this.setState({
-        data: [...data],
+        data: data,
         loading: false
       });
     }).catch((e) => {
@@ -40,24 +42,26 @@ class CustomizeDoctorProfile extends Component {
     });
   }
 
+
+
   render(){
-    if (this.state.isLoading) {
+    if (this.state.loading) {
       return (<h2>Loading...</h2>);
     }
 
-    return(
-      <CustomizeDoctorProfileContainer >
-        <EditAboutFormContainer id={this.props.match.params.id} about={this.state.data} />
-        <br />
-        <EditContactInformationFormContainer id={this.props.match.params.id} contactInformation={this.state.data.description} />
-        <br />
-        <EditSocialMediaFormContainer id={this.props.match.params.id} socialMedia={this.state.data.socialMedia}/>
-        <br />
-        <EditExperienceFormContainer id={this.props.match.params.id} experience={this.state.data.experience} />
-        <br />
-        <EditEducationFormContainer id={this.props.match.params.id} education={this.state.data.education} />
-        <br />
-        <EditPicturesFormContainer id={this.props.match.params.id} pictures={this.state.data.pictures}/>
+    return (
+      <CustomizeDoctorProfileContainer>
+        <EditAboutFormContainer id={this.props.match.params.id} />
+        <br/>
+        <EditContactInformationFormContainer id={this.props.match.params.id} contactInformation={this.state.data.description}/>
+        <br/>
+        <EditSocialMediaFormContainer id={this.props.match.params.id} />
+        <br/>
+        <EditExperienceFormContainer id={this.props.match.params.id} />
+        <br/>
+        <EditEducationFormContainer id={this.props.match.params.id} />
+        <br/>
+        <EditPicturesFormContainer id={this.props.match.params.id} />
       </CustomizeDoctorProfileContainer>
     );
   }

@@ -22,12 +22,8 @@ export default class DoctorProfileInformationService {
 
   static getDoctorProfile(doctor_id) {
     return new Promise((resolve, reject) => {
-      HttpService.get(this.baseURL()+'/'+ doctor_id, function(data) {
-        if(data != undefined || Object.keys(data).length !== 0) {
-          resolve(data);
-        } else {
-          reject('Error while retrieving doctor profile');
-        }
+      HttpService.get(this.baseURL()+'/'+ doctor_id, (data) => {
+        resolve(data);
       }, function(textStatus) {
         reject(textStatus);
       });
