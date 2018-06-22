@@ -4,11 +4,13 @@ import DoctorProfileNav from "../../components/DoctorProfileNav/DoctorProfileNav
 import DoctorProfileReviews from "../../components/DoctorProfileReviews/DoctorProfileReviews";
 import styled from "styled-components";
 
+
 const DoctorProfileComponent = styled.section`
 
 
 
 `;
+
 
 class DoctorProfile extends Component {
   componentWillMount() {
@@ -21,10 +23,10 @@ class DoctorProfile extends Component {
         <DoctorProfileHeader/>
         <DoctorProfileNav/>
         <DoctorProfileReviews id="reviews"/>
-        
-      </DoctorProfileComponent>
+      
+      </DoctorProfileComponent> 
     )
   }
 }
 
-export default DoctorProfile
+export default DoctorProfile;

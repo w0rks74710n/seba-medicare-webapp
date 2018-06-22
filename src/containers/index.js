@@ -9,6 +9,7 @@ import FilterSidebar from './FilterSidebar/FilterSidebar'
 import SearchDoctorList from './SearchDoctorList/SearchDoctorList'
 import CustomizeDoctorProfile from './CustomizeDoctorProfile/CustomizeDoctorProfile'
 import DoctorDescription from './DoctorDescription/DoctorDescription'
+import DoctorProfile from './DoctorProfile/DoctorProfile';
 
 export {
   App,
@@ -21,5 +22,6 @@ export {
   FilterSidebar,
   SearchDoctorList,
   CustomizeDoctorProfile,
-  DoctorDescription
+  DoctorDescription,
+  DoctorProfile
 }

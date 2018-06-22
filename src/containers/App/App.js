@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Home, DashboardTemplate } from "../";
 
+
 const PageContainer = styled.div`
     width: 100%;
     overflow-x: hidden;
@@ -23,7 +24,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route path="/dashboard" component = {DashboardTemplate}/>
-          <Route path="/" component = { Home }/>
+          <Route path="/" component = {Home}/>
         </Switch>
       </Router>
     );
