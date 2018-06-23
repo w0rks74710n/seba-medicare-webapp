@@ -21,7 +21,7 @@ const Dropdown = styled.li`
   display: block;
   text-decoration: none;  
   margin:auto; 
-  margin-right: 94px;
+  margin-right: 74px;
 `;
 
 const DropdownToggle = styled.a`
@@ -30,6 +30,8 @@ const DropdownToggle = styled.a`
   text-decoration: none;  
   color: #e1ffff;
   margin-left: 20px;
+    
+  &:hover .dropdown-content {display: block;}
 `;
 
 const DropdownMenu = styled.ul`
@@ -52,7 +54,7 @@ const DropdownMenu = styled.ul`
 `;
 
 const DropdownListItem = styled.li`
-  width: 100%;
+  width: 300px;
   margin-left: 0px;
   text-decoration: none;  
   padding: 12px; 
@@ -67,7 +69,7 @@ const DropdownListItem = styled.li`
 	}	
 `;
 
-const DropdownLink = styled.a`  
+const StyledLink = styled(Link)`
   text-decoration: none;  
   color: black;
 `;
@@ -83,18 +85,30 @@ const Icon = styled.img`
 class DashboardHeader extends Component {
   render() {
     return (
-      <Router>
-        <HeaderDiv>
-          <Dropdown>
-            <DropdownToggle href="#" data-toggle="dropdown">Admin User</DropdownToggle>
-            <DropdownMenu>
-              <DropdownListItem><DropdownLink href="#"><Icon src={edit} alt="Edit Profile" /> Edit Profile</DropdownLink></DropdownListItem>
-              <DropdownListItem><DropdownLink href="#"><Icon src={change} alt="Change Password" /> Change Password</DropdownLink></DropdownListItem>
-              <DropdownListItem><DropdownLink href="#"><Icon src={logout} alt="Logout" /> Logout</DropdownLink></DropdownListItem>
-            </DropdownMenu>
-          </Dropdown>
-        </HeaderDiv>
-      </Router>
+      <HeaderDiv>
+        <Dropdown>
+          <DropdownToggle className="dropbtn">Admin Menu</DropdownToggle>
+          <DropdownMenu className="dropdown-content">
+            <StyledLink to="/edit">
+             <DropdownListItem>
+                <Icon src={edit} alt="Edit Profile"/>Edit
+             </DropdownListItem>
+            </StyledLink>
+
+            <StyledLink to="/change">
+              <DropdownListItem>
+                <Icon src={change} alt="Change Password" />Change
+              </DropdownListItem>
+            </StyledLink>
+
+            <StyledLink to="/logout">
+              <DropdownListItem>
+                <Icon src={logout} alt="Logout" />Logout
+              </DropdownListItem>
+            </StyledLink>
+          </DropdownMenu>
+        </Dropdown>
+      </HeaderDiv>
     );
   }
 }
