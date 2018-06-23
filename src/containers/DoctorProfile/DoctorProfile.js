@@ -4,7 +4,6 @@ import styled from "styled-components";
 import DoctorProfileService from '../../services/DoctorProfileService';
 
 import DoctorProfileHeader from "../../components/DoctorProfileHeader/DoctorProfileHeader";
-import DoctorProfileNav from "../../components/DoctorProfileNav/DoctorProfileNav";
 import DoctorProfileInformation from "../../components/DoctorProfileInformation/DoctorProfileInformation";
 import DoctorProfileReviews from "../../components/DoctorProfileReviews/DoctorProfileReviews";
 
@@ -49,7 +48,6 @@ class DoctorProfile extends Component {
     return (
       <DoctorProfileComponent>
         <DoctorProfileHeader/>
-        <DoctorProfileNav/>
         <DoctorProfileInformation doctorProfile={this.state.doctorProfile}/>
         {/* <DoctorProfileReviews/> */}
       </DoctorProfileComponent> 
