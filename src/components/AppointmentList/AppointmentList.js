@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import AppointmentListItem from '../../components/AppointmentList/AppointmentListItem';
+import AppointmentListItem from './AppointmentListItem';
 
 class AppointmentList extends Component {
+
   render() {
     const sampleAppointment1 = {
       doctorName: 'Dr Saner Turhaner',
@@ -22,10 +23,10 @@ class AppointmentList extends Component {
     };
 
     return (
-      <AppointmentListComponent>
+      <div>
         <AppointmentListItem {...sampleAppointment1} />
         <AppointmentListItem {...sampleAppointment2} />
-      </AppointmentListComponent>
+      </div>
     );
   }
 }

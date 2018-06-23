@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ColorPalette from '../../constants/ColorPalette'
+import AppointmentList from '../AppointmentList/AppointmentList';
 
 const Table = styled.table`
   width: 90%;
