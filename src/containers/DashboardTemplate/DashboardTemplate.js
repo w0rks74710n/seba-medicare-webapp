@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ColorPalette from '../../constants/ColorPalette'
 import DashboardHeader from "../../components/DashboardTemplate/DashboardHeader";
 import DashboardSideBar from "../../components/DashboardTemplate/DashboardSideBar";
-import DashboardSchedule from "../DashboardSchedule/DashboardSchedule";
+import DashboardContent from "./DashboardContent";
 
 const ContainerDiv = styled.div`
   display: flex;
@@ -30,7 +30,7 @@ class DashboardTemplate extends Component {
           <ContentsDiv>
             <DashboardSideBar/>
             <Content>
-              <DashboardSchedule/>
+              <DashboardContent/>
             </Content>
           </ContentsDiv>
 

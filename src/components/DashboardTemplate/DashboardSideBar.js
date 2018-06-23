@@ -131,7 +131,7 @@ class DashboardSideBar extends Component {
                 </NavSideMenuLI>
               </ListItemA>
 
-              <ListItemA to="/settings">
+              <ListItemA to="/change-settings">
                 <NavSideMenuLI data-toggle="collapse" data-target="#settings" className="collapsed">
                   <Icon src={settings} alt="Settings" /> Settings
                 </NavSideMenuLI>
