@@ -2,11 +2,12 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 
 import EditSocialMediaForm from '../../components/CustomizeDoctorProfile/EditSocialMediaForm';
+import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
 
-const EditSocialMediaFormContainer = ({ handleSubmit }) => {
+const EditSocialMediaFormContainer = ({ handleSubmit, id }) => {
 
   const submitForm = (formValues) => {
-    console.log('submitting Form: ', formValues);
+    DoctorProfileInformationService.updateDoctorProfile(formValues, id);
   };
 
   return (
