@@ -14,7 +14,7 @@ const AppointmentsDiv = styled.table`
 
 const sampleAppointment1 = {
   doctorName: 'Dr Saner Turhaner',
-  patientName: 'Roxhens Meraj',
+  patientName: 'Alexi Laiho',
   illness: 'Depression based on anxiety and discomfort',
   date: '2018-06-25',
   time: '11:00',
@@ -23,7 +23,7 @@ const sampleAppointment1 = {
 
 const sampleAppointment2 = {
   doctorName: 'Dr Saner Turhaner',
-  patientName: 'Sebastian Speth',
+  patientName: 'Joey Jordison',
   illness: 'Mind frecking panic attacks',
   date: '2018-06-25',
   time: '13:00',
