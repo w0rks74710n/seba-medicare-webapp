@@ -23,7 +23,6 @@ const Image = styled.section`
 
 `;
 
-
 class DoctorProfileImages extends Component {
 
   render() {
@@ -32,19 +31,19 @@ class DoctorProfileImages extends Component {
         <SectionTitle>Praxis Photos</SectionTitle>
             <SectionContent>
                 <Image>
-                    <img src="{this.props.images.profilePic}" />
+                    <img src={this.props.images.profilePic} />
                 </Image>
                 <Image>
-                    <img src="{this.props.images.praxisPic1}" />
+                    <img src={this.props.images.praxisPic1} />
                 </Image>
                 <Image>
-                    <img src="{this.props.images.praxisPic2}" />
+                    <img src={this.props.images.praxisPic2} />
                 </Image>
                 <Image>
-                    <img src="{this.props.images.praxisPic3}" />
+                    <img src={this.props.images.praxisPic3} />
                 </Image>
                 <Image>
-                    <img src="{this.props.images.praxisPic4}" />
+                    <img src={this.props.images.praxisPic4} />
                 </Image>
             </SectionContent>
       </DoctorProfileImagesComponent>

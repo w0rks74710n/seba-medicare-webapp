@@ -134,7 +134,7 @@ class DoctorListItem extends Component {
           </div>
         </div>
         <div className="item-view-link">
-          <a href={'/doctorProfile/' + this.props.doctor_id }><i className="material-icons" style={{ width: '24px', color: ColorPalette.primary }}>keyboard_arrow_right</i></a>
+          <a href={'/doctor-profile/' + this.props.doctor_id }><i className="material-icons" style={{ width: '24px', color: ColorPalette.primary }}>keyboard_arrow_right</i></a>
         </div>
       </DoctorListItemComponent>
     );

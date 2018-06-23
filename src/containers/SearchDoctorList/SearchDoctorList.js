@@ -23,7 +23,7 @@ class DoctorList extends Component {
       languages: 'Spanish, German, English',
       emergency: 'Available for emergency calls',
       onlineAppointment: 'Available for online appointments',
-      doctor_id: '5245yw7729i'
+      doctor_id: '5b2d22afc3fb8b0019e2686c'
     };
     return (
       <DoctorListComponent>
