@@ -69,7 +69,7 @@ class DoctorListItem extends Component {
 
   renderRatings() {
     let ratingIcons = [];
-    let doctorRating = 5;
+    let doctorRating = this.props.services.rating;
 
     for (let rating = 0; rating < doctorRating; rating++) {
       ratingIcons.push(<i className="material-icons" style={{width: '24px', color: ColorPalette.primary}} key={rating}>star_rate</i>);
@@ -132,7 +132,7 @@ class DoctorListItem extends Component {
             <a href="#" data-tip={ this.props.services.emergencyAbailable ? 'Available for emergency calls':'Not available for emergency calls' }>
               Emergency Available<ReactTooltip place="top" type="dark" effect="float"/>
             </a> |
-            <a href="#" data-tip={ this.props.services.onlineAppointmentAvailable ? 'Online appointment possible':'No nline appointment possible' }>
+            <a href="#" data-tip={ this.props.services.onlineAppointmentAvailable ? 'Online appointment possible':'No online appointment possible' }>
               Online Appointment<ReactTooltip place="top" type="dark" effect="float"/>
             </a>
           </div>
