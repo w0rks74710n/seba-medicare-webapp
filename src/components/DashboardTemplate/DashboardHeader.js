@@ -3,7 +3,7 @@ import edit from '../../resources/edit-profile.png';
 import change from '../../resources/change-password.png';
 import logout from '../../resources/logout.png';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ColorPalette from '../../constants/ColorPalette'
 
 const HeaderDiv = styled.div`
