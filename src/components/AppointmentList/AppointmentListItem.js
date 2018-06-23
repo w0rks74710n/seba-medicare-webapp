@@ -2,85 +2,42 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import ColorPalette from "../../constants/ColorPalette"
 
+const AppointmentListItemDiv = styled.div`
+  height: 100px;
+  width: 160px;
+  z-index: 1;
+  margin: auto;
+`;
 
-class DoctorListItem extends Component {
+const Paragraph = styled.p`
+  text-align: justify;		
+  text-justify: inter-word;
+    
+  font-famiy: Calibri Light;
+	font-style: normal;
+  font-size: 14px;
+	color: #424242;
+`;
+
+class AppointmentListItem extends Component {
 
   constructor(props) {
     super(props);
-  }
 
-  renderRatings() {
-    let ratingIcons = [];
-    let doctorRating = Math.round(this.props.rating);
-
-    for (let rating = 0; rating < doctorRating; rating++) {
-      ratingIcons.push(<i className="material-icons" style={{width: '24px', color: ColorPalette.primary}} key={rating}>star_rate</i>);
-    }
-
-    return ratingIcons;
-  }
-
-  renderSocialMedia() {
-    let socialMediaIcons = [];
-    let doctorSocialMedia = this.props.socialMedia;
-
-    if (doctorSocialMedia.facebook !== "") {
-      socialMediaIcons.push(
-        <a href={doctorSocialMedia.facebook} key={0}>
-          <i className="fa fa-facebook-official" style={{width: '24px', marginRight: '5px'}} />
-        </a>
-      )
-    }
-
-    if (doctorSocialMedia.xing !== "") {
-      socialMediaIcons.push(
-        <a href={doctorSocialMedia.xing} key={1}>
-          <i className="fa fa-xing-square" style={{width: '24px', marginRight: '5px'}} />
-        </a>
-      )
-    }
-
-    if (doctorSocialMedia.linkedIn !== "") {
-      socialMediaIcons.push(
-        <a href={doctorSocialMedia.linkedIn} key={2}>
-          <i className="fa fa-linkedin-square" style={{width: '24px', marginRight: '5px'}} />
-        </a>
-      )
-    }
-
-    return socialMediaIcons;
-
+    this.state = {
+      date: this.props.date,
+      time: this.props.time
+    };
   }
 
   render() {
     return (
-      <DoctorListItemComponent>
-        <div className="item-head">
-          <img src={ this.props.profilePicture } alt=""/>
-          <div className="rating">
-            { this.renderRatings() }
-          </div>
-        </div>
-        <div className="item-body">
-          <div className="info">
-            <p className="name">{ this.props.name }</p>
-            <p className="expertise">{ this.props.areaOfSpecialization }</p>
-            <p className="social-media-links">
-              { this.renderSocialMedia() }
-            </p>
-          </div>
-          <div className="links">
-            <a href="#" data-tip={ this.props.languages }>Languages<ReactTooltip place="top" type="dark" effect="float"/></a> |
-            <a href="#" data-tip={ this.props.emergency }>Emergency Available<ReactTooltip place="top" type="dark" effect="float"/></a> |
-            <a href="#" data-tip={ this.props.onlineAppointment }>Online Appointment<ReactTooltip place="top" type="dark" effect="float"/></a>
-          </div>
-        </div>
-        <div className="item-view-link">
-          <a href={'/doctorProfile/' + this.props.doctor_id }><i className="material-icons" style={{ width: '24px', color: ColorPalette.primary }}>keyboard_arrow_right</i></a>
-        </div>
-      </DoctorListItemComponent>
+      <AppointmentListItemDiv>
+        <Paragraph>Patient name: { this.props.patientName }</Paragraph>
+        <Paragraph>Illness: { this.props.illness }</Paragraph>
+      </AppointmentListItemDiv>
     );
   }
 }
 
-export default DoctorListItem;
+export default AppointmentListItem;
