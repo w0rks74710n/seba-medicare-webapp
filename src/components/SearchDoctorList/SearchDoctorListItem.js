@@ -69,7 +69,7 @@ class DoctorListItem extends Component {
 
   renderRatings() {
     let ratingIcons = [];
-    let doctorRating = Math.round(this.props.rating);
+    let doctorRating = 5;
 
     for (let rating = 0; rating < doctorRating; rating++) {
       ratingIcons.push(<i className="material-icons" style={{width: '24px', color: ColorPalette.primary}} key={rating}>star_rate</i>);
@@ -114,27 +114,31 @@ class DoctorListItem extends Component {
     return (
       <DoctorListItemComponent>
         <div className="item-head">
-          <img src={ this.props.profilePicture } alt=""/>
+          <img src={ this.props.images.profilePic } alt=""/>
           <div className="rating">
             { this.renderRatings() }
           </div>
         </div>
         <div className="item-body">
           <div className="info">
-            <p className="name">{ this.props.name }</p>
-            <p className="expertise">{ this.props.areaOfSpecialization }</p>
+            <p className="name">{ this.props.contactInformation.fullName }</p>
+            <p className="expertise">{ this.props.experience.areaOfSpecialization }</p>
             <p className="social-media-links">
               { this.renderSocialMedia() }
             </p>
           </div>
           <div className="links">
-            <a href="#" data-tip={ this.props.languages }>Languages<ReactTooltip place="top" type="dark" effect="float"/></a> |
-            <a href="#" data-tip={ this.props.emergency }>Emergency Available<ReactTooltip place="top" type="dark" effect="float"/></a> |
-            <a href="#" data-tip={ this.props.onlineAppointment }>Online Appointment<ReactTooltip place="top" type="dark" effect="float"/></a>
+            <a href="#" data-tip={ this.props.services.languages }>Languages<ReactTooltip place="top" type="dark" effect="float"/></a> |
+            <a href="#" data-tip={ this.props.services.emergencyAbailable ? 'Available for emergency calls':'Not available for emergency calls' }>
+              Emergency Available<ReactTooltip place="top" type="dark" effect="float"/>
+            </a> |
+            <a href="#" data-tip={ this.props.services.onlineAppointmentAvailable ? 'Online appointment possible':'No nline appointment possible' }>
+              Online Appointment<ReactTooltip place="top" type="dark" effect="float"/>
+            </a>
           </div>
         </div>
         <div className="item-view-link">
-          <a href={'/doctorProfile/' + this.props.doctor_id }><i className="material-icons" style={{ width: '24px', color: ColorPalette.primary }}>keyboard_arrow_right</i></a>
+          <a href={'/doctor-profile/' + this.props.doctor_id }><i className="material-icons" style={{ width: '24px', color: ColorPalette.primary }}>keyboard_arrow_right</i></a>
         </div>
       </DoctorListItemComponent>
     );

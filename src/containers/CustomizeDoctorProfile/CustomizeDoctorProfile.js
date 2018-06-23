@@ -33,6 +33,7 @@ class CustomizeDoctorProfile extends Component {
     });
 
     DoctorProfileInformationService.getDoctorProfile(this.props.match.params.id).then((data) => {
+      console.log(data);
       this.setState({
         data: data,
         loading: false

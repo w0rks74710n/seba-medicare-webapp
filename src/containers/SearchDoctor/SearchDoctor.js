@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import DoctorProfileInformationService from "../../services/DoctorProfileInformationService"
 
 import { FilterSidebar, SearchDoctorList } from "../"
 
@@ -12,6 +13,26 @@ class SearchDoctor extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      loading: true,
+      data: []
+    };
+  }
+
+  componentWillMount(){
+    this.setState({
+      loading: true
+    });
+
+    DoctorProfileInformationService.getDoctorProfiles().then((data) => {
+      this.setState({
+        data: data,
+        loading: false
+      });
+    }).catch((e) => {
+      console.error(e);
+    });
   }
 
   /**
@@ -30,10 +51,14 @@ class SearchDoctor extends Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return (<h2>Loading...</h2>);
+    }
+
     return(
       <SearchDoctorContainer className={'searchDoctorContainer'}>
         <FilterSidebar retrieveFilterSidebarState={this.retrieveFilterSidebarState.bind(this)} />
-        <SearchDoctorList />
+        <SearchDoctorList data={this.state.data} />
       </SearchDoctorContainer>
     );
   }
