@@ -5,6 +5,8 @@ const DoctorProfileReviewsComponent = styled.section`
     width: 900px;
     float: left;
     padding-left: 80px;
+    margin: 20px;
+
 
     .review-header {
 
@@ -41,14 +43,19 @@ const DoctorProfileReviewsComponent = styled.section`
 
 `;
 
+const SectionTitle = styled.section`
+    font-size: 1.6em;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+`;
+
 class DoctorProfileReviews extends Component {
 
   render() {
     return(
       <DoctorProfileReviewsComponent>
-        <div className="review-header">
-            <h2>Reviews</h2>            
-        </div>
+        <SectionTitle>Reviews</SectionTitle>
+
         <div className="review-title">
             Jane Doe
             <div className="rating">
@@ -68,11 +75,11 @@ class DoctorProfileReviews extends Component {
             <h3>Add a new comment</h3>
             <form>
                 <div>
-                    <label for="rating">Rating</label>
+                    <label htmlFor="rating">Rating</label>
                     <input type="text" name="rating"/>
                 </div>
                 <div>
-                    <label for="comment">Comment</label>
+                    <label htmlFor="comment">Comment</label>
                     <textarea name="comment"></textarea>
                 </div>
                 <button type="submit">Add</button>

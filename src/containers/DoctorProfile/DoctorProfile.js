@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+import styled from "styled-components";
+
+import DoctorProfileService from '../../services/DoctorProfileService';
+
 import DoctorProfileHeader from "../../components/DoctorProfileHeader/DoctorProfileHeader";
 import DoctorProfileNav from "../../components/DoctorProfileNav/DoctorProfileNav";
+import DoctorProfileInformation from "../../components/DoctorProfileInformation/DoctorProfileInformation";
 import DoctorProfileReviews from "../../components/DoctorProfileReviews/DoctorProfileReviews";
-import styled from "styled-components";
 
 
 const DoctorProfileComponent = styled.section`
@@ -13,17 +17,41 @@ const DoctorProfileComponent = styled.section`
 
 
 class DoctorProfile extends Component {
-  componentWillMount() {
+
+  constructor(props){
+    super(props);
+  }
+
+  componentWillMount(props) {
+    this.setState({
+      loading: true
+    });
+
+    let id = this.props.match.params.id;
+    
+    DoctorProfileService.getDoctorProfile(id).then( data => {
+      this.setState({
+        doctorProfile: data.doctorProfileInformation,
+        loading: false
+      });
+    }).catch( error => {
+      console.log(error);
+    });
+
 
   }
 
   render() {
+    if(this.state.loading) {
+      return(<h2>Loading...</h2>);
+    }
+
     return (
       <DoctorProfileComponent>
         <DoctorProfileHeader/>
         <DoctorProfileNav/>
-        <DoctorProfileReviews id="reviews"/>
-      
+        <DoctorProfileInformation doctorProfile={this.state.doctorProfile}/>
+        {/* <DoctorProfileReviews/> */}
       </DoctorProfileComponent> 
     )
   }

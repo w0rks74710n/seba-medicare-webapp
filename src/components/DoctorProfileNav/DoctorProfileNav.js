@@ -3,8 +3,10 @@ import styled from "styled-components";
 
 const DoctorProfileNavComponent = styled.section`
   width: 200px;
+  height: 1000px;
   clear: both;
   float: left;
+  font-size: 1.2em;
   text-align: right;
 
   ul {
@@ -32,9 +34,10 @@ class DoctorProfileNav extends Component {
       <DoctorProfileNavComponent>
         <ul>
             <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact">Contact Info</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#education">Education</a></li>
+            <li><a href="#images">Praxis Images</a></li>
             <li><a href="#reviews">Reviews</a></li>
         </ul>
       </DoctorProfileNavComponent>

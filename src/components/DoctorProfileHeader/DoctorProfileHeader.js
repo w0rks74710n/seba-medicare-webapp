@@ -83,6 +83,11 @@ const DoctorProfileHeaderComponent = styled.section`
 
 class DoctorProfileHeader extends Component {
 
+  constructor(props){
+    super(props);
+  }
+
+
   render() {
     return(
       <DoctorProfileHeaderComponent>
@@ -90,7 +95,7 @@ class DoctorProfileHeader extends Component {
           <img src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?size=338&ext=jpg" alt="" />
         </div>
         <div className="description">
-          <p className="title">Dr. John Doe</p>
+          <p className="title">this.props.doctor.contactInformation.fullName</p>
           <p className="specialization">Doctor Specialization</p>
           <p className="website">www.doctor.de</p>            
           <div className="rating">

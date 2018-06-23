@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { SearchDoctor, DoctorProfile, PrivacyPolicy, TermsAndConditions } from "../";
+import { Route, Switch } from "react-router-dom";
+import { 
+  SearchDoctor, 
+  DoctorProfile, 
+  PrivacyPolicy, 
+  TermsAndConditions 
+} from "../";
+
 import SignIn from "../../components/RegisterationLogin/SignIn";
 import SignUp from "../../components/RegisterationLogin/SignUp";
 import PasswordForget from "../../components/RegisterationLogin/PasswordForget";
@@ -22,10 +28,8 @@ class HomeContent extends Component {
           <Route path={"/home"} component={SearchDoctor} />
           <Route path={"/register"} component={SignIn} />
           <Route path={"/sign-up"} component={SignUp} />
-          <Route path={"/password-forget"} component={PasswordForget} />
-
-          <Route path="/doctor-profile" component = {DoctorProfile}/>
-
+          <Route path={"/password-forget/:id"} component={PasswordForget} />
+          <Route path={"/doctor-profile/:id"} component = {DoctorProfile}/>
           <Route path={"/join-us-as-a-doctor"} component={SignIn} />
           <Route path={"/privacy-policy"} component={PrivacyPolicy} />
           <Route path={"/terms-and-conditions"} component={TermsAndConditions} />
