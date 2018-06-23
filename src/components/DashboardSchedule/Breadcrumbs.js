@@ -5,7 +5,7 @@ import ColorPalette from '../../constants/ColorPalette'
 
 const BreadcrumbsDiv = styled.div`    
   font-size: 14px;
-  display: flex;
+  display: block;
   flex-flow: row nowrap;		
   margin: 20px 10px 20px 10px;
   font-weight: bold;
@@ -13,6 +13,7 @@ const BreadcrumbsDiv = styled.div`
 `;
 
 const NavLink = styled(Link)`
+  display: inline-block;
   font-size: 14px;
   margin: auto;
   margin-left: 10px;
@@ -26,6 +27,7 @@ const NavLink = styled(Link)`
 `;
 
 const Divider = styled.p`
+  display: inline-block;
   font-size: 14px;
   margin: auto;
   margin-left: 10px;
