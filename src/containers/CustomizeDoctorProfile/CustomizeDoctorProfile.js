@@ -7,7 +7,7 @@ import EditContactInformationFormContainer from "./EditContactInformationFormCon
 import EditSocialMediaFormContainer from "./EditSocialMediaFormContainer";
 import EditExperienceFormContainer from "./EditExperienceFormContainer";
 import EditEducationFormContainer from "./EditEducationFormContainer";
-import EditPicturesFormContainer from "./EditPicturesFormContainer"
+import EditPicturesFormContainer from "./EditPicturesFormContainer";
 
 import DoctorProfileInformationService from "../../services/DoctorProfileInformationService"
 
@@ -27,7 +27,7 @@ class CustomizeDoctorProfile extends Component {
     };
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.setState({
       loading: true
     });
@@ -43,9 +43,7 @@ class CustomizeDoctorProfile extends Component {
     });
   }
 
-
-
-  render(){
+  render() {
     if (this.state.loading) {
       return (<h2>Loading...</h2>);
     }

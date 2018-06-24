@@ -10,7 +10,7 @@ export default class DoctorProfileInformationService {
 
   static baseURL() {return "http://localhost:3001/api/doctorProfileInformation" }
 
-  static getDoctorProfiles(filter){
+  static getDoctorProfiles(filter) {
     return new Promise((resolve, reject) => {
       console.log(filter);
       HttpService.get(
