@@ -22,8 +22,8 @@ class FilterInsuranceType extends Component {
         <FilterTitle name={'Insurance Type'}/>
         <form>
           <FilterRadioButton value={'noPreference'} name={'No preference'} isSelected={this.props.isSelected} onClick={this.props.handleChange} />
-          <FilterRadioButton value={'publicInsurance'} name={'Public Health Insurance'} isSelected={this.props.isSelected} onClick={this.props.handleChange} />
-          <FilterRadioButton value={'privateInsurance'} name={'Private Health Insurance'} isSelected={this.props.isSelected} onClick={this.props.handleChange} />
+          <FilterRadioButton value={'public'} name={'Public Health Insurance'} isSelected={this.props.isSelected} onClick={this.props.handleChange} />
+          <FilterRadioButton value={'private'} name={'Private Health Insurance'} isSelected={this.props.isSelected} onClick={this.props.handleChange} />
         </form>
       </FilterInsuranceTypeComponent>
     )

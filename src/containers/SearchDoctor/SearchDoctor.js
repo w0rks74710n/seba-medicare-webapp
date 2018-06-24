@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import DoctorProfileInformationService from "../../services/DoctorProfileInformationService"
 
 import { FilterSidebar, SearchDoctorList } from "../"
 
@@ -12,6 +13,32 @@ class SearchDoctor extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      loading: true,
+      filter: {isInsuranceSelected: 'noPreference',
+        isLanguageSelected: 'noPreference',
+        isRadiusSelected: 'wholeArea',
+        isRatingSelected: 'noPreference'},
+      data: []
+    };
+  }
+
+  fetchDoctorData() {
+    DoctorProfileInformationService.getDoctorProfiles(this.state.filter).then((data) => {
+      this.setState({
+        data: data,
+        loading: false
+      });
+    }).catch((e) => {
+      console.error(e);
+    });
+  }
+
+  componentWillMount(){
+    this.setState({
+      loading: true
+    }, () => { this.fetchDoctorData() });
   }
 
   /**
@@ -24,16 +51,20 @@ class SearchDoctor extends Component {
    * @param filterSelection: this object will be populated with the current states of all the filters
    * */
   retrieveFilterSidebarState(filterSelection) {
-    // ToDo: Here it's necessary to execute a get request to the DoctorProfileInformationService and retrieve all the
-    // ToDo: doctors that match the given filter criteria.
-    console.log(filterSelection);
+    this.setState({
+      filter: filterSelection
+    }, () => { this.fetchDoctorData()} );
   }
 
   render() {
+    if (this.state.loading) {
+      return (<h2>Loading...</h2>);
+    }
+
     return(
       <SearchDoctorContainer className={'searchDoctorContainer'}>
         <FilterSidebar retrieveFilterSidebarState={this.retrieveFilterSidebarState.bind(this)} />
-        <SearchDoctorList />
+        <SearchDoctorList data={this.state.data} />
       </SearchDoctorContainer>
     );
   }
