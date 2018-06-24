@@ -2,17 +2,19 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 
 import EditAboutForm from '../../components/CustomizeDoctorProfile/EditAboutForm';
+import DoctorProfileInformationService from '../../services/DoctorProfileInformationService';
 
-const EditAboutFormContainer = ({ handleSubmit }) => {
+const EditAboutFormContainer = ({ handleSubmit, id, about }) => {
 
   const submitForm = (formValues) => {
-    console.log('submitting Form: ', formValues);
+    DoctorProfileInformationService.updateDoctorProfile(formValues, id);
   };
 
   return (
     <EditAboutForm
       onSubmit={submitForm}
       handleSubmit={handleSubmit}
+      about={about}
     />
   );
 };
