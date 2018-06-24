@@ -5,14 +5,15 @@ import ColorPalette from '../../constants/ColorPalette'
 
 const BreadcrumbsDiv = styled.div`    
   font-size: 14px;
-  display: flex;
+  display: block;
   flex-flow: row nowrap;		
   margin: 20px 10px 20px 10px;
   font-weight: bold;
   color: ${ ColorPalette.primaryDark };
 `;
 
-const NavLink = styled.a`
+const NavLink = styled(Link)`
+  display: inline-block;
   font-size: 14px;
   margin: auto;
   margin-left: 10px;
@@ -26,6 +27,7 @@ const NavLink = styled.a`
 `;
 
 const Divider = styled.p`
+  display: inline-block;
   font-size: 14px;
   margin: auto;
   margin-left: 10px;
@@ -37,13 +39,13 @@ class Breadcrumbs extends Component {
   render() {
     return (
       <BreadcrumbsDiv>You are here:
-        <NavLink href="index.html">Home</NavLink>
+        <NavLink to="/home">Home</NavLink>
         <Divider>|</Divider>
-        <NavLink href="index.html">Profile</NavLink>
+        <NavLink to="/profile">Profile</NavLink>
         <Divider>|</Divider>
-        <NavLink href="index.html">Dashboard</NavLink>
+        <NavLink to="/dashboard">Dashboard</NavLink>
         <Divider>|</Divider>
-        <NavLink href="index.html">Manage Schedule</NavLink>
+        <NavLink to="/manage-schedule">Manage Schedule</NavLink>
       </BreadcrumbsDiv>
     );
   }

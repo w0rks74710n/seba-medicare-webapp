@@ -7,7 +7,7 @@ import dashboard from '../../resources/dashboard.png';
 import schedule from '../../resources/schedule.png';
 import statistics from '../../resources/statistics.png';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SideBar = styled.div`
   margin: 0px;
@@ -71,7 +71,7 @@ const NavSideMenuLI = styled.li`
 	}	
 `;
 
-const ListItemA = styled.a`
+const ListItemA = styled(Link)`
   text-align: center;
   display: block;
   text-decoration: none;
@@ -79,11 +79,11 @@ const ListItemA = styled.a`
 `;
 
 const Icon = styled.img`
-  width: 50px;
+  height: 55px;
+  width: 55px;
   display: inline-block;
   vertical-align: middle;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 10px;
 `;
 
 class DashboardSideBar extends Component {
@@ -101,42 +101,51 @@ class DashboardSideBar extends Component {
 
   render() {
     return (
-      <Router>
-        <SideBar>
-          <NavSideMenu>
-            <Logo src={logo} alt="MediCare_Logo" />
+      <SideBar>
+        <NavSideMenu>
+          <Logo src={logo} alt="MediCare_Logo" />
 
-            <MenuList>
-              <NavSideMenuUL id="menu-content" className="menu-content collapse out">
+          <MenuList>
+            <NavSideMenuUL id="menu-content" className="menu-content collapse out">
+              <ListItemA to="/dashboard">
                 <NavSideMenuLI>
-                  <ListItemA href="#"><Icon src={dashboard} alt="Dashboard" /> Dashboard</ListItemA>
+                  <Icon src={dashboard} alt="Dashboard" /> Dashboard
                 </NavSideMenuLI>
+              </ListItemA>
 
+              <ListItemA to="/manage-schedule">
                 <NavSideMenuLI>
-                  <ListItemA href="#"><Icon src={schedule} alt="Schedule" /> Schedule</ListItemA>
+                  <Icon src={schedule} alt="Schedule" /> Schedule
                 </NavSideMenuLI>
+              </ListItemA>
 
+              <ListItemA to="/statistics">
                 <NavSideMenuLI>
-                  <ListItemA href="#"><Icon src={statistics} alt="Statistics" /> Statistics</ListItemA>
+                  <Icon src={statistics} alt="Statistics" /> Statistics
                 </NavSideMenuLI>
+              </ListItemA>
 
+              <ListItemA to="/manage">
                 <NavSideMenuLI data-toggle="collapse" data-target="#manage" className="collapsed">
-                  <ListItemA href="#"><Icon src={manage} alt="Manage" /> Manage</ListItemA>
+                  <Icon src={manage} alt="Manage" /> Manage
                 </NavSideMenuLI>
+              </ListItemA>
 
+              <ListItemA to="/change-settings">
                 <NavSideMenuLI data-toggle="collapse" data-target="#settings" className="collapsed">
-                  <ListItemA href="#"><Icon src={settings} alt="Settings" /> Settings</ListItemA>
+                  <Icon src={settings} alt="Settings" /> Settings
                 </NavSideMenuLI>
+              </ListItemA>
 
+              <ListItemA to="/help">
                 <NavSideMenuLI data-toggle="collapse" data-target="#maintenance" className="collapsed">
-                  <ListItemA href="#"><Icon src={help} alt="Help" /> Help</ListItemA>
+                  <Icon src={help} alt="Help" /> Help
                 </NavSideMenuLI>
-              </NavSideMenuUL>
-
-            </MenuList>
-          </NavSideMenu>
-        </SideBar>
-      </Router>
+              </ListItemA>
+            </NavSideMenuUL>
+          </MenuList>
+        </NavSideMenu>
+      </SideBar>
     );
   }
 }

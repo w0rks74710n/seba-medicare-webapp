@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Route } from "react-router-dom";
 import DashboardHeader from "../../components/DashboardTemplate/DashboardHeader";
 import DashboardSideBar from "../../components/DashboardTemplate/DashboardSideBar";
-import DashboardSchedule from "../DashboardSchedule/DashboardSchedule";
-import CustomizeDoctorProfile from "../CustomizeDoctorProfile/CustomizeDoctorProfile";
+import DashboardContent from "./DashboardContent";
 
 const ContainerDiv = styled.div`
   display: flex;
@@ -23,14 +21,12 @@ const Content = styled.div`
 class DashboardTemplate extends Component {
   render() {
     return (
-
       <ContainerDiv>
         <DashboardHeader/>
         <ContentsDiv>
           <DashboardSideBar/>
           <Content>
-            <Route exact path="/dashboard/customizeProfile/:id" component={CustomizeDoctorProfile} />
-            <Route exact path="/dashboard/schedule/:id" component={DashboardSchedule} />
+            <DashboardContent/>
           </Content>
         </ContentsDiv>
       </ContainerDiv>
