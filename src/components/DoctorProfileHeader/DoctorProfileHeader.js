@@ -83,8 +83,7 @@ class DoctorProfileHeader extends Component {
     return(
       <DoctorProfileHeaderComponent>
         <ProfileImage>
-          <img src="https://img.freepik.com/free-vector/doctor-character-background_1270-84.jpg?size=338&ext=jpg" alt="" />
-          {/* TODO: add later */}
+          <img src={this.props.doctorProfile.images.profilePic} alt="" />
         </ProfileImage>
         <BasicInfo>
           <Title>{this.props.doctorProfile.contactInformation.fullName}</Title>
