@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Home, DashboardTemplate } from "../";
+import { Home, DashboardTemplate, DoctorProfile } from "../";
+
 
 const PageContainer = styled.div`
     width: 100%;
@@ -22,8 +23,10 @@ class App extends Component {
     return (
       <Router>
         <Switch>
+          <Route path="/" component = {Home}/>
           <Route path="/dashboard" component = {DashboardTemplate}/>
-          <Route path="/" component = { Home }/>
+          <Route path="/doctor-profile/:id" component = {DoctorProfile}/>
+
         </Switch>
       </Router>
     );
