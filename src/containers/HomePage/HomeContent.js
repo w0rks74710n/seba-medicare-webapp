@@ -28,7 +28,7 @@ class HomeContent extends Component {
           <Route path={"/home"} component={SearchDoctor} />
           <Route path={"/register"} component={SignIn} />
           <Route path={"/sign-up"} component={SignUp} />
-          <Route path={"/password-forget/:id"} component={PasswordForget} />
+          <Route path={"/password-forget"} component={PasswordForget} />
           <Route path={"/doctor-profile/:id"} component = {DoctorProfile}/>
           <Route path={"/join-us-as-a-doctor"} component={SignIn} />
           <Route path={"/privacy-policy"} component={PrivacyPolicy} />
