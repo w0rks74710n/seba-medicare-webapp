@@ -1,25 +1,17 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import {
+    Card,
+    CardText,
+    CardTitle
+  } from 'react-md';
 
-const DoctorProfileAboutComponent = styled.section`
-    width: 900px;
-    float: left;
-    padding-left: 80px;
+const DoctorProfileAboutComponent = styled.div`
+    display: inline-block;
+    width: 450px;
     margin: 20px;
 
-
 `;
-
-const SectionTitle = styled.section`
-    font-size: 1.6em;
-    font-weight: bold;
-    border-bottom: 1px solid black;
-`;
-
-const SectionText = styled.section`
-    padding: 10px;
-`;
-
 
 class DoctorProfileAbout extends Component {
 
@@ -30,14 +22,15 @@ class DoctorProfileAbout extends Component {
     render() {
         return(
         <DoctorProfileAboutComponent>
-            <SectionTitle>About</SectionTitle>
-            <SectionText>
-                {this.props.about.description}
-            </SectionText>
+            <Card>
+                <CardTitle title="About"/>
+                <CardText>
+                    {this.props.about.description} 
+                </CardText>
+            </Card>
         </DoctorProfileAboutComponent>
         )
     }
 }
 
 export default DoctorProfileAbout;
-

@@ -1,34 +1,21 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import {
+    Card,
+    CardText,
+    CardTitle,
+    FontIcon
+  } from 'react-md';
 
-const DoctorProfileExperienceComponent = styled.section`
-    width: 900px;
-    float: left;
-    padding-left: 80px;
+import {
+    Line,
+    Icon,
+    Text,
+    Label
+} from './Common.js';
+
+const DoctorProfileExperienceComponent = styled.div`
     margin: 20px;
-
-
-`;
-
-const SectionTitle = styled.section`
-    font-size: 1.6em;
-    font-weight: bold;
-    border-bottom: 1px solid black;
-`;
-
-const SectionText = styled.section`
-
-`;
-
-const Item = styled.section`
-
-`;
-
-const ItemLabel = styled.section`
-
-`;
-
-const ItemValue = styled.section`
 
 `;
 
@@ -40,25 +27,39 @@ class DoctorProfileExperience extends Component {
     render() {
         return(
         <DoctorProfileExperienceComponent>
-            <SectionTitle>Experience</SectionTitle>
-            <SectionText>
-                <Item>
-                    <ItemLabel>Area Of Specialization</ItemLabel>
-                    <ItemValue>{this.props.experience.areaOfSpecialization}</ItemValue>
-                </Item>
-                <Item>
-                    <ItemLabel>Years Of Experience</ItemLabel>
-                    <ItemValue>{this.props.experience.yearsOfExperience}</ItemValue>
-                </Item>
-                <Item>
-                    <ItemLabel>Previous Experiences</ItemLabel>
-                    <ItemValue>{this.props.experience.previousExperiences}</ItemValue>
-                </Item>
-                <Item>
-                    <ItemLabel>Treatment Focus</ItemLabel>
-                    <ItemValue>{this.props.experience.treatmentFocus}</ItemValue>
-                </Item>
-            </SectionText>
+            <Card>
+                <CardTitle title="Experience"/>
+                <CardText>
+                    <Line>
+                        <Label>
+                            <Icon><FontIcon iconClassName="fa fa-plus" /></Icon>
+                            Area of Specialization
+                        </Label>
+                        <Text>{this.props.experience.areaOfSpecialization}</Text>
+                    </Line>
+                    <Line>
+                        <Label>
+                            <Icon><FontIcon iconClassName="fa fa-plus" /></Icon>
+                            Years of Experience
+                        </Label>
+                        <Text>{this.props.experience.yearsOfExperience}</Text>
+                    </Line>
+                    <Line>
+                        <Label>
+                            <Icon><FontIcon iconClassName="fa fa-plus" /></Icon>
+                            Previous Experiences
+                        </Label>
+                        <Text>{this.props.experience.previousExperiences}</Text>
+                    </Line>
+                    <Line>
+                        <Label>
+                            <Icon><FontIcon iconClassName="fa fa-plus" /></Icon>
+                            Treatment Focus
+                        </Label>
+                        <Text>{this.props.experience.treatmentFocus}</Text>
+                    </Line>
+                </CardText>
+            </Card>
         </DoctorProfileExperienceComponent>
         )
     }

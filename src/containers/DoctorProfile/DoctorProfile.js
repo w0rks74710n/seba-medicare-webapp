@@ -7,13 +7,15 @@ import DoctorProfileHeader from "../../components/DoctorProfileHeader/DoctorProf
 import DoctorProfileInformation from "../../components/DoctorProfileInformation/DoctorProfileInformation";
 import DoctorProfileReviews from "../../components/DoctorProfileReviews/DoctorProfileReviews";
 
+import {
+  Divider
+} from "react-md";
 
 const DoctorProfileComponent = styled.section`
-
-
+  width: 1000px;
+  margin: auto;
 
 `;
-
 
 class DoctorProfile extends Component {
 
@@ -37,7 +39,6 @@ class DoctorProfile extends Component {
       console.log(error);
     });
 
-
   }
 
   render() {
@@ -47,7 +48,8 @@ class DoctorProfile extends Component {
 
     return (
       <DoctorProfileComponent>
-        <DoctorProfileHeader/>
+        <DoctorProfileHeader  doctorProfile={this.state.doctorProfile}/>
+        <Divider/>
         <DoctorProfileInformation doctorProfile={this.state.doctorProfile}/>
         {/* <DoctorProfileReviews/> */}
       </DoctorProfileComponent> 

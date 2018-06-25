@@ -1,36 +1,25 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import {
+    Card,
+    CardText,
+    CardTitle,
+    FontIcon
+  } from 'react-md';
+
+import {
+    Line,
+    Icon,
+    Text
+} from './Common.js';
 
 const DoctorProfileContactInfoComponent = styled.section`
-    width: 900px;
-    float: left;
-    padding-left: 80px;
+    display: inline-block;
+    float: right;
+    width: 450px;
     margin: 20px;
-
-
 `;
 
-const SectionTitle = styled.section`
-    font-size: 1.6em;
-    font-weight: bold;
-    border-bottom: 1px solid black;
-`;
-
-const SectionText = styled.section`
-
-`;
-
-const Item = styled.section`
-
-`;
-
-const ItemLabel = styled.section`
-
-`;
-
-const ItemValue = styled.section`
-
-`;
 
 class DoctorProfileContactInfo extends Component {
     constructor(props){
@@ -40,30 +29,31 @@ class DoctorProfileContactInfo extends Component {
     render() {
         return(
         <DoctorProfileContactInfoComponent>
-            <SectionTitle>Contact Information</SectionTitle>
-            <SectionText>
-                <Item>
-                    <ItemLabel>Full Name</ItemLabel>
-                    <ItemValue>{this.props.contact.fullName}</ItemValue>
-                </Item>
-                <Item>
-                    <ItemLabel>Email</ItemLabel>
-                    <ItemValue>{this.props.contact.email}</ItemValue>
-                </Item>
-                <Item>
-                    <ItemLabel>Mobile</ItemLabel>
-                    <ItemValue>{this.props.contact.mobile}</ItemValue>
-                </Item>
-                <Item>
-                    <ItemLabel>Website</ItemLabel>
-                    <ItemValue>{this.props.contact.practiceWebsite}</ItemValue>
-                </Item>
-                <Item>
-                    <ItemLabel>Address</ItemLabel>
-                    <ItemValue>{this.props.contact.addressLine1 + ' ' + this.props.contact.addressLine2}</ItemValue>
-                </Item>
-            </SectionText>
-
+            <Card>
+                <CardTitle title="Contact Information"></CardTitle>
+                <CardText>
+                    <Line>
+                        <Icon><FontIcon iconClassName="fa fa-user-circle" /></Icon>
+                        <Text>{this.props.contact.fullName}</Text>
+                    </Line>
+                    <Line>
+                        <Icon><FontIcon iconClassName="fa fa-envelope" /></Icon>
+                        <Text><a href={"mailto:" + this.props.contact.email}>{this.props.contact.email}</a></Text>
+                    </Line>
+                    <Line>
+                        <Icon><FontIcon iconClassName="fa fa-phone" /></Icon>
+                        <Text>{this.props.contact.mobile}</Text>
+                    </Line>
+                    <Line>
+                        <Icon><FontIcon iconClassName="fa fa-globe" /></Icon>
+                        <Text><a href={this.props.contact.practiceWebsite}>{this.props.contact.practiceWebsite}</a></Text>
+                    </Line>
+                    <Line>
+                        <Icon><FontIcon iconClassName="fa fa-map-pin" /></Icon>
+                        <Text>{this.props.contact.addressLine1}<br/>{this.props.contact.addressLine2}</Text>
+                    </Line>
+                </CardText>
+            </Card>
         </DoctorProfileContactInfoComponent>
         )
     }

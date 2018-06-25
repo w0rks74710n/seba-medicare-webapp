@@ -8,9 +8,8 @@ import DoctorProfileEducation from "./DoctorProfileEducation";
 import DoctorProfileSocialMedia from "./DoctorProfileSocialMedia";
 import DoctorProfileImages from "./DoctorProfileImages";
 
-const DoctorProfileInformationComponent = styled.section`
-    width: 900px;
-    float: left;
+const DoctorProfileInformationComponent = styled.div`
+  
 
 `;
 
@@ -23,12 +22,12 @@ class DoctorProfileInformation extends Component {
     render() {
         return(
         <DoctorProfileInformationComponent>
+            <DoctorProfileImages images={this.props.doctorProfile.images}/>
             <DoctorProfileAbout about={this.props.doctorProfile.about}/>
             <DoctorProfileContactInfo contact={this.props.doctorProfile.contactInformation}/>
-            <DoctorProfileSocialMedia socialMedia={this.props.doctorProfile.socialMedia}/>
-            <DoctorProfileExperience experience={this.props.doctorProfile.education}/>
+            <DoctorProfileExperience experience={this.props.doctorProfile.experience}/>
             <DoctorProfileEducation education={this.props.doctorProfile.education}/>
-            <DoctorProfileImages images={this.props.doctorProfile.images}/>
+            <DoctorProfileSocialMedia socialMedia={this.props.doctorProfile.socialMedia}/>
         </DoctorProfileInformationComponent>
         )
     }

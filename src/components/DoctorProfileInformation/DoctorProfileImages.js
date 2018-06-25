@@ -1,25 +1,16 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import {
+    Card,
+    CardText,
+    CardTitle
+} from 'react-md';
 
-const DoctorProfileImagesComponent = styled.section`
-    width: 900px;
-    float: left;
-    padding-left: 80px;
+const DoctorProfileImagesComponent = styled.div`
     margin: 20px;
-
 `;
 
-const SectionTitle = styled.section`
-    font-size: 1.6em;
-    font-weight: bold;
-    border-bottom: 1px solid black;
-`;
-
-const SectionContent = styled.section`
-
-`;
-
-const Image = styled.section`
+const Image = styled.div`
 
 `;
 
@@ -27,13 +18,11 @@ class DoctorProfileImages extends Component {
 
   render() {
     return(
-      <DoctorProfileImagesComponent>
-        <SectionTitle>Praxis Photos</SectionTitle>
-            <SectionContent>
-                <Image>
-                    <img src={this.props.images.profilePic} />
-                </Image>
-                <Image>
+        <DoctorProfileImagesComponent>
+            <Card>
+                <CardTitle title="Praxis Photos"/>
+                <CardText>
+                    <Image>
                     <img src={this.props.images.praxisPic1} />
                 </Image>
                 <Image>
@@ -45,8 +34,9 @@ class DoctorProfileImages extends Component {
                 <Image>
                     <img src={this.props.images.praxisPic4} />
                 </Image>
-            </SectionContent>
-      </DoctorProfileImagesComponent>
+                </CardText>
+            </Card>
+        </DoctorProfileImagesComponent>
     )
   }
 }
