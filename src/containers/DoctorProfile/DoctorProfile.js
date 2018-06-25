@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import DoctorProfileService from '../../services/DoctorProfileService';
+import DoctorProfileInformationService from '../../services/DoctorProfileInformationService';
 
 import DoctorProfileHeader from "../../components/DoctorProfileHeader/DoctorProfileHeader";
 import DoctorProfileInformation from "../../components/DoctorProfileInformation/DoctorProfileInformation";
@@ -30,7 +30,7 @@ class DoctorProfile extends Component {
 
     let id = this.props.match.params.id;
     
-    DoctorProfileService.getDoctorProfile(id).then( data => {
+    DoctorProfileInformationService.getDoctorProfile(id).then( data => {
       this.setState({
         doctorProfile: data.doctorProfileInformation,
         loading: false
