@@ -2,11 +2,12 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 
 import EditContactInformationForm from '../../components/CustomizeDoctorProfile/EditContactInformationForm';
+import DoctorProfileInformationService from '../../services/DoctorProfileInformationService';
 
-const EditContactInformationFormContainer = ({ handleSubmit }) => {
+const EditContactInformationFormContainer = ({ handleSubmit, id }) => {
 
   const submitForm = (formValues) => {
-    console.log('submitting Form: ', formValues);
+    DoctorProfileInformationService.updateDoctorProfile(formValues, id);
   };
 
   return (
