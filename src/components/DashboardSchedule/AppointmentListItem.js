@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import {
-  Avatar,
   Button,
   Card,
   CardActions,
@@ -10,63 +9,6 @@ import {
 } from 'react-md';
 import ColorPalette from "../../constants/ColorPalette"
 import { DatePicker, TimePicker } from 'react-md';
-import PrivacyPolicy from "../../containers/PrivacyPolicy/PrivacyPolicy";
-
-const AppointmentListItemDiv = styled.div`
-  display: inline-flex;
-  border: 1px solid ${ ColorPalette.linksHover };
-  box-shadow: 2px 1px 1px rgba(0,0,0,.2);
-  height: 100px;
-  width: 800px;
-  margin: auto;
-  margin-top: 15px;
-`;
-
-const TimeDiv = styled.div`
-  height: 100px;
-  width: 150px;
-`;
-
-const InfoDiv = styled.div`
-  border-left: 3px solid ${ ColorPalette.linksHover };  
-  height: 100px;
-  width: 250px;
-  
-  &:hover {
-    background-color: ${ ColorPalette.linksHover };
-	}	
-`;
-
-const CancelDiv = styled.div`
-  border-left: 3px solid ${ ColorPalette.linksHover };  
-  height: 100px;
-  width: 130px;
-`;
-
-const UpdateDiv = styled.div`
-  border-left: 3px solid ${ ColorPalette.linksHover };  
-  height: 100px;
-  width: 320px;
-`;
-
-const ParagraphForPicker = styled.p`
-  height: 40px;
-  width: 320px;   
-  font-size: 14px;
-	color: #424242;
-`;
-
-const TimeParagraph = styled.p`
-  text-justify: inter-word;
-  font-size: 15px;
-  color: ${ ColorPalette.primary };
-`;
-
-const Paragraph = styled.p`
-  text-justify: inter-word;
-  font-size: 14px;
-	color: #424242;
-`;
 
 const CardStyle = {
   maxWidth: 600,
@@ -96,6 +38,7 @@ class AppointmentListItem extends Component {
     super(props);
 
     this.state = {
+      id: this.props._id,
       doctor: this.props.doctor,
       patient: this.props.patient,
       illness: this.props.illness,
@@ -151,7 +94,7 @@ class AppointmentListItem extends Component {
           </CardTextDiv>
         </OneDiv>
         <CardActions>
-          <Button flat>Cancel</Button>
+          <Button flat onClick="this.props.deleteSearchItem" value={index}>Cancel</Button>
           <Button flat>Update</Button>
         </CardActions>
       </Card>
