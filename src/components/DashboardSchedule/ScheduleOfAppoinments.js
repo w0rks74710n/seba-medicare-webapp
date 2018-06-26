@@ -41,8 +41,6 @@ class ScheduleOfAppoinments extends Component {
         {this.props.data.appointment.map((appointmentCard, i) =>
           <AppointmentListItem key={i} {...appointmentCard} /> )
         }
-        /*<AppointmentListItem {...sampleAppointment1} />
-        <AppointmentListItem {...sampleAppointment2} />*/
       </AppointmentsDiv>
     );
   }
