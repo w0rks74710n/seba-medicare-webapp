@@ -5,6 +5,7 @@ import Breadcrumbs from "../../components/DashboardSchedule/Breadcrumbs";
 import DashboardScheduleTitle from "../../components/DashboardSchedule/DashboardScheduleTitle";
 import ScheduleOfAppoinments from "../../components/DashboardSchedule/ScheduleOfAppoinments";
 import AppoitmentService from "../../services/AppoitmentService";
+import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
 
 const ContainerDiv = styled.div`
   display: flex;
@@ -20,6 +21,10 @@ class DashboardSchedule extends Component {
       loading: true,
       data: []
     };
+  }
+
+  deleteAppointmentData(id) {
+    AppoitmentService.deleteAppointment(id).then( () => { this.fetchAppointmentData() });
   }
 
   fetchAppointmentData() {
@@ -47,7 +52,7 @@ class DashboardSchedule extends Component {
     return (
       <ContainerDiv>
         <DashboardScheduleTitle/>
-        <ScheduleOfAppoinments data={this.state.data} />
+        <ScheduleOfAppoinments data={this.state.data} deleteAppointmentData={this.deleteAppointmentData.bind(this)} />
         <Breadcrumbs/>
       </ContainerDiv>
     );

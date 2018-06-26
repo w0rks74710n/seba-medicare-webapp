@@ -35,11 +35,15 @@ class ScheduleOfAppoinments extends Component {
     super(props);
   }
 
+  onDelete(id) {
+    this.props.deleteAppointmentData(id);
+  }
+
   render() {
     return (
       <AppointmentsDiv>
         {this.props.data.appointment.map((appointmentCard, i) =>
-          <AppointmentListItem key={i} {...appointmentCard} /> )
+          <AppointmentListItem key={i} {...appointmentCard} onDelete={this.onDelete.bind(this)} /> )
         }
       </AppointmentsDiv>
     );

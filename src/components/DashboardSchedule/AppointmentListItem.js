@@ -94,7 +94,7 @@ class AppointmentListItem extends Component {
           </CardTextDiv>
         </OneDiv>
         <CardActions>
-          <Button flat onClick="this.props.deleteSearchItem" value={index}>Cancel</Button>
+          <Button flat onClick={() => this.props.onDelete(this.state._id)}>Cancel</Button>
           <Button flat>Update</Button>
         </CardActions>
       </Card>
