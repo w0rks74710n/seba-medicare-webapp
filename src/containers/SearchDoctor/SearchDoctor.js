@@ -7,8 +7,6 @@ import { FilterSidebar, SearchDoctorList, SearchBar} from "../"
 const SearchDoctorContainer = styled.div`
   width: 100%;
   display: inline-flex;
-  height: 50px;
-  background-color:yellow;
 `;
 
 class SearchDoctor extends Component {
