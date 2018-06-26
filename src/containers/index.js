@@ -10,6 +10,7 @@ import SearchDoctorList from './SearchDoctorList/SearchDoctorList'
 import CustomizeDoctorProfile from './CustomizeDoctorProfile/CustomizeDoctorProfile'
 import DoctorDescription from './DoctorDescription/DoctorDescription'
 import DoctorProfile from './DoctorProfile/DoctorProfile';
+import SearchBarContainer from "./SearchBarAndBreadCrumbs/SearchBar";
 
 export {
   App,
@@ -23,5 +24,6 @@ export {
   SearchDoctorList,
   CustomizeDoctorProfile,
   DoctorDescription,
-  DoctorProfile
+  DoctorProfile,
+    SearchBarContainer
 }
