@@ -69,21 +69,34 @@ class AppointmentListItem extends Component {
     super(props);
 
     this.state = {
-      date: this.props.date,
-      time: this.props.time
+      doctor: this.props.doctor,
+      patient: this.props.patient,
+      illness: this.props.illness,
+      //Date will be set in componentWillMount
+      //Time will be set in componentWillMount
     };
+  }
+
+  //Take Date information and set date / time seperately
+  componentWillMount(){
+    var array = this.props.date.toString().split("T");
+
+    this.setState({
+      date: array[0],
+      time: array[1].slice(0, -5)
+    });
   }
 
   render() {
     return (
       <AppointmentListItemDiv>
         <TimeDiv>
-          <TimeParagraph>Date: { this.props.date }</TimeParagraph>
-          <TimeParagraph>Time: { this.props.time }</TimeParagraph>
+          <TimeParagraph>Date: { this.state.date }</TimeParagraph>
+          <TimeParagraph>Time: { this.state.time }</TimeParagraph>
         </TimeDiv>
         <InfoDiv>
-          <Paragraph><b>Name:</b> { this.props.patientName }</Paragraph>
-          <Paragraph><b>Illness:</b> { this.props.illness }</Paragraph>
+          <Paragraph><b>Name:</b> { this.state.patient }</Paragraph>
+          <Paragraph><b>Illness:</b> { this.state.illness }</Paragraph>
         </InfoDiv>
       </AppointmentListItemDiv>
     );
