@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ColorPalette from '../../constants/ColorPalette'
 import AppointmentListItem from './AppointmentListItem';
 
@@ -32,11 +31,18 @@ const sampleAppointment2 = {
 
 class ScheduleOfAppoinments extends Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <AppointmentsDiv>
-        <AppointmentListItem {...sampleAppointment1} />
-        <AppointmentListItem {...sampleAppointment2} />
+        {this.props.data.appointment.map((appointmentCard, i) =>
+          <AppointmentListItem key={i} {...appointmentCard} /> )
+        }
+        /*<AppointmentListItem {...sampleAppointment1} />
+        <AppointmentListItem {...sampleAppointment2} />*/
       </AppointmentsDiv>
     );
   }
