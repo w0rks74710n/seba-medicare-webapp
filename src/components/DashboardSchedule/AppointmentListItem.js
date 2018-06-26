@@ -8,9 +8,17 @@ const AppointmentListItemDiv = styled.div`
   border: 1px solid ${ ColorPalette.linksHover };
   box-shadow: 2px 1px 1px rgba(0,0,0,.2);
   height: 100px;
-  width: 900px;
+  width: 800px;
   margin: auto;
   margin-top: 15px;
+`;
+
+const PickerDiv = styled.div`
+  display: inline-flex;
+  height: 100px;
+  width: 320px;
+  margin: auto;
+  margin-left: 30px;
 `;
 
 const TimeDiv = styled.div`
@@ -19,12 +27,6 @@ const TimeDiv = styled.div`
   order: 1;
   height: 100px;
   width: 150px;
-  z-index: 1;
-  padding: 10px;
-  
-  &:hover {
-    background-color: ${ ColorPalette.linksHover };
-	}	
 `;
 
 const InfoDiv = styled.div`
@@ -33,8 +35,7 @@ const InfoDiv = styled.div`
   display: inline-block;
   order: 2;
   height: 100px;
-  width: 300px;
-  z-index: 1;
+  width: 250px;
   padding: 10px;
   
   &:hover {
@@ -42,21 +43,30 @@ const InfoDiv = styled.div`
 	}	
 `;
 
-const ButtonsDiv = styled.div`
+const CancelDiv = styled.div`
   margin: auto;
   border-left: 3px solid ${ ColorPalette.linksHover };  
   display: inline-block;
   order: 3;
   height: 100px;
-  width: 450px;
-  z-index: 0;
+  width: 130px;
   padding: 10px;
+`;
+
+const UpdateDiv = styled.div`
+  margin: auto;
+  border-left: 3px solid ${ ColorPalette.linksHover };  
+  display: inline-block;
+  order: 4;
+  height: 100px;
+  width: 320px;
 `;
 
 const TimeParagraph = styled.p`
   text-align: justify;		
   text-justify: inter-word;
   vertical-align: middle;
+  horizontal-align: middle;
     
   font-famiy: Calibri Light;
 	font-style: normal;
@@ -68,6 +78,19 @@ const Paragraph = styled.p`
   text-align: justify;		
   text-justify: inter-word;
   vertical-align: middle;
+  horizontal-align: middle;
+    
+  font-famiy: Calibri Light;
+	font-style: normal;
+  font-size: 14px;
+	color: #424242;
+`;
+
+const ParagraphForPicker = styled.p`
+  text-align: justify;		
+  text-justify: inter-word;
+  vertical-align: middle;
+  horizontal-align: middle;
     
   font-famiy: Calibri Light;
 	font-style: normal;
@@ -79,15 +102,17 @@ const Button = styled.button`
   display: inline;  
   float: right;  
   margin-left: 50px;
-  height: 35px;
-  width: 120px;
+  height: 25px;
+  width: 100px;
   font-size: 13px;
-  border-radius: 15px;
+  border-radius: 10px;
   
   &:hover {
     background-color: ${ ColorPalette.linksHover };
 	}	
 `;
+
+const today = new Date();
 
 class AppointmentListItem extends Component {
 
@@ -124,21 +149,31 @@ class AppointmentListItem extends Component {
           <Paragraph><b>Name:</b> { this.state.patient }</Paragraph>
           <Paragraph><b>Illness:</b> { this.state.illness }</Paragraph>
         </InfoDiv>
-        <ButtonsDiv>
-          <DatePicker
-            id="appointment-date-auto"
-            label="New appointment date"
-            className="md-cell"
-            locales="en-US"
-            displayMode="landscape"
-          />
-          <TimePicker
-            id="appointment-time-landscape"
-            label="New appointment Time"
-            className="md-cell"
-            displayMode="landscape"
-          />
-        </ButtonsDiv>
+        <CancelDiv>
+          <Paragraph><b>Cancel Appointment</b></Paragraph>
+          <Button>Cancel</Button>
+        </CancelDiv>
+        <UpdateDiv>
+          <ParagraphForPicker><b>Choose new:</b></ParagraphForPicker>
+          <PickerDiv>
+            <DatePicker
+              id="appointment-date-auto"
+              label="Date"
+              className="md-cell"
+              locales="en-US"
+              minDate={today}
+              displayMode="landscape"
+              fullWidth={false}
+            />
+            <TimePicker
+              id="appointment-time-landscape"
+              label="Time"
+              className="md-cell"
+              displayMode="landscape"
+              fullWidth={false}
+            />
+          </PickerDiv>
+        </UpdateDiv>
       </AppointmentListItemDiv>
     );
   }
