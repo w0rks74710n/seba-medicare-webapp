@@ -6,6 +6,7 @@ import DoctorProfileInformationService from '../../services/DoctorProfileInforma
 import DoctorProfileHeader from "../../components/DoctorProfileHeader/DoctorProfileHeader";
 import DoctorProfileInformation from "../../components/DoctorProfileInformation/DoctorProfileInformation";
 import DoctorProfileReviews from "../../components/DoctorProfileReviews/DoctorProfileReviews";
+import DoctorAppoitmentForm from "../../components/DoctorAppointmentForm/DoctorAppointmentForm";
 
 import {
   Divider
@@ -51,6 +52,7 @@ class DoctorProfile extends Component {
         <DoctorProfileHeader  doctorProfile={this.state.doctorProfile}/>
         <Divider/>
         <DoctorProfileInformation doctorProfile={this.state.doctorProfile}/>
+        <DoctorAppoitmentForm/>
         {/* <DoctorProfileReviews/> */}
       </DoctorProfileComponent> 
     )
