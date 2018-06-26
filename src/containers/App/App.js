@@ -23,10 +23,9 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route path="/" component = {Home}/>
+          <Route exact path="/" component = {Home}/>
           <Route path="/dashboard" component = {DashboardTemplate}/>
           <Route path="/doctor-profile/:id" component = {DoctorProfile}/>
-
         </Switch>
       </Router>
     );
