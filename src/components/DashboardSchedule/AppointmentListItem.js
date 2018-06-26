@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import {
+  Avatar,
+  Button,
+  Card,
+  CardActions,
+  CardText,
+  CardTitle,
+} from 'react-md';
 import ColorPalette from "../../constants/ColorPalette"
 import { DatePicker, TimePicker } from 'react-md';
+import PrivacyPolicy from "../../containers/PrivacyPolicy/PrivacyPolicy";
 
 const AppointmentListItemDiv = styled.div`
   display: inline-flex;
@@ -13,30 +22,15 @@ const AppointmentListItemDiv = styled.div`
   margin-top: 15px;
 `;
 
-const PickerDiv = styled.div`
-  display: inline-flex;
-  height: 100px;
-  width: 320px;
-  margin: auto;
-  margin-left: 30px;
-`;
-
 const TimeDiv = styled.div`
-  margin: auto;
-  display: inline-block;
-  order: 1;
   height: 100px;
   width: 150px;
 `;
 
 const InfoDiv = styled.div`
-  margin: auto;
   border-left: 3px solid ${ ColorPalette.linksHover };  
-  display: inline-block;
-  order: 2;
   height: 100px;
   width: 250px;
-  padding: 10px;
   
   &:hover {
     background-color: ${ ColorPalette.linksHover };
@@ -44,72 +38,54 @@ const InfoDiv = styled.div`
 `;
 
 const CancelDiv = styled.div`
-  margin: auto;
   border-left: 3px solid ${ ColorPalette.linksHover };  
-  display: inline-block;
-  order: 3;
   height: 100px;
   width: 130px;
-  padding: 10px;
 `;
 
 const UpdateDiv = styled.div`
-  margin: auto;
   border-left: 3px solid ${ ColorPalette.linksHover };  
-  display: inline-block;
-  order: 4;
   height: 100px;
   width: 320px;
 `;
 
+const ParagraphForPicker = styled.p`
+  height: 40px;
+  width: 320px;   
+  font-size: 14px;
+	color: #424242;
+`;
+
 const TimeParagraph = styled.p`
-  text-align: justify;		
   text-justify: inter-word;
-  vertical-align: middle;
-  horizontal-align: middle;
-    
-  font-famiy: Calibri Light;
-	font-style: normal;
-  font-size: 16px;
+  font-size: 15px;
   color: ${ ColorPalette.primary };
 `;
 
 const Paragraph = styled.p`
-  text-align: justify;		
   text-justify: inter-word;
-  vertical-align: middle;
-  horizontal-align: middle;
-    
-  font-famiy: Calibri Light;
-	font-style: normal;
   font-size: 14px;
 	color: #424242;
 `;
 
-const ParagraphForPicker = styled.p`
-  text-align: justify;		
-  text-justify: inter-word;
-  vertical-align: middle;
-  horizontal-align: middle;
-    
-  font-famiy: Calibri Light;
-	font-style: normal;
-  font-size: 14px;
-	color: #424242;
+const CardStyle = {
+  maxWidth: 600,
+  margin: 15,
+};
+
+const PickerDiv = styled.div`
+  display: inline-flex;
 `;
 
-const Button = styled.button`  
-  display: inline;  
-  float: right;  
-  margin-left: 50px;
-  height: 25px;
-  width: 100px;
-  font-size: 13px;
-  border-radius: 10px;
-  
-  &:hover {
-    background-color: ${ ColorPalette.linksHover };
-	}	
+const OneDiv = styled.div`
+  display: inline-flex;
+`;
+
+const CardTextDiv = styled.div`
+  width: 250px;
+  height: 50px;
+  margin-left: -100px;
+  float: left;
 `;
 
 const today = new Date();
@@ -140,21 +116,12 @@ class AppointmentListItem extends Component {
 
   render() {
     return (
-      <AppointmentListItemDiv>
-        <TimeDiv>
-          <TimeParagraph>Date: { this.state.date }</TimeParagraph>
-          <TimeParagraph>Time: { this.state.time }</TimeParagraph>
-        </TimeDiv>
-        <InfoDiv>
-          <Paragraph><b>Name:</b> { this.state.patient }</Paragraph>
-          <Paragraph><b>Illness:</b> { this.state.illness }</Paragraph>
-        </InfoDiv>
-        <CancelDiv>
-          <Paragraph><b>Cancel Appointment</b></Paragraph>
-          <Button>Cancel</Button>
-        </CancelDiv>
-        <UpdateDiv>
-          <ParagraphForPicker><b>Choose new:</b></ParagraphForPicker>
+      <Card style={CardStyle} className="md-block-centered">
+        <CardTitle
+          title= {this.state.patient}
+          subtitle= { "Date: " + this.state.date + ", Time: " + this.state.time }
+        />
+        <OneDiv>
           <PickerDiv>
             <DatePicker
               id="appointment-date-auto"
@@ -173,8 +140,21 @@ class AppointmentListItem extends Component {
               fullWidth={false}
             />
           </PickerDiv>
-        </UpdateDiv>
-      </AppointmentListItemDiv>
+
+          <CardTextDiv>
+            <CardText>
+              <p>
+                <b>Illness: </b><br/>
+                {this.state.illness}
+              </p>
+            </CardText>
+          </CardTextDiv>
+        </OneDiv>
+        <CardActions>
+          <Button flat>Cancel</Button>
+          <Button flat>Update</Button>
+        </CardActions>
+      </Card>
     );
   }
 }
