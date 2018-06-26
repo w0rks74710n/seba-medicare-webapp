@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import DoctorProfileInformationService from "../../services/DoctorProfileInformationService"
 
-import { FilterSidebar, SearchDoctorList } from "../"
+import { FilterSidebar, SearchDoctorList, SearchBar} from "../"
 
 const SearchDoctorContainer = styled.div`
   width: 100%;
   display: inline-flex;
+  height: 50px;
+  background-color:yellow;
 `;
 
 class SearchDoctor extends Component {
@@ -63,6 +65,7 @@ class SearchDoctor extends Component {
 
     return(
       <SearchDoctorContainer className={'searchDoctorContainer'}>
+          <SearchBar/>
         <FilterSidebar retrieveFilterSidebarState={this.retrieveFilterSidebarState.bind(this)} />
         <SearchDoctorList data={this.state.data} />
       </SearchDoctorContainer>
