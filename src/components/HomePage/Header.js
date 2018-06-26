@@ -113,7 +113,7 @@ class Header extends Component {
               <StyledLink to="/contact">Contact</StyledLink>
             </Header_Horizontal_Navigation_Item>
             <Header_Horizontal_Navigation_Item>
-              <StyledLink to="/join">Join</StyledLink>
+              <StyledLink to="/join-us-as-a-doctor">Join</StyledLink>
             </Header_Horizontal_Navigation_Item>
             <Header_Horizontal_Navigation_Item>
               <StyledLink to="/language">EN</StyledLink>

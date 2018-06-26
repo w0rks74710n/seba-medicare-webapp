@@ -21,7 +21,6 @@ class DashboardContent extends Component {
           <Route path="/dashboard/customizeProfile/:id" component={CustomizeDoctorProfile} />
           <Route path={"/dashboard/change-settings"} component={DashboardSchedule} />
           <Route path={"/dashboard/logout"} component={DashboardSchedule} />
-          <Route path={"/dashboard/customizeProfile/:id"} component={CustomizeDoctorProfile} />
         </Switch>
       </ContentContainer>
     );

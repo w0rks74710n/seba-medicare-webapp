@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import ColorPalette from "../../constants/ColorPalette"
+import { DatePicker, TimePicker } from 'react-md';
 
 const AppointmentListItemDiv = styled.div`
   display: inline-flex;
   border: 1px solid ${ ColorPalette.linksHover };
   box-shadow: 2px 1px 1px rgba(0,0,0,.2);
   height: 100px;
-  width: 450px;
+  width: 900px;
   margin: auto;
-  margin-top: 10px;
+  margin-top: 15px;
 `;
 
 const TimeDiv = styled.div`
@@ -41,6 +42,17 @@ const InfoDiv = styled.div`
 	}	
 `;
 
+const ButtonsDiv = styled.div`
+  margin: auto;
+  border-left: 3px solid ${ ColorPalette.linksHover };  
+  display: inline-block;
+  order: 3;
+  height: 100px;
+  width: 450px;
+  z-index: 0;
+  padding: 10px;
+`;
+
 const TimeParagraph = styled.p`
   text-align: justify;		
   text-justify: inter-word;
@@ -61,6 +73,20 @@ const Paragraph = styled.p`
 	font-style: normal;
   font-size: 14px;
 	color: #424242;
+`;
+
+const Button = styled.button`  
+  display: inline;  
+  float: right;  
+  margin-left: 50px;
+  height: 35px;
+  width: 120px;
+  font-size: 13px;
+  border-radius: 15px;
+  
+  &:hover {
+    background-color: ${ ColorPalette.linksHover };
+	}	
 `;
 
 class AppointmentListItem extends Component {
@@ -98,6 +124,21 @@ class AppointmentListItem extends Component {
           <Paragraph><b>Name:</b> { this.state.patient }</Paragraph>
           <Paragraph><b>Illness:</b> { this.state.illness }</Paragraph>
         </InfoDiv>
+        <ButtonsDiv>
+          <DatePicker
+            id="appointment-date-auto"
+            label="New appointment date"
+            className="md-cell"
+            locales="en-US"
+            displayMode="landscape"
+          />
+          <TimePicker
+            id="appointment-time-landscape"
+            label="New appointment Time"
+            className="md-cell"
+            displayMode="landscape"
+          />
+        </ButtonsDiv>
       </AppointmentListItemDiv>
     );
   }
