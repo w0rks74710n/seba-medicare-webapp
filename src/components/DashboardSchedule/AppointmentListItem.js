@@ -31,6 +31,8 @@ const CardTextDiv = styled.div`
 `;
 
 const today = new Date();
+let newDate;
+let newTime;
 
 class AppointmentListItem extends Component {
 
@@ -42,19 +44,87 @@ class AppointmentListItem extends Component {
       doctor: this.props.doctor,
       patient: this.props.patient,
       illness: this.props.illness,
+      date: this.props.date
       //Date will be set in componentWillMount
       //Time will be set in componentWillMount
     };
   }
 
-  //Take Date information and set date / time seperately
-  componentWillMount(){
-    var array = this.props.date.toString().split("T");
+  handleDateChange = (givenDate) => {
+    var dateArray = givenDate.split("/");
 
     this.setState({
-      date: array[0],
-      time: array[1].slice(0, -5)
+      day: dateArray[0],
+      month: dateArray[1],
+      year: dateArray[2]
     });
+    this.initialize();
+  };
+
+  handleTimeChange = (givenTime) => {
+    var timeArray = givenTime.split(":");
+
+    this.setState({
+      hour: timeArray[0],
+      minute: timeArray[1]
+    });
+    this.initialize();
+  };
+
+  initialize(){
+    var parse = Date.parse(this.state.date);
+    var indate = new Date(parse);
+
+    console.log(this.state.day + "/" + this.state.month + "/" + this.state.year + " " + this.state.hour + ":" + this.state.minute);
+
+    indate.setDate(this.state.day);
+    indate.setMonth(this.state.month);
+    indate.setHours(this.state.hour);
+    indate.setMinutes(this.state.minute);
+
+    this.setState({
+      date: indate
+    });
+  }
+
+  addZero(i) {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+  }
+
+  returnTime(date) {
+    var h = this.addZero(date.getHours());
+    var m = this.addZero(date.getMinutes());
+    var s = this.addZero(date.getSeconds());
+    this.setState({
+      hour: h,
+      minute: m,
+      second: s
+    });
+    return h + ":" + m + ":" + s;
+  }
+
+  returnDate(date) {
+    var d = this.addZero(date.getDay());
+    var m = this.addZero(date.getMonth());
+    var y = this.addZero(date.getFullYear());
+    this.setState({
+      day: d,
+      month: m,
+      year: y
+    });
+    return d + "." + m + "." + y;
+  }
+
+  //Take Date information and set date / time seperately
+  componentWillMount(){
+    var parse = Date.parse(this.state.date);
+    var date = new Date(parse);
+
+    newDate = this.returnDate(date);
+    newTime = this.returnTime(date);
   }
 
   render() {
@@ -62,7 +132,7 @@ class AppointmentListItem extends Component {
       <Card style={CardStyle} className="md-block-centered">
         <CardTitle
           title= {this.state.patient}
-          subtitle= { "Date: " + this.state.date + ", Time: " + this.state.time }
+          subtitle= { "Date: " + newDate + ", Time: " + newTime }
         />
         <OneDiv>
           <PickerDiv>
@@ -74,6 +144,7 @@ class AppointmentListItem extends Component {
               minDate={today}
               displayMode="landscape"
               fullWidth={false}
+              onChange={this.handleDateChange}
             />
             <TimePicker
               id="appointment-time-landscape"
@@ -81,6 +152,7 @@ class AppointmentListItem extends Component {
               className="md-cell"
               displayMode="landscape"
               fullWidth={false}
+              onChange={this.handleTimeChange}
             />
           </PickerDiv>
 
@@ -95,7 +167,7 @@ class AppointmentListItem extends Component {
         </OneDiv>
         <CardActions>
           <Button flat onClick={() => this.props.onDelete(this.state.id)}>Cancel</Button>
-          <Button flat>Update</Button>
+          <Button flat onClick={() => this.props.onUpdate(this.state, this.state.id)}>Update</Button>
         </CardActions>
       </Card>
     );

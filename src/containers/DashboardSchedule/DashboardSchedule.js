@@ -5,7 +5,6 @@ import Breadcrumbs from "../../components/DashboardSchedule/Breadcrumbs";
 import DashboardScheduleTitle from "../../components/DashboardSchedule/DashboardScheduleTitle";
 import ScheduleOfAppoinments from "../../components/DashboardSchedule/ScheduleOfAppoinments";
 import AppoitmentService from "../../services/AppoitmentService";
-import { Alert } from 'react-alert'
 
 const ContainerDiv = styled.div`
   display: flex;
@@ -26,6 +25,16 @@ class DashboardSchedule extends Component {
   deleteAppointmentData(id) {
     console.log("DasboardSchedule: " + id);
     AppoitmentService.deleteAppointment(id).catch((e) => {
+      this.fetchAppointmentData();
+      console.error(e);
+    });
+    this.fetchAppointmentData();
+  }
+
+  updateAppointmentData(state, id) {
+    console.log("New Date: " + state.date);
+    console.log("ID: " + id);
+    AppoitmentService.updateAppointment(state, id).catch((e) => {
       this.fetchAppointmentData();
       console.error(e);
     });
@@ -57,7 +66,10 @@ class DashboardSchedule extends Component {
     return (
       <ContainerDiv>
         <DashboardScheduleTitle/>
-        <ScheduleOfAppoinments data={this.state.data} deleteAppointmentData={this.deleteAppointmentData.bind(this)} />
+        <ScheduleOfAppoinments data={this.state.data}
+                               deleteAppointmentData={this.deleteAppointmentData.bind(this)}
+                               updateAppointmentData={this.updateAppointmentData.bind(this)}
+        />
         <Breadcrumbs/>
       </ContainerDiv>
     );
