@@ -34,7 +34,9 @@ class DashboardSchedule extends Component {
   updateAppointmentData(state, id) {
     console.log("New Date: " + state.date);
     console.log("ID: " + id);
-    AppoitmentService.updateAppointment(state, id).catch((e) => {
+    AppoitmentService.updateAppointment(state, id).then((data) => {
+      this.fetchAppointmentData();
+    }).catch((e) => {
       this.fetchAppointmentData();
       console.error(e);
     });

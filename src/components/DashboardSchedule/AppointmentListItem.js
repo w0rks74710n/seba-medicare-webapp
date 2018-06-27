@@ -50,81 +50,37 @@ class AppointmentListItem extends Component {
     };
   }
 
+  addZero(char){
+    if( char.length == 1 ){
+      return "0"+char;
+    }
+    return char;
+  }
+
   handleDateChange = (givenDate) => {
-    var dateArray = givenDate.split("/");
+    let arrayDate = givenDate.split("/");
+    newDate = arrayDate[2] + "-" + this.addZero(arrayDate[1]) + "-" + this.addZero(arrayDate[0]);
 
     this.setState({
-      day: dateArray[0],
-      month: dateArray[1],
-      year: dateArray[2]
+      date: newDate + "T" + newTime + ":00.000Z"
     });
-    this.initialize();
   };
 
   handleTimeChange = (givenTime) => {
-    var timeArray = givenTime.split(":");
+    newTime = givenTime;
 
     this.setState({
-      hour: timeArray[0],
-      minute: timeArray[1]
+      date: newDate + "T" + newTime + ":00.000Z"
     });
-    this.initialize();
   };
-
-  initialize(){
-    var parse = Date.parse(this.state.date);
-    var indate = new Date(parse);
-
-    console.log(this.state.day + "/" + this.state.month + "/" + this.state.year + " " + this.state.hour + ":" + this.state.minute);
-
-    indate.setDate(this.state.day);
-    indate.setMonth(this.state.month);
-    indate.setHours(this.state.hour);
-    indate.setMinutes(this.state.minute);
-
-    this.setState({
-      date: indate
-    });
-  }
-
-  addZero(i) {
-    if (i < 10) {
-      i = "0" + i;
-    }
-    return i;
-  }
-
-  returnTime(date) {
-    var h = this.addZero(date.getHours());
-    var m = this.addZero(date.getMinutes());
-    var s = this.addZero(date.getSeconds());
-    this.setState({
-      hour: h,
-      minute: m,
-      second: s
-    });
-    return h + ":" + m + ":" + s;
-  }
-
-  returnDate(date) {
-    var d = this.addZero(date.getDay());
-    var m = this.addZero(date.getMonth());
-    var y = this.addZero(date.getFullYear());
-    this.setState({
-      day: d,
-      month: m,
-      year: y
-    });
-    return d + "." + m + "." + y;
-  }
 
   //Take Date information and set date / time seperately
   componentWillMount(){
-    var parse = Date.parse(this.state.date);
-    var date = new Date(parse);
+    var dateArray = (this.state.date).split("T");
+    var dateArray2 = dateArray[0].split("-");
 
-    newDate = this.returnDate(date);
-    newTime = this.returnTime(date);
+    newDate = dateArray2[0] + "-" + this.addZero(dateArray2[1]) + "-" + this.addZero(dateArray2[2]);
+    newTime = dateArray[1].slice(0, -8);
   }
 
   render() {
