@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import DoctorReviewsDialog from '../DoctorProfileReviews/DoctorReviewsDialog';
+
 import {
   Button
  } from 'react-md';
@@ -8,7 +10,6 @@ import {
 const DoctorProfileHeaderComponent = styled.div`
   height: 200px;
   padding-top: 25px;
-
 `;
 
 const ProfileImage = styled.div`
@@ -78,7 +79,6 @@ class DoctorProfileHeader extends Component {
     super(props);
   }
 
-
   render() {
     return(
       <DoctorProfileHeaderComponent>
@@ -90,7 +90,7 @@ class DoctorProfileHeader extends Component {
           <Specialization>{this.props.doctorProfile.experience.areaOfSpecialization}</Specialization>
           <Website>
             <a target="_blank"
-               href={this.props.doctorProfile.contactInformation.practiceWebsite}>
+                href={this.props.doctorProfile.contactInformation.practiceWebsite}>
                 {this.props.doctorProfile.contactInformation.practiceWebsite}
             </a>
           </Website>            
@@ -107,7 +107,7 @@ class DoctorProfileHeader extends Component {
         <QuickButtons>
           <Button flat primary iconBefore={false} iconChildren="chat_bubble_outline" disabled>Emergency Contact</Button>
           <Button flat primary iconBefore={false} iconChildren="calendar_today">Make Appointment</Button>
-          <Button flat secondary iconBefore={false} iconChildren="rate_review">Add Review</Button>
+          <DoctorReviewsDialog/>
         </QuickButtons>
       </DoctorProfileHeaderComponent>
     )
