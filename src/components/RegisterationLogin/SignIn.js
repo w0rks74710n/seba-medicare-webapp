@@ -126,9 +126,9 @@ class SignInForm extends Component {
       history,
     } = this.props;
 
-    DoctorService.login(username, password).then((token) => {
-      console.log(token);
-      window.localStorage['jwtToken'] = token;
+    DoctorService.login(username, password).then((data) => {
+      console.log(data.token);
+      window.localStorage['jwtToken'] = data.token;
       this.props.history.push('/');
     }).catch((e) => {
       console.error(e);

@@ -95,12 +95,6 @@ class Header extends Component {
           <Header_Logo src={logo} alt="MediCare_Logo" />
         </ButtonLink0>
 
-        <ButtonLink1 to="/join-us-as-a-doctor">
-          <Header_Button>
-            Join As a Doctor
-          </Header_Button>
-        </ButtonLink1>
-
         <Header_Horizontal_Navigation>
           <HeaderHorizontalNavigationList>
             <Header_Horizontal_Navigation_Item>
@@ -121,11 +115,13 @@ class Header extends Component {
           </HeaderHorizontalNavigationList>
         </Header_Horizontal_Navigation>
 
-        <ButtonLink2 to="/join-us-as-a-doctor">
-          <Header_Button>
-            Login/Sign up
-          </Header_Button>
-        </ButtonLink2>
+        {window.localStorage['jwtToken'] === undefined &&
+          <ButtonLink2 to="/join-us-as-a-doctor">
+            <Header_Button>
+              Login/Sign up
+            </Header_Button>
+          </ButtonLink2>
+        }
 
       </HeaderDiv>
     );
