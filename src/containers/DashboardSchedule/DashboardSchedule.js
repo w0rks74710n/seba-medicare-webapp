@@ -5,7 +5,7 @@ import Breadcrumbs from "../../components/DashboardSchedule/Breadcrumbs";
 import DashboardScheduleTitle from "../../components/DashboardSchedule/DashboardScheduleTitle";
 import ScheduleOfAppoinments from "../../components/DashboardSchedule/ScheduleOfAppoinments";
 import AppoitmentService from "../../services/AppoitmentService";
-import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
+import { Alert } from 'react-alert'
 
 const ContainerDiv = styled.div`
   display: flex;
@@ -24,7 +24,12 @@ class DashboardSchedule extends Component {
   }
 
   deleteAppointmentData(id) {
-    AppoitmentService.deleteAppointment(id).then( () => { this.fetchAppointmentData() });
+    console.log("DasboardSchedule: " + id);
+    AppoitmentService.deleteAppointment(id).catch((e) => {
+      this.fetchAppointmentData();
+      console.error(e);
+    });
+    this.fetchAppointmentData();
   }
 
   fetchAppointmentData() {

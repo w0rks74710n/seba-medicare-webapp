@@ -38,7 +38,7 @@ export default class DoctorProfileInformationService {
 
   static deleteDoctorProfile(doctor_id) {
     return new Promise((resolve, reject) => {
-      HttpService.remove(this.baseURL()+'/'+ doctor_id, function(data) {
+      HttpService.delete(this.baseURL()+'/'+ doctor_id, function(data) {
         if(data.message != undefined) {
           resolve(data.message);
         } else {

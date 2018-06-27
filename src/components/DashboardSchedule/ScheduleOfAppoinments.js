@@ -37,6 +37,7 @@ class ScheduleOfAppoinments extends Component {
 
   onDelete(id) {
     this.props.deleteAppointmentData(id);
+    console.log("ScheduleOfAppointments: " + id);
   }
 
   render() {

@@ -2,7 +2,7 @@
 
 import HttpService from './HttpService';
 
-export default class DoctorProfileInformationService {
+export default class AppoitmentService {
 
   constructor(){
 
@@ -32,7 +32,7 @@ export default class DoctorProfileInformationService {
 
   static deleteAppointment(appointment_id) {
     return new Promise((resolve, reject) => {
-      HttpService.remove(this.baseURL()+'/'+ appointment_id, function(data) {
+      HttpService.delete(this.baseURL()+'/'+ appointment_id, function(data) {
         if(data.message != undefined) {
           resolve(data.message);
         } else {
