@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
+import user_icon from '../../resources/user-icon.png';
 import email_icon from '../../resources/email-icon.png';
 import password_icon from '../../resources/pass-icon.png';
-import { withRouter } from 'react-router-dom';
-import { SignUpLink } from './SignUp';
-import { PasswordForgetLink } from './PasswordForget';
-import DoctorService from '../../services/DoctorService'
+import {  Link,  withRouter } from 'react-router-dom';
 import styled from "styled-components";
 import ColorPalette from "../../constants/ColorPalette";
+import DoctorService from '../../services/DoctorService'
 
 const ContentDiv = styled.div`
-  margin: 70px auto;
+  margin: 20px auto;
   width: 450px; 
   -webkit-border-radius: 8px/7px; 
   -moz-border-radius: 8px/7px; 
@@ -60,6 +59,7 @@ const ButtonForm = styled.button`
   width: 100px;
   font-size: 1em;
   border-radius: 10px;
+  color: black;
   
   &:hover {
     background-color: ${ ColorPalette.linksHover };
@@ -69,7 +69,7 @@ const ButtonForm = styled.button`
 const IconForm = styled.img`  
   display: inline-block;
   float: left;
-  height: 2.4em;
+  height: 2.2em;
   width: 3.2em;
 `;
 
@@ -81,6 +81,13 @@ const LineDiv = styled.div`
   margin-top: 5%;
 `;
 
+const Paragraph = styled.p`
+  text-align: center;   
+  font-size: 14px;
+	color: #424242;
+  margin-bottom: 5%;
+`;
+
 const HorizontalDivider = styled.hr`
   color: #a9a9a9;
   opacity: 0.3;
@@ -88,13 +95,21 @@ const HorizontalDivider = styled.hr`
   margin: auto;
 `;
 
-const SignInPage = ({ history }) =>
+const StyledLink = styled(Link)`
+  text-decoration: none;
+	color: ${ ColorPalette.primary };
+  margin: auto;
+
+	&:hover {
+    text-decoration: underline;
+	}
+`;
+
+const SignUpPage = ({ history }) =>
   <ContentDiv>
-    <Title>Sign In</Title>
+    <Title>Sign Up</Title>
     <HorizontalDivider/>
-    <SignInForm history={history} />
-    <PasswordForgetLink />
-    <SignUpLink />
+    <SignUpForm history={history} />
   </ContentDiv>;
 
 const updateByPropertyName = (propertyName, value) => () => ({
@@ -103,74 +118,118 @@ const updateByPropertyName = (propertyName, value) => () => ({
 
 const INITIAL_STATE = {
   username: '',
-  password: '',
-  error: null,
+  email: '',
+  passwordOne: '',
+  passwordTwo: '',
+  address1: '',
+  address2: '',
+  phone: '',
+  error: null
 };
 
-class SignInForm extends Component {
+class SignUpForm extends Component {
+
   constructor(props) {
     super(props);
-
-    this.state = { ...INITIAL_STATE };
+    this.state = {...INITIAL_STATE};
   }
 
   onSubmit = (event) => {
-    event.preventDefault();
     const {
       username,
-      password,
+      email,
+      passwordOne,
+      passwordTwo,
+      address1,
+      address2,
+      phone,
     } = this.state;
 
-    const {
-      history,
-    } = this.props;
+    const {history} = this.props;
 
-    DoctorService.login(username, password).then((data) => {
-      console.log(data.token);
-      window.localStorage['jwtToken'] = data.token;
-      this.props.history.push('/');
-    }).catch((e) => {
-      console.error(e);
-      this.setState({
-        error: e
-      });
+    DoctorService.register(username, email, passwordOne, address1, address2, phone)
+      .then((token) => {
+
     });
+
+    auth.doCreateUserWithEmailAndPassword(email, passwordOne)
+      .then(authUser => {
+
+        // Create a user in your own accessible Firebase Database too
+        db.doCreateUser(authUser.user.uid, username, email)
+          .then(() => {
+            this.setState(() => ({ ...INITIAL_STATE }));
+            history.push("/home");
+          })
+          .catch(error => {
+            this.setState(updateByPropertyName('error', error));
+          });
+
+      })
+      .catch(error => {
+        this.setState(updateByPropertyName('error', error));
+      });
+
+    event.preventDefault();
   };
 
   render() {
     const {
       username,
-      password,
+      email,
+      passwordOne,
+      passwordTwo,
       error,
     } = this.state;
 
     const isInvalid =
-      password === '' ||
-      username === '';
+      passwordOne !== passwordTwo ||
+      passwordOne === '' ||
+      username === '' ||
+      email === '';
 
     return (
       <form onSubmit={this.onSubmit}>
         <LineDiv>
-          <IconForm src={email_icon}/>
+          <IconForm src={user_icon}/>
           <InputForm
             value={username}
             onChange={event => this.setState(updateByPropertyName('username', event.target.value))}
             type="text"
-            placeholder="Username"
+            placeholder="Full Name"
+          />
+        </LineDiv>
+        <LineDiv>
+          <IconForm src={email_icon}/>
+          <InputForm
+            value={email}
+            onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
+            type="text"
+            placeholder="Email Address"
           />
         </LineDiv>
         <LineDiv>
           <IconForm src={password_icon}/>
           <InputForm
-            value={password}
-            onChange={event => this.setState(updateByPropertyName('password', event.target.value))}
+            value={passwordOne}
+            onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
             type="password"
             placeholder="Password"
           />
         </LineDiv>
+        <LineDiv>
+          <IconForm src={password_icon}/>
+          <InputForm
+            value={passwordTwo}
+            onChange={event => this.setState(updateByPropertyName('passwordTwo', event.target.value))}
+            type="password"
+            placeholder="Confirm Password"
+          />
+        </LineDiv>
+        <Paragraph>By clicking Register, you agree on our <StyledLink to="/terms-and-conditions">terms and condition</StyledLink>.</Paragraph>
         <HorizontalDivider/>
         <ButtonForm disabled={isInvalid} type="submit">
-          Login
+          Sign Up
         </ButtonForm>
 
         { error && <p>{error.message}</p> }
@@ -179,8 +238,14 @@ class SignInForm extends Component {
   }
 }
 
-export default withRouter(SignInPage);
-
+const SignUpLink = () =>
+  <Paragraph>
+    Don't have an account?
+    {' '}
+    <Link to="/sign-up">Sign Up</Link>
+  </Paragraph>
+export default withRouter(SignUpPage);
 export {
-  SignInForm,
+  SignUpForm,
+  SignUpLink,
 };
