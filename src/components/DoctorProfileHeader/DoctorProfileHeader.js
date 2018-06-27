@@ -79,6 +79,11 @@ class DoctorProfileHeader extends Component {
     super(props);
   }
 
+  sendReviewToServer(reviewObj) {
+    // do server call here...
+
+  }
+
   render() {
     return(
       <DoctorProfileHeaderComponent>
@@ -101,13 +106,13 @@ class DoctorProfileHeader extends Component {
             <i className="material-icons" style={{width: '24px'}}>star_rate</i>
             <i className="material-icons" style={{width: '24px'}}>star_rate</i>
             <i className="material-icons" style={{width: '24px'}}>star_rate</i>
-            <span className="reviews"> (1000 Reviews)</span>
+            <span className="reviews"> ({this.props.doctorReviewsTotal} Reviews)</span>
           </div>
         </BasicInfo>
         <QuickButtons>
           <Button flat primary iconBefore={false} iconChildren="chat_bubble_outline" disabled>Emergency Contact</Button>
           <Button flat primary iconBefore={false} iconChildren="calendar_today">Make Appointment</Button>
-          <DoctorReviewsDialog/>
+          <DoctorReviewsDialog sendToServer={this.sendReviewToServer} />
         </QuickButtons>
       </DoctorProfileHeaderComponent>
     )

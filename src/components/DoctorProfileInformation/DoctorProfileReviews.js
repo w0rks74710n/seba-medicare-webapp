@@ -8,7 +8,6 @@ import {
 
 const DoctorProfileReviewsComponent = styled.div`
     margin: 20px;
-
 `;
 
 class DoctorProfileReviews extends Component {
@@ -18,12 +17,19 @@ class DoctorProfileReviews extends Component {
     }
 
     render() {
+
+        let reviewsList = this.props.reviews.map((review) => {
+            return (
+                <li>{review.rating + " on " + review.date }<br/>{ review.comment}</li>
+            );
+        });
+    
         return(
         <DoctorProfileReviewsComponent>
             <Card>
                 <CardTitle title="Reviews"/>
                 <CardText>
-                    {JSON.stringify(this.props)} 
+                     <ul>{ reviewsList }</ul>
                 </CardText>
             </Card>
         </DoctorProfileReviewsComponent>

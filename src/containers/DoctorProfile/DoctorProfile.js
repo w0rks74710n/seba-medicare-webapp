@@ -41,7 +41,7 @@ class DoctorProfile extends Component {
     });
     DoctorReviewsService.getReviews(id).then( data => {
       this.setState({
-        doctorReviews: data.reviews,
+        doctorReviews: data.review,
         loadingReviews: false
       });
     }).catch( error => {
@@ -58,7 +58,8 @@ class DoctorProfile extends Component {
     }
     return (
       <DoctorProfileComponent>
-        <DoctorProfileHeader  doctorProfile={this.state.doctorProfile}/>
+        <DoctorProfileHeader  doctorProfile={this.state.doctorProfile}
+                              doctorReviewsTotal={this.state.doctorReviews.length}/>
         <Divider/>
         <DoctorProfileInformation doctorProfile={this.state.doctorProfile} 
                                   doctorReviews={this.state.doctorReviews}/>
