@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Header from "../../components/HomePage/Header";
 import Footer from "../../components/HomePage/Footer";
-import { HomeContent } from "../";
+import { HomeContent, SearchBarContainer } from "../";
 
 const PageContainer = styled.div`
     width: 100%;
@@ -16,6 +16,7 @@ class Home extends Component {
     return(
       <PageContainer>
         <Header />
+          <SearchBarContainer/>
         <HomeContent />
         <Footer />
       </PageContainer>

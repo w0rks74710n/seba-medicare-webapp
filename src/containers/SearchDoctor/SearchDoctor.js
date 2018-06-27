@@ -63,7 +63,6 @@ class SearchDoctor extends Component {
 
     return(
       <SearchDoctorContainer className={'searchDoctorContainer'}>
-          <SearchBar/>
         <FilterSidebar retrieveFilterSidebarState={this.retrieveFilterSidebarState.bind(this)} />
         <SearchDoctorList data={this.state.data} />
       </SearchDoctorContainer>
