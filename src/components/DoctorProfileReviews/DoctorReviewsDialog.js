@@ -63,6 +63,10 @@ export default class DoctorReviewsDialog extends PureComponent {
 
     handleSubmit(event) {
         alert('A name was submitted: ' + this.state.value);
+        this.props.sendToServer({
+            rating: this.state.value,
+            comment: this.state.value
+        });
         event.preventDefault();
     } 
 
@@ -98,9 +102,9 @@ export default class DoctorReviewsDialog extends PureComponent {
                 >
                     <form onSubmit={this.handleSubmit}>
 
-                        {/* <TextField id="field-1" label="Field 1" placeholder="Lorem ipsum" className="md-cell md-cell--12" onChange={e => {
+                        <TextField id="field-1" label="Field 1" placeholder="Lorem ipsum" className="md-cell md-cell--12" onChange={e => {
                                     this.setState((prevState) => ({ reviewObject : { ...prevState.reviewObject, field1: e.target.value } }))
-                                }} /> */}
+                                }} />
                         <TextField id="comment" label="Comment" placeholder="Add your comment here" onChange={this.handleChange} rows={2} className="md-cell md-cell--12" />
                     </form>
                 </DialogContainer>
