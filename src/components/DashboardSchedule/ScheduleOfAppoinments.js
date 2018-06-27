@@ -44,6 +44,7 @@ class ScheduleOfAppoinments extends Component {
     this.props.updateAppointmentData(state, id);
     console.log("New Date: " + state.date);
     console.log("ID: " + id);
+    alert("Item is updated successfully!");
   }
 
   render() {

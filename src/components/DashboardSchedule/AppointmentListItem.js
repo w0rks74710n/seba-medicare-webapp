@@ -122,7 +122,8 @@ class AppointmentListItem extends Component {
           </CardTextDiv>
         </OneDiv>
         <CardActions>
-          <Button flat onClick={() => this.props.onDelete(this.state.id)}>Cancel</Button>
+          <Button flat onClick={() => { if (window.confirm('Are you sure you wish to delete this item?'))
+            this.props.onDelete(this.state.id)} }>Cancel</Button>
           <Button flat onClick={() => this.props.onUpdate(this.state, this.state.id)}>Update</Button>
         </CardActions>
       </Card>
