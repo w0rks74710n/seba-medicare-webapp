@@ -10,7 +10,7 @@ export default class DoctorService {
 
   static register(username, password, email, subscription) {
     return new Promise((resolve, reject) => {
-      HttpService.post(`${UserService.baseURL()}/register`, {
+      HttpService.post(this.baseURL()+'/register', {
         username: username,
         password: password,
         email: email,
@@ -25,7 +25,7 @@ export default class DoctorService {
 
   static login(username, password) {
     return new Promise((resolve, reject) => {
-      HttpService.post(`${UserService.baseURL()}/login`, {
+      HttpService.post(this.baseURL()+'/login', {
         username: username,
         password: password
       }, function(data) {

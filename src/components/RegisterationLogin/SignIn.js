@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { SignUpLink } from './SignUp';
 import { PasswordForgetLink } from './PasswordForget';
 import { auth } from '../../services/Firebase';
+import DoctorService from '../../services/DoctorService'
 import styled from "styled-components";
 import ColorPalette from "../../constants/ColorPalette";
 
@@ -95,14 +96,14 @@ const SignInPage = ({ history }) =>
     <SignInForm history={history} />
     <PasswordForgetLink />
     <SignUpLink />
-  </ContentDiv>
+  </ContentDiv>;
 
 const updateByPropertyName = (propertyName, value) => () => ({
   [propertyName]: value,
 });
 
 const INITIAL_STATE = {
-  email: '',
+  username: '',
   password: '',
   error: null,
 };
@@ -115,8 +116,9 @@ class SignInForm extends Component {
   }
 
   onSubmit = (event) => {
+    event.preventDefault();
     const {
-      email,
+      username,
       password,
     } = this.state;
 
@@ -124,38 +126,38 @@ class SignInForm extends Component {
       history,
     } = this.props;
 
-    auth.doSignInWithEmailAndPassword(email, password)
-      .then(() => {
-        this.setState(() => ({ ...INITIAL_STATE }));
-        history.push("/home");
-      })
-      .catch(error => {
-        this.setState(updateByPropertyName('error', error));
+    DoctorService.login(username, password).then((token) => {
+      console.log(token);
+      window.localStorage['jwtToken'] = token;
+      this.props.history.push('/');
+    }).catch((e) => {
+      console.error(e);
+      this.setState({
+        error: e
       });
-
-    event.preventDefault();
-  }
+    });
+  };
 
   render() {
     const {
-      email,
+      username,
       password,
       error,
     } = this.state;
 
     const isInvalid =
       password === '' ||
-      email === '';
+      username === '';
 
     return (
       <form onSubmit={this.onSubmit}>
         <LineDiv>
           <IconForm src={email_icon}/>
           <InputForm
-            value={email}
-            onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
+            value={username}
+            onChange={event => this.setState(updateByPropertyName('username', event.target.value))}
             type="text"
-            placeholder="Email Address"
+            placeholder="Username"
           />
         </LineDiv>
         <LineDiv>
