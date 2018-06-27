@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import StarRatingComponent from 'react-star-rating-component';
 import {
   Button,
   DialogContainer,
@@ -22,8 +23,11 @@ export default class DoctorReviewsDialog extends PureComponent {
 
     constructor(props) {
         super(props);
-        this.state = {value: ''};
 
+        this.state = {
+            rating: 1
+        };
+      
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -34,7 +38,7 @@ export default class DoctorReviewsDialog extends PureComponent {
         containFocus: true,
         initialFocus: undefined
     };
-    
+
     show = () => {
         this.setState({ visible: true });
     };
@@ -61,6 +65,11 @@ export default class DoctorReviewsDialog extends PureComponent {
         this.setState({value: event});
     }
 
+    onStarClick(nextValue, prevValue, name) {
+        this.setState({rating: nextValue});
+    }
+    
+
     handleSubmit(event) {
         alert('A name was submitted: ' + this.state.value);
         this.props.sendToServer({
@@ -85,6 +94,7 @@ export default class DoctorReviewsDialog extends PureComponent {
             children: 'Ok',
             onClick: this.handleSubmit
         }];
+        const { rating } = this.state;
 
         return (
             <div>
@@ -98,13 +108,17 @@ export default class DoctorReviewsDialog extends PureComponent {
                     initialFocus={initialFocus}
                     focusOnMount={focusOnMount}
                     containFocus={containFocus}
-                    contentClassName="md-grid"
-                >
+                    contentClassName="md-grid">
                     <form onSubmit={this.handleSubmit}>
 
-                        <TextField id="field-1" label="Field 1" placeholder="Lorem ipsum" className="md-cell md-cell--12" onChange={e => {
-                                    this.setState((prevState) => ({ reviewObject : { ...prevState.reviewObject, field1: e.target.value } }))
-                                }} />
+
+                        <StarRatingComponent 
+                            name="rate1" 
+                            starCount={5}
+                            value={rating}
+                            onStarClick={this.onStarClick.bind(this)}/>
+
+                        
                         <TextField id="comment" label="Comment" placeholder="Add your comment here" onChange={this.handleChange} rows={2} className="md-cell md-cell--12" />
                     </form>
                 </DialogContainer>

@@ -20,7 +20,7 @@ class DoctorProfileReviews extends Component {
 
         let reviewsList = this.props.reviews.map((review) => {
             return (
-                <li>{review.rating + " on " + review.date }<br/>{ review.comment}</li>
+                <li key={review.date.toString()}>{review.rating + " on " + review.date}<br/>{review.comment}</li>
             );
         });
     
