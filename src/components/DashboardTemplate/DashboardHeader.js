@@ -89,19 +89,19 @@ class DashboardHeader extends Component {
         <Dropdown>
           <DropdownToggle className="dropbtn">Admin Menu</DropdownToggle>
           <DropdownMenu className="dropdown-content">
-            <StyledLink to="/edit-profile">
+            <StyledLink to="/dashboard/customizeProfile/:id">
              <DropdownListItem>
                 <Icon src={edit} alt="Edit Profile"/>Edit
              </DropdownListItem>
             </StyledLink>
 
-            <StyledLink to="/change-settings">
+            <StyledLink to="/dashboard/change-settings">
               <DropdownListItem>
                 <Icon src={change} alt="Change Password" />Change
               </DropdownListItem>
             </StyledLink>
 
-            <StyledLink to="/logout">
+            <StyledLink to="/dashboard/logout">
               <DropdownListItem>
                 <Icon src={logout} alt="Logout" />Logout
               </DropdownListItem>

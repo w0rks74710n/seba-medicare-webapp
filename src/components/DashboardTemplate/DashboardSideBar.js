@@ -113,31 +113,31 @@ class DashboardSideBar extends Component {
                 </NavSideMenuLI>
               </ListItemA>
 
-              <ListItemA to="/manage-schedule">
+              <ListItemA to="/dashboard/manage-schedule">
                 <NavSideMenuLI>
                   <Icon src={schedule} alt="Schedule" /> Schedule
                 </NavSideMenuLI>
               </ListItemA>
 
-              <ListItemA to="/statistics">
+              <ListItemA to="/dashboard/statistics">
                 <NavSideMenuLI>
                   <Icon src={statistics} alt="Statistics" /> Statistics
                 </NavSideMenuLI>
               </ListItemA>
 
-              <ListItemA to="/manage">
+              <ListItemA to="/dashboard/manage">
                 <NavSideMenuLI data-toggle="collapse" data-target="#manage" className="collapsed">
                   <Icon src={manage} alt="Manage" /> Manage
                 </NavSideMenuLI>
               </ListItemA>
 
-              <ListItemA to="/change-settings">
+              <ListItemA to="/dashboard/change-settings">
                 <NavSideMenuLI data-toggle="collapse" data-target="#settings" className="collapsed">
                   <Icon src={settings} alt="Settings" /> Settings
                 </NavSideMenuLI>
               </ListItemA>
 
-              <ListItemA to="/help">
+              <ListItemA to="/dashboard/help">
                 <NavSideMenuLI data-toggle="collapse" data-target="#maintenance" className="collapsed">
                   <Icon src={help} alt="Help" /> Help
                 </NavSideMenuLI>
