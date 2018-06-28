@@ -59,7 +59,7 @@ class DoctorProfile extends Component {
     return (
       <DoctorProfileComponent>
         <DoctorProfileHeader  doctorProfile={this.state.doctorProfile}
-                              doctorReviewsTotal={this.state.doctorReviews.length}/>
+                              doctorReviews={this.state.doctorReviews}/>
         <Divider/>
         <DoctorProfileInformation doctorProfile={this.state.doctorProfile} 
                                   doctorReviews={this.state.doctorReviews}/>

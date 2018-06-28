@@ -75,6 +75,12 @@ const QuickButtons = styled.div`
   }
 `;
 
+const Rating = styled.div`
+  span {
+    margin-left: 10px;
+  }
+`;
+
 class DoctorProfileHeader extends Component {
 
   state = { }
@@ -94,6 +100,23 @@ class DoctorProfileHeader extends Component {
   }
 
   render() {
+    let averageRating = (reviews) => {
+      var stars = 0;
+      for(var i = 0; i < reviews.length; i++)
+        stars += this.props.doctorReviews[i].rating;
+      return stars / reviews.length;
+    };
+
+    let renderStars = (reviews) => {
+      let stars = [];
+      for (let i = 0; i < averageRating(reviews); i++) {
+          stars.push(
+              <i className="material-icons" style={{width: '24px'}}>star_rate</i>
+          );
+      };
+      return stars;
+    };
+
     return(
       <DoctorProfileHeaderComponent>
         <ProfileImage>
@@ -108,15 +131,10 @@ class DoctorProfileHeader extends Component {
                 {this.props.doctorProfile.contactInformation.practiceWebsite}
             </a>
           </Website>            
-          {/* TODO: add later */}
-          <div className="rating">
-            <i className="material-icons" style={{width: '24px'}}>star_rate</i>
-            <i className="material-icons" style={{width: '24px'}}>star_rate</i>
-            <i className="material-icons" style={{width: '24px'}}>star_rate</i>
-            <i className="material-icons" style={{width: '24px'}}>star_rate</i>
-            <i className="material-icons" style={{width: '24px'}}>star_rate</i>
-            <span className="reviews">({this.props.doctorReviewsTotal} Reviews)</span>
-          </div>
+          <Rating className="rating">
+            {renderStars(this.props.doctorReviews)}
+            <span className="reviews">({this.props.doctorReviews.length} Reviews)</span>
+          </Rating>
         </BasicInfo>
         <QuickButtons>
           <Button flat primary iconBefore={false} iconChildren="chat_bubble_outline" disabled>Emergency Contact</Button>
