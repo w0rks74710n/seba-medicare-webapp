@@ -11,6 +11,7 @@ import DoctorProfileReviews from "../../components/DoctorProfileReviews/DoctorPr
 import {
   Divider
 } from "react-md";
+import AppoitmentService from "../../services/AppoitmentService";
 
 const DoctorProfileComponent = styled.section`
   width: 1000px;
@@ -29,6 +30,13 @@ class DoctorProfile extends Component {
     this.state = {
       renderForm: false,
     };
+  }
+
+  createAppointment(appointment){
+    console.log("New appointment: " + JSON.stringify(appointment), this.props.match.params.id);
+    AppoitmentService.createAppointment(appointment, this.props.match.params.id).catch((e) => {
+      console.error(e);
+    });
   }
 
   renderAppointmentForm(){
@@ -71,7 +79,7 @@ class DoctorProfile extends Component {
       <DoctorProfileComponent>
         <DoctorProfileHeader  doctorProfile={this.state.doctorProfile} renderAppointmentForm={this.renderAppointmentForm.bind(this)}/>
         <Divider/>
-        { this.state.renderForm ? <MakeAnAppointmentForm doctor={this.state.doctorProfile} /> : null }
+        { this.state.renderForm ? <MakeAnAppointmentForm doctor={this.state.doctorProfile} createAppointment={this.createAppointment.bind(this)}/> : null }
         <DoctorProfileInformation doctorProfile={this.state.doctorProfile}/>
         {/* <DoctorProfileReviews/> */}
       </DoctorProfileComponent> 

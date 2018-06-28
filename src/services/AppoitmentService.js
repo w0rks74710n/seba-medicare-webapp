@@ -10,6 +10,16 @@ export default class AppoitmentService {
 
   static baseURL() {return "http://localhost:3001/api/appointment" }
 
+  static createAppointment(appointment, doctor_id){
+    return new Promise((resolve, reject) => {
+      HttpService.post(this.baseURL() + '/' + doctor_id, appointment, function(data) {
+        resolve(data);
+      }, function(textStatus) {
+        reject(textStatus);
+      });
+    });
+  }
+
   static getAppointments(doctor_id){
     return new Promise((resolve, reject) => {
       HttpService.get(this.baseURL() + '/' + doctor_id, function(data) {

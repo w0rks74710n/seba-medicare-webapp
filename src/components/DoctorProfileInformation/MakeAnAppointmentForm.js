@@ -54,7 +54,7 @@ class MakeAnAppointmentForm extends Component {
     super(props);
 
     this.state = {
-      doctor: this.props.fullName,
+      doctor: "Saner",
       patient: "",
       illness: "",
       date: ""
@@ -73,9 +73,9 @@ class MakeAnAppointmentForm extends Component {
     newDate = arrayDate[2] + "-" + this.addZero(arrayDate[1]) + "-" + this.addZero(arrayDate[0]);
 
     this.setState({
-      date: newDate + "T" + newTime + ":00.000Z"
+      date: newDate + "T" + newTime + ":00.000Z",
     });
-    console.log(this.state.date);
+    console.log(this.state);
   };
 
   handleTimeChange = (givenTime) => {
@@ -84,21 +84,21 @@ class MakeAnAppointmentForm extends Component {
     this.setState({
       date: newDate + "T" + newTime + ":00.000Z"
     });
-    console.log(this.state.date);
+    console.log(this.state);
   };
 
   handleIllness(event){
     this.setState({
-      illness: event.target.value
+      illness: event.target.value,
     });
-    console.log(this.state.illness);
+    console.log(this.state);
   };
 
   handlePatient(event){
     this.setState({
-      patient: event.target.value
+      patient: event.target.value,
     });
-    console.log(this.state.patient);
+    console.log(this.state);
   };
 
   render() {
@@ -138,7 +138,7 @@ class MakeAnAppointmentForm extends Component {
         </PickerDiv>
 
         <CardActions>
-          <Button flat onClick={() => { if (window.confirm('Are you sure you wish to delete this item?'))
+          <Button flat onClick={() => { if (window.confirm('Are you sure to create this appointment?'))
             this.props.createAppointment(this.state)} }>Submit</Button>
         </CardActions>
       </Card>
