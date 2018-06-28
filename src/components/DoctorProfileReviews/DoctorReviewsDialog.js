@@ -1,10 +1,16 @@
 import React, { PureComponent } from 'react';
 import StarRatingComponent from 'react-star-rating-component';
+import styled from "styled-components";
 import {
   Button,
   DialogContainer,
   TextField
 } from 'react-md';
+import Recaptcha from 'react-recaptcha';
+
+const Dialog = styled.div`
+
+`;
 
 export default class DoctorReviewsDialog extends PureComponent {
 
@@ -18,6 +24,8 @@ export default class DoctorReviewsDialog extends PureComponent {
       
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleRecaptcha = this.handleRecaptcha.bind(this);
+        this.verifyCallback = this.verifyCallback.bind(this);
     }
 
     state = {
@@ -55,14 +63,30 @@ export default class DoctorReviewsDialog extends PureComponent {
         this.setState({rating: value});
     }
     
+    handleRecaptcha() {
+        console.log('captcha loaded!');
+    }
+
+    verifyCallback(response) {
+        if(response){
+            this.setState({
+                isVerified: true
+            });
+        }
+    }
+
     handleSubmit(event) {
-        this.props.sendReviewToServer({
-            doctor: this.props.doctor,
-            rating: this.state.rating,
-            comment: this.state.comment
-        });
-        this.hide();
-        event.preventDefault();
+        if(this.state.isVerified) {
+            this.props.sendReviewToServer({
+                doctor: this.props.doctor,
+                rating: this.state.rating,
+                comment: this.state.comment
+            });
+            this.hide();
+            event.preventDefault();
+        } else {
+            alert('Please verify you are a human!');
+        }
     } 
 
     render() {
@@ -81,12 +105,13 @@ export default class DoctorReviewsDialog extends PureComponent {
         const { rating } = this.state;
 
         return (
-            <div>
+            <Dialog>
                 <Button flat secondary iconBefore={false} iconChildren="rate_review" onClick={this.show}>Add Review</Button>
                 <DialogContainer
                     id="focus-control-dialog"
                     title="Add Review"
                     visible={visible}
+                    width="500px"
                     actions={actions}
                     onHide={this.hide}
                     initialFocus={initialFocus}
@@ -95,9 +120,14 @@ export default class DoctorReviewsDialog extends PureComponent {
                     <form onSubmit={this.handleSubmit}>
                         <StarRatingComponent name="rating" starCount={5} value={rating} onStarClick={this.onStarClick.bind(this)}/>
                         <TextField id="comment" label="Comment" placeholder="Add your comment here" onChange={this.handleChange} rows={4}/>
+                        <Recaptcha
+                            sitekey="6LeOO2EUAAAAAHLJLvHbExgIiRym7QylZPDxFmcz" 
+                            render="explicit" 
+                            onloadCallback={this.handleRecaptcha}
+                            verifyCallback={this.verifyCallback}/>
                     </form>
                 </DialogContainer>
-            </div>
+            </Dialog>
         );
     }
 }
