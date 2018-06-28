@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import DoctorProfileInformationService from '../../services/DoctorProfileInformationService';
+import DoctorReviewsService from '../../services/DoctorReviewsService';
 
 import DoctorProfileHeader from "../../components/DoctorProfileHeader/DoctorProfileHeader";
 import DoctorProfileInformation from "../../components/DoctorProfileInformation/DoctorProfileInformation";
-import DoctorProfileReviews from "../../components/DoctorProfileReviews/DoctorProfileReviews";
 
 import {
   Divider
@@ -25,7 +25,8 @@ class DoctorProfile extends Component {
 
   componentWillMount(props) {
     this.setState({
-      loading: true
+      loading: true,
+      loadingReviews: true
     });
 
     let id = this.props.match.params.id;
@@ -38,20 +39,30 @@ class DoctorProfile extends Component {
     }).catch( error => {
       console.log(error);
     });
-
+    DoctorReviewsService.getReviews(id).then( data => {
+      this.setState({
+        doctorReviews: data.review,
+        loadingReviews: false
+      });
+    }).catch( error => {
+      console.log(error);
+    });
   }
 
   render() {
     if(this.state.loading) {
       return(<h2>Loading...</h2>);
     }
-
+    if(this.state.loadingReviews) {
+      return(<h2>Loading reviews...</h2>);
+    }
     return (
       <DoctorProfileComponent>
-        <DoctorProfileHeader  doctorProfile={this.state.doctorProfile}/>
+        <DoctorProfileHeader  doctorProfile={this.state.doctorProfile}
+                              doctorReviews={this.state.doctorReviews}/>
         <Divider/>
-        <DoctorProfileInformation doctorProfile={this.state.doctorProfile}/>
-        {/* <DoctorProfileReviews/> */}
+        <DoctorProfileInformation doctorProfile={this.state.doctorProfile} 
+                                  doctorReviews={this.state.doctorReviews}/>
       </DoctorProfileComponent> 
     )
   }

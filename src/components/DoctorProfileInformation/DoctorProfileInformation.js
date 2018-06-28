@@ -7,6 +7,7 @@ import DoctorProfileExperience from "./DoctorProfileExperience";
 import DoctorProfileEducation from "./DoctorProfileEducation";
 import DoctorProfileSocialMedia from "./DoctorProfileSocialMedia";
 import DoctorProfileImages from "./DoctorProfileImages";
+import DoctorProfileReviews from "./DoctorProfileReviews";
 
 const DoctorProfileInformationComponent = styled.div`
   
@@ -28,6 +29,7 @@ class DoctorProfileInformation extends Component {
             <DoctorProfileExperience experience={this.props.doctorProfile.experience}/>
             <DoctorProfileEducation education={this.props.doctorProfile.education}/>
             <DoctorProfileSocialMedia socialMedia={this.props.doctorProfile.socialMedia}/>
+            <DoctorProfileReviews reviews={this.props.doctorReviews}/>
         </DoctorProfileInformationComponent>
         )
     }
