@@ -8,9 +8,9 @@ import {
   TermsAndConditions
 } from "../";
 
-import PatientSignUp from "../../components/RegisterationLogin/PatientSignUp";
-import SignIn from "../../components/RegisterationLogin/SignIn";
-import SignUp from "../../components/RegisterationLogin/SignUp";
+import PatientSignUp from "../../components/RegisterationLogin/PatientSignUpPage";
+import SignIn from "../../components/RegisterationLogin/SignInPage";
+import SignUp from "../../components/RegisterationLogin/DoctorSignUpPage";
 import PasswordForget from "../../components/RegisterationLogin/PasswordForget";
 
 const ContentContainer = styled.div`

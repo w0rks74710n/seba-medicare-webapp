@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from '../../resources/medicare_logo.png';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'
-import ColorPalette from '../../constants/ColorPalette'
+import { Link } from 'react-router-dom';
+import ColorPalette from '../../constants/ColorPalette';
+import SignOutButton from '../RegisterationLogin/SignOutButton'
 
 const HeaderDiv = styled.div`
 	border-bottom: 1px solid black;
@@ -107,7 +108,7 @@ class Header extends Component {
               <StyledLink to="/contact">Contact</StyledLink>
             </Header_Horizontal_Navigation_Item>
             <Header_Horizontal_Navigation_Item>
-              <StyledLink to="/join-us-as-a-doctor">Join</StyledLink>
+              <StyledLink to="/doctor-sign-up">Join Medicare</StyledLink>
             </Header_Horizontal_Navigation_Item>
             <Header_Horizontal_Navigation_Item>
               <StyledLink to="/language">EN</StyledLink>
@@ -116,11 +117,14 @@ class Header extends Component {
         </Header_Horizontal_Navigation>
 
         {window.localStorage['jwtToken'] === undefined &&
-          <ButtonLink2 to="/join-us-as-a-doctor">
+          <ButtonLink2 to="/sign-in">
             <Header_Button>
               Login/Sign up
             </Header_Button>
           </ButtonLink2>
+        }
+        {window.localStorage['jwtToken'] !== undefined &&
+          <SignOutButton />
         }
 
       </HeaderDiv>

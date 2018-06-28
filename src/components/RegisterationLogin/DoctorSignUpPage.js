@@ -4,8 +4,8 @@ import email_icon from '../../resources/email-icon.png';
 import password_icon from '../../resources/pass-icon.png';
 import {  Link,  withRouter } from 'react-router-dom';
 import styled from "styled-components";
-import ColorPalette from "../../constants/ColorPalette";
 import UserService from "../../services/UserService"
+import ColorPalette from "../../constants/ColorPalette";
 
 const ContentDiv = styled.div`
   margin: 20px auto;
@@ -121,43 +121,36 @@ const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
-  address1: '',
-  address2: '',
-  phone: '',
-  fullName: '',
-  error: null
+  error: null,
 };
 
 class SignUpForm extends Component {
-
   constructor(props) {
     super(props);
-    this.state = {...INITIAL_STATE};
+
+    this.state = { ...INITIAL_STATE };
   }
 
   onSubmit = (event) => {
     event.preventDefault();
-
     const {
       username,
       email,
       passwordOne,
-      address1,
-      address2,
-      phone,
-      fullName
     } = this.state;
 
-    const {history} = this.props;
+    const {
+      history,
+    } = this.props;
 
-    UserService.registerPatient(username, email, passwordOne, address1, address2, phone, fullName)
+    UserService.registerDoctor(username, passwordOne, email, true)
       .then(() => {
         this.setState(() => ({ ...INITIAL_STATE }));
-        history.push("/join-us-as-a-doctor");
-    }).catch((error) => {
-      this.setState(updateByPropertyName('error', error));
-    });
-  };
+        history.push("/sign-in");
+      }).catch((error) => {
+        this.setState(updateByPropertyName('error', error));
+      });
+    };
 
   render() {
     const {
@@ -165,38 +158,24 @@ class SignUpForm extends Component {
       email,
       passwordOne,
       passwordTwo,
-      address1,
-      address2,
-      phone,
-      fullName,
-      error
+      error,
     } = this.state;
 
     const isInvalid =
       passwordOne !== passwordTwo ||
       passwordOne === '' ||
       username === '' ||
-      email === '' ||
-      fullName === '';
+      email === '';
 
     return (
       <form onSubmit={this.onSubmit}>
         <LineDiv>
           <IconForm src={user_icon}/>
           <InputForm
-            value={fullName}
-            onChange={event => this.setState(updateByPropertyName('fullName', event.target.value))}
-            type="text"
-            placeholder="Full Name"
-          />
-        </LineDiv>
-        <LineDiv>
-          <IconForm src={user_icon}/>
-          <InputForm
             value={username}
             onChange={event => this.setState(updateByPropertyName('username', event.target.value))}
             type="text"
-            placeholder="Username"
+            placeholder="Full Name"
           />
         </LineDiv>
         <LineDiv>
@@ -226,33 +205,6 @@ class SignUpForm extends Component {
             placeholder="Confirm Password"
           />
         </LineDiv>
-        <LineDiv>
-          <IconForm src={user_icon}/>
-          <InputForm
-            value={address1}
-            onChange={event => this.setState(updateByPropertyName('address1', event.target.value))}
-            type="text"
-            placeholder="Address Line 1"
-          />
-        </LineDiv>
-        <LineDiv>
-          <IconForm src={user_icon}/>
-          <InputForm
-            value={address2}
-            onChange={event => this.setState(updateByPropertyName('address2', event.target.value))}
-            type="text"
-            placeholder="Address Line 2"
-          />
-        </LineDiv>
-        <LineDiv>
-          <IconForm src={user_icon}/>
-          <InputForm
-            value={phone}
-            onChange={event => this.setState(updateByPropertyName('phone', event.target.value))}
-            type="text"
-            placeholder="Phone Number"
-          />
-        </LineDiv>
         <Paragraph>By clicking Register, you agree on our <StyledLink to="/terms-and-conditions">terms and condition</StyledLink>.</Paragraph>
         <HorizontalDivider/>
         <ButtonForm disabled={isInvalid} type="submit">
@@ -265,16 +217,14 @@ class SignUpForm extends Component {
   }
 }
 
-const SignInLink = () =>
+const SignUpLink = () =>
   <Paragraph>
-    Already have and account?
+    Don't have an account?
     {' '}
-    <Link to="/sign-in">Sign In</Link>
-  </Paragraph>
-
+    <Link to="/patient-sign-up">Sign Up</Link>
+  </Paragraph>;
 export default withRouter(SignUpPage);
-
 export {
   SignUpForm,
-  SignInLink,
+  SignUpLink,
 };
