@@ -4,7 +4,7 @@ import password_icon from '../../resources/pass-icon.png';
 import { withRouter } from 'react-router-dom';
 import { SignUpLink } from './SignUp';
 import { PasswordForgetLink } from './PasswordForget';
-import DoctorService from '../../services/DoctorService'
+import UserService from '../../services/UserService'
 import styled from "styled-components";
 import ColorPalette from "../../constants/ColorPalette";
 
@@ -125,7 +125,7 @@ class SignInForm extends Component {
       history,
     } = this.props;
 
-    DoctorService.login(username, password).then((data) => {
+    UserService.login(username, password).then((data) => {
       console.log(data.token);
       window.localStorage['jwtToken'] = data.token;
       this.props.history.push('/');

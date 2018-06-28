@@ -5,7 +5,7 @@ import password_icon from '../../resources/pass-icon.png';
 import {  Link,  withRouter } from 'react-router-dom';
 import styled from "styled-components";
 import ColorPalette from "../../constants/ColorPalette";
-import DoctorService from '../../services/DoctorService'
+import UserService from "../../services/UserService"
 
 const ContentDiv = styled.div`
   margin: 20px auto;
@@ -124,6 +124,7 @@ const INITIAL_STATE = {
   address1: '',
   address2: '',
   phone: '',
+  fullName,
   error: null
 };
 
@@ -143,11 +144,12 @@ class SignUpForm extends Component {
       address1,
       address2,
       phone,
+      fullName
     } = this.state;
 
     const {history} = this.props;
 
-    DoctorService.register(username, email, passwordOne, address1, address2, phone)
+    UserService.registerPatient(username, email, passwordOne, address1, address2, phone, fullName)
       .then((token) => {
 
     });
