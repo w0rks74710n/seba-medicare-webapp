@@ -28,6 +28,7 @@ const Input = styled.input`
   margin: 10px;
   margin-left: 30px;
   padding: 9px 15px;
+  width: 80%;
   
   display: inline-block;
   border: 1px solid #ccc;
@@ -56,7 +57,7 @@ class MakeAnAppointmentForm extends Component {
     this.state = {
       doctor: this.props.doctorProfile.contactInformation.fullName,
       doctor_id: this.props.doctor_id,
-      patient: "",
+      patient_id: window.localStorage['id'],
       illness: "",
       date: ""
     };
@@ -95,25 +96,15 @@ class MakeAnAppointmentForm extends Component {
     console.log(this.state);
   };
 
-  handlePatient(event){
-    this.setState({
-      patient: event.target.value,
-    });
-    console.log(this.state);
-  };
-
   render() {
 
     return(
       <Card style={CardStyle} className="md-block-centered">
         <CardTitle style={CardTitleStyle}
           title= "Make an online appointment!"
-          subtitle= { "Doctor: " + "" }
+          subtitle= { "Doctor: " + this.state.doctor }
         />
         <div>
-          <Label>Patient Name:</Label>
-          <Input name="patient" type="text" onChange={this.handlePatient.bind(this)}/>
-
           <Label>Illness:</Label>
           <Input name="illness" type="text" onChange={this.handleIllness.bind(this)}/>
         </div>

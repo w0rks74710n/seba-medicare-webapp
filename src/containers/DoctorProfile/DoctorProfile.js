@@ -33,6 +33,7 @@ class DoctorProfile extends Component {
   }
 
   createAppointment(appointment){
+    console.log(JSON.stringify(appointment), this.props.match.params.id);
     AppoitmentService.createAppointment(appointment, this.props.match.params.id).then(() => {
       console.log("Appointment is successfully created");
     }).catch((e) => {
