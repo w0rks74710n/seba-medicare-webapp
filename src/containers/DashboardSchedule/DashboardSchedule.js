@@ -18,6 +18,7 @@ class DashboardSchedule extends Component {
 
     this.state = {
       loading: true,
+      doctor_id: this.props.match.params.id,
       data: []
     };
   }
@@ -44,7 +45,7 @@ class DashboardSchedule extends Component {
   }
 
   fetchAppointmentData() {
-    AppoitmentService.getAppointments().then((data) => {
+    AppoitmentService.getAppointments(this.state.doctor_id).then((data) => {
       this.setState({
         data: data,
         loading: false
