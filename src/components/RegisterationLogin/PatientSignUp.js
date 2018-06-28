@@ -124,7 +124,7 @@ const INITIAL_STATE = {
   address1: '',
   address2: '',
   phone: '',
-  fullName,
+  fullName: '',
   error: null
 };
 
@@ -136,11 +136,12 @@ class SignUpForm extends Component {
   }
 
   onSubmit = (event) => {
+    event.preventDefault();
+
     const {
       username,
       email,
       passwordOne,
-      passwordTwo,
       address1,
       address2,
       phone,
@@ -150,29 +151,12 @@ class SignUpForm extends Component {
     const {history} = this.props;
 
     UserService.registerPatient(username, email, passwordOne, address1, address2, phone, fullName)
-      .then((token) => {
-
+      .then(() => {
+        this.setState(() => ({ ...INITIAL_STATE }));
+        history.push("/join-us-as-a-doctor");
+    }).catch((error) => {
+      this.setState(updateByPropertyName('error', error));
     });
-
-    auth.doCreateUserWithEmailAndPassword(email, passwordOne)
-      .then(authUser => {
-
-        // Create a user in your own accessible Firebase Database too
-        db.doCreateUser(authUser.user.uid, username, email)
-          .then(() => {
-            this.setState(() => ({ ...INITIAL_STATE }));
-            history.push("/home");
-          })
-          .catch(error => {
-            this.setState(updateByPropertyName('error', error));
-          });
-
-      })
-      .catch(error => {
-        this.setState(updateByPropertyName('error', error));
-      });
-
-    event.preventDefault();
   };
 
   render() {
@@ -181,24 +165,38 @@ class SignUpForm extends Component {
       email,
       passwordOne,
       passwordTwo,
-      error,
+      address1,
+      address2,
+      phone,
+      fullName,
+      error
     } = this.state;
 
     const isInvalid =
       passwordOne !== passwordTwo ||
       passwordOne === '' ||
       username === '' ||
-      email === '';
+      email === '' ||
+      fullName === '';
 
     return (
       <form onSubmit={this.onSubmit}>
         <LineDiv>
           <IconForm src={user_icon}/>
           <InputForm
+            value={fullName}
+            onChange={event => this.setState(updateByPropertyName('fullName', event.target.value))}
+            type="text"
+            placeholder="Full Name"
+          />
+        </LineDiv>
+        <LineDiv>
+          <IconForm src={user_icon}/>
+          <InputForm
             value={username}
             onChange={event => this.setState(updateByPropertyName('username', event.target.value))}
             type="text"
-            placeholder="Full Name"
+            placeholder="Username"
           />
         </LineDiv>
         <LineDiv>
@@ -228,6 +226,33 @@ class SignUpForm extends Component {
             placeholder="Confirm Password"
           />
         </LineDiv>
+        <LineDiv>
+          <IconForm src={user_icon}/>
+          <InputForm
+            value={address1}
+            onChange={event => this.setState(updateByPropertyName('address1', event.target.value))}
+            type="text"
+            placeholder="Address Line 1"
+          />
+        </LineDiv>
+        <LineDiv>
+          <IconForm src={user_icon}/>
+          <InputForm
+            value={address2}
+            onChange={event => this.setState(updateByPropertyName('address2', event.target.value))}
+            type="text"
+            placeholder="Address Line 2"
+          />
+        </LineDiv>
+        <LineDiv>
+          <IconForm src={user_icon}/>
+          <InputForm
+            value={phone}
+            onChange={event => this.setState(updateByPropertyName('phone', event.target.value))}
+            type="text"
+            placeholder="Phone Number"
+          />
+        </LineDiv>
         <Paragraph>By clicking Register, you agree on our <StyledLink to="/terms-and-conditions">terms and condition</StyledLink>.</Paragraph>
         <HorizontalDivider/>
         <ButtonForm disabled={isInvalid} type="submit">
@@ -240,14 +265,16 @@ class SignUpForm extends Component {
   }
 }
 
-const SignUpLink = () =>
+const SignInLink = () =>
   <Paragraph>
-    Don't have an account?
+    Already have and account?
     {' '}
-    <Link to="/sign-up">Sign Up</Link>
+    <Link to="/sign-in">Sign In</Link>
   </Paragraph>
+
 export default withRouter(SignUpPage);
+
 export {
   SignUpForm,
-  SignUpLink,
+  SignInLink,
 };
