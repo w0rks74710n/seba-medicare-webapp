@@ -150,7 +150,7 @@ class SignUpForm extends Component {
 
     const {history} = this.props;
 
-    UserService.registerPatient(username, email, passwordOne, address1, address2, phone, fullName)
+    UserService.registerPatient(username, passwordOne, email, address1, address2, phone, fullName)
       .then(() => {
         this.setState(() => ({ ...INITIAL_STATE }));
         history.push("/sing-in");
