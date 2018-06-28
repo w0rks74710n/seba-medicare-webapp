@@ -11,6 +11,7 @@ export default class AppoitmentService {
   static baseURL() {return "http://localhost:3001/api/appointment" }
 
   static createAppointment(appointment, doctor_id){
+    console.log("New appointment: " + JSON.stringify(appointment), doctor_id);
     return new Promise((resolve, reject) => {
       HttpService.post(this.baseURL() + '/' + doctor_id, appointment, function(data) {
         resolve(data);

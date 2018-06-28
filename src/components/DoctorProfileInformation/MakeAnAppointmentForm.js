@@ -54,7 +54,8 @@ class MakeAnAppointmentForm extends Component {
     super(props);
 
     this.state = {
-      doctor: "Saner",
+      doctor: this.props.doctorProfile.contactInformation.fullName,
+      doctor_id: this.props.doctor_id,
       patient: "",
       illness: "",
       date: ""
@@ -110,10 +111,10 @@ class MakeAnAppointmentForm extends Component {
           subtitle= { "Doctor: " + "" }
         />
         <div>
-          <Label>Patient Name</Label>
+          <Label>Patient Name:</Label>
           <Input name="patient" type="text" onChange={this.handlePatient.bind(this)}/>
 
-          <Label>Illness</Label>
+          <Label>Illness:</Label>
           <Input name="illness" type="text" onChange={this.handleIllness.bind(this)}/>
         </div>
         <PickerDiv>

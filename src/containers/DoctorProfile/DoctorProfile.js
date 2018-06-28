@@ -33,8 +33,9 @@ class DoctorProfile extends Component {
   }
 
   createAppointment(appointment){
-    console.log("New appointment: " + JSON.stringify(appointment), this.props.match.params.id);
-    AppoitmentService.createAppointment(appointment, this.props.match.params.id).catch((e) => {
+    AppoitmentService.createAppointment(appointment, this.props.match.params.id).then(() => {
+      console.log("Appointment is successfully created");
+    }).catch((e) => {
       console.error(e);
     });
   }
@@ -54,7 +55,8 @@ class DoctorProfile extends Component {
 
   componentWillMount(props) {
     this.setState({
-      loading: true
+      loading: true,
+      doctor_id: this.props.match.params.id
     });
 
     let id = this.props.match.params.id;
@@ -79,7 +81,9 @@ class DoctorProfile extends Component {
       <DoctorProfileComponent>
         <DoctorProfileHeader  doctorProfile={this.state.doctorProfile} renderAppointmentForm={this.renderAppointmentForm.bind(this)}/>
         <Divider/>
-        { this.state.renderForm ? <MakeAnAppointmentForm doctor={this.state.doctorProfile} createAppointment={this.createAppointment.bind(this)}/> : null }
+        { this.state.renderForm ? <MakeAnAppointmentForm doctorProfile={this.state.doctorProfile}
+                                                         doctor_id={this.state.doctor_id}
+                                                         createAppointment={this.createAppointment.bind(this)}/> : null }
         <DoctorProfileInformation doctorProfile={this.state.doctorProfile}/>
         {/* <DoctorProfileReviews/> */}
       </DoctorProfileComponent> 
