@@ -3,21 +3,8 @@ import StarRatingComponent from 'react-star-rating-component';
 import {
   Button,
   DialogContainer,
-  TextField,
-  SelectionControl,
-  SelectionControlGroup,
+  TextField
 } from 'react-md';
-
-const controls = [{
-  label: 'Comment',
-  value: 'comment',
-}, {
-  label: 'Cancel Button',
-  value: 'dialog-cancel',
-}, {
-  label: 'Ok Button',
-  value: 'dialog-ok',
-}];
 
 export default class DoctorReviewsDialog extends PureComponent {
 
@@ -45,7 +32,7 @@ export default class DoctorReviewsDialog extends PureComponent {
     };
 
     hide = () => {
-        this.setState({ visible: false });
+        this.setState({ visible: false, rating: 1, comment: "" });
     };
 
     handleTargetChange = (value) => {
@@ -64,8 +51,8 @@ export default class DoctorReviewsDialog extends PureComponent {
         this.setState({comment: event});
     }
 
-    onStarClick(nextValue, prevValue, name) {
-        this.setState({rating: nextValue});
+    onStarClick(value) {
+        this.setState({rating: value});
     }
     
     handleSubmit(event) {
