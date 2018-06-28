@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import DoctorReviewsService from "../../services/DoctorReviewsService";
+
 import DoctorReviewsDialog from '../DoctorProfileReviews/DoctorReviewsDialog';
 
 import {
@@ -75,13 +77,20 @@ const QuickButtons = styled.div`
 
 class DoctorProfileHeader extends Component {
 
+  state = { }
+
   constructor(props){
     super(props);
   }
 
   sendReviewToServer(reviewObj) {
-    // do server call here...
-
+    DoctorReviewsService.addReview(
+      {
+        doctor: reviewObj.doctor,
+        rating: reviewObj.rating,
+        comment: reviewObj.comment
+      }
+    );
   }
 
   render() {
@@ -106,13 +115,13 @@ class DoctorProfileHeader extends Component {
             <i className="material-icons" style={{width: '24px'}}>star_rate</i>
             <i className="material-icons" style={{width: '24px'}}>star_rate</i>
             <i className="material-icons" style={{width: '24px'}}>star_rate</i>
-            <span className="reviews"> ({this.props.doctorReviewsTotal} Reviews)</span>
+            <span className="reviews">({this.props.doctorReviewsTotal} Reviews)</span>
           </div>
         </BasicInfo>
         <QuickButtons>
           <Button flat primary iconBefore={false} iconChildren="chat_bubble_outline" disabled>Emergency Contact</Button>
           <Button flat primary iconBefore={false} iconChildren="calendar_today">Make Appointment</Button>
-          <DoctorReviewsDialog sendToServer={this.sendReviewToServer} />
+          <DoctorReviewsDialog doctor={this.props.doctorProfile.doctor_id} sendReviewToServer={this.sendReviewToServer} />
         </QuickButtons>
       </DoctorProfileHeaderComponent>
     )
