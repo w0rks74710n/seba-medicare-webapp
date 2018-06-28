@@ -60,6 +60,7 @@ export default class UserService {
     window.localStorage.removeItem('jwtToken');
     window.localStorage.removeItem('userType');
     window.localStorage.removeItem('id');
+    window.location.href = '/';
   }
 
   static getCurrentUser() {
