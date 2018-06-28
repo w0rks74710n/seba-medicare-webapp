@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from 'react-md';
 import ColorPalette from "../../constants/ColorPalette";
+import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
 
 const CardStyle = {
   margin: 20,

@@ -106,7 +106,8 @@ class DoctorProfileHeader extends Component {
         </BasicInfo>
         <QuickButtons>
           <Button flat primary iconBefore={false} iconChildren="chat_bubble_outline" disabled>Emergency Contact</Button>
-          <Button flat primary iconBefore={false} iconChildren="calendar_today">Make Appointment</Button>
+          <Button flat primary iconBefore={false} iconChildren="calendar_today"
+                  onClick={() => this.props.renderAppointmentForm()}>Make Appointment</Button>
           <Button flat secondary iconBefore={false} iconChildren="rate_review">Add Review</Button>
         </QuickButtons>
       </DoctorProfileHeaderComponent>

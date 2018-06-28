@@ -22,10 +22,23 @@ class DoctorProfile extends Component {
 
   constructor(props){
     super(props);
+
+    this.state = {
+      renderForm: false,
+    };
   }
 
-  createAppointment(){
-
+  renderAppointmentForm(){
+    if(this.state.renderForm == false){
+      this.setState({
+        renderForm: true
+      });
+    }
+    else{
+      this.setState({
+        renderForm: false
+      });
+    }
   }
 
   componentWillMount(props) {
@@ -55,7 +68,7 @@ class DoctorProfile extends Component {
       <DoctorProfileComponent>
         <DoctorProfileHeader  doctorProfile={this.state.doctorProfile}/>
         <Divider/>
-        <MakeAnAppointmentForm doctor={this.state.doctorProfile}/>
+        <MakeAnAppointmentForm doctor={this.state.doctorProfile} renderForm={this.state.renderForm}/>
         <DoctorProfileInformation doctorProfile={this.state.doctorProfile}/>
         {/* <DoctorProfileReviews/> */}
       </DoctorProfileComponent> 
