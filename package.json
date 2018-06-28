@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "firebase": "^5.0.4",
+    "formik": "^0.11.11",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-md": "^1.4.1",
