@@ -4,20 +4,20 @@ import 'firebase/database';
 
 const prodConfig = {
   apiKey: "AIzaSyC0YovggdUrzBl-5ACqrUvxRkYJ-Pwxluk",
-  authDomain: "medicare.firebaseapp.com",
-  databaseURL: "https://medicare.firebaseio.com",
+  authDomain: "medicare-1aad6.firebaseapp.com",
+  databaseURL: "https://medicare-1aad6.firebaseio.com",
   projectId: "medicare-1aad6",
-  storageBucket: '',
-  messagingSenderId: "1022457139691",
+  storageBucket: "medicare-1aad6.appspot.com",
+  messagingSenderId: "1022457139691"
 };
 
 const devConfig = {
   apiKey: "AIzaSyC0YovggdUrzBl-5ACqrUvxRkYJ-Pwxluk",
-  authDomain: "medicare.firebaseapp.com",
-  databaseURL: "https://medicare.firebaseio.com",
+  authDomain: "medicare-1aad6.firebaseapp.com",
+  databaseURL: "https://medicare-1aad6.firebaseio.com",
   projectId: "medicare-1aad6",
-  storageBucket: '',
-  messagingSenderId: "1022457139691",
+  storageBucket: "medicare-1aad6.appspot.com",
+  messagingSenderId: "1022457139691"
 };
 
 const config = process.env.NODE_ENV === 'production'

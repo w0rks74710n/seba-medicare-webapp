@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from '../../resources/medicare_logo.png';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom'
-import ColorPalette from '../../constants/ColorPalette'
+import { Link } from 'react-router-dom';
+import ColorPalette from '../../constants/ColorPalette';
+import SignOutButton from '../RegisterationLogin/SignOutButton'
 
 const HeaderDiv = styled.div`
 	border-bottom: 1px solid black;
@@ -71,20 +72,36 @@ const ButtonLink0 = styled(Link)`
 	margin: auto;
 `;
 
-const ButtonLink1 = styled(Link)`
-	order: 2;
-	margin: auto;
-  text-decoration: none;
-	font-style: normal;
-	color: black;
-`;
-
 const ButtonLink2 = styled(Link)`
 	order: 4;
 	margin: auto;
   text-decoration: none;
 	font-style: normal;
 	color: black;
+`;
+
+const SignInButton = styled(Link)`
+  -webkit-order: 3;
+  -ms-flex-order: 3;
+  order: 3;
+  border-radius: 5px;
+  padding: 5px 20px;
+  margin: 20px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #55acee;
+  box-shadow: 0px 5px 0px 0px #3C93D5;
+  
+  &:active {
+    transform: translate(0px, 2px);
+    -webkit-transform: translate(0px, 2px);
+    box-shadow: 0px 1px 0px 0px;
+  }
+  
+  &:hover {
+    background-color: #6FC6FF;
+    cursor: pointer;
+  }
 `;
 
 class Header extends Component {
@@ -94,12 +111,6 @@ class Header extends Component {
         <ButtonLink0 to="/home">
           <Header_Logo src={logo} alt="MediCare_Logo" />
         </ButtonLink0>
-
-        <ButtonLink1 to="/join-us-as-a-doctor">
-          <Header_Button>
-            Join As a Doctor
-          </Header_Button>
-        </ButtonLink1>
 
         <Header_Horizontal_Navigation>
           <HeaderHorizontalNavigationList>
@@ -113,7 +124,7 @@ class Header extends Component {
               <StyledLink to="/contact">Contact</StyledLink>
             </Header_Horizontal_Navigation_Item>
             <Header_Horizontal_Navigation_Item>
-              <StyledLink to="/join-us-as-a-doctor">Join</StyledLink>
+              <StyledLink to="/doctor-sign-up">Join Medicare</StyledLink>
             </Header_Horizontal_Navigation_Item>
             <Header_Horizontal_Navigation_Item>
               <StyledLink to="/language">EN</StyledLink>
@@ -121,11 +132,14 @@ class Header extends Component {
           </HeaderHorizontalNavigationList>
         </Header_Horizontal_Navigation>
 
-        <ButtonLink2 to="/join-us-as-a-doctor">
-          <Header_Button>
-            Login/Sign up
-          </Header_Button>
-        </ButtonLink2>
+        {window.localStorage['jwtToken'] === undefined &&
+          <SignInButton to="/sign-in">
+              Login/Sign up
+          </SignInButton>
+        }
+        {window.localStorage['jwtToken'] !== undefined &&
+          <SignOutButton />
+        }
 
       </HeaderDiv>
     );

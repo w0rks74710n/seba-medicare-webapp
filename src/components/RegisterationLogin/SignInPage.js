@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import email_icon from '../../resources/email-icon.png';
 import password_icon from '../../resources/pass-icon.png';
 import { withRouter } from 'react-router-dom';
-import { SignUpLink } from './SignUp';
+import { SignUpLink } from './DoctorSignUpPage';
 import { PasswordForgetLink } from './PasswordForget';
-import { auth } from '../../services/Firebase';
+import UserService from '../../services/UserService'
 import styled from "styled-components";
 import ColorPalette from "../../constants/ColorPalette";
 
 const ContentDiv = styled.div`
-  margin: 20px auto;
+  margin: 70px auto;
   width: 450px; 
   -webkit-border-radius: 8px/7px; 
   -moz-border-radius: 8px/7px; 
@@ -69,7 +69,7 @@ const ButtonForm = styled.button`
 const IconForm = styled.img`  
   display: inline-block;
   float: left;
-  height: 2.2em;
+  height: 2.4em;
   width: 3.2em;
 `;
 
@@ -95,14 +95,14 @@ const SignInPage = ({ history }) =>
     <SignInForm history={history} />
     <PasswordForgetLink />
     <SignUpLink />
-  </ContentDiv>
+  </ContentDiv>;
 
 const updateByPropertyName = (propertyName, value) => () => ({
   [propertyName]: value,
 });
 
 const INITIAL_STATE = {
-  email: '',
+  username: '',
   password: '',
   error: null,
 };
@@ -115,8 +115,9 @@ class SignInForm extends Component {
   }
 
   onSubmit = (event) => {
+    event.preventDefault();
     const {
-      email,
+      username,
       password,
     } = this.state;
 
@@ -124,38 +125,40 @@ class SignInForm extends Component {
       history,
     } = this.props;
 
-    auth.doSignInWithEmailAndPassword(email, password)
-      .then(() => {
-        this.setState(() => ({ ...INITIAL_STATE }));
-        history.push("/home");
-      })
-      .catch(error => {
-        this.setState(updateByPropertyName('error', error));
+    UserService.login(username, password).then((data) => {
+      console.log(data.token);
+      window.localStorage['jwtToken'] = data.token;
+      window.localStorage['userType'] = data.userType;
+      window.localStorage['id'] = data.id;
+      this.props.history.push('/');
+    }).catch((e) => {
+      console.error(e);
+      this.setState({
+        error: e
       });
-
-    event.preventDefault();
-  }
+    });
+  };
 
   render() {
     const {
-      email,
+      username,
       password,
       error,
     } = this.state;
 
     const isInvalid =
       password === '' ||
-      email === '';
+      username === '';
 
     return (
       <form onSubmit={this.onSubmit}>
         <LineDiv>
           <IconForm src={email_icon}/>
           <InputForm
-            value={email}
-            onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
+            value={username}
+            onChange={event => this.setState(updateByPropertyName('username', event.target.value))}
             type="text"
-            placeholder="Email Address"
+            placeholder="Username"
           />
         </LineDiv>
         <LineDiv>

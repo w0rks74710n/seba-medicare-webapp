@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import DoctorReviewsService from "../../services/DoctorReviewsService";
+
+import DoctorReviewsDialog from '../DoctorProfileReviews/DoctorReviewsDialog';
+
 import {
   Button
- } from 'react-md';
+} from 'react-md';
 
 const DoctorProfileHeaderComponent = styled.div`
   height: 200px;
   padding-top: 25px;
-
 `;
 
 const ProfileImage = styled.div`
@@ -72,14 +75,46 @@ const QuickButtons = styled.div`
   }
 `;
 
+const Rating = styled.div`
+  span {
+    margin-left: 10px;
+  }
+`;
+
 class DoctorProfileHeader extends Component {
 
   constructor(props){
     super(props);
   }
 
+  sendReviewToServer(reviewObj) {
+    DoctorReviewsService.addReview(
+      {
+        doctor: reviewObj.doctor,
+        rating: reviewObj.rating,
+        comment: reviewObj.comment
+      }
+    );
+  }
 
   render() {
+    let averageRating = (reviews) => {
+      var stars = 0;
+      for(var i = 0; i < reviews.length; i++)
+        stars += this.props.doctorReviews[i].rating;
+      return stars / reviews.length;
+    };
+
+    let renderStars = (reviews) => {
+      let stars = [];
+      for (let i = 0; i < averageRating(reviews); i++) {
+        stars.push(
+          <i className="material-icons" style={{width: '24px'}}>star_rate</i>
+        );
+      };
+      return stars;
+    };
+
     return(
       <DoctorProfileHeaderComponent>
         <ProfileImage>
@@ -91,24 +126,18 @@ class DoctorProfileHeader extends Component {
           <Website>
             <a target="_blank"
                href={this.props.doctorProfile.contactInformation.practiceWebsite}>
-                {this.props.doctorProfile.contactInformation.practiceWebsite}
+              {this.props.doctorProfile.contactInformation.practiceWebsite}
             </a>
-          </Website>            
-          {/* TODO: add later */}
-          <div className="rating">
-            <i className="material-icons" style={{width: '24px'}}>star_rate</i>
-            <i className="material-icons" style={{width: '24px'}}>star_rate</i>
-            <i className="material-icons" style={{width: '24px'}}>star_rate</i>
-            <i className="material-icons" style={{width: '24px'}}>star_rate</i>
-            <i className="material-icons" style={{width: '24px'}}>star_rate</i>
-            <span className="reviews"> (1000 Reviews)</span>
-          </div>
+          </Website>
+          <Rating className="rating">
+            {renderStars(this.props.doctorReviews)}
+            <span className="reviews">({this.props.doctorReviews.length} Reviews)</span>
+          </Rating>
         </BasicInfo>
         <QuickButtons>
           <Button flat primary iconBefore={false} iconChildren="chat_bubble_outline" disabled>Emergency Contact</Button>
-          <Button flat primary iconBefore={false} iconChildren="calendar_today"
-                  onClick={() => this.props.renderAppointmentForm()}>Make Appointment</Button>
-          <Button flat secondary iconBefore={false} iconChildren="rate_review">Add Review</Button>
+          <Button flat primary iconBefore={false} iconChildren="calendar_today" onClick={() => this.props.renderAppointmentForm()}>Make Appointment</Button>
+          <DoctorReviewsDialog doctor={this.props.doctorProfile.doctor_id} sendReviewToServer={this.sendReviewToServer} />
         </QuickButtons>
       </DoctorProfileHeaderComponent>
     )
