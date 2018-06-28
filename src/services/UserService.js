@@ -58,6 +58,8 @@ export default class UserService {
 
   static logout(){
     window.localStorage.removeItem('jwtToken');
+    window.localStorage.removeItem('userType');
+    window.localStorage.removeItem('id');
   }
 
   static getCurrentUser() {

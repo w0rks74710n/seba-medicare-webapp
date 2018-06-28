@@ -128,6 +128,8 @@ class SignInForm extends Component {
     UserService.login(username, password).then((data) => {
       console.log(data.token);
       window.localStorage['jwtToken'] = data.token;
+      window.localStorage['userType'] = data.userType;
+      window.localStorage['id'] = data.id;
       this.props.history.push('/');
     }).catch((e) => {
       console.error(e);
