@@ -15,7 +15,10 @@ import {
 const DoctorProfileComponent = styled.section`
   width: 1000px;
   margin: auto;
+`;
 
+const AppointmentFormDiv = styled.div`
+  display: none;
 `;
 
 class DoctorProfile extends Component {
@@ -66,9 +69,9 @@ class DoctorProfile extends Component {
 
     return (
       <DoctorProfileComponent>
-        <DoctorProfileHeader  doctorProfile={this.state.doctorProfile}/>
+        <DoctorProfileHeader  doctorProfile={this.state.doctorProfile} renderAppointmentForm={this.renderAppointmentForm.bind(this)}/>
         <Divider/>
-        <MakeAnAppointmentForm doctor={this.state.doctorProfile} renderForm={this.state.renderForm}/>
+        { this.state.renderForm ? <MakeAnAppointmentForm doctor={this.state.doctorProfile} /> : null }
         <DoctorProfileInformation doctorProfile={this.state.doctorProfile}/>
         {/* <DoctorProfileReviews/> */}
       </DoctorProfileComponent> 
