@@ -28,13 +28,11 @@ const DoctorProfileReviewsComponent = styled.div`
 `;
 
 class DoctorProfileReviews extends Component {
-
     constructor(props){
         super(props);
     }
 
     render() {
-
         let reviewsList = this.props.reviews.map((review) => {
             let renderStars = function() {
                 let stars = [];
@@ -61,7 +59,7 @@ class DoctorProfileReviews extends Component {
             <Card>
                 <CardTitle title="Reviews"/>
                 <CardText>
-                    <ul>{ reviewsList }</ul>
+                    <ul>{reviewsList}</ul>
                 </CardText>
             </Card>
         </DoctorProfileReviewsComponent>

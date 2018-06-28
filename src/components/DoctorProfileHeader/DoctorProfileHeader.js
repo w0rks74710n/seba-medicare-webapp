@@ -83,8 +83,6 @@ const Rating = styled.div`
 
 class DoctorProfileHeader extends Component {
 
-  state = { }
-
   constructor(props){
     super(props);
   }
