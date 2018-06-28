@@ -44,7 +44,8 @@ const PickerDiv = styled.div`
 `;
 
 const today = new Date();
-let newDate, newTime;
+let newDate = "";
+let newTime = "";
 
 class MakeAnAppointmentForm extends Component {
 
@@ -59,6 +60,13 @@ class MakeAnAppointmentForm extends Component {
     };
   }
 
+  addZero(char){
+    if( char.length == 1 ){
+      return "0"+char;
+    }
+    return char;
+  }
+
   handleDateChange = (givenDate) => {
     let arrayDate = givenDate.split("/");
     newDate = arrayDate[2] + "-" + this.addZero(arrayDate[1]) + "-" + this.addZero(arrayDate[0]);
@@ -66,6 +74,7 @@ class MakeAnAppointmentForm extends Component {
     this.setState({
       date: newDate + "T" + newTime + ":00.000Z"
     });
+    console.log(this.state.date);
   };
 
   handleTimeChange = (givenTime) => {
@@ -74,6 +83,21 @@ class MakeAnAppointmentForm extends Component {
     this.setState({
       date: newDate + "T" + newTime + ":00.000Z"
     });
+    console.log(this.state.date);
+  };
+
+  handleIllness(event){
+    this.setState({
+      illness: event.target.value
+    });
+    console.log(this.state.illness);
+  };
+
+  handlePatient(event){
+    this.setState({
+      patient: event.target.value
+    });
+    console.log(this.state.patient);
   };
 
   render() {
@@ -86,10 +110,10 @@ class MakeAnAppointmentForm extends Component {
         />
         <div>
           <Label>Patient Name</Label>
-          <Input name="patient" type="text" onChange={this.handlePatient}/>
+          <Input name="patient" type="text" onChange={this.handlePatient.bind(this)}/>
 
           <Label>Illness</Label>
-          <Input name="illness" type="text" onChange={this.handleIllness}/>
+          <Input name="illness" type="text" onChange={this.handleIllness.bind(this)}/>
         </div>
         <PickerDiv>
           <DatePicker
