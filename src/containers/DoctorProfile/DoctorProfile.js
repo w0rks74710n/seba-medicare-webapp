@@ -5,6 +5,7 @@ import DoctorProfileInformationService from '../../services/DoctorProfileInforma
 
 import DoctorProfileHeader from "../../components/DoctorProfileHeader/DoctorProfileHeader";
 import DoctorProfileInformation from "../../components/DoctorProfileInformation/DoctorProfileInformation";
+import MakeAnAppointmentForm from "../../components/DoctorProfileInformation/MakeAnAppointmentForm";
 import DoctorProfileReviews from "../../components/DoctorProfileReviews/DoctorProfileReviews";
 
 import {
@@ -21,6 +22,10 @@ class DoctorProfile extends Component {
 
   constructor(props){
     super(props);
+  }
+
+  createAppointment(){
+
   }
 
   componentWillMount(props) {
@@ -50,6 +55,7 @@ class DoctorProfile extends Component {
       <DoctorProfileComponent>
         <DoctorProfileHeader  doctorProfile={this.state.doctorProfile}/>
         <Divider/>
+        <MakeAnAppointmentForm doctor={this.state.doctorProfile}/>
         <DoctorProfileInformation doctorProfile={this.state.doctorProfile}/>
         {/* <DoctorProfileReviews/> */}
       </DoctorProfileComponent> 
