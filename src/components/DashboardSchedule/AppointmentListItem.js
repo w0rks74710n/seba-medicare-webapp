@@ -1,93 +1,41 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardText,
+  CardTitle,
+} from 'react-md';
 import ColorPalette from "../../constants/ColorPalette"
 import { DatePicker, TimePicker } from 'react-md';
+import UserService from "../../services/UserService";
+import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
 
-const AppointmentListItemDiv = styled.div`
+const CardStyle = {
+  maxWidth: 600,
+  margin: 15,
+};
+
+const PickerDiv = styled.div`
   display: inline-flex;
-  border: 1px solid ${ ColorPalette.linksHover };
-  box-shadow: 2px 1px 1px rgba(0,0,0,.2);
-  height: 100px;
-  width: 900px;
-  margin: auto;
-  margin-top: 15px;
 `;
 
-const TimeDiv = styled.div`
-  margin: auto;
-  display: inline-block;
-  order: 1;
-  height: 100px;
-  width: 150px;
-  z-index: 1;
-  padding: 10px;
-  
-  &:hover {
-    background-color: ${ ColorPalette.linksHover };
-	}	
+const OneDiv = styled.div`
+  display: inline-flex;
 `;
 
-const InfoDiv = styled.div`
-  margin: auto;
-  border-left: 3px solid ${ ColorPalette.linksHover };  
-  display: inline-block;
-  order: 2;
-  height: 100px;
-  width: 300px;
-  z-index: 1;
-  padding: 10px;
-  
-  &:hover {
-    background-color: ${ ColorPalette.linksHover };
-	}	
+const CardTextDiv = styled.div`
+  width: 250px;
+  height: 50px;
+  margin-left: -100px;
+  margin-bottom: 40px;
+  float: left;
 `;
 
-const ButtonsDiv = styled.div`
-  margin: auto;
-  border-left: 3px solid ${ ColorPalette.linksHover };  
-  display: inline-block;
-  order: 3;
-  height: 100px;
-  width: 450px;
-  z-index: 0;
-  padding: 10px;
-`;
-
-const TimeParagraph = styled.p`
-  text-align: justify;		
-  text-justify: inter-word;
-  vertical-align: middle;
-    
-  font-famiy: Calibri Light;
-	font-style: normal;
-  font-size: 16px;
-  color: ${ ColorPalette.primary };
-`;
-
-const Paragraph = styled.p`
-  text-align: justify;		
-  text-justify: inter-word;
-  vertical-align: middle;
-    
-  font-famiy: Calibri Light;
-	font-style: normal;
-  font-size: 14px;
-	color: #424242;
-`;
-
-const Button = styled.button`  
-  display: inline;  
-  float: right;  
-  margin-left: 50px;
-  height: 35px;
-  width: 120px;
-  font-size: 13px;
-  border-radius: 15px;
-  
-  &:hover {
-    background-color: ${ ColorPalette.linksHover };
-	}	
-`;
+const today = new Date();
+let newDate;
+let newTime;
 
 class AppointmentListItem extends Component {
 
@@ -95,51 +43,106 @@ class AppointmentListItem extends Component {
     super(props);
 
     this.state = {
-      doctor: this.props.doctor,
-      patient: this.props.patient,
+      id: this.props._id,
+      doctor_id: this.props.doctor_id,
+      patient_id: this.props.patient_id,
       illness: this.props.illness,
+      date: this.props.date
       //Date will be set in componentWillMount
       //Time will be set in componentWillMount
     };
   }
 
-  //Take Date information and set date / time seperately
-  componentWillMount(){
-    var array = this.props.date.toString().split("T");
+  addZero(char){
+    if( char.length == 1 ){
+      return "0"+char;
+    }
+    return char;
+  }
+
+  handleDateChange = (givenDate) => {
+    let arrayDate = givenDate.split("/");
+    newDate = arrayDate[2] + "-" + this.addZero(arrayDate[1]) + "-" + this.addZero(arrayDate[0]);
 
     this.setState({
-      date: array[0],
-      time: array[1].slice(0, -5)
+      date: newDate + "T" + newTime + ":00.000Z"
     });
+  };
+
+  handleTimeChange = (givenTime) => {
+    newTime = givenTime;
+
+    this.setState({
+      date: newDate + "T" + newTime + ":00.000Z"
+    });
+  };
+
+  fetchPatientData() {
+    UserService.getPatient(this.state.patient_id).then((data) => {
+      this.setState({
+        patient: data.patient.fullName
+      });
+      console.log("Patient is got: ", JSON.stringify(data));
+    }).catch((e) => {
+      console.error(e);
+    });
+  }
+
+  //Take Date information and set date / time seperately
+  componentWillMount(){
+    this.fetchPatientData();
+
+    var dateArray = (this.state.date).split("T");
+    var dateArray2 = dateArray[0].split("-");
+
+    newDate = dateArray2[0] + "-" + this.addZero(dateArray2[1]) + "-" + this.addZero(dateArray2[2]);
+    newTime = dateArray[1].slice(0, -8);
   }
 
   render() {
     return (
-      <AppointmentListItemDiv>
-        <TimeDiv>
-          <TimeParagraph>Date: { this.state.date }</TimeParagraph>
-          <TimeParagraph>Time: { this.state.time }</TimeParagraph>
-        </TimeDiv>
-        <InfoDiv>
-          <Paragraph><b>Name:</b> { this.state.patient }</Paragraph>
-          <Paragraph><b>Illness:</b> { this.state.illness }</Paragraph>
-        </InfoDiv>
-        <ButtonsDiv>
-          <DatePicker
-            id="appointment-date-auto"
-            label="New appointment date"
-            className="md-cell"
-            locales="en-US"
-            displayMode="landscape"
-          />
-          <TimePicker
-            id="appointment-time-landscape"
-            label="New appointment Time"
-            className="md-cell"
-            displayMode="landscape"
-          />
-        </ButtonsDiv>
-      </AppointmentListItemDiv>
+      <Card style={CardStyle} className="md-block-centered">
+        <CardTitle
+          title= {this.state.patient}
+          subtitle= { "Date: " + newDate + ", Time: " + newTime }
+        />
+        <OneDiv>
+          <PickerDiv>
+            <DatePicker
+              id="appointment-date-auto"
+              label="Date"
+              className="md-cell"
+              locales="en-US"
+              minDate={today}
+              displayMode="landscape"
+              fullWidth={false}
+              onChange={this.handleDateChange}
+            />
+            <TimePicker
+              id="appointment-time-landscape"
+              label="Time"
+              className="md-cell"
+              displayMode="landscape"
+              fullWidth={false}
+              onChange={this.handleTimeChange}
+            />
+          </PickerDiv>
+
+          <CardTextDiv>
+            <CardText>
+              <p>
+                <b>Illness: </b><br/>
+                {this.state.illness}
+              </p>
+            </CardText>
+          </CardTextDiv>
+        </OneDiv>
+        <CardActions>
+          <Button flat onClick={() => { if (window.confirm('Are you sure you wish to delete this item?'))
+            this.props.onDelete(this.state.id)} }>Cancel</Button>
+          <Button flat onClick={() => this.props.onUpdate(this.state, this.state.id)}>Update</Button>
+        </CardActions>
+      </Card>
     );
   }
 }

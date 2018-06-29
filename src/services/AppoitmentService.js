@@ -2,7 +2,7 @@
 
 import HttpService from './HttpService';
 
-export default class DoctorProfileInformationService {
+export default class AppoitmentService {
 
   constructor(){
 
@@ -10,9 +10,20 @@ export default class DoctorProfileInformationService {
 
   static baseURL() {return "http://localhost:3001/api/appointment" }
 
-  static getAppointments(){
+  static createAppointment(appointment, doctor_id){
+    console.log("New appointment: " + JSON.stringify(appointment), doctor_id);
     return new Promise((resolve, reject) => {
-      HttpService.get(this.baseURL(), function(data) {
+      HttpService.post(this.baseURL() + '/' + doctor_id, appointment, function(data) {
+        resolve(data);
+      }, function(textStatus) {
+        reject(textStatus);
+      });
+    });
+  }
+
+  static getAppointments(doctor_id){
+    return new Promise((resolve, reject) => {
+      HttpService.get(this.baseURL() + '/' + doctor_id, function(data) {
         resolve(data);
       }, function(textStatus) {
         reject(textStatus);
@@ -32,7 +43,7 @@ export default class DoctorProfileInformationService {
 
   static deleteAppointment(appointment_id) {
     return new Promise((resolve, reject) => {
-      HttpService.remove(this.baseURL()+'/'+ appointment_id, function(data) {
+      HttpService.delete(this.baseURL()+'/'+ appointment_id, function(data) {
         if(data.message != undefined) {
           resolve(data.message);
         } else {
