@@ -7,6 +7,7 @@ import EditContactInformationFormContainer from "./EditContactInformationFormCon
 import EditSocialMediaFormContainer from "./EditSocialMediaFormContainer";
 import EditExperienceFormContainer from "./EditExperienceFormContainer";
 import EditEducationFormContainer from "./EditEducationFormContainer";
+import EditMedicareServicesFormContainer from "./EditMedicareServicesFormContainer"
 import EditPicturesFormContainer from "./EditPicturesFormContainer";
 
 import DoctorProfileInformationService from "../../services/DoctorProfileInformationService"
@@ -65,6 +66,9 @@ class CustomizeDoctorProfile extends Component {
         <EditEducationFormContainer id={this.props.match.params.id}
                                     education={this.state.data.doctorProfileInformation.education}/>
         <br/>
+        <EditMedicareServicesFormContainer id={this.props.match.params.id}
+                                           services={this.state.data.doctorProfileInformation.services}/>
+        <br />
         <EditPicturesFormContainer id={this.props.match.params.id}
                                    pictures={this.state.data.doctorProfileInformation.pictures}/>
       </CustomizeDoctorProfileContainer>
