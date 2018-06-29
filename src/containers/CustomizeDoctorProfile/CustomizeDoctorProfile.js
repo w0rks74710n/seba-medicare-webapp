@@ -56,7 +56,8 @@ class CustomizeDoctorProfile extends Component {
         <EditContactInformationFormContainer id={this.props.match.params.id}
                                              contactInformation={this.state.data.doctorProfileInformation.contactInformation} />
         <br/>
-        <EditSocialMediaFormContainer id={this.props.match.params.id} />
+        <EditSocialMediaFormContainer id={this.props.match.params.id}
+                                      socialMedia={this.state.data.doctorProfileInformation.socialMedia}/>
         <br/>
         <EditExperienceFormContainer id={this.props.match.params.id} />
         <br/>
