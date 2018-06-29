@@ -20,12 +20,17 @@ class SearchDoctor extends Component {
         isLanguageSelected: 'noPreference',
         isRadiusSelected: 'wholeArea',
         isRatingSelected: 'noPreference'},
+        searchQuery: {
+            isAreaOfSpecialitySelected: this.props.searchQueryForDoctor,
+            isZIPCodeSelected: this.props.searchQueryForPlace
+        },
       data: []
+
     };
   }
 
   fetchDoctorData() {
-    DoctorProfileInformationService.getDoctorProfiles(this.state.filter).then((data) => {
+    DoctorProfileInformationService.getDoctorProfiles(this.state.filter, this.state.searchQuery).then((data) => {
       this.setState({
         data: data,
         loading: false
@@ -56,6 +61,16 @@ class SearchDoctor extends Component {
     }, () => { this.fetchDoctorData()} );
   }
 
+
+  retrieveSearchBarState(doctor, place) {
+    this.setState({
+        searchQuery: {
+            doctorType: doctor,
+            place: place
+        }
+    }, () => { this.fetchDoctorData()});
+  }
+
   render() {
     if (this.state.loading) {
       return (<h2>Loading...</h2>);
@@ -63,6 +78,7 @@ class SearchDoctor extends Component {
 
     return(
       <SearchDoctorContainer className={'searchDoctorContainer'}>
+          <SearchBar retrieveSearchBarState={this.retrieveSearchBarState.bind(this)}/>
         <FilterSidebar retrieveFilterSidebarState={this.retrieveFilterSidebarState.bind(this)} />
         <SearchDoctorList data={this.state.data} />
       </SearchDoctorContainer>

@@ -5,6 +5,7 @@ import PlacesAutocomplete, { geocodeByAddress, geocodeByPlaceId, getLatLng } fro
 import "../../constants/searchBarDoctor.css"
 import "../../constants/locationSearchDoctor.css"
 
+
 const SearchBarCont = styled.div`
     height: 55px;
     width: auto;
@@ -39,7 +40,7 @@ const SearchButton = styled.input`
     }
 `;
 
-class SearchBarContainer extends React.Component {
+class SearchBar extends React.Component {
 
     constructor(props) {
         super(props);
@@ -49,19 +50,31 @@ class SearchBarContainer extends React.Component {
     render() {
         return (
             <SearchBarCont>
-                <SearchBar/>
+                <DoctorSearch/>
                 <LocationInputCont>
                     <LocationSearch/>
                 </LocationInputCont>
                 <SearchButton type="submit" value="Search"/>
             </SearchBarCont>
         )
+    }
 
+
+    /*vorgehen:in dieser klasse wird die methode für den senden button implementiert
+    -> er holt sich die daten von einem speicher array, dass doctor und place enthält ->
+    sendet das dann nach oben an die props
+
+    */
+    onClick() {
+        // noch nicht fertig
+        () => {
+            this.props.retrieveFilterSidebarState(this.state)
+        }
     }
 
 }
 
-export default SearchBarContainer;
+export default SearchBar;
 
 
 const doctors = [
@@ -132,7 +145,7 @@ const renderSuggestionsContainer = ({ containerProps, children, query }) => (
 
 const escapeRegexCharacters = str => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-class SearchBar extends React.Component {
+class DoctorSearch extends React.Component {
 
     constructor() {
         super();
@@ -189,19 +202,42 @@ class LocationSearch extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { address: '' }
+        this.state = {
+            address: '',
+            errorMessage: '',
+            latitude: null,
+            longitude: null,
+            isGeocoding: false,
+            loading: true,
+            data:[]
+        };
     }
 
     handleChange = (address) => {
-        this.setState({ address })
-    }
+        this.setState({
+            address,
+            latitude: null,
+            longitude: null,
+            errorMessage: '',
+        });
+    };
 
-    handleSelect = (address) => {
-        geocodeByAddress(address)
-            .then(results => getLatLng(results[0]))
-            .then(latLng => console.log('Success', latLng))
-            .catch(error => console.error('Error', error))
-    }
+    handleSelect = selected => {
+        this.setState({ isGeocoding: true, address: selected });
+        geocodeByAddress(selected)
+            .then(res => getLatLng(res[0]))
+            .then(({ lat, lng }) => {
+                this.setState({
+                    latitude: lat,
+                    longitude: lng,
+                    isGeocoding: false,
+                });
+            })
+            .catch(error => {
+                this.setState({ isGeocoding: false });
+                console.log('error', error); // eslint-disable-line no-console
+            });
+    };
 
     render() {
         return (

@@ -8,7 +8,7 @@ export default class DoctorProfileInformationService {
 
   static baseURL() {return "http://localhost:3001/api/doctorProfileInformation" }
 
-  static getDoctorProfiles(filter) {
+  static getDoctorProfiles(filter, searchBar) {
     return new Promise((resolve, reject) => {
       console.log(filter);
       HttpService.get(
@@ -16,7 +16,9 @@ export default class DoctorProfileInformationService {
         '?isInsuranceSelected='+filter.isInsuranceSelected+
         '&isLanguageSelected='+filter.isLanguageSelected+
         '&isRadiusSelected='+filter.isRadiusSelected+
-        '&isRatingSelected='+filter.isRatingSelected, (data) => {
+        '&isRatingSelected='+filter.isRatingSelected+
+          '&isAreaOfSpecialitySelected='+searchBar.isAreaOfSpecialitySelected+
+          '&isZIPCodeSelected='+searchBar.isZIPCodeSelected, (data) => {
         resolve(data);
       }, (textStatus) => {
         reject(textStatus);

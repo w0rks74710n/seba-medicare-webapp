@@ -20,13 +20,30 @@ const ContentContainer = styled.div`
     display: flex nowrap;
 `;
 
+
 class HomeContent extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      doctorType: this.props.searchQueryForDoctor,
+        place: this.props.searchQueryForPlace
+    }
+  }
+
+  searchDoctorWithProps = (props) => {
+    return (
+            <SearchDoctor searchQueryForDoctor={this.state.doctorType} searchQueryForPlace={this.state.place}
+            />
+        );
+    };
+
   render() {
     return(
       <ContentContainer>
         <Switch>
-          <Route exact path={"/"} component={SearchDoctor} />
-          <Route path={"/home"} component={SearchDoctor} />
+          <Route exact path={"/"} searchQueryForDoctor={this.state.doctorType} searchQueryForPlace={this.state.place} component={SearchDoctor} />
+          <Route path={"/home"} searchQueryForDoctor={this.state.doctorType} searchQueryForPlace={this.state.place} component={SearchDoctor} />
 
           <Route path={"/patient-sign-up"} component={PatientSignUp} />
           <Route path={"/doctor-sign-up"} component={SignUp} />
