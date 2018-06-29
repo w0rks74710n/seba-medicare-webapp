@@ -50,7 +50,7 @@ class CustomizeDoctorProfile extends Component {
 
     return (
       <CustomizeDoctorProfileContainer>
-        <EditAboutFormContainer id={this.props.match.params.id} />
+        <EditAboutFormContainer id={this.props.match.params.id} about={this.state.data.doctorProfileInformation.about} />
         <br/>
         <EditContactInformationFormContainer id={this.props.match.params.id} contactInformation={this.state.data.description}/>
         <br/>
