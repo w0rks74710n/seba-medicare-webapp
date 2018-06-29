@@ -13,12 +13,11 @@ const PageContainer = styled.div`
 `;
 
 const SearchContainer = styled.div`
-  display: flex;
+  display: flex row;
   z-index: 10;
   width: 50%;
   height: 30%;
   margin: auto;
-  border: 1px solid black;
 `;
 
 const ButtonContainer = styled.div`
@@ -91,6 +90,13 @@ const SignInButton = styled(Link)`
   }
 `;
 
+const Form = styled.form`
+  position: relative; /* In order to overlay !!! */
+	width: 50%;
+	margin-left: 3px;
+	white-space: nowrap;
+`;
+
 class LandingPage extends Component {
   render() {
     return (
@@ -98,6 +104,9 @@ class LandingPage extends Component {
         <Background src={background} alt="MediCare Landing Page" />
         <SearchContainer>
           <Title>MediCare</Title>
+          <div>
+
+          </div>
         </SearchContainer>
         <ButtonContainer>
           <SignInButton to="/login">Login/Sign up</SignInButton>
