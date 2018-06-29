@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { TextField, Card, CardTitle, CardText, Cell, Button } from 'react-md';
 import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
 
-
-
 class EditAboutForm extends Component {
   constructor(props) {
     super(props);

@@ -3,10 +3,8 @@ import { TextField, Card, CardTitle, CardText, Cell, Button } from 'react-md';
 import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
 
 class EditSocialMediaForm extends Component {
-  
   constructor(props) {
     super(props);
-
     this.state = {
       socialMedia: {
         facebook: this.props.socialMedia.facebook,
@@ -14,18 +12,18 @@ class EditSocialMediaForm extends Component {
         xing: this.props.socialMedia.xing
       }
     };
-
-    this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event) {
     event.preventDefault();
+    console.log(this.state);
     DoctorProfileInformationService.updateDoctorProfile(this.state, this.props.id).then((response) => {
       response.successfullyUpdated ?
         alert('Profile updated successfully!') :
         alert('An error has happened while saving the data!');
     });
-  }
+  };
 
   render() {
     return(

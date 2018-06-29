@@ -2,19 +2,7 @@ import React, { Component } from "react";
 import { TextField, Card, CardTitle, CardText, Cell, Button } from 'react-md';
 import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
 
-const INITIAL_STATE = {
-  contactInformation: {
-    fullName: '',
-    email: '',
-    mobile: '',
-    practiceWebsite: '',
-    addressLine1: '',
-    addressLine2: ''
-  }
-};
-
 class EditContactInformationForm extends Component {
-
   constructor(props) {
     super(props);
     this.state ={

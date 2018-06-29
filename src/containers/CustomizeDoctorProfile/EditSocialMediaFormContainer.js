@@ -3,6 +3,7 @@ import React from 'react';
 import EditSocialMediaForm from '../../components/CustomizeDoctorProfile/EditSocialMediaForm';
 
 const EditSocialMediaFormContainer = ({ id, socialMedia }) => {
+  console.log(socialMedia);
   return (
     <EditSocialMediaForm
       id={id}
