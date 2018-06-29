@@ -78,4 +78,29 @@ export default class UserService {
   static isAuthenticated() {
     return !!window.localStorage['jwtToken'];
   }
+
+
+  static getPatient(patient_id) {
+    return new Promise((resolve, reject) => {
+      HttpService.get(this.baseURLPatient()+'/'+ patient_id, (data) => {
+        resolve(data);
+      }, function(textStatus) {
+        reject(textStatus);
+      });
+    });
+  }
+
+  static deletePatient(patient_id) {
+    return new Promise((resolve, reject) => {
+      HttpService.delete(this.baseURL()+'/'+ patient_id, function(data) {
+        if(data.message != undefined) {
+          resolve(data.message);
+        } else {
+          reject('Error while deleting');
+        }
+      }, function(textStatus) {
+        reject(textStatus);
+      });
+    });
+  }
 }
