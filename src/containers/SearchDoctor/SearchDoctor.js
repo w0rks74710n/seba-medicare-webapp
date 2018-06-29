@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import DoctorProfileInformationService from "../../services/DoctorProfileInformationService"
 
-import { FilterSidebar, SearchDoctorList } from "../"
+import { FilterSidebar, SearchDoctorList, SearchBar} from "../"
 
 const SearchDoctorContainer = styled.div`
   width: 100%;

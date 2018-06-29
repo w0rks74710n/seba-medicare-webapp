@@ -77,7 +77,7 @@ class Footer extends Component {
   render() {
     return (
       <FooterDiv>
-        <Copyrights>© All Rights Reserved. 2018 MediCare GBMH.</Copyrights>
+        <Copyrights>© All Rights Reserved. 2018 MediCare GmbH.</Copyrights>
         <Terms_Privacy>
           <ul>
             <Terms_Privacy_Item>
