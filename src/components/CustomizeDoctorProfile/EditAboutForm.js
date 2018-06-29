@@ -9,9 +9,7 @@ class EditAboutForm extends Component {
     super(props);
 
     this.state = {
-      about: {
-        description: this.props.about.description
-      },
+      about: this.props.about
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
