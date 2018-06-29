@@ -8,11 +8,12 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route path="/dashboard" component = {DashboardTemplate}/>
-          <Route path="/home" component = {Home}/>
+          <Route path={"/home"} component = {Home}/>
+          <Route path={"/dashboard"} component = {DashboardTemplate}/>
           <Route path={"/login"} component={LoginFromLandingPage} />
           <Route path={"/patient-sign-up"} component={RegisterFromLandingPage} />
-          <Route path="/" component = {Landing}/>
+          <Route exact path={"/"} component = {Landing}/>
+          <Route path={"/"} component = {Home}/>
         </Switch>
       </Router>
     );
