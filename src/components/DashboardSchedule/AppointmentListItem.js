@@ -9,6 +9,8 @@ import {
 } from 'react-md';
 import ColorPalette from "../../constants/ColorPalette"
 import { DatePicker, TimePicker } from 'react-md';
+import UserService from "../../services/UserService";
+import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
 
 const CardStyle = {
   maxWidth: 600,
@@ -27,6 +29,7 @@ const CardTextDiv = styled.div`
   width: 250px;
   height: 50px;
   margin-left: -100px;
+  margin-bottom: 40px;
   float: left;
 `;
 
@@ -41,8 +44,8 @@ class AppointmentListItem extends Component {
 
     this.state = {
       id: this.props._id,
-      doctor: this.props.doctor,
-      patient: this.props.patient,
+      doctor_id: this.props.doctor_id,
+      patient_id: this.props.patient_id,
       illness: this.props.illness,
       date: this.props.date
       //Date will be set in componentWillMount
@@ -74,8 +77,21 @@ class AppointmentListItem extends Component {
     });
   };
 
+  fetchPatientData() {
+    UserService.getPatient(this.state.patient_id).then((data) => {
+      this.setState({
+        patient: data.patient.fullName
+      });
+      console.log("Patient is got: ", JSON.stringify(data));
+    }).catch((e) => {
+      console.error(e);
+    });
+  }
+
   //Take Date information and set date / time seperately
   componentWillMount(){
+    this.fetchPatientData();
+
     var dateArray = (this.state.date).split("T");
     var dateArray2 = dateArray[0].split("-");
 
