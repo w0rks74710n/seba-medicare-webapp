@@ -1,4 +1,5 @@
 import App from './App/App'
+import Landing from './Landing/Landing'
 import Home from './HomePage/Home'
 import HomeContent from './HomePage/HomeContent'
 import PrivacyPolicy from './PrivacyPolicy/PrivacyPolicy'
@@ -14,6 +15,7 @@ import SearchBarContainer from './SearchBar/SearchBarContainer'
 
 export {
   App,
+  Landing,
   Home,
   HomeContent,
   PrivacyPolicy,
@@ -26,5 +28,4 @@ export {
   DoctorDescription,
   DoctorProfile,
   SearchBarContainer
-
 }
