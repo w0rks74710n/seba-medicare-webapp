@@ -35,7 +35,7 @@ class EditEducationForm extends Component {
              value={this.state.education.university}
              onChange={(newValue) => this.setState({ education: { ...this.state.education, university: newValue}})}
              className="md-cell--top" />
-           <Cell size={12}>
+           <Cell size={12} style={{textAlign: 'right'}}>
              <Button raised children="Submit" type="submit" />
            </Cell>
          </form>

@@ -66,7 +66,7 @@ class EditExperienceForm extends Component {
               onChange={(newValue) => this.setState({ experience: { ...this.state.experience, treatmentFocus: newValue}})}
               className="md-cell--top"
               helpText="Here you can describe what are your treatment focuses"/>
-            <Cell size={12}>
+            <Cell size={12} style={{textAlign: 'right'}}>
               <Button raised children="Submit" type="submit" />
             </Cell>
           </form>

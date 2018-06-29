@@ -36,7 +36,7 @@ class EditAboutForm extends Component {
               className="md-cell--top"
               helpText="Here you can enter a short description about yourself, your practice, your interests and anything you consider relevant for the visitors of your profile."
             />
-            <Cell size={12}>
+            <Cell size={12} style={{textAlign: 'right'}}>
               <Button raised children="Submit" type="submit" />
             </Cell>
           </form>
