@@ -1,25 +1,15 @@
 import React from 'react';
-import { reduxForm } from 'redux-form';
 
 import EditExperienceForm from '../../components/CustomizeDoctorProfile/EditExperienceForm';
-import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
 
-const EditExperienceFormContainer = ({ handleSubmit, id }) => {
-
-  const submitForm = (formValues) => {
-    DoctorProfileInformationService.updateDoctorProfile(formValues, id);
-  };
+const EditExperienceFormContainer = ({ id, experience }) => {
 
   return (
     <EditExperienceForm
-      onSubmit={submitForm}
-      handleSubmit={handleSubmit}
+      id={id}
+      experience={experience}
     />
   );
 };
 
-const formConfiguration = {
-  form: 'experience'
-};
-
-export default reduxForm(formConfiguration)(EditExperienceFormContainer);
+export default EditExperienceFormContainer;

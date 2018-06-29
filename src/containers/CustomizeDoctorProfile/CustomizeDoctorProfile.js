@@ -59,11 +59,14 @@ class CustomizeDoctorProfile extends Component {
         <EditSocialMediaFormContainer id={this.props.match.params.id}
                                       socialMedia={this.state.data.doctorProfileInformation.socialMedia}/>
         <br/>
-        <EditExperienceFormContainer id={this.props.match.params.id} />
+        <EditExperienceFormContainer id={this.props.match.params.id}
+                                     experience={this.state.data.doctorProfileInformation.experience}/>
         <br/>
-        <EditEducationFormContainer id={this.props.match.params.id} />
+        <EditEducationFormContainer id={this.props.match.params.id}
+                                    education={this.state.data.doctorProfileInformation.education}/>
         <br/>
-        <EditPicturesFormContainer id={this.props.match.params.id} />
+        <EditPicturesFormContainer id={this.props.match.params.id}
+                                   pictures={this.state.data.doctorProfileInformation.pictures}/>
       </CustomizeDoctorProfileContainer>
     );
   }
