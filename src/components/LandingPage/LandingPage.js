@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from 'styled-components';
 import background from '../../resources/landing1.jpg';
 import {Link} from "react-router-dom";
+import ColorPalette from "../../constants/ColorPalette";
 
 const PageContainer = styled.div`
   display: flex;
@@ -90,11 +91,33 @@ const SignInButton = styled(Link)`
   }
 `;
 
-const Form = styled.form`
-  position: relative; /* In order to overlay !!! */
-	width: 50%;
-	margin-left: 3px;
-	white-space: nowrap;
+const TermsContainer = styled.div`  
+  position: fixed;
+  z-index: 10;
+  width: 20%;
+  height: 40px;
+  left: 40%;
+  top: 80%;
+`;
+
+const Paragraph = styled.p`
+  text-align: justify;		
+  text-justify: inter-word;
+    
+  font-famiy: Calibri Light;
+	font-style: normal;
+  font-size: 18px;
+	color: #424242;
+`;
+
+const NavLink = styled(Link)`
+  text-decoration: none;
+  color: ${ ColorPalette.primary };
+  
+  &:hover {
+    font-style: italic;
+    color: ${ ColorPalette.accent };
+	}	
 `;
 
 class LandingPage extends Component {
@@ -111,6 +134,10 @@ class LandingPage extends Component {
         <ButtonContainer>
           <SignInButton to="/login">Login/Sign up</SignInButton>
         </ButtonContainer>
+
+        <TermsContainer>
+          <Paragraph>What is this all <NavLink to={""}>about?</NavLink> and <NavLink to={""}>Contact</NavLink></Paragraph>
+        </TermsContainer>
       </PageContainer>
     );
   }
