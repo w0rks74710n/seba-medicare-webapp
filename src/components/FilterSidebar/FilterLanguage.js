@@ -22,10 +22,11 @@ class FilterLanguage extends Component {
         <FilterTitle name={'Language'}/>
         <form>
           <FilterRadioButton value={ 'noPreference' } name={ 'No preference' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
+          <FilterRadioButton value={ 'spanish' } name={ 'Spanish' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
           <FilterRadioButton value={ 'english' } name={ 'English' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
-          <FilterRadioButton value={ 'german' } name={ 'German' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
           <FilterRadioButton value={ 'french' } name={ 'French' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
           <FilterRadioButton value={ 'italian' } name={ 'Italian' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
+          <FilterRadioButton value={ 'german' } name={ 'German' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
         </form>
       </FilterLanguageComponent>
     )

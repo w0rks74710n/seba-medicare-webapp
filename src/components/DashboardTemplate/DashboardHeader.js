@@ -9,7 +9,6 @@ import ColorPalette from '../../constants/ColorPalette'
 const HeaderDiv = styled.div`
   overflow-x: hidden;
   overflow-y: hidden;
-  padding: 5px;
 	background: #23282e;
   height: 59px;
   width: 100%;
@@ -22,6 +21,13 @@ const Dropdown = styled.li`
   text-decoration: none;  
   margin:auto; 
   margin-right: 74px;
+
+  &:hover {
+    cursor: pointer;
+    & > .dropdown-content {
+      visibility: visible;
+    }
+  }
 `;
 
 const DropdownToggle = styled.a`
@@ -29,9 +35,7 @@ const DropdownToggle = styled.a`
   display: block;
   text-decoration: none;  
   color: #e1ffff;
-  margin-left: 20px;
-    
-  &:hover .dropdown-content {display: block;}
+  padding: 20px;
 `;
 
 const DropdownMenu = styled.ul`
@@ -40,11 +44,10 @@ const DropdownMenu = styled.ul`
   margin: 0px;
   line-height: 2rem;
   cursor: pointer;
-  visibility: visible !important;
-  
+  visibility: hidden;
   display: block;
   position: absolute;
-  margin-top: 20px;
+  margin-top: 0;
   border: 1px solid rgba(0,0,0,.15);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
