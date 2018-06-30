@@ -14,6 +14,7 @@ import CustomizeDoctorProfile from './CustomizeDoctorProfile/CustomizeDoctorProf
 import DoctorDescription from './DoctorDescription/DoctorDescription'
 import DoctorProfile from './DoctorProfile/DoctorProfile'
 import SearchBar from './SearchBar/SearchBar'
+import MapSidebar from "../components/MapSidebar/MapSidebar";
 
 export {
   App,
@@ -31,5 +32,6 @@ export {
   CustomizeDoctorProfile,
   DoctorDescription,
   DoctorProfile,
-  SearchBar
+  SearchBar,
+    MapSidebar
 }
