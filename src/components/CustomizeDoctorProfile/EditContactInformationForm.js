@@ -52,7 +52,8 @@ class EditContactInformationForm extends Component {
               id="contactInformation[mobile]"
               name="contactInformation[mobile]"
               label="Mobile"
-              type="tel"
+              type="number"
+              placeholder={'015772539999'}
               value={this.state.contactInformation.mobile}
               onChange={(newValue) => this.setState({ contactInformation: { ...this.state.contactInformation, mobile: newValue}})}
               className="md-cell--top" />

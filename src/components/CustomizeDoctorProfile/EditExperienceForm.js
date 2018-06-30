@@ -42,6 +42,7 @@ class EditExperienceForm extends Component {
               id="experience[yearsOfExperience]"
               name="experience[yearsOfExperience]"
               label="Years of Experience"
+              type="number"
               value={this.state.experience.yearsOfExperience}
               onChange={(newValue) => this.setState({ experience: { ...this.state.experience, yearsOfExperience: newValue}})}
               className="md-cell--top" />
