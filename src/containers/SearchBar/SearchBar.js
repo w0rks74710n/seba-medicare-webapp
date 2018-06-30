@@ -54,28 +54,20 @@ class SearchBar extends React.Component {
                 <LocationInputCont>
                     <LocationSearch/>
                 </LocationInputCont>
-                <SearchButton type="submit" value="Search"/>
+                <SearchButton type="submit" value="Search" onClick={() => this.props.retrieveSearchBarState(searchQuery)}/>
             </SearchBarCont>
         )
     }
-
-
-    /*vorgehen:in dieser klasse wird die methode für den senden button implementiert
-    -> er holt sich die daten von einem speicher array, dass doctor und place enthält ->
-    sendet das dann nach oben an die props
-
-    */
-    onClick() {
-        // noch nicht fertig
-        () => {
-            this.props.retrieveFilterSidebarState(this.state)
-        }
-    }
-
 }
 
 export default SearchBar;
 
+var searchQuery = {
+    doctorType: "",
+    ZIP: 80333,
+    latitude: null,
+    longitude: null
+};
 
 const doctors = [
     {
@@ -160,6 +152,7 @@ class DoctorSearch extends React.Component {
         this.setState({
             value: newValue
         });
+        searchQuery.doctorType = newValue;
     };
 
     onSuggestionsFetchRequested = ({ value }) => {
@@ -232,6 +225,8 @@ class LocationSearch extends React.Component {
                     longitude: lng,
                     isGeocoding: false,
                 });
+                searchQuery.longitude = lng;
+                searchQuery.latitude = lat;
             })
             .catch(error => {
                 this.setState({ isGeocoding: false });

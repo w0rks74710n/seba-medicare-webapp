@@ -31,12 +31,12 @@ class HomeContent extends Component {
     }
   }
 
-  searchDoctorWithProps = (props) => {
-    return (
-            <SearchDoctor searchQueryForDoctor={this.state.doctorType} searchQueryForPlace={this.state.place}
-            />
-        );
-    };
+  // searchDoctorWithProps = (props) => {
+  //   return (
+  //           <SearchDoctor searchQueryForDoctor={this.state.doctorType} searchQueryForPlace={this.state.place}
+  //           />
+  //       );
+  //   };
 
   render() {
     return(

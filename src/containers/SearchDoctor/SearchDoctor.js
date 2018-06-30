@@ -62,11 +62,14 @@ class SearchDoctor extends Component {
   }
 
 
-  retrieveSearchBarState(doctor, place) {
+  retrieveSearchBarState(query) {
+      console.log("Show doctortype of query: " + query.doctorType);
+      console.log("The value of the landing page is: " + this.props.searchQueryForPlace)
+
     this.setState({
         searchQuery: {
-            doctorType: doctor,
-            place: place
+            doctorType: query.doctorType,
+            place: query.ZIP
         }
     }, () => { this.fetchDoctorData()});
   }
