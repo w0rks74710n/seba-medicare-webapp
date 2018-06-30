@@ -93,6 +93,7 @@ const MyMapComponent = compose(
     withScriptjs,
     withGoogleMap,
     withState('places', 'updatePlaces', ''),
+    withState('selectedPlace', 'updateSelectedPlace', null),
     withHandlers(() => {
         const refs = {
             map: undefined,
@@ -116,7 +117,11 @@ const MyMapComponent = compose(
                         updatePlaces(results);
                     }
                 })
+            },
+            onToggleOpen: ({ updateSelectedPlace }) => key => {
+                updateSelectedPlace(key);
             }
+
         }
     }),
 )((props) =>
@@ -124,12 +129,20 @@ const MyMapComponent = compose(
         onTilesLoaded={props.fetchPlaces}
         ref={props.onMapMounted}
         onBoundsChanged={props.fetchPlaces}
-        defaultZoom={14}
+        defaultZoom={18}
         defaultCenter={{ lat: 48.1351253, lng: 11.581980499999986 }}
     >
         {props.places && props.places.map((place, i) =>
-            <Marker key={i} position={{ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }} />
+            <Marker onClick={() => props.onToggleOpen(i)} key={i} position={{ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }}>
+                {props.selectedPlace === i && <InfoWindow onCloseClick={props.onToggleOpen}>
+                    <div>
+                        {props.places[props.selectedPlace].name}
+                    </div>
+                </InfoWindow>}
+            </Marker>
         )}
+
+
     </GoogleMap>
 )
 
