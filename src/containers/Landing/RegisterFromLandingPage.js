@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from 'styled-components';
 import background from '../../resources/landing1.jpg';
 import PatientSignUpPage from "../../components/RegisterationLogin/PatientSignUpPage";
+import {Link} from "react-router-dom";
 
 const PageContainer = styled.div`
   display: flex;
@@ -58,6 +59,38 @@ const Title = styled.h1`
   text-align: center;
 `;
 
+const ButtonContainer = styled.div`
+  position: fixed;
+  z-index: 10;
+  width: 150px;
+  height: 40px;
+  right: 10%;
+  top: 80%;
+`;
+
+const GoBackButton = styled(Link)`
+  -webkit-order: 3;
+  -ms-flex-order: 3;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #55acee;
+  box-shadow: 0px 5px 0px 0px #3C93D5;
+  margin: 0;
+  padding: 10px 25px;
+  
+  &:active {
+    transform: translate(0px, 2px);
+    -webkit-transform: translate(0px, 2px);
+    box-shadow: 0px 1px 0px 0px;
+  }
+  
+  &:hover {
+    background-color: #6FC6FF;
+    cursor: pointer;
+  }
+`;
+
 class LoginFromLandingPage extends Component {
   render() {
     return (
@@ -66,6 +99,10 @@ class LoginFromLandingPage extends Component {
         <LoginContainer>
           <PatientSignUpPage />
         </LoginContainer>
+
+        <ButtonContainer>
+          <GoBackButton to="/">Go Back</GoBackButton>
+        </ButtonContainer>
       </PageContainer>
     );
   }
