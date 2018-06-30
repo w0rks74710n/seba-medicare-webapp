@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Autosuggest from "react-autosuggest";
 import PlacesAutocomplete, { geocodeByAddress, geocodeByPlaceId, getLatLng } from 'react-places-autocomplete';
-import "../../constants/searchBarDoctor.css"
-import "../../constants/locationSearchDoctor.css"
+import "../../constants/searchBarLandingPage.css"
+import "../../constants/locationSearchLandingPage.css"
 import ColorPalette from '../../constants/ColorPalette'
 
 
