@@ -16,11 +16,8 @@ class DashboardContent extends Component {
     return(
       <ContentContainer>
         <Switch>
-          <Route exact path={"/dashboard"} component={DashboardSchedule} />
           <Route path={"/dashboard/manage-schedule/:id"} component={DashboardSchedule} />
           <Route path="/dashboard/customizeProfile/:id" component={CustomizeDoctorProfile} />
-          <Route path={"/dashboard/change-settings"} component={DashboardSchedule} />
-          <Route path={"/dashboard/logout"} component={DashboardSchedule} />
         </Switch>
       </ContentContainer>
     );

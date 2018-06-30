@@ -7,7 +7,7 @@ import DoctorReviewsDialog from '../DoctorProfileReviews/DoctorReviewsDialog';
 
 import {
   Button
- } from 'react-md';
+} from 'react-md';
 
 const DoctorProfileHeaderComponent = styled.div`
   height: 200px;
@@ -108,9 +108,9 @@ class DoctorProfileHeader extends Component {
     let renderStars = (reviews) => {
       let stars = [];
       for (let i = 0; i < averageRating(reviews); i++) {
-          stars.push(
-              <i className="material-icons" style={{width: '24px'}}>star_rate</i>
-          );
+        stars.push(
+          <i className="material-icons" style={{width: '24px'}}>star_rate</i>
+        );
       };
       return stars;
     };
@@ -125,10 +125,10 @@ class DoctorProfileHeader extends Component {
           <Specialization>{this.props.doctorProfile.experience.areaOfSpecialization}</Specialization>
           <Website>
             <a target="_blank"
-                href={this.props.doctorProfile.contactInformation.practiceWebsite}>
-                {this.props.doctorProfile.contactInformation.practiceWebsite}
+               href={this.props.doctorProfile.contactInformation.practiceWebsite}>
+              {this.props.doctorProfile.contactInformation.practiceWebsite}
             </a>
-          </Website>            
+          </Website>
           <Rating className="rating">
             {renderStars(this.props.doctorReviews)}
             <span className="reviews">({this.props.doctorReviews.length} Reviews)</span>
@@ -136,7 +136,7 @@ class DoctorProfileHeader extends Component {
         </BasicInfo>
         <QuickButtons>
           <Button flat primary iconBefore={false} iconChildren="chat_bubble_outline" disabled>Emergency Contact</Button>
-          <Button flat primary iconBefore={false} iconChildren="calendar_today">Make Appointment</Button>
+          <Button flat primary iconBefore={false} iconChildren="calendar_today" onClick={() => this.props.renderAppointmentForm()}>Make Appointment</Button>
           <DoctorReviewsDialog doctor={this.props.doctorProfile.doctor_id} sendReviewToServer={this.sendReviewToServer} />
         </QuickButtons>
       </DoctorProfileHeaderComponent>

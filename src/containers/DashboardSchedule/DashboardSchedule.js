@@ -18,12 +18,34 @@ class DashboardSchedule extends Component {
 
     this.state = {
       loading: true,
+      doctor_id: this.props.match.params.id,
       data: []
     };
   }
 
+  deleteAppointmentData(id) {
+    console.log("DasboardSchedule: " + id);
+    AppoitmentService.deleteAppointment(id).catch((e) => {
+      this.fetchAppointmentData();
+      console.error(e);
+    });
+    this.fetchAppointmentData();
+  }
+
+  updateAppointmentData(state, id) {
+    console.log("New Date: " + state.date);
+    console.log("ID: " + id);
+    AppoitmentService.updateAppointment(state, id).then((data) => {
+      this.fetchAppointmentData();
+    }).catch((e) => {
+      this.fetchAppointmentData();
+      console.error(e);
+    });
+    this.fetchAppointmentData();
+  }
+
   fetchAppointmentData() {
-    AppoitmentService.getAppointments().then((data) => {
+    AppoitmentService.getAppointments(this.state.doctor_id).then((data) => {
       this.setState({
         data: data,
         loading: false
@@ -47,7 +69,10 @@ class DashboardSchedule extends Component {
     return (
       <ContainerDiv>
         <DashboardScheduleTitle/>
-        <ScheduleOfAppoinments data={this.state.data} />
+        <ScheduleOfAppoinments data={this.state.data}
+                               deleteAppointmentData={this.deleteAppointmentData.bind(this)}
+                               updateAppointmentData={this.updateAppointmentData.bind(this)}
+        />
         <Breadcrumbs/>
       </ContainerDiv>
     );
