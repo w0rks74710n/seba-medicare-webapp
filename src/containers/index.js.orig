@@ -31,5 +31,10 @@ export {
   CustomizeDoctorProfile,
   DoctorDescription,
   DoctorProfile,
+<<<<<<< HEAD
   SearchBar
+
+=======
+  SearchBarContainer
+>>>>>>> e493b31064a5f0cd2bab88d7b4f35f6ab1de1ca3
 }

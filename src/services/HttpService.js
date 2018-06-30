@@ -51,14 +51,19 @@ export default class HttpService {
     });
   }
 
-  static post(url, data, onSuccess, onError) {
+  static post(url, data, onSuccess, onError, formData) {
     let header = new Headers();
-    header.append('Content-Type', 'application/json');
+    let body = data;
+
+    if (!formData) {
+      header.append('Content-Type', 'application/json');
+      body = JSON.stringify(data);
+    }
 
     fetch(url, {
       method: 'POST',
       headers: header,
-      body: JSON.stringify(data)
+      body: body
     }).then((resp) => {
       if(resp.ok) {
         onSuccess(resp.json());

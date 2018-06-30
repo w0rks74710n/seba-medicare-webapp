@@ -1,25 +1,15 @@
 import React from 'react';
-import { reduxForm } from 'redux-form';
 
 import EditSocialMediaForm from '../../components/CustomizeDoctorProfile/EditSocialMediaForm';
-import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
 
-const EditSocialMediaFormContainer = ({ handleSubmit, id }) => {
-
-  const submitForm = (formValues) => {
-    DoctorProfileInformationService.updateDoctorProfile(formValues, id);
-  };
-
+const EditSocialMediaFormContainer = ({ id, socialMedia }) => {
+  console.log(socialMedia);
   return (
     <EditSocialMediaForm
-      onSubmit={submitForm}
-      handleSubmit={handleSubmit}
+      id={id}
+      socialMedia={socialMedia}
     />
   );
 };
 
-const formConfiguration = {
-  form: 'socialMedia'
-};
-
-export default reduxForm(formConfiguration)(EditSocialMediaFormContainer);
+export default EditSocialMediaFormContainer;

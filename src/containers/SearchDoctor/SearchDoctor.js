@@ -26,9 +26,10 @@ class SearchDoctor extends Component {
 
     this.state = {
       loading: true,
-      filter: {isInsuranceSelected: 'noPreference',
+      filter: {
+        isInsuranceSelected: 'noPreference',
         isLanguageSelected: 'noPreference',
-        isRadiusSelected: 'wholeArea',
+        isEmergencySelected: 'noPreference',
         isRatingSelected: 'noPreference'},
         searchQuery: {
             isAreaOfSpecialitySelected: isAreaOfSpecialitySelected ? isAreaOfSpecialitySelected: 'noPreference',

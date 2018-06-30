@@ -1,34 +1,49 @@
-import React from "react";
-import { Field } from 'redux-form';
+import React, { Component } from "react";
 import { TextField, Card, CardTitle, CardText, Cell, Button } from 'react-md';
+import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
 
-const renderTextField = ({ input, meta: { touched, error }, ...others }) => (
-  <TextField {...input} {...others} error={touched && !!error} errorText={error} />
-);
+class EditAboutForm extends Component {
+  constructor(props) {
+    super(props);
 
-export const EditAboutForm = ({ handleSubmit, onSubmit, about }) => {
-  return(
-    <Card>
-      <CardTitle title={'About'} style={{paddingBottom: 0}}/>
-      <CardText style={{paddingTop: 0}}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Field
-            id="about[description]"
-            name="about[description]"
-            component={renderTextField}
-            label="Description"
-            rows={3}
-            maxLength={2000}
-            className="md-cell--top"
-            helpText="Here you can enter a short description about yourself, your practice, your interests and anything you consider relevant for the visitors of your profile."
-          />
-          <Cell size={12}>
-            <Button raised children="Submit" type="submit" />
-          </Cell>
-        </form>
-      </CardText>
-    </Card>
-  );
-};
+    this.state = {
+      about: this.props.about
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    DoctorProfileInformationService.updateDoctorProfile(this.state, this.props.id);
+    alert('Profile updated successfully!');
+  }
+
+  render() {
+    return(
+      <Card>
+        <CardTitle title={'About'} style={{paddingBottom: 0}}/>
+        <CardText style={{paddingTop: 0}}>
+          <form onSubmit={this.handleSubmit}>
+            <TextField
+              id="about[description]"
+              name="about[description]"
+              label="Description"
+              rows={3}
+              value={this.state.about.description}
+              onChange={(newValue) => this.setState({about: { description: newValue}})}
+              maxLength={2000}
+              className="md-cell--top"
+              helpText="Here you can enter a short description about yourself, your practice, your interests and anything you consider relevant for the visitors of your profile."
+            />
+            <Cell size={12} style={{textAlign: 'right'}}>
+              <Button raised children="Submit" type="submit" />
+            </Cell>
+          </form>
+        </CardText>
+      </Card>
+    );
+  };
+}
 
 export default EditAboutForm;
