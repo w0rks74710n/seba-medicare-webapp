@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import ReactTooltip from 'react-tooltip'
-import ColorPalette from "../../constants/ColorPalette"
+import ReactTooltip from 'react-tooltip';
+import ColorPalette from "../../constants/ColorPalette";
+import DoctorRating from "../DoctorRating/DoctorRating";
 
 const DoctorListItemComponent = styled.div`
     background-color: ${ColorPalette.primaryBackGorundContainer}
@@ -20,10 +21,6 @@ const DoctorListItemComponent = styled.div`
           border: 2px solid ${ColorPalette.accent};
           -webkit-border-radius: 500px;
         }
-        
-        .rating {
-
-        }
     }
 
     .item-body {
@@ -36,13 +33,13 @@ const DoctorListItemComponent = styled.div`
           font-weight: bold;
             text-transform: uppercase;
          }
+
         .social-media-links {
           a {
             color: ${ ColorPalette.primaryDark };
           }
           font-size: 24px;
         }
-         margin-top: 10px;
       }
 
         .links {
@@ -115,9 +112,7 @@ class DoctorListItem extends Component {
       <DoctorListItemComponent>
         <div className="item-head">
           <img src={ this.props.images.profilePic } alt=""/>
-          <div className="rating">
-            { this.renderRatings() }
-          </div>
+          <DoctorRating doctor={ this.props.doctor_id }  showNumber={false}/>
         </div>
         <div className="item-body">
           <div className="info">

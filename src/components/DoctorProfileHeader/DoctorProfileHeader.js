@@ -8,6 +8,7 @@ import DoctorReviewsDialog from '../DoctorProfileReviews/DoctorReviewsDialog';
 import {
   Button
 } from 'react-md';
+import DoctorRating from "../DoctorRating/DoctorRating";
 
 const DoctorProfileHeaderComponent = styled.div`
   height: 200px;
@@ -33,10 +34,6 @@ const BasicInfo = styled.div`
   padding-top: 25px;
   padding-left: 50px;
   display: inline-block;
-
-  .reviews, .material-icons {
-    vertical-align: middle;
-  }
 `;
 
 const Title = styled.div`
@@ -98,23 +95,6 @@ class DoctorProfileHeader extends Component {
   }
 
   render() {
-    let averageRating = (reviews) => {
-      var stars = 0;
-      for(var i = 0; i < reviews.length; i++)
-        stars += this.props.doctorReviews[i].rating;
-      return stars / reviews.length;
-    };
-
-    let renderStars = (reviews) => {
-      let stars = [];
-      for (let i = 0; i < averageRating(reviews); i++) {
-        stars.push(
-          <i className="material-icons" style={{width: '24px'}}>star_rate</i>
-        );
-      };
-      return stars;
-    };
-
     return(
       <DoctorProfileHeaderComponent>
         <ProfileImage>
@@ -130,8 +110,7 @@ class DoctorProfileHeader extends Component {
             </a>
           </Website>
           <Rating className="rating">
-            {renderStars(this.props.doctorReviews)}
-            <span className="reviews">({this.props.doctorReviews.length} Reviews)</span>
+            <DoctorRating doctor={this.props.doctorProfile.doctor_id} showNumber={true}/>
           </Rating>
         </BasicInfo>
         <QuickButtons>
