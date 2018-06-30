@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import DashboardSchedule from "../DashboardSchedule/DashboardSchedule";
+import DashboardLogout from "../DashboardLogout/DashboardLogout";
 import CustomizeDoctorProfile from "../CustomizeDoctorProfile/CustomizeDoctorProfile";
 
 const ContentContainer = styled.div`
@@ -18,6 +19,7 @@ class DashboardContent extends Component {
         <Switch>
           <Route path={"/dashboard/manage-schedule/:id"} component={DashboardSchedule} />
           <Route path="/dashboard/customizeProfile/:id" component={CustomizeDoctorProfile} />
+          <Route path="/dashboard/logout" component={DashboardLogout} />
         </Switch>
       </ContentContainer>
     );
