@@ -86,6 +86,8 @@ const Icon = styled.img`
   padding-right: 6px;
 `;
 
+let id = window.localStorage['id'];
+
 class DashboardHeader extends Component {
   render() {
     return (
@@ -93,7 +95,7 @@ class DashboardHeader extends Component {
         <Dropdown>
           <DropdownToggle className="dropbtn">Admin Menu</DropdownToggle>
           <DropdownMenu className="dropdown-content">
-            <StyledLink to="/doctor-profile/:id">
+            <StyledLink to={"/doctor-profile/" + id} >
              <DropdownListItem>
                 <Icon src={edit} alt="Public Profile"/>View Public Profile
              </DropdownListItem>
