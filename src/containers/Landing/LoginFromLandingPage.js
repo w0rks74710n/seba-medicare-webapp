@@ -50,12 +50,13 @@ const Background = styled.img`
 `;
 
 const Title = styled.h1`
+  margin-left: 10%;
+  margin-top: 4%;
   z-index: 10;
   font-size: 60px;
   font-weight: bold;
   color: #fff;
   text-shadow: 0 1px 4px #000;
-  margin: auto;
   text-align: center;
 `;
 
@@ -95,15 +96,17 @@ class LoginFromLandingPage extends Component {
   render() {
     return (
       <PageContainer>
-        <Background src={background} alt="MediCare Landing Page" />
-        <LoginContainer>
-          <Title>MediCare</Title>
-          <SignIn />
-        </LoginContainer>
+        <Title>MediCare</Title>
+        <PageContainer>
+          <Background src={background} alt="MediCare Landing Page" />
+          <LoginContainer>
+            <SignIn />
+          </LoginContainer>
 
-        <ButtonContainer>
-          <GoBackButton to="/">Go Back</GoBackButton>
-        </ButtonContainer>
+          <ButtonContainer>
+            <GoBackButton to="/">Go Back</GoBackButton>
+          </ButtonContainer>
+        </PageContainer>
       </PageContainer>
     );
   }

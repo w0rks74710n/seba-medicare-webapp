@@ -73,7 +73,37 @@ const Search = styled.div`
   z-index: 10;
   margin: auto;
   margin-top: 50px;
-  margin-left: 100px;
+`;
+
+const Input = styled.input`
+  margin: auto;
+  width: 50%;
+  height: 50px;
+  box-shadow: 1px 2px #999999;
+  border: 1px solid black;
+  border-radius: 15px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  
+  &:focus {
+    width: 80%;
+  }
+  
+  &::placeholder {
+    font-size: 16px;
+    font-style: italic;
+    color: #424242;
+    margin: auto;
+    padding-left: 20px;
+  }
+  
+  &:[type=text]{
+    font-size: 16px;
+    font-style: italic;
+    color: #424242;
+    margin: auto;
+    padding-left: 20px;
+  }
 `;
 
 const SignInButton = styled(Link)`
@@ -126,36 +156,6 @@ const NavLink = styled(Link)`
     font-style: italic;
     color: ${ ColorPalette.accent };
 	}	
-`;
-
-const Input = styled.input`
-  width: 50%;
-  height: 50px;
-  box-shadow: 1px 2px #999999;
-  border: 1px solid black;
-  border-radius: 15px;;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
-  
-  &:focus {
-    width: 80%;
-  }
-  
-  &::placeholder {
-    font-size: 16px;
-    font-style: italic;
-    color: #424242;
-    margin: auto;
-    padding-left: 20px;
-  }
-  
-  &:[type=text]{
-    font-size: 16px;
-    font-style: italic;
-    color: #424242;
-    margin: auto;
-    padding-left: 20px;
-  }
 `;
 
 class LandingPage extends Component {
