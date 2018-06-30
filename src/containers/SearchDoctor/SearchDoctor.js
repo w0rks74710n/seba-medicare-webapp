@@ -6,7 +6,6 @@ import { FilterSidebar, SearchDoctorList, SearchBar, MapSidebar} from "../"
 
 
 const SearchDoctorContainerWithSearchbar = styled.div`
-
 `;
 
 
@@ -22,7 +21,6 @@ class SearchDoctor extends Component {
 
     let isAreaOfSpecialitySelected = this.props.searchQueryForDoctor;
     let isZIPCodeSelected = this.props.searchQueryForPlace;
-
 
     this.state = {
       loading: true,
@@ -70,9 +68,8 @@ class SearchDoctor extends Component {
   retrieveFilterSidebarState(filterSelection) {
     this.setState({
       filter: filterSelection
-    }, () => { this.fetchDoctorData()} );
+    }, () => { this.fetchDoctorData() } );
   }
-
 
   retrieveSearchBarState(query) {
 

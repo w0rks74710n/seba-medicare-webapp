@@ -16,10 +16,8 @@ class Home extends Component {
     constructor(props){
         super(props);
         this.state = {
-            //these properties need to be set by the landing page
-            //this.props.doctorQuery,this.props.placeQuery
-            // doctorQuery: "TestForDoctorQueryLandingPage",
-            // placeQuery: "TestForPlaceQueryLandingPage"
+            doctorQuery: this.props.doctorQuery,
+            placeQuery: this.props.placeQuery
         }
     }
 
