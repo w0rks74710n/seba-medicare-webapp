@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import FilterInsuranceType from "../../components/FilterSidebar/FilterInsuranceType";
 import FilterLanguage from "../../components/FilterSidebar/FilterLanguage";
-import FilterRadius from "../../components/FilterSidebar/FilterRadius";
+import FilterEmergency from "../../components/FilterSidebar/FilterEmergency";
 import FilterRating from "../../components/FilterSidebar/FilterRating";
 import ColorPalette from "../../constants/ColorPalette"
 
@@ -30,7 +30,7 @@ class FilterSidebar extends Component {
       // ToDo: Maybe use constants instead
       isInsuranceSelected: 'noPreference',
       isLanguageSelected: 'noPreference',
-      isRadiusSelected: 'wholeArea',
+      isEmergencySelected: 'noPreference',
       isRatingSelected: 'noPreference'
     };
   }
@@ -51,9 +51,9 @@ class FilterSidebar extends Component {
     });
   }
 
-  handleRadiusChange(event) {
+  handleEmergencyChange(event) {
     this.setState({
-      isRadiusSelected: event.target.value
+      isEmergencySelected: event.target.value
     }, () => {
       this.props.retrieveFilterSidebarState(this.state)
     });
@@ -72,7 +72,7 @@ class FilterSidebar extends Component {
       <FilterSidebarComponent>
         <FilterInsuranceType handleChange={ this.handleInsuranceChange.bind(this) } isSelected={ this.state.isInsuranceSelected } />
         <FilterLanguage handleChange={ this.handleLanguageChange.bind(this) } isSelected={ this.state.isLanguageSelected } />
-        <FilterRadius handleChange={ this.handleRadiusChange.bind(this) } isSelected={ this.state.isRadiusSelected } />
+        <FilterEmergency handleChange={ this.handleEmergencyChange.bind(this) } isSelected={ this.state.isEmergencySelected } />
         <FilterRating handleChange={ this.handleRatingChange.bind(this) } isSelected={ this.state.isRatingSelected }/>
       </FilterSidebarComponent>
     )
