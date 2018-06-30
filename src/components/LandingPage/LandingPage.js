@@ -5,9 +5,9 @@ import {Link} from "react-router-dom";
 import ColorPalette from "../../constants/ColorPalette";
 import Autosuggest from "react-autosuggest";
 import PlacesAutocomplete, { geocodeByAddress, geocodeByPlaceId, getLatLng } from 'react-places-autocomplete';
-import "../../constants/searchBarDoctor.css"
-import "../../constants/locationSearchDoctor.css"
-import SearchBar from "../../containers/SearchBar/SearchBar";
+import "../../constants/searchBarDoctor.css";
+import "../../constants/locationSearchDoctor.css";
+import {Home} from "../../containers";
 
 
 const PageContainer = styled.div`
@@ -164,7 +164,6 @@ const Input = styled.input`
   }
 `;
 
-
 const SearchBarCont = styled.div`
     position:relative;
     top: 30px;
@@ -202,23 +201,41 @@ const SearchButton = styled.input`
 `;
 
 class LandingPage extends Component {
-  render() {
-    return (
-      <PageContainer>
-        <Background src={background} alt="MediCare Landing Page" />
-        <SearchContainer>
-          <Title>MediCare</Title>
-          <SearchBarLandingPage/>
-        </SearchContainer>
-        <ButtonContainer>
-          <SignInButton to="/login">Login/Sign up</SignInButton>
-        </ButtonContainer>
 
-        <TermsContainer>
-          <Paragraph>What is this all <NavLink to={""}>about?</NavLink> and <NavLink to={""}>Contact</NavLink></Paragraph>
-        </TermsContainer>
-      </PageContainer>
-    );
+    constructor(props){
+        super(props);
+        this.state = {
+            renderHome:false
+        };
+    }
+
+    handleClick(){
+        this.setState({
+            renderHome:true
+        });
+    }
+
+  render() {
+
+      if (this.state.renderHome){
+          return <Home doctorQuery={searchQueryLandingPage.doctorType} placeQuery={searchQueryLandingPage.ZIP}/>
+      }
+
+      return (
+          <PageContainer>
+            <Background src={background} alt="MediCare Landing Page" />
+            <SearchContainer>
+              <Title>MediCare</Title>
+              <SearchBarLandingPage onSearchClick={this.handleClick.bind(this)}/>
+            </SearchContainer>
+            <ButtonContainer>
+              <SignInButton to="/login">Login/Sign up</SignInButton>
+            </ButtonContainer>
+            <TermsContainer>
+              <Paragraph>What is this all <NavLink to={""}>about?</NavLink> and <NavLink to={""}>Contact</NavLink></Paragraph>
+            </TermsContainer>
+          </PageContainer>
+        );
   }
 }
 
@@ -229,7 +246,6 @@ class SearchBarLandingPage extends Component {
 
     constructor(props) {
         super(props);
-
     }
 
     render() {
@@ -239,15 +255,15 @@ class SearchBarLandingPage extends Component {
                 <LocationInputCont>
                     <LocationSearchLandingPage/>
                 </LocationInputCont>
-                <SearchButton type="submit" value="Search" onClick={() => this.props.retrieveSearchBarState(searchQuery)}/>
+                <SearchButton type="submit" value="Search" onClick={this.props.onSearchClick}/>
             </SearchBarCont>
         )
     }
 }
 
 
-var searchQuery = {
-    doctorType: "",
+var searchQueryLandingPage = {
+    doctorType: 'noPreference',
     ZIP: 80333,
     latitude: null,
     longitude: null
@@ -336,7 +352,7 @@ class DoctorSearchLandingPage extends React.Component {
         this.setState({
             value: newValue
         });
-        searchQuery.doctorType = newValue;
+        searchQueryLandingPage.doctorType = newValue;
     };
 
     onSuggestionsFetchRequested = ({ value }) => {
@@ -409,8 +425,8 @@ class LocationSearchLandingPage extends Component {
                     longitude: lng,
                     isGeocoding: false,
                 });
-                searchQuery.longitude = lng;
-                searchQuery.latitude = lat;
+                searchQueryLandingPage.longitude = lng;
+                searchQueryLandingPage.latitude = lat;
             })
             .catch(error => {
                 this.setState({ isGeocoding: false });
