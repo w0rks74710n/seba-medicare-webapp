@@ -117,13 +117,13 @@ class DashboardSideBar extends Component {
 
               <ListItemA to={"/dashboard/manage-schedule/" + id}>
                 <NavSideMenuLI>
-                  <Icon src={schedule} alt="Schedule" /> Schedule
+                  <Icon src={schedule} alt="Schedule" /> Manage Schedule
                 </NavSideMenuLI>
               </ListItemA>
 
               <ListItemA to={"/dashboard/customizeProfile/" + id}>
                 <NavSideMenuLI data-toggle="collapse" data-target="#settings" className="collapsed">
-                  <Icon src={settings} alt="Settings" /> Settings
+                  <Icon src={settings} alt="Customize" /> Customize Profile
                 </NavSideMenuLI>
               </ListItemA>
             </NavSideMenuUL>

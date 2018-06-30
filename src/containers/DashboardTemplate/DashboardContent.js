@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import DashboardSchedule from "../DashboardSchedule/DashboardSchedule";
 import DashboardLogout from "../DashboardLogout/DashboardLogout";
+import DashboardInfo from "../DashboardInfo/DashboardInfo";
 import CustomizeDoctorProfile from "../CustomizeDoctorProfile/CustomizeDoctorProfile";
 import DoctorProfile from "../DoctorProfile/DoctorProfile";
 
@@ -22,6 +23,7 @@ class DashboardContent extends Component {
           <Route path="/dashboard/customizeProfile/:id" component={CustomizeDoctorProfile} />
           <Route path="/doctor-profile/:id" component={DoctorProfile} />
           <Route path="/dashboard/logout" component={DashboardLogout} />
+          <Route path="/dashboard/" component={DashboardInfo} />
         </Switch>
       </ContentContainer>
     );
