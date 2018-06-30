@@ -33,7 +33,7 @@ class SearchDoctor extends Component {
         isRatingSelected: 'noPreference'},
         searchQuery: {
             isAreaOfSpecialitySelected: isAreaOfSpecialitySelected ? isAreaOfSpecialitySelected: 'noPreference',
-            isZIPCodeSelected:  isZIPCodeSelected ? isAreaOfSpecialitySelected: 'noPreference'
+            isZIPCodeSelected:  isZIPCodeSelected ? isZIPCodeSelected: 'noPreference'
         },
       data: []
     };
