@@ -16,7 +16,7 @@ export default class DoctorProfileInformationService {
         '?isInsuranceSelected='+filter.isInsuranceSelected+
         '&isLanguageSelected='+filter.isLanguageSelected+
         '&isEmergencySelected='+filter.isEmergencySelected+
-        '&isRatingSelected='+filter.isRatingSelected, (data) => {
+        '&isRatingSelected='+filter.isRatingSelected+
           '&isAreaOfSpecialitySelected='+searchBar.isAreaOfSpecialitySelected+
           '&isZIPCodeSelected='+searchBar.isZIPCodeSelected, (data) => {
         resolve(data);
