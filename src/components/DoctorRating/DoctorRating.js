@@ -31,8 +31,8 @@ class DoctorRating extends Component {
         for(var i = 0; i < this.state.reviews.length; i++)
             avgRating += this.state.reviews[i].rating;
         avgRating /= this.state.reviews.length;
-        DoctorProfileInformationService.updateDoctorProfile({services: {
-            rating: avgRating
+        DoctorProfileInformationService.updateDoctorProfile({ services: {
+            rating: Math.round(avgRating)
         }}, this.props.doctor);
         let stars = [];
         for (let i = 0; i < avgRating; i++) {
