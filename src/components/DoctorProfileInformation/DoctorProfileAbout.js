@@ -9,6 +9,7 @@ import {
 const DoctorProfileAboutComponent = styled.div`
     display: inline-block;
     width: 450px;
+    min-height: 250px;
     margin: 20px;
 
 `;
