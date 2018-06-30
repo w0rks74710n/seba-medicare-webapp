@@ -19,7 +19,7 @@ class FilterEmergency extends Component {
   render() {
     return(
       <FilterEmergencyComponent>
-        <FilterTitle name={ 'Emergency Available' }/>
+        <FilterTitle name={ 'Availability' }/>
         <form>
           <FilterRadioButton value={ 'noPreference' } name={ 'No preference' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
           <FilterRadioButton value={ '1' } name={ 'Available for emergencies' } isSelected={ this.props.isSelected } onClick={ this.props.handleChange } />
