@@ -70,7 +70,7 @@ class CustomizeDoctorProfile extends Component {
                                            services={this.state.data.doctorProfileInformation.services}/>
         <br />
         <EditPicturesFormContainer id={this.props.match.params.id}
-                                   pictures={this.state.data.doctorProfileInformation.pictures}/>
+                                   images={this.state.data.doctorProfileInformation.images}/>
       </CustomizeDoctorProfileContainer>
     );
   }

@@ -1,25 +1,15 @@
 import React from 'react';
-import { reduxForm } from 'redux-form';
 
 import EditPicturesForm from '../../components/CustomizeDoctorProfile/EditPicturesForm';
-import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
 
-const EditPicturesFormContainer = ({ handleSubmit, id }) => {
-
-  const submitForm = (formValues) => {
-    DoctorProfileInformationService.updateDoctorProfile(formValues, id);
-  };
+const EditPicturesFormContainer = ({ id, images }) => {
 
   return (
     <EditPicturesForm
-      onSubmit={submitForm}
-      handleSubmit={handleSubmit}
+      id={id}
+      images={images}
     />
   );
 };
 
-const formConfiguration = {
-  form: 'pictures'
-};
-
-export default reduxForm(formConfiguration)(EditPicturesFormContainer);
+export default EditPicturesFormContainer;
