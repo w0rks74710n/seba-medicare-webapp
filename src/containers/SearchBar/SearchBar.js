@@ -4,6 +4,7 @@ import Autosuggest from "react-autosuggest";
 import PlacesAutocomplete, { geocodeByAddress, geocodeByPlaceId, getLatLng } from 'react-places-autocomplete';
 import "../../constants/searchBarDoctor.css"
 import "../../constants/locationSearchDoctor.css"
+import ColorPalette from '../../constants/ColorPalette'
 
 
 const SearchBarCont = styled.div`
@@ -34,7 +35,7 @@ const SearchButton = styled.input`
     padding: 7px;
     width: 100px;
     box-sizing: border-box; 
-    background-color: #0045AB;
+    background-color: ${ColorPalette.primary};
     &:hover{
         box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
     }

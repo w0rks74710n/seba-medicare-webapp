@@ -18,8 +18,8 @@ class Home extends Component {
         this.state = {
             //these properties need to be set by the landing page
             //this.props.doctorQuery,this.props.placeQuery
-            doctorQuery: "TestForDoctorQueryLandingPage",
-            placeQuery: "TestForPlaceQueryLandingPage"
+            // doctorQuery: "TestForDoctorQueryLandingPage",
+            // placeQuery: "TestForPlaceQueryLandingPage"
         }
     }
 

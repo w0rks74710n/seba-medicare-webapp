@@ -4,7 +4,13 @@ import DoctorProfileInformationService from "../../services/DoctorProfileInforma
 
 import { FilterSidebar, SearchDoctorList, SearchBar} from "../"
 
-const SearchDoctorContainer = styled.div`
+
+const SearchDoctorContainerWithSearchbar = styled.div`
+
+`;
+
+
+const SearchDoctorContainerWithoutSearchbar = styled.div`
   width: 100%;
   display: inline-flex;
 `;
@@ -14,6 +20,10 @@ class SearchDoctor extends Component {
   constructor(props) {
     super(props);
 
+    let isAreaOfSpecialitySelected = this.props.searchQueryForDoctor;
+    let isZIPCodeSelected = this.props.searchQueryForPlace;
+
+
     this.state = {
       loading: true,
       filter: {isInsuranceSelected: 'noPreference',
@@ -21,12 +31,13 @@ class SearchDoctor extends Component {
         isRadiusSelected: 'wholeArea',
         isRatingSelected: 'noPreference'},
         searchQuery: {
-            isAreaOfSpecialitySelected: this.props.searchQueryForDoctor,
-            isZIPCodeSelected: this.props.searchQueryForPlace
+            isAreaOfSpecialitySelected: isAreaOfSpecialitySelected ? isAreaOfSpecialitySelected: 'noPreference',
+            isZIPCodeSelected:  isZIPCodeSelected ? isAreaOfSpecialitySelected: 'noPreference'
         },
       data: []
-
     };
+
+    console.log(this.state);
   }
 
   fetchDoctorData() {
@@ -63,15 +74,13 @@ class SearchDoctor extends Component {
 
 
   retrieveSearchBarState(query) {
-      console.log("Show doctortype of query: " + query.doctorType);
-      console.log("The value of the landing page is: " + this.props.searchQueryForPlace)
 
     this.setState({
         searchQuery: {
-            doctorType: query.doctorType,
-            place: query.ZIP
+            isAreaOfSpecialitySelected: query.doctorType,
+            isZIPCodeSelected: query.ZIP
         }
-    }, () => { this.fetchDoctorData()});
+    }, () => { this.fetchDoctorData() });
   }
 
   render() {
@@ -80,11 +89,13 @@ class SearchDoctor extends Component {
     }
 
     return(
-      <SearchDoctorContainer className={'searchDoctorContainer'}>
-          <SearchBar retrieveSearchBarState={this.retrieveSearchBarState.bind(this)}/>
-        <FilterSidebar retrieveFilterSidebarState={this.retrieveFilterSidebarState.bind(this)} />
-        <SearchDoctorList data={this.state.data} />
-      </SearchDoctorContainer>
+        <SearchDoctorContainerWithSearchbar>
+            <SearchBar retrieveSearchBarState={this.retrieveSearchBarState.bind(this)}/>
+             <SearchDoctorContainerWithoutSearchbar className={'searchDoctorContainer'}>
+                <FilterSidebar retrieveFilterSidebarState={this.retrieveFilterSidebarState.bind(this)} />
+                <SearchDoctorList data={this.state.data} />
+            </SearchDoctorContainerWithoutSearchbar>
+        </SearchDoctorContainerWithSearchbar>
     );
   }
 }
