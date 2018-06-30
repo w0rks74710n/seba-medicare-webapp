@@ -19,7 +19,11 @@ export default class DoctorReviewsDialog extends PureComponent {
 
         this.state = {
             rating: 1,
-            comment: ""
+            comment: "",
+            visible: false,
+            focusOnMount: true,
+            containFocus: true,
+            initialFocus: undefined
         };
       
         this.handleChange = this.handleChange.bind(this);
@@ -27,13 +31,6 @@ export default class DoctorReviewsDialog extends PureComponent {
         this.handleRecaptcha = this.handleRecaptcha.bind(this);
         this.verifyCallback = this.verifyCallback.bind(this);
     }
-
-    state = {
-        visible: false,
-        focusOnMount: true,
-        containFocus: true,
-        initialFocus: undefined
-    };
 
     show = () => {
         this.setState({ visible: true });

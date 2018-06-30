@@ -37,7 +37,7 @@ class DoctorRating extends Component {
         let stars = [];
         for (let i = 0; i < avgRating; i++) {
             stars.push(
-                <i className="material-icons" style={{width: '24px'}}>star_rate</i>
+                <i key={i} className="material-icons" style={{width: '24px'}}>star_rate</i>
             );
         };
         return stars;
