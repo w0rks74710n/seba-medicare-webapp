@@ -86,6 +86,8 @@ const Icon = styled.img`
   padding: 10px;
 `;
 
+let id = window.localStorage['id'];
+
 class DashboardSideBar extends Component {
   componentDidMount () {
     const script1 = document.createElement("script");
@@ -113,33 +115,15 @@ class DashboardSideBar extends Component {
                 </NavSideMenuLI>
               </ListItemA>
 
-              <ListItemA to="/dashboard/manage-schedule">
+              <ListItemA to={"/dashboard/manage-schedule/" + id}>
                 <NavSideMenuLI>
                   <Icon src={schedule} alt="Schedule" /> Schedule
                 </NavSideMenuLI>
               </ListItemA>
 
-              <ListItemA to="/dashboard/statistics">
-                <NavSideMenuLI>
-                  <Icon src={statistics} alt="Statistics" /> Statistics
-                </NavSideMenuLI>
-              </ListItemA>
-
-              <ListItemA to="/dashboard/manage">
-                <NavSideMenuLI data-toggle="collapse" data-target="#manage" className="collapsed">
-                  <Icon src={manage} alt="Manage" /> Manage
-                </NavSideMenuLI>
-              </ListItemA>
-
-              <ListItemA to="/dashboard/change-settings">
+              <ListItemA to={"/dashboard/customizeProfile/" + id}>
                 <NavSideMenuLI data-toggle="collapse" data-target="#settings" className="collapsed">
                   <Icon src={settings} alt="Settings" /> Settings
-                </NavSideMenuLI>
-              </ListItemA>
-
-              <ListItemA to="/dashboard/help">
-                <NavSideMenuLI data-toggle="collapse" data-target="#maintenance" className="collapsed">
-                  <Icon src={help} alt="Help" /> Help
                 </NavSideMenuLI>
               </ListItemA>
             </NavSideMenuUL>
