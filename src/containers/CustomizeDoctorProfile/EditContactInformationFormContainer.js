@@ -4,22 +4,14 @@ import { reduxForm } from 'redux-form';
 import EditContactInformationForm from '../../components/CustomizeDoctorProfile/EditContactInformationForm';
 import DoctorProfileInformationService from '../../services/DoctorProfileInformationService';
 
-const EditContactInformationFormContainer = ({ handleSubmit, id }) => {
-
-  const submitForm = (formValues) => {
-    DoctorProfileInformationService.updateDoctorProfile(formValues, id);
-  };
+const EditContactInformationFormContainer = ({ id, contactInformation }) => {
 
   return (
     <EditContactInformationForm
-      onSubmit={submitForm}
-      handleSubmit={handleSubmit}
+      id={id}
+      contactInformation={contactInformation}
     />
   );
-}
-
-const formConfiguration = {
-  form: 'contactInformation'
 };
 
-export default reduxForm(formConfiguration)(EditContactInformationFormContainer);
+export default EditContactInformationFormContainer;

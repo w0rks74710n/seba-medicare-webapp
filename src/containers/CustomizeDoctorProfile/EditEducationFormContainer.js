@@ -1,25 +1,15 @@
 import React from 'react';
-import { reduxForm } from 'redux-form';
 
 import EditEducationForm from '../../components/CustomizeDoctorProfile/EditEducationForm';
-import DoctorProfileInformationService from '../../services/DoctorProfileInformationService';
 
-const EditEducationFormContainer = ({ handleSubmit, id }) => {
-
-  const submitForm = (formValues) => {
-    DoctorProfileInformationService.updateDoctorProfile(formValues, id);
-  };
+const EditEducationFormContainer = ({ id, education }) => {
 
   return (
     <EditEducationForm
-      onSubmit={submitForm}
-      handleSubmit={handleSubmit}
+      id={id}
+      education={education}
     />
   );
 };
 
-const formConfiguration = {
-  form: 'education'
-};
-
-export default reduxForm(formConfiguration)(EditEducationFormContainer);
+export default EditEducationFormContainer;

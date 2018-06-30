@@ -91,7 +91,6 @@ class DoctorProfile extends Component {
     return (
       <DoctorProfileComponent>
         <DoctorProfileHeader  doctorProfile={this.state.doctorProfile}
-                              doctorReviews={this.state.doctorReviews}
                               renderAppointmentForm={this.renderAppointmentForm.bind(this) }/>
         <Divider/>
         { this.state.renderForm ? <MakeAnAppointmentForm doctorProfile={this.state.doctorProfile}

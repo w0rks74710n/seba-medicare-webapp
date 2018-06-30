@@ -4,23 +4,13 @@ import { reduxForm } from 'redux-form';
 import EditAboutForm from '../../components/CustomizeDoctorProfile/EditAboutForm';
 import DoctorProfileInformationService from '../../services/DoctorProfileInformationService';
 
-const EditAboutFormContainer = ({ handleSubmit, id, about }) => {
-
-  const submitForm = (formValues) => {
-    DoctorProfileInformationService.updateDoctorProfile(formValues, id);
-  };
-
+const EditAboutFormContainer = ({ id, about }) => {
   return (
     <EditAboutForm
-      onSubmit={submitForm}
-      handleSubmit={handleSubmit}
+      id={id}
       about={about}
     />
   );
 };
 
-const formConfiguration = {
-  form: 'about'
-};
-
-export default reduxForm(formConfiguration)(EditAboutFormContainer);
+export default (EditAboutFormContainer);

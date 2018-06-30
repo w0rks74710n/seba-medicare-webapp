@@ -7,6 +7,7 @@ import EditContactInformationFormContainer from "./EditContactInformationFormCon
 import EditSocialMediaFormContainer from "./EditSocialMediaFormContainer";
 import EditExperienceFormContainer from "./EditExperienceFormContainer";
 import EditEducationFormContainer from "./EditEducationFormContainer";
+import EditMedicareServicesFormContainer from "./EditMedicareServicesFormContainer"
 import EditPicturesFormContainer from "./EditPicturesFormContainer";
 
 import DoctorProfileInformationService from "../../services/DoctorProfileInformationService"
@@ -50,17 +51,26 @@ class CustomizeDoctorProfile extends Component {
 
     return (
       <CustomizeDoctorProfileContainer>
-        <EditAboutFormContainer id={this.props.match.params.id} />
+        <EditAboutFormContainer id={this.props.match.params.id}
+                                about={this.state.data.doctorProfileInformation.about} />
         <br/>
-        <EditContactInformationFormContainer id={this.props.match.params.id} contactInformation={this.state.data.description}/>
+        <EditContactInformationFormContainer id={this.props.match.params.id}
+                                             contactInformation={this.state.data.doctorProfileInformation.contactInformation} />
         <br/>
-        <EditSocialMediaFormContainer id={this.props.match.params.id} />
+        <EditSocialMediaFormContainer id={this.props.match.params.id}
+                                      socialMedia={this.state.data.doctorProfileInformation.socialMedia}/>
         <br/>
-        <EditExperienceFormContainer id={this.props.match.params.id} />
+        <EditExperienceFormContainer id={this.props.match.params.id}
+                                     experience={this.state.data.doctorProfileInformation.experience}/>
         <br/>
-        <EditEducationFormContainer id={this.props.match.params.id} />
+        <EditEducationFormContainer id={this.props.match.params.id}
+                                    education={this.state.data.doctorProfileInformation.education}/>
         <br/>
-        <EditPicturesFormContainer id={this.props.match.params.id} />
+        <EditMedicareServicesFormContainer id={this.props.match.params.id}
+                                           services={this.state.data.doctorProfileInformation.services}/>
+        <br />
+        <EditPicturesFormContainer id={this.props.match.params.id}
+                                   images={this.state.data.doctorProfileInformation.images}/>
       </CustomizeDoctorProfileContainer>
     );
   }
