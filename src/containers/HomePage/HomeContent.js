@@ -31,19 +31,13 @@ class HomeContent extends Component {
     }
   }
 
-  // searchDoctorWithProps = (props) => {
-  //   return (
-  //           <SearchDoctor searchQueryForDoctor={this.state.doctorType} searchQueryForPlace={this.state.place}
-  //           />
-  //       );
-  //   };
 
   render() {
     return(
       <ContentContainer>
         <Switch>
-          <Route exact path={"/"} searchQueryForDoctor={this.state.doctorType} searchQueryForPlace={this.state.place} component={SearchDoctor} />
-          <Route path={"/home"} searchQueryForDoctor={this.state.doctorType} searchQueryForPlace={this.state.place} component={SearchDoctor} />
+          <Route exact path={"/"} render={(props) => <SearchDoctor searchQueryForDoctor={this.state.doctorType} searchQueryForPlace={this.state.place}/>}/>
+          <Route path={"/home"} render={(props) => <SearchDoctor searchQueryForDoctor={this.state.doctorType} searchQueryForPlace={this.state.place}/>}/>
 
           <Route path={"/patient-sign-up"} component={PatientSignUp} />
           <Route path={"/doctor-sign-up"} component={SignUp} />
