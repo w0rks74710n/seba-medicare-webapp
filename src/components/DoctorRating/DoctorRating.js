@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DoctorReviewsService from "../../services/DoctorReviewsService";
+import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
 import styled from "styled-components";
 
 const DoctorRatingComponent = styled.div`
@@ -20,9 +21,9 @@ class DoctorRating extends Component {
 
     renderStars() {
         DoctorReviewsService.getReviews(this.props.doctor).then( data => {
-        this.setState({
-            reviews: data.review
-        });
+            this.setState({
+                reviews: data.review
+            });
         }).catch( error => {
             console.log(error);
         });
@@ -30,10 +31,13 @@ class DoctorRating extends Component {
         for(var i = 0; i < this.state.reviews.length; i++)
             avgRating += this.state.reviews[i].rating;
         avgRating /= this.state.reviews.length;
+        DoctorProfileInformationService.updateDoctorProfile({ services: {
+            rating: Math.round(avgRating)
+        }}, this.props.doctor);
         let stars = [];
         for (let i = 0; i < avgRating; i++) {
             stars.push(
-                <i className="material-icons" style={{width: '24px'}}>star_rate</i>
+                <i key={i} className="material-icons" style={{width: '24px'}}>star_rate</i>
             );
         };
         return stars;

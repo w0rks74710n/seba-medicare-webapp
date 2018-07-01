@@ -52,12 +52,7 @@ class DoctorProfileSocialMedia extends Component {
     render() {
         return(
             <DoctorProfileSocialMediaComponent>
-                <Card>
-                    <CardTitle title="Social Media"/>
-                    <CardText>
-                            {this.renderSocialMedia()}
-                    </CardText>
-                </Card>
+                {this.renderSocialMedia()}
         </DoctorProfileSocialMediaComponent>
         )
     }

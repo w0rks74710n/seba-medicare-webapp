@@ -5,7 +5,6 @@ import DoctorProfileAbout from "./DoctorProfileAbout";
 import DoctorProfileContactInfo from "./DoctorProfileContactInfo";
 import DoctorProfileExperience from "./DoctorProfileExperience";
 import DoctorProfileEducation from "./DoctorProfileEducation";
-import DoctorProfileSocialMedia from "./DoctorProfileSocialMedia";
 import DoctorProfileImages from "./DoctorProfileImages";
 import DoctorProfileReviews from "./DoctorProfileReviews";
 
@@ -25,10 +24,9 @@ class DoctorProfileInformation extends Component {
         <DoctorProfileInformationComponent>
             <DoctorProfileImages images={this.props.doctorProfile.images}/>
             <DoctorProfileAbout about={this.props.doctorProfile.about}/>
-            <DoctorProfileContactInfo contact={this.props.doctorProfile.contactInformation}/>
+            <DoctorProfileContactInfo contact={this.props.doctorProfile.contactInformation} socialMedia={this.props.doctorProfile.socialMedia}/>
             <DoctorProfileExperience experience={this.props.doctorProfile.experience}/>
             <DoctorProfileEducation education={this.props.doctorProfile.education}/>
-            <DoctorProfileSocialMedia socialMedia={this.props.doctorProfile.socialMedia}/>
             <DoctorProfileReviews reviews={this.props.doctorReviews}/>
         </DoctorProfileInformationComponent>
         )
