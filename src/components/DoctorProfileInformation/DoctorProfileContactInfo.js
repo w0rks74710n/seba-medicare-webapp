@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import DoctorProfileSocialMedia from "./DoctorProfileSocialMedia";
+
 import {
     Card,
     CardText,
@@ -51,6 +53,9 @@ class DoctorProfileContactInfo extends Component {
                     <Line>
                         <Icon><FontIcon iconClassName="fa fa-map-pin" /></Icon>
                         <Text>{this.props.contact.addressLine1}<br/>{this.props.contact.addressLine2}</Text>
+                    </Line>
+                    <Line>
+                        <DoctorProfileSocialMedia socialMedia={this.props.socialMedia}/>
                     </Line>
                 </CardText>
             </Card>
