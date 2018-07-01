@@ -133,7 +133,7 @@ class Header extends Component {
         </Header_Horizontal_Navigation>
 
         {window.localStorage['jwtToken'] === undefined &&
-          <SignInButton to="/sign-in">
+          <SignInButton to="/login">
               Login/Sign up
           </SignInButton>
         }
