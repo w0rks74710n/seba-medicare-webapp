@@ -16,6 +16,7 @@ import PasswordForget from "../../components/RegisterationLogin/PasswordForget";
 const ContentContainer = styled.div`
     width: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
     height: 100%;
     display: flex nowrap;
 `;
