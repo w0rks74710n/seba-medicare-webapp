@@ -182,7 +182,7 @@ class SignUpForm extends Component {
         UserService.registerPatient(username, passwordOne, email, address1, address2, phone, fullName)
           .then(() => {
             this.setState(() => ({ ...INITIAL_STATE }));
-            history.push("/sign-in");
+            history.push("/login");
           }).catch((error) => {
           this.setState(updateByPropertyName('error', error));
         });
@@ -293,7 +293,7 @@ const SignInLink = () =>
   <Paragraph>
     Already have and account?
     {' '}
-    <Link to="/sign-in">Sign In</Link>
+    <Link to="/login">Sign In</Link>
   </Paragraph>;
 
 export default withRouter(SignUpPage);

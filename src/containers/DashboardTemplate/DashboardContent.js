@@ -8,10 +8,11 @@ import CustomizeDoctorProfile from "../CustomizeDoctorProfile/CustomizeDoctorPro
 import DoctorProfile from "../DoctorProfile/DoctorProfile";
 
 const ContentContainer = styled.div`
-    width: 100%;
-    overflow-y: auto;
-    height: 100%;
-    display: flex nowrap;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+  display: flex nowrap;
 `;
 
 class DashboardContent extends Component {

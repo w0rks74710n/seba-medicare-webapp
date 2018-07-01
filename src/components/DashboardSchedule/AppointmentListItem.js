@@ -97,6 +97,11 @@ class AppointmentListItem extends Component {
 
     newDate = dateArray2[0] + "-" + this.addZero(dateArray2[1]) + "-" + this.addZero(dateArray2[2]);
     newTime = dateArray[1].slice(0, -8);
+
+    this.setState({
+      dateShown: newDate,
+      timeShown: newTime
+    });
   }
 
   render() {
@@ -104,7 +109,7 @@ class AppointmentListItem extends Component {
       <Card style={CardStyle} className="md-block-centered">
         <CardTitle
           title= {this.state.patient}
-          subtitle= { "Date: " + newDate + ", Time: " + newTime }
+          subtitle= { "Date: " + this.state.dateShown + ", Time: " + this.state.timeShown }
         />
         <OneDiv>
           <PickerDiv>

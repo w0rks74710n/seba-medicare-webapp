@@ -19,9 +19,9 @@ const HeaderDiv = styled.div`
 
 const Dropdown = styled.li`
   display: block;
-  text-decoration: none;  
-  margin:auto; 
-  margin-right: 74px;
+  text-decoration: none; 
+  position: absolute; 
+  right: 104px;
 
   &:hover {
     cursor: pointer;
@@ -58,7 +58,7 @@ const DropdownMenu = styled.ul`
 `;
 
 const DropdownListItem = styled.li`
-  width: 300px;
+  width: 220px;
   margin-left: 0px;
   text-decoration: none;  
   padding: 12px; 

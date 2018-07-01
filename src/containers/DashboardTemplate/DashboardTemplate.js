@@ -6,16 +6,22 @@ import DashboardContent from "./DashboardContent";
 
 const ContainerDiv = styled.div`
   display: flex;
-  flex-flow: column nowrap;		
+  flex-flow: column nowrap;	
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 const ContentsDiv = styled.div`
   display: flex;
   flex-flow: row nowrap;		
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 const Content = styled.div`
   margin-left: 240px;
+  overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 class DashboardTemplate extends Component {
