@@ -20,7 +20,7 @@ const HeaderDiv = styled.div`
 const Dropdown = styled.li`
   display: block;
   text-decoration: none; 
-  position: fixed; 
+  position: absolute; 
   right: 100px;
 
   &:hover {
