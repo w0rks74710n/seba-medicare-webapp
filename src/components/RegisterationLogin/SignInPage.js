@@ -131,7 +131,7 @@ class SignInForm extends Component {
       window.localStorage['userType'] = data.userType;
       window.localStorage['id'] = data.id;
       window.localStorage['username'] = username;
-      data.userType = 'doctor' ? this.props.history.push('/dashboard') : this.props.history.push('/');
+      data.userType = 'doctor' ? this.props.history.push('/dashboard') : this.props.history.push('/home');
     }).catch((e) => {
       console.error(e);
       this.setState({
