@@ -135,9 +135,11 @@ class SignUpForm extends Component {
     super(props);
 
     this.state = { ...INITIAL_STATE };
+    this.validateForm = this.validateForm.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  validateForm() {
+  validateForm(callback) {
     let errorValidation;
     const {
       username,
@@ -147,17 +149,18 @@ class SignUpForm extends Component {
       error
     } = this.state;
 
-    username    === '' ? errorValidation = 'Username is required. ' : '';
+    username    === '' ? errorValidation = 'Username is required. ' : errorValidation = '';
     email       === '' ? errorValidation = errorValidation + 'Email is required. ' : '';
     passwordOne === '' ? errorValidation = errorValidation + 'Password is required. ' : '';
     passwordTwo === '' ? errorValidation = errorValidation + 'Confirm is required. ' : '';
     passwordOne !== passwordTwo ? errorValidation = errorValidation + 'Your given passwords does not match. Please verify.' : '';
 
-    errorValidation === '' ? this.setState({error: null}) : this.setState({error: errorValidation})
+    errorValidation === '' ? this.setState({error: null}, () => {callback()}) : this.setState({error: errorValidation});
   }
 
   onSubmit = (event) => {
     event.preventDefault();
+
     const {
       username,
       email,

@@ -142,7 +142,7 @@ class SignUpForm extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  validateForm() {
+  validateForm(callback) {
     let errorValidation;
     const {
       username,
@@ -160,7 +160,7 @@ class SignUpForm extends Component {
     passwordTwo === '' ? errorValidation = errorValidation + 'Confirm is required. ' : '';
     passwordOne !== passwordTwo ? errorValidation = errorValidation + 'Your given passwords does not match. Please verify.' : '';
 
-    errorValidation === '' ? this.setState({error: null}) : this.setState({error: errorValidation})
+    errorValidation === '' ? this.setState({error: null}, () => {callback()}) : this.setState({error: errorValidation})
   }
 
   onSubmit = (event) => {
