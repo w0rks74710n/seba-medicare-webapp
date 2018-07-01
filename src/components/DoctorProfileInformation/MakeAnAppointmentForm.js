@@ -130,8 +130,7 @@ class MakeAnAppointmentForm extends Component {
         </PickerDiv>
 
         <CardActions>
-          <Button flat onClick={() => { if (window.confirm('Are you sure to create this appointment?'))
-            this.props.createAppointment(this.state)} }>Submit</Button>
+          <Button flat onClick={() => { this.props.createAppointment(this.state)} }>Submit</Button>
         </CardActions>
       </Card>
     )

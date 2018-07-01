@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from 'styled-components';
 import background from '../../resources/landing1.jpg';
-import SignIn from "../../components/RegisterationLogin/SignInPage";
+import DoctorSignUpPage from "../../components/RegisterationLogin/DoctorSignUpPage";
 import {Link} from "react-router-dom";
 
 const PageContainer = styled.div`
@@ -17,7 +17,7 @@ const LoginContainer = styled.div`
   display: flex row;
   z-index: 10;
   width: 50%;
-  height: 80%;
+  height: 70%;
   margin: auto;
 `;
 
@@ -48,6 +48,7 @@ const Background = styled.img`
     -o-filter: blur(1px); 
   }
 `;
+
 
 const Title = styled.h1`
   margin-left: 10%;
@@ -100,7 +101,7 @@ class LoginFromLandingPage extends Component {
         <PageContainer>
           <Background src={background} alt="MediCare Landing Page" />
           <LoginContainer>
-            <SignIn />
+            <DoctorSignUpPage />
           </LoginContainer>
 
           <ButtonContainer>

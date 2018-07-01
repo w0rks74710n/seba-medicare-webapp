@@ -8,7 +8,7 @@ const SignOutButtonComponent = styled.a`
   order: 3;
   border-radius: 5px;
   padding: 5px 20px;
-  margin: 20px;
+  margin: 12px;
   color: #fff;
   background-color: #55acee;
   box-shadow: 0px 5px 0px 0px #3C93D5;

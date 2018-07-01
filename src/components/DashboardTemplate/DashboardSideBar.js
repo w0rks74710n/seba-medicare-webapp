@@ -86,9 +86,14 @@ const Icon = styled.img`
   padding: 10px;
 `;
 
-let id = window.localStorage['id'];
-
 class DashboardSideBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: window.localStorage['id']
+    }
+  }
+
   componentDidMount () {
     const script1 = document.createElement("script");
     script1.src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js";
@@ -115,13 +120,13 @@ class DashboardSideBar extends Component {
                 </NavSideMenuLI>
               </ListItemA>
 
-              <ListItemA to={"/dashboard/manage-schedule/" + id}>
+              <ListItemA to={"/dashboard/manage-schedule/" + this.state.id}>
                 <NavSideMenuLI>
                   <Icon src={schedule} alt="Schedule" /> Manage Schedule
                 </NavSideMenuLI>
               </ListItemA>
 
-              <ListItemA to={"/dashboard/customizeProfile/" + id}>
+              <ListItemA to={"/dashboard/customizeProfile/" + this.state.id}>
                 <NavSideMenuLI data-toggle="collapse" data-target="#settings" className="collapsed">
                   <Icon src={settings} alt="Customize" /> Customize Profile
                 </NavSideMenuLI>

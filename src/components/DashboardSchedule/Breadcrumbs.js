@@ -39,13 +39,11 @@ class Breadcrumbs extends Component {
   render() {
     return (
       <BreadcrumbsDiv>You are here:
-        <NavLink to="/home">Home</NavLink>
-        <Divider>|</Divider>
-        <NavLink to="/profile">Profile</NavLink>
-        <Divider>|</Divider>
         <NavLink to="/dashboard">Dashboard</NavLink>
         <Divider>|</Divider>
-        <NavLink to="/manage-schedule">Manage Schedule</NavLink>
+        <NavLink to={"/doctor-profile/" + window.localStorage['id']}>Public Profile</NavLink>
+        <Divider>|</Divider>
+        <NavLink to={"/dashboard/manage-schedule/" + window.localStorage['id']}>Manage Schedule</NavLink>
       </BreadcrumbsDiv>
     );
   }

@@ -8,9 +8,10 @@ import ColorPalette from '../../constants/ColorPalette'
 
 
 const SearchBarCont = styled.div`
-    height: 62px;
+    height: 65px;
     width: auto;
-    background-color: ${ColorPalette.primaryBackGorundContainer}
+    background-color: ${ColorPalette.primaryBackGorundContainer};
+    border-bottom: 1px solid lightgray;
 `;
 
 const LocationInputCont = styled.div`
@@ -163,6 +164,7 @@ class DoctorSearch extends React.Component {
         this.setState({
             value: newValue
         });
+        newValue === '' ? newValue = 'noPreference' : newValue;
         searchQuery.doctorType = newValue;
     };
 

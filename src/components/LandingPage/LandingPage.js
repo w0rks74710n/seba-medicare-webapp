@@ -32,8 +32,8 @@ const ButtonContainer = styled.div`
   z-index: 10;
   width: 150px;
   height: 40px;
-  right: 6%;
-  top: 8%;
+  right: 10%;
+  top: 80%;
 `;
 
 const Background = styled.img`
@@ -79,7 +79,37 @@ const Search = styled.div`
   z-index: 10;
   margin: auto;
   margin-top: 50px;
-  margin-left: 100px;
+`;
+
+const Input = styled.input`
+  margin: auto;
+  width: 50%;
+  height: 50px;
+  box-shadow: 1px 2px #999999;
+  border: 1px solid black;
+  border-radius: 15px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  
+  &:focus {
+    width: 80%;
+  }
+  
+  &::placeholder {
+    font-size: 16px;
+    font-style: italic;
+    color: #424242;
+    margin: auto;
+    padding-left: 20px;
+  }
+  
+  &:[type=text]{
+    font-size: 16px;
+    font-style: italic;
+    color: #424242;
+    margin: auto;
+    padding-left: 20px;
+  }
 `;
 
 const SignInButton = styled(Link)`
@@ -134,36 +164,6 @@ const NavLink = styled(Link)`
 	}	
 `;
 
-const Input = styled.input`
-  width: 50%;
-  height: 50px;
-  box-shadow: 1px 2px #999999;
-  border: 1px solid black;
-  border-radius: 15px;;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
-  
-  &:focus {
-    width: 80%;
-  }
-  
-  &::placeholder {
-    font-size: 16px;
-    font-style: italic;
-    color: #424242;
-    margin: auto;
-    padding-left: 20px;
-  }
-  
-  &:[type=text]{
-    font-size: 16px;
-    font-style: italic;
-    color: #424242;
-    margin: auto;
-    padding-left: 20px;
-  }
-`;
-
 const SearchBarCont = styled.div`
     position:relative;
     top: 30px;
@@ -180,24 +180,30 @@ const LocationInputCont = styled.div`
 `;
 
 const SearchButton = styled.input`
-    position:relative;
-    top: -66px;
-    left: 471px;
-    font-family: Helvetica, sans-serif;
-    font-weight: 600;
-    font-size: 20px;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    margin: 0;
-    outline: 0;
-    padding: 7px;
-    width: 100px;
-    box-sizing: border-box; 
-    background-color: ${ColorPalette.primary};
-    &:hover{
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
-    }
+  position:relative;
+  top: -66px;
+  left: 471px;
+  -webkit-order: 3;
+  -ms-flex-order: 3;
+  border: 0px solid black;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #55acee;
+  box-shadow: 0px 5px 0px 0px #3C93D5;
+  margin: 0;
+  padding: 6px 25px;
+  
+  &:active {
+    transform: translate(0px, 2px);
+    -webkit-transform: translate(0px, 2px);
+    box-shadow: 0px 1px 0px 0px;
+  }
+  
+  &:hover {
+    background-color: #6FC6FF;
+    cursor: pointer;
+  }
 `;
 
 class LandingPage extends Component {

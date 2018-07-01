@@ -6,10 +6,8 @@ import ColorPalette from '../../constants/ColorPalette';
 import SignOutButton from '../RegisterationLogin/SignOutButton'
 
 const HeaderDiv = styled.div`
-	border-bottom: 1px solid black;
-  padding: 5px;
 	background: ${ ColorPalette.primary };
-  height: auto;
+  height: 50px;
   width: 100%;		
   display: flex;
   flex-flow: row nowrap;		
@@ -17,7 +15,7 @@ const HeaderDiv = styled.div`
 
 const Header_Logo = styled.img`
   margin-left: 40px;  
-  height: 50px;
+  height: 40px;
 `;
 
 const StyledLink = styled(Link)`
@@ -86,7 +84,7 @@ const SignInButton = styled(Link)`
   order: 3;
   border-radius: 5px;
   padding: 5px 20px;
-  margin: 20px;
+  margin: 12px;
   text-decoration: none;
   color: #fff;
   background-color: #55acee;
@@ -126,14 +124,11 @@ class Header extends Component {
             <Header_Horizontal_Navigation_Item>
               <StyledLink to="/doctor-sign-up">Join Medicare</StyledLink>
             </Header_Horizontal_Navigation_Item>
-            <Header_Horizontal_Navigation_Item>
-              <StyledLink to="/language">EN</StyledLink>
-            </Header_Horizontal_Navigation_Item>
           </HeaderHorizontalNavigationList>
         </Header_Horizontal_Navigation>
 
         {window.localStorage['jwtToken'] === undefined &&
-          <SignInButton to="/sign-in">
+          <SignInButton to="/login">
               Login/Sign up
           </SignInButton>
         }

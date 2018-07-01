@@ -5,11 +5,10 @@ import ColorPalette from '../../constants/ColorPalette'
 
 const FooterDiv = styled.div`
   bottom: 0px;
-	border-top: 1px solid black;
   padding: 5px;
 	background: ${ ColorPalette.primary };
 	
-  height: auto;
+  height: 50px;
   width: 100%;		
   display: flex;
   flex-flow: row nowrap;		

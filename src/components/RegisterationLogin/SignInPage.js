@@ -3,7 +3,6 @@ import email_icon from '../../resources/email-icon.png';
 import password_icon from '../../resources/pass-icon.png';
 import { withRouter } from 'react-router-dom';
 import { SignUpLink } from './DoctorSignUpPage';
-import { PasswordForgetLink } from './PasswordForget';
 import UserService from '../../services/UserService'
 import styled from "styled-components";
 import ColorPalette from "../../constants/ColorPalette";
@@ -88,12 +87,17 @@ const HorizontalDivider = styled.hr`
   margin: auto;
 `;
 
+const ErrorLabel = styled.p`
+  text-align: center;
+  color: red;
+  font-size: 15px;
+`;
+
 const SignInPage = ({ history }) =>
   <ContentDiv>
     <Title>Sign In</Title>
     <HorizontalDivider/>
     <SignInForm history={history} />
-    <PasswordForgetLink />
     <SignUpLink />
   </ContentDiv>;
 
@@ -121,16 +125,13 @@ class SignInForm extends Component {
       password,
     } = this.state;
 
-    const {
-      history,
-    } = this.props;
-
     UserService.login(username, password).then((data) => {
       console.log(data.token);
       window.localStorage['jwtToken'] = data.token;
       window.localStorage['userType'] = data.userType;
       window.localStorage['id'] = data.id;
-      this.props.history.push('/');
+      window.localStorage['username'] = username;
+      data.userType = 'doctor' ? this.props.history.push('/dashboard') : this.props.history.push('/home');
     }).catch((e) => {
       console.error(e);
       this.setState({
@@ -175,7 +176,11 @@ class SignInForm extends Component {
           Login
         </ButtonForm>
 
-        { error && <p>{error.message}</p> }
+        {error &&
+          <ErrorLabel>
+            {'*'+error+'. Please verify your credentials.*'}
+          </ErrorLabel>
+        }
       </form>
     );
   }

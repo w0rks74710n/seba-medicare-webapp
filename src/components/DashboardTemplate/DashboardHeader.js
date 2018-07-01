@@ -19,9 +19,9 @@ const HeaderDiv = styled.div`
 
 const Dropdown = styled.li`
   display: block;
-  text-decoration: none;  
-  margin:auto; 
-  margin-right: 74px;
+  text-decoration: none; 
+  position: absolute; 
+  right: 75px;
 
   &:hover {
     cursor: pointer;
@@ -58,7 +58,7 @@ const DropdownMenu = styled.ul`
 `;
 
 const DropdownListItem = styled.li`
-  width: 300px;
+  width: 190px;
   margin-left: 0px;
   text-decoration: none;  
   padding: 12px; 
@@ -86,16 +86,29 @@ const Icon = styled.img`
   padding-right: 6px;
 `;
 
-let id = window.localStorage['id'];
+const UserGreeting = styled.h1 `
+  margin: auto 230px;
+  font-size: 16px;
+  color: white;
+`;
 
 class DashboardHeader extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: window.localStorage['id'],
+      username: window.localStorage['username']
+    }
+  }
+
   render() {
     return (
       <HeaderDiv>
+        <UserGreeting>Welcome, {this.state.username}</UserGreeting>
         <Dropdown>
           <DropdownToggle className="dropbtn">Admin Menu</DropdownToggle>
           <DropdownMenu className="dropdown-content">
-            <StyledLink to={"/doctor-profile/" + id} >
+            <StyledLink to={"/doctor-profile/" + this.state.id} >
              <DropdownListItem>
                 <Icon src={edit} alt="Public Profile"/>View Public Profile
              </DropdownListItem>

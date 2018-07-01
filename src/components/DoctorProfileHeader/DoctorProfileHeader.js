@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 import DoctorReviewsService from "../../services/DoctorReviewsService";
-
 import DoctorReviewsDialog from '../DoctorProfileReviews/DoctorReviewsDialog';
 
 import {
   Button
 } from 'react-md';
 import DoctorRating from "../DoctorRating/DoctorRating";
+import {confirmAlert} from "react-confirm-alert";
 
 const DoctorProfileHeaderComponent = styled.div`
   height: 200px;
@@ -82,6 +83,12 @@ class DoctorProfileHeader extends Component {
 
   constructor(props){
     super(props);
+    this.state = {
+      userType: window.localStorage['userType'],
+    };
+
+    this.isAppointmentAllowed = this.isAppointmentAllowed.bind(this);
+    this.sendReviewToServer = this.sendReviewToServer.bind(this);
   }
 
   sendReviewToServer(reviewObj) {
@@ -92,6 +99,33 @@ class DoctorProfileHeader extends Component {
         comment: reviewObj.comment
       }
     );
+  }
+
+  isAppointmentAllowed() {
+    if (this.state.userType && this.state.userType === 'patient') {
+      this.props.renderAppointmentForm();
+    } else if (this.state.userType && this.state.userType === 'doctor') {
+      confirmAlert({
+        title: 'Please Switch Account',
+        message: 'Please sing in with a patient account to perform an appointment',
+        buttons: [
+          {
+            label: 'Understood'
+          }
+        ]
+      });
+    } else {
+      confirmAlert({
+        title: 'Please Sign In',
+        message: 'It is nice you found a doctor and want to do appointment! Please login or register before continuing',
+        buttons: [
+          {
+            label: 'Go to login',
+            onClick: () => window.location.replace('/login')
+          }
+        ]
+      });
+    }
   }
 
   render() {
@@ -115,8 +149,8 @@ class DoctorProfileHeader extends Component {
         </BasicInfo>
         <QuickButtons>
           <Button flat primary iconBefore={false} iconChildren="chat_bubble_outline" disabled>Emergency Contact</Button>
-          <Button flat primary iconBefore={false} iconChildren="calendar_today" onClick={() => this.props.renderAppointmentForm()}>Make Appointment</Button>
-          <DoctorReviewsDialog doctor={this.props.doctorProfile.doctor_id} sendReviewToServer={this.sendReviewToServer} />
+          <Button flat primary iconBefore={false} iconChildren="calendar_today" onClick={() => {this.isAppointmentAllowed()}}>Make Appointment</Button>
+          <DoctorReviewsDialog visible={false} doctor={this.props.doctorProfile.doctor_id} sendReviewToServer={this.sendReviewToServer} />
         </QuickButtons>
       </DoctorProfileHeaderComponent>
     )

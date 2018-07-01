@@ -8,14 +8,16 @@ import {
   TermsAndConditions
 } from "../";
 
-import PatientSignUp from "../../components/RegisterationLogin/PatientSignUpPage";
-import SignIn from "../../components/RegisterationLogin/SignInPage";
 import SignUp from "../../components/RegisterationLogin/DoctorSignUpPage";
 import PasswordForget from "../../components/RegisterationLogin/PasswordForget";
+import LoginFromLandingPage from "../Landing/LoginFromLandingPage";
+import RegisterFromLandingPage from "../Landing/RegisterFromLandingPage";
+import DoctorRegisterFromLandingPage from "../Landing/DoctorRegisterFromLandingPage";
 
 const ContentContainer = styled.div`
     width: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
     height: 100%;
     display: flex nowrap;
 `;
@@ -41,9 +43,9 @@ class HomeContent extends Component {
           <Route exact path={"/"} render={(props) => <SearchDoctor searchQueryForDoctor={this.state.doctorType} searchQueryForPlace={this.state.place} longQuery={this.state.longQuery} latQuery={this.state.latQuery}/>}/>
           <Route path={"/home"} render={(props) => <SearchDoctor searchQueryForDoctor={this.state.doctorType} searchQueryForPlace={this.state.place} longQuery={this.state.longQuery} latQuery={this.state.latQuery}/>}/>
 
-          <Route path={"/patient-sign-up"} component={PatientSignUp} />
-          <Route path={"/doctor-sign-up"} component={SignUp} />
-          <Route path={"/sign-in"} component={SignIn} />
+          <Route path={"/patient-sign-up"} component={RegisterFromLandingPage} />
+          <Route path={"/doctor-sign-up"} component={DoctorRegisterFromLandingPage} />
+          <Route path={"/login"} component={LoginFromLandingPage} />
           <Route path={"/password-forget"} component={PasswordForget} />
 
           <Route path={"/doctor-profile/:id"} component = {DoctorProfile}/>
