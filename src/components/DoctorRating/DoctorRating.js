@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import DoctorReviewsService from "../../services/DoctorReviewsService";
-import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
 import styled from "styled-components";
 
 const DoctorRatingComponent = styled.div`
@@ -14,28 +12,11 @@ class DoctorRating extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            reviews: []
-        };
     }
 
     renderStars() {
-        DoctorReviewsService.getReviews(this.props.doctor).then( data => {
-            this.setState({
-                reviews: data.review
-            });
-        }).catch( error => {
-            console.log(error);
-        });
-        var avgRating = 0;
-        for(var i = 0; i < this.state.reviews.length; i++)
-            avgRating += this.state.reviews[i].rating;
-        avgRating /= this.state.reviews.length;
-        DoctorProfileInformationService.updateDoctorProfile({ services: {
-            rating: Math.round(avgRating)
-        }}, this.props.doctor);
         let stars = [];
-        for (let i = 0; i < avgRating; i++) {
+        for (let i = 0; i < this.props.avgRating; i++) {
             stars.push(
                 <i key={i} className="material-icons" style={{width: '24px'}}>star_rate</i>
             );
@@ -47,7 +28,7 @@ class DoctorRating extends Component {
         return (
             <DoctorRatingComponent>
                 <div>{this.renderStars()}</div>
-                <span className="reviews" style={{display: this.props.showNumber ? 'inline-block' : 'none' }}>({this.state.reviews.length} Reviews)</span>
+                <span className="reviews" style={{display: this.props.showNumber ? 'inline-block' : 'none' }}>({this.props.totalRatings} Reviews)</span>
             </DoctorRatingComponent>
         );
     }

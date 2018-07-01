@@ -55,12 +55,11 @@ class DoctorProfile extends Component {
   }
 
   componentWillMount(props) {
-    this.setState({
-      loading: true,
-      doctor_id: this.props.match.params.id,
-      loadingReviews: true
-    });
-
+      this.setState({
+        loading: true,
+        doctor_id: this.props.match.params.id,
+        loadingReviews: true
+      });
     let id = this.props.match.params.id;
     
     DoctorProfileInformationService.getDoctorProfile(id).then( data => {
@@ -91,7 +90,9 @@ class DoctorProfile extends Component {
     return (
       <DoctorProfileComponent>
         <DoctorProfileHeader  doctorProfile={this.state.doctorProfile}
-                              renderAppointmentForm={this.renderAppointmentForm.bind(this) }/>
+                              renderAppointmentForm={this.renderAppointmentForm.bind(this)}
+                              totalRatings={this.state.doctorReviews.length}
+                              />
         <Divider/>
         { this.state.renderForm ? <MakeAnAppointmentForm doctorProfile={this.state.doctorProfile}
                                                          doctor_id={this.state.doctor_id}

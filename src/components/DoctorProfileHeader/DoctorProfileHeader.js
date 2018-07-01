@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import DoctorReviewsService from "../../services/DoctorReviewsService";
+import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
 
 import DoctorReviewsDialog from '../DoctorProfileReviews/DoctorReviewsDialog';
 
@@ -82,6 +83,9 @@ class DoctorProfileHeader extends Component {
 
   constructor(props){
     super(props);
+    this.state = {
+      reviews: []
+    }
   }
 
   sendReviewToServer(reviewObj) {
@@ -91,8 +95,24 @@ class DoctorProfileHeader extends Component {
         rating: reviewObj.rating,
         comment: reviewObj.comment
       }
-    );
-  }
+    ).then( res => {
+      if(res.successfullyCreated === "Model"){
+          let reviews = [];
+          DoctorReviewsService.getReviews(reviewObj.doctor).then( data => {
+                reviews =  data.review;
+          }).catch( error => {
+              console.log(error);
+          });
+          var avgRating = 0;
+          for(var i = 0; i < reviews.length; i++)
+              avgRating += reviews[i].rating;
+          avgRating /= reviews.length;
+          DoctorProfileInformationService.updateDoctorProfile({ services: {
+              rating: Math.round(avgRating)
+          }}, reviewObj.doctor);
+        }
+      });
+    }
 
   render() {
     return(
@@ -110,7 +130,10 @@ class DoctorProfileHeader extends Component {
             </a>
           </Website>
           <Rating className="rating">
-            <DoctorRating doctor={this.props.doctorProfile.doctor_id} showNumber={true}/>
+            <DoctorRating doctor={this.props.doctorProfile.doctor_id} 
+                          avgRating={this.props.doctorProfile.services.rating} 
+                          totalRatings={this.props.totalRatings}
+                          showNumber={true}/>
           </Rating>
         </BasicInfo>
         <QuickButtons>
