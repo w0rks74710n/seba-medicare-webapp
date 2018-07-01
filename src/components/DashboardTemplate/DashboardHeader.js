@@ -19,9 +19,9 @@ const HeaderDiv = styled.div`
 
 const Dropdown = styled.li`
   display: block;
-  text-decoration: none;  
-  margin:auto; 
-  margin-right: 74px;
+  text-decoration: none; 
+  position: absolute; 
+  right: 104px;
 
   &:hover {
     cursor: pointer;

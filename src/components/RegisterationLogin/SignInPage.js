@@ -3,7 +3,6 @@ import email_icon from '../../resources/email-icon.png';
 import password_icon from '../../resources/pass-icon.png';
 import { withRouter } from 'react-router-dom';
 import { SignUpLink } from './DoctorSignUpPage';
-import { PasswordForgetLink } from './PasswordForget';
 import UserService from '../../services/UserService'
 import styled from "styled-components";
 import ColorPalette from "../../constants/ColorPalette";
@@ -99,7 +98,6 @@ const SignInPage = ({ history }) =>
     <Title>Sign In</Title>
     <HorizontalDivider/>
     <SignInForm history={history} />
-    <PasswordForgetLink />
     <SignUpLink />
   </ContentDiv>;
 

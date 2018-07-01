@@ -12,6 +12,8 @@ import {
   Divider
 } from "react-md";
 import AppoitmentService from "../../services/AppoitmentService";
+import {confirmAlert} from "react-confirm-alert";
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const DoctorProfileComponent = styled.section`
   width: 1000px;
@@ -36,6 +38,16 @@ class DoctorProfile extends Component {
     console.log(JSON.stringify(appointment), this.props.match.params.id);
     AppoitmentService.createAppointment(appointment, this.props.match.params.id).then(() => {
       console.log("Appointment is successfully created");
+      confirmAlert({
+        title: 'Appointment is successfully created!',
+        message: 'Details of appointment now sent to the doctor',
+        buttons: [
+          {
+            label: 'Okey',
+            onClick: () => window.location.replace('/home')
+          }
+        ]
+      });
     }).catch((e) => {
       console.error(e);
     });
