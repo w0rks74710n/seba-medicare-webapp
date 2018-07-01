@@ -86,10 +86,10 @@ class EditMedicareServicesForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    DoctorProfileInformationService.updateDoctorProfile(this.state.medicareServices, this.props.id).then((response) => {
-      response.successfullyUpdated ?
-        alert('Profile updated successfully!') :
-        alert('An error has happened while saving the data!');
+    DoctorProfileInformationService.updateDoctorProfile(this.state.medicareServices, this.props.id).then((res) => {
+      res.successfullyUpdated ?
+        this.props.success('Success', 'Medicare services updated successfully') :
+        this.props.success('Error', 'An error occurred while saving the data! Please contact support.')
     });
   };
 

@@ -18,10 +18,10 @@ class EditSocialMediaForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log(this.state);
-    DoctorProfileInformationService.updateDoctorProfile(this.state, this.props.id).then((response) => {
-      response.successfullyUpdated ?
-        alert('Profile updated successfully!') :
-        alert('An error has happened while saving the data!');
+    DoctorProfileInformationService.updateDoctorProfile(this.state, this.props.id).then((res) => {
+      res.successfullyUpdated ?
+        this.props.success('Success', 'Social media information updated successfully') :
+        this.props.success('Error', 'An error occurred while saving the data! Please contact support.')
     });
   };
 

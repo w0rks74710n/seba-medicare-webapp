@@ -22,7 +22,7 @@ class EditContactInformationForm extends Component {
     event.preventDefault();
     DoctorProfileInformationService.updateDoctorProfile(this.state, this.props.id).then((res) => {
       res.successfullyUpdated ?
-        this.props.success('Success', 'Profile updated successfully') :
+        this.props.success('Success', 'Contact information updated successfully') :
         this.props.success('Error', 'An error occurred while saving the data! Please contact support.')
     });
   }

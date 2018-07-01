@@ -58,7 +58,7 @@ const DropdownMenu = styled.ul`
 `;
 
 const DropdownListItem = styled.li`
-  width: 300px;
+  width: 190px;
   margin-left: 0px;
   text-decoration: none;  
   padding: 12px; 
