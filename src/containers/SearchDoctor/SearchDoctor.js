@@ -6,7 +6,6 @@ import { FilterSidebar, SearchDoctorList, SearchBar} from "../"
 
 
 const SearchDoctorContainerWithSearchbar = styled.div`
-
 `;
 
 
@@ -23,7 +22,6 @@ class SearchDoctor extends Component {
     let isAreaOfSpecialitySelected = this.props.searchQueryForDoctor;
     let isZIPCodeSelected = this.props.searchQueryForPlace;
 
-
     this.state = {
       loading: true,
       filter: {
@@ -33,7 +31,7 @@ class SearchDoctor extends Component {
         isRatingSelected: 'noPreference'},
         searchQuery: {
             isAreaOfSpecialitySelected: isAreaOfSpecialitySelected ? isAreaOfSpecialitySelected: 'noPreference',
-            isZIPCodeSelected:  isZIPCodeSelected ? isAreaOfSpecialitySelected: 'noPreference'
+            isZIPCodeSelected:  isZIPCodeSelected ? isZIPCodeSelected: 'noPreference'
         },
       data: []
     };
@@ -70,9 +68,8 @@ class SearchDoctor extends Component {
   retrieveFilterSidebarState(filterSelection) {
     this.setState({
       filter: filterSelection
-    }, () => { this.fetchDoctorData()} );
+    }, () => { this.fetchDoctorData() } );
   }
-
 
   retrieveSearchBarState(query) {
 

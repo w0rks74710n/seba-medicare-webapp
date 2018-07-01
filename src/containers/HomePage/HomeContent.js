@@ -26,7 +26,7 @@ class HomeContent extends Component {
   constructor(props){
     super(props);
     this.state = {
-      doctorType: this.props.searchQueryForDoctor,
+        doctorType: this.props.searchQueryForDoctor,
         place: this.props.searchQueryForPlace
     }
   }

@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Autosuggest from "react-autosuggest";
 import PlacesAutocomplete, { geocodeByAddress, geocodeByPlaceId, getLatLng } from 'react-places-autocomplete';
-import "../../constants/searchBarDoctor.css"
-import "../../constants/locationSearchDoctor.css"
+import "../../constants/searchBarLandingPage.css"
+import "../../constants/locationSearchLandingPage.css"
 import ColorPalette from '../../constants/ColorPalette'
 
 
@@ -22,7 +22,7 @@ const LocationInputCont = styled.div`
 
 const SearchButton = styled.input`
     position:relative;
-    top: -65px;
+    top: -66px;
     left: 751px;
     font-family: Helvetica, sans-serif;
     font-weight: 600;
@@ -41,6 +41,13 @@ const SearchButton = styled.input`
     }
 `;
 
+const DoctorSearchCont = styled.div`
+    position:relative;
+    top: 5px;
+    left: 279px;
+    height:40px;
+`;
+
 class SearchBar extends React.Component {
 
     constructor(props) {
@@ -51,7 +58,9 @@ class SearchBar extends React.Component {
     render() {
         return (
             <SearchBarCont>
-                <DoctorSearch/>
+                <DoctorSearchCont>
+                    <DoctorSearch/>
+                </DoctorSearchCont>
                 <LocationInputCont>
                     <LocationSearch/>
                 </LocationInputCont>
@@ -64,7 +73,7 @@ class SearchBar extends React.Component {
 export default SearchBar;
 
 var searchQuery = {
-    doctorType: "",
+    doctorType: 'noPreference',
     ZIP: 80333,
     latitude: null,
     longitude: null
