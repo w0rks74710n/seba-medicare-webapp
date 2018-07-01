@@ -122,6 +122,9 @@ class DoctorProfileHeader extends Component {
           {
             label: 'Go to login',
             onClick: () => window.location.replace('/login')
+          },
+          {
+            label: 'Cancel'
           }
         ]
       });
