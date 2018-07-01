@@ -16,9 +16,9 @@ class EditAboutForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     DoctorProfileInformationService.updateDoctorProfile(this.state, this.props.id).then((res) => {
-      if (res.successfullyUpdated) {
-        this.props.success();
-      }
+      res.successfullyUpdated ?
+        this.props.success('Success', 'Profile updated successfully') :
+        this.props.success('Error', 'An error occurred while saving the data! Please contact support.')
     });
   }
 

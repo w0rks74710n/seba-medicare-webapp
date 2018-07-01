@@ -64,10 +64,10 @@ class CustomizeDoctorProfile extends Component {
     });
   }
 
-  showSuccessAlert() {
+  showSuccessAlert(title, message) {
     confirmAlert({
-      title: 'Success',
-      message: 'Profile successfully updated!',
+      title: title,
+      message: message,
       buttons: [
         {
           label: 'Ok'
@@ -88,22 +88,28 @@ class CustomizeDoctorProfile extends Component {
                                 success={this.showSuccessAlert}/>
         <br/>
         <EditContactInformationFormContainer id={this.props.match.params.id}
-                                             contactInformation={this.state.data.doctorProfileInformation.contactInformation} />
+                                             contactInformation={this.state.data.doctorProfileInformation.contactInformation}
+                                             success={this.showSuccessAlert}/>
         <br/>
         <EditSocialMediaFormContainer id={this.props.match.params.id}
-                                      socialMedia={this.state.data.doctorProfileInformation.socialMedia}/>
+                                      socialMedia={this.state.data.doctorProfileInformation.socialMedia}
+                                      success={this.showSuccessAlert}/>
         <br/>
         <EditExperienceFormContainer id={this.props.match.params.id}
-                                     experience={this.state.data.doctorProfileInformation.experience}/>
+                                     experience={this.state.data.doctorProfileInformation.experience}
+                                     success={this.showSuccessAlert}/>
         <br/>
         <EditEducationFormContainer id={this.props.match.params.id}
-                                    education={this.state.data.doctorProfileInformation.education}/>
+                                    education={this.state.data.doctorProfileInformation.education}
+                                    success={this.showSuccessAlert}/>
         <br/>
         <EditMedicareServicesFormContainer id={this.props.match.params.id}
-                                           services={this.state.data.doctorProfileInformation.services}/>
+                                           services={this.state.data.doctorProfileInformation.services}
+                                           success={this.showSuccessAlert}/>
         <br />
         <EditPicturesFormContainer id={this.props.match.params.id}
-                                   images={this.state.data.doctorProfileInformation.images}/>
+                                   images={this.state.data.doctorProfileInformation.images}
+                                   success={this.showSuccessAlert}/>
       </CustomizeDoctorProfileContainer>
     );
   }
