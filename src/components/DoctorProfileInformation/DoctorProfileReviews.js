@@ -40,7 +40,7 @@ class DoctorProfileReviews extends Component {
                     stars.push(
                         <i key={i} className="material-icons" style={{width: '24px'}}>star_rate</i>
                     );
-                };
+                }
                 return stars;
             };
 

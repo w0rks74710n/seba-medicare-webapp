@@ -77,8 +77,8 @@ const LineDiv = styled.div`
   display: block;
 	margin: auto;
   margin-left: 50px;
-  margin-bottom: 5%;
-  margin-top: 5%;
+  margin-bottom: 15px;
+  margin-top: 15px;
 `;
 
 const Paragraph = styled.p`
@@ -103,6 +103,12 @@ const StyledLink = styled(Link)`
 	&:hover {
     text-decoration: underline;
 	}
+`;
+
+const ErrorLabel = styled.p`
+  text-align: center;
+  color: red;
+  font-size: 15px;
 `;
 
 const SignUpPage = ({ history }) =>
@@ -133,6 +139,28 @@ class SignUpForm extends Component {
   constructor(props) {
     super(props);
     this.state = {...INITIAL_STATE};
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  validateForm() {
+    let errorValidation;
+    const {
+      username,
+      email,
+      passwordOne,
+      passwordTwo,
+      fullName,
+      error
+    } = this.state;
+
+    fullName    === '' ? errorValidation = 'Full name is required. ' : errorValidation = '';
+    username    === '' ? errorValidation = errorValidation + 'Username is required. ' : '';
+    email       === '' ? errorValidation = errorValidation + 'Email is required. ' : '';
+    passwordOne === '' ? errorValidation = errorValidation + 'Password is required. ' : '';
+    passwordTwo === '' ? errorValidation = errorValidation + 'Confirm is required. ' : '';
+    passwordOne !== passwordTwo ? errorValidation = errorValidation + 'Your given passwords does not match. Please verify.' : '';
+
+    errorValidation === '' ? this.setState({error: null}) : this.setState({error: errorValidation})
   }
 
   onSubmit = (event) => {
@@ -145,17 +173,20 @@ class SignUpForm extends Component {
       address1,
       address2,
       phone,
-      fullName
+      fullName,
     } = this.state;
 
-    const {history} = this.props;
-
-    UserService.registerPatient(username, passwordOne, email, address1, address2, phone, fullName)
-      .then(() => {
-        this.setState(() => ({ ...INITIAL_STATE }));
-        history.push("/sign-in");
-    }).catch((error) => {
-      this.setState(updateByPropertyName('error', error));
+    this.validateForm(() => {
+      if (this.state.error === null) {
+        const {history} = this.props;
+        UserService.registerPatient(username, passwordOne, email, address1, address2, phone, fullName)
+          .then(() => {
+            this.setState(() => ({ ...INITIAL_STATE }));
+            history.push("/sign-in");
+          }).catch((error) => {
+          this.setState(updateByPropertyName('error', error));
+        });
+      }
     });
   };
 
@@ -172,13 +203,6 @@ class SignUpForm extends Component {
       error
     } = this.state;
 
-    const isInvalid =
-      passwordOne !== passwordTwo ||
-      passwordOne === '' ||
-      username === '' ||
-      email === '' ||
-      fullName === '';
-
     return (
       <form onSubmit={this.onSubmit}>
         <LineDiv>
@@ -187,7 +211,7 @@ class SignUpForm extends Component {
             value={fullName}
             onChange={event => this.setState(updateByPropertyName('fullName', event.target.value))}
             type="text"
-            placeholder="Full Name"
+            placeholder="* Full Name"
           />
         </LineDiv>
         <LineDiv>
@@ -196,7 +220,7 @@ class SignUpForm extends Component {
             value={username}
             onChange={event => this.setState(updateByPropertyName('username', event.target.value))}
             type="text"
-            placeholder="Username"
+            placeholder="* Username"
           />
         </LineDiv>
         <LineDiv>
@@ -204,8 +228,8 @@ class SignUpForm extends Component {
           <InputForm
             value={email}
             onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
-            type="text"
-            placeholder="Email Address"
+            type="email"
+            placeholder="* Email Address"
           />
         </LineDiv>
         <LineDiv>
@@ -214,7 +238,7 @@ class SignUpForm extends Component {
             value={passwordOne}
             onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
             type="password"
-            placeholder="Password"
+            placeholder="* Password"
           />
         </LineDiv>
         <LineDiv>
@@ -223,7 +247,7 @@ class SignUpForm extends Component {
             value={passwordTwo}
             onChange={event => this.setState(updateByPropertyName('passwordTwo', event.target.value))}
             type="password"
-            placeholder="Confirm Password"
+            placeholder="* Confirm Password"
           />
         </LineDiv>
         <LineDiv>
@@ -249,17 +273,17 @@ class SignUpForm extends Component {
           <InputForm
             value={phone}
             onChange={event => this.setState(updateByPropertyName('phone', event.target.value))}
-            type="text"
+            type="number"
             placeholder="Phone Number"
           />
         </LineDiv>
         <Paragraph>By clicking Register, you agree on our <StyledLink to="/terms-and-conditions">terms and condition</StyledLink>.</Paragraph>
         <HorizontalDivider/>
-        <ButtonForm disabled={isInvalid} type="submit">
+        <ButtonForm type="submit">
           Sign Up
         </ButtonForm>
 
-        { error && <p>{error.message}</p> }
+        { error && <ErrorLabel>{error+' Please verify.'}</ErrorLabel> }
       </form>
     );
   }
@@ -270,7 +294,7 @@ const SignInLink = () =>
     Already have and account?
     {' '}
     <Link to="/sign-in">Sign In</Link>
-  </Paragraph>
+  </Paragraph>;
 
 export default withRouter(SignUpPage);
 
