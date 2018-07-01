@@ -37,7 +37,6 @@ class CustomizeDoctorProfile extends Component {
     this.setState({
       loading: true
     }, () => {
-
       if (this.props.match.params.id !== this.state.doctor_id) {
         confirmAlert({
           title: 'Unauthorized Access',

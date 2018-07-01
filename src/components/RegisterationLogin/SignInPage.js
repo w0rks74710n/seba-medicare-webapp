@@ -88,6 +88,12 @@ const HorizontalDivider = styled.hr`
   margin: auto;
 `;
 
+const ErrorLabel = styled.p`
+  text-align: center;
+  color: red;
+  font-size: 15px;
+`;
+
 const SignInPage = ({ history }) =>
   <ContentDiv>
     <Title>Sign In</Title>
@@ -121,16 +127,12 @@ class SignInForm extends Component {
       password,
     } = this.state;
 
-    const {
-      history,
-    } = this.props;
-
     UserService.login(username, password).then((data) => {
       console.log(data.token);
       window.localStorage['jwtToken'] = data.token;
       window.localStorage['userType'] = data.userType;
       window.localStorage['id'] = data.id;
-      this.props.history.push('/');
+      data.userType = 'doctor' ? this.props.history.push('/dashboard') : this.props.history.push('/');
     }).catch((e) => {
       console.error(e);
       this.setState({
@@ -175,7 +177,11 @@ class SignInForm extends Component {
           Login
         </ButtonForm>
 
-        { error && <p>{error.message}</p> }
+        {error &&
+          <ErrorLabel>
+            {'*'+error+'. Please verify your credentials.*'}
+          </ErrorLabel>
+        }
       </form>
     );
   }
