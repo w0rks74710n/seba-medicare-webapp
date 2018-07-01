@@ -4,7 +4,8 @@ import change from '../../resources/change-password.png';
 import logout from '../../resources/logout.png';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
-import ColorPalette from '../../constants/ColorPalette'
+import ColorPalette from '../../constants/ColorPalette';
+import UserService from '../../services/UserService';
 
 const HeaderDiv = styled.div`
   overflow-x: hidden;
@@ -85,6 +86,8 @@ const Icon = styled.img`
   padding-right: 6px;
 `;
 
+let id = window.localStorage['id'];
+
 class DashboardHeader extends Component {
   render() {
     return (
@@ -92,16 +95,10 @@ class DashboardHeader extends Component {
         <Dropdown>
           <DropdownToggle className="dropbtn">Admin Menu</DropdownToggle>
           <DropdownMenu className="dropdown-content">
-            <StyledLink to="/dashboard/customizeProfile/:id">
+            <StyledLink to={"/doctor-profile/" + id} >
              <DropdownListItem>
-                <Icon src={edit} alt="Edit Profile"/>Edit
+                <Icon src={edit} alt="Public Profile"/>View Public Profile
              </DropdownListItem>
-            </StyledLink>
-
-            <StyledLink to="/dashboard/change-settings">
-              <DropdownListItem>
-                <Icon src={change} alt="Change Password" />Change
-              </DropdownListItem>
             </StyledLink>
 
             <StyledLink to="/dashboard/logout">
