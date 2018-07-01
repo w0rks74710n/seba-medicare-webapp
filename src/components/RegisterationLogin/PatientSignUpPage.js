@@ -149,7 +149,6 @@ class SignUpForm extends Component {
     } = this.state;
 
     const {history} = this.props;
-
     UserService.registerPatient(username, passwordOne, email, address1, address2, phone, fullName)
       .then(() => {
         this.setState(() => ({ ...INITIAL_STATE }));
@@ -187,6 +186,7 @@ class SignUpForm extends Component {
             value={fullName}
             onChange={event => this.setState(updateByPropertyName('fullName', event.target.value))}
             type="text"
+            required={true}
             placeholder="Full Name"
           />
         </LineDiv>
@@ -196,6 +196,7 @@ class SignUpForm extends Component {
             value={username}
             onChange={event => this.setState(updateByPropertyName('username', event.target.value))}
             type="text"
+            required={true}
             placeholder="Username"
           />
         </LineDiv>
@@ -204,7 +205,8 @@ class SignUpForm extends Component {
           <InputForm
             value={email}
             onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
-            type="text"
+            type="email"
+            required={true}
             placeholder="Email Address"
           />
         </LineDiv>
@@ -214,6 +216,8 @@ class SignUpForm extends Component {
             value={passwordOne}
             onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
             type="password"
+            required={true}
+            pattern=".{8,16}"
             placeholder="Password"
           />
         </LineDiv>
@@ -223,6 +227,8 @@ class SignUpForm extends Component {
             value={passwordTwo}
             onChange={event => this.setState(updateByPropertyName('passwordTwo', event.target.value))}
             type="password"
+            required={true}
+            pattern=".{8,16}"
             placeholder="Confirm Password"
           />
         </LineDiv>
@@ -249,7 +255,7 @@ class SignUpForm extends Component {
           <InputForm
             value={phone}
             onChange={event => this.setState(updateByPropertyName('phone', event.target.value))}
-            type="text"
+            type="number"
             placeholder="Phone Number"
           />
         </LineDiv>
@@ -259,7 +265,7 @@ class SignUpForm extends Component {
           Sign Up
         </ButtonForm>
 
-        { error && <p>{error.message}</p> }
+        { console.log(error) && <p>{error}</p> }
       </form>
     );
   }
