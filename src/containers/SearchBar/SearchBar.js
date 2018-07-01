@@ -10,6 +10,7 @@ import ColorPalette from '../../constants/ColorPalette'
 const SearchBarCont = styled.div`
     height: 65px;
     width: auto;
+    background-color: ${ColorPalette.primaryBackGorundContainer};
     border-bottom: 1px solid lightgray;
 `;
 

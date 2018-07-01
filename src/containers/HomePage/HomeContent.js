@@ -29,7 +29,9 @@ class HomeContent extends Component {
     super(props);
     this.state = {
         doctorType: this.props.searchQueryForDoctor,
-        place: this.props.searchQueryForPlace
+        place: this.props.searchQueryForPlace,
+        latQuery: this.props.latQuery,
+        longQuery: this.props.longQuery
     }
   }
 
@@ -38,8 +40,8 @@ class HomeContent extends Component {
     return(
       <ContentContainer>
         <Switch>
-          <Route exact path={"/"} render={(props) => <SearchDoctor searchQueryForDoctor={this.state.doctorType} searchQueryForPlace={this.state.place}/>}/>
-          <Route path={"/home"} render={(props) => <SearchDoctor searchQueryForDoctor={this.state.doctorType} searchQueryForPlace={this.state.place}/>}/>
+          <Route exact path={"/"} render={(props) => <SearchDoctor searchQueryForDoctor={this.state.doctorType} searchQueryForPlace={this.state.place} longQuery={this.state.longQuery} latQuery={this.state.latQuery}/>}/>
+          <Route path={"/home"} render={(props) => <SearchDoctor searchQueryForDoctor={this.state.doctorType} searchQueryForPlace={this.state.place} longQuery={this.state.longQuery} latQuery={this.state.latQuery}/>}/>
 
           <Route path={"/patient-sign-up"} component={RegisterFromLandingPage} />
           <Route path={"/doctor-sign-up"} component={DoctorRegisterFromLandingPage} />
