@@ -112,7 +112,7 @@ class DoctorListItem extends Component {
       <DoctorListItemComponent>
         <div className="item-head">
           <img src={ this.props.images.profilePic } alt=""/>
-          <DoctorRating doctor={ this.props.doctor_id }  showNumber={false}/>
+          <div>{this.renderRatings()}</div>
         </div>
         <div className="item-body">
           <div className="info">
