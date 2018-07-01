@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 import { Home, DashboardTemplate, Landing, LoginFromLandingPage, RegisterFromLandingPage } from "../";
 import HomeContent from "../HomePage/HomeContent";
+import DoctorRegisterFromLandingPage from "../Landing/DoctorRegisterFromLandingPage";
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
           <AuthenticatedRoute path={"/dashboard"} component = {DashboardTemplate}/>
           <Route path={"/login"} component={HomeContent} />
           <Route path={"/patient-sign-up"} component={HomeContent} />
+          <Route path={"/doctor-sign-up"} component={HomeContent} />
           <Route exact path={"/"} component = {Landing}/>
           <Route path={"/"} component = {Home}/>
         </Switch>

@@ -8,12 +8,11 @@ import {
   TermsAndConditions
 } from "../";
 
-import PatientSignUp from "../../components/RegisterationLogin/PatientSignUpPage";
-import SignIn from "../../components/RegisterationLogin/SignInPage";
 import SignUp from "../../components/RegisterationLogin/DoctorSignUpPage";
 import PasswordForget from "../../components/RegisterationLogin/PasswordForget";
 import LoginFromLandingPage from "../Landing/LoginFromLandingPage";
 import RegisterFromLandingPage from "../Landing/RegisterFromLandingPage";
+import DoctorRegisterFromLandingPage from "../Landing/DoctorRegisterFromLandingPage";
 
 const ContentContainer = styled.div`
     width: 100%;
@@ -43,7 +42,7 @@ class HomeContent extends Component {
           <Route path={"/home"} render={(props) => <SearchDoctor searchQueryForDoctor={this.state.doctorType} searchQueryForPlace={this.state.place}/>}/>
 
           <Route path={"/patient-sign-up"} component={RegisterFromLandingPage} />
-          <Route path={"/doctor-sign-up"} component={SignUp} />
+          <Route path={"/doctor-sign-up"} component={DoctorRegisterFromLandingPage} />
           <Route path={"/login"} component={LoginFromLandingPage} />
           <Route path={"/password-forget"} component={PasswordForget} />
 
