@@ -30,6 +30,8 @@ class CustomizeDoctorProfile extends Component {
       data: [],
       doctor_id: window.localStorage['id']
     };
+
+    this.showSuccessAlert = this.showSuccessAlert.bind(this);
   }
 
   componentWillMount() {
@@ -62,6 +64,18 @@ class CustomizeDoctorProfile extends Component {
     });
   }
 
+  showSuccessAlert() {
+    confirmAlert({
+      title: 'Success',
+      message: 'Profile successfully updated!',
+      buttons: [
+        {
+          label: 'Ok'
+        }
+      ]
+    });
+  }
+
   render() {
     if (this.state.loading) {
       return (<h2>Loading...</h2>);
@@ -70,7 +84,8 @@ class CustomizeDoctorProfile extends Component {
     return (
       <CustomizeDoctorProfileContainer>
         <EditAboutFormContainer id={this.props.match.params.id}
-                                about={this.state.data.doctorProfileInformation.about} />
+                                about={this.state.data.doctorProfileInformation.about}
+                                success={this.showSuccessAlert}/>
         <br/>
         <EditContactInformationFormContainer id={this.props.match.params.id}
                                              contactInformation={this.state.data.doctorProfileInformation.contactInformation} />
