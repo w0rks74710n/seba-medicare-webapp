@@ -283,7 +283,7 @@ class SignUpForm extends Component {
           Sign Up
         </ButtonForm>
 
-        { error && <ErrorLabel>{error}</ErrorLabel> }
+        { error && <ErrorLabel>{error+' Please verify.'}</ErrorLabel> }
       </form>
     );
   }
