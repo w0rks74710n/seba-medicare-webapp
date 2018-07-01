@@ -2,6 +2,9 @@
 
 import React, { Component } from "react";
 import styled from "styled-components";
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'
+
 import EditAboutFormContainer from "./EditAboutFormContainer";
 import EditContactInformationFormContainer from "./EditContactInformationFormContainer";
 import EditSocialMediaFormContainer from "./EditSocialMediaFormContainer";
@@ -10,7 +13,7 @@ import EditEducationFormContainer from "./EditEducationFormContainer";
 import EditMedicareServicesFormContainer from "./EditMedicareServicesFormContainer"
 import EditPicturesFormContainer from "./EditPicturesFormContainer";
 
-import DoctorProfileInformationService from "../../services/DoctorProfileInformationService"
+import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
 
 const CustomizeDoctorProfileContainer = styled.div`
   width: 100%;
@@ -24,23 +27,39 @@ class CustomizeDoctorProfile extends Component {
 
     this.state = {
       loading: true,
-      data: []
+      data: [],
+      doctor_id: window.localStorage['id']
     };
   }
 
   componentWillMount() {
+
     this.setState({
       loading: true
-    });
+    }, () => {
 
-    DoctorProfileInformationService.getDoctorProfile(this.props.match.params.id).then((data) => {
-      console.log(data);
-      this.setState({
-        data: data,
-        loading: false
-      });
-    }).catch((e) => {
-      console.error(e);
+      if (this.props.match.params.id !== this.state.doctor_id) {
+        confirmAlert({
+          title: 'Unauthorized Access',
+          message: 'You are not allowed to access this profile. Redirecting to your own profile',
+          buttons: [
+            {
+              label: 'Understood',
+              onClick: () => window.location.replace('/dashboard/customizeProfile/' + this.state.doctor_id)
+            }
+          ]
+        });
+      } else {
+        DoctorProfileInformationService.getDoctorProfile(this.props.match.params.id).then((data) => {
+          console.log(data);
+          this.setState({
+            data: data,
+            loading: false
+          });
+        }).catch((e) => {
+          console.error(e);
+        });
+      }
     });
   }
 
