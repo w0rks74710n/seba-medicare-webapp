@@ -124,7 +124,7 @@ const MyMapComponent = compose(
                 const service = new google.maps.places.PlacesService(refs.map.context.__SECRET_MAP_DO_NOT_USE_OR_YOU_WILL_BE_FIRED);
 
                 var pyrmont = new google.maps.LatLng(longLatObject.latitude,longLatObject.longitude);
-                console.log()
+
                 const request = {
                     location: pyrmont,
                     radius: '500',

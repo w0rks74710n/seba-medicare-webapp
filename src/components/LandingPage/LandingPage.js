@@ -219,7 +219,7 @@ class LandingPage extends Component {
         this.setState({
             renderHome:true
         });
-        console.log(searchQueryLandingPage)
+        //console.log(searchQueryLandingPage)
     }
 
   render() {
