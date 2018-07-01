@@ -1,6 +1,29 @@
 import React, { Component } from "react";
-import { TextField, Card, CardTitle, CardText, Cell, Button } from 'react-md';
+import { TextField, SelectField, Card, CardTitle, CardText, Cell, Button } from 'react-md';
+import styled from "styled-components"
 import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
+
+const SPECIALITIES = [
+  'General Practitioner',
+  'Dentist',
+  'Eye Doctor',
+  'Pediatrician',
+  'ENT Physician',
+  'Sports Physician',
+  'Orthopedist',
+  'Psychologist',
+  'Gynecologist',
+  'Urologist',
+  'Radiologist',
+  'Neurologist',
+  ];
+
+const CustomSelect = styled(SelectField)`
+  width: 100%;
+  & .md-select-field--btn.md-select-field--btn {
+    padding-left: 0;
+  }
+`;
 
 class EditExperienceForm extends Component {
   constructor(props) {
@@ -31,13 +54,17 @@ class EditExperienceForm extends Component {
         <CardTitle title={'Experience'} style={{paddingBottom: 0}}/>
         <CardText style={{paddingTop: 0}}>
           <form onSubmit={this.handleSubmit}>
-            <TextField
-              id="experience[areaOfSpecialization]"
-              name="experience[areaOfSpecialization]"
+            <CustomSelect
+              id="select-field-8"
+              placeholder="Select one please"
               label="Area of Specialization"
+              className="md-cell md-cell--bottom"
               value={this.state.experience.areaOfSpecialization}
+              menuItems={SPECIALITIES.sort()}
               onChange={(newValue) => this.setState({ experience: { ...this.state.experience, areaOfSpecialization: newValue}})}
-              className="md-cell--top" />
+              position={SelectField.Positions.BELOW}
+              simplifiedMenu={true}
+            />
             <TextField
               id="experience[yearsOfExperience]"
               name="experience[yearsOfExperience]"
