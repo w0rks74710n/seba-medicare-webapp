@@ -10,8 +10,8 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "reac
 
 
 const MapPartnerSidebarContainer = styled.div`
-  height: 754px;
-  width: 300px;
+  height: 794px;
+  width: 350px;
   z-index: 1;
   top: 0;
   float:right;
@@ -96,13 +96,11 @@ var longLatObject = {
     longitude:null
 };
 
-//cannot be used because the api returns every poi, when it does not know the search query
-//so we always use 'doctor'
 var doctorType = '';
 
 const MyMapComponent = compose(
     withProps({
-        googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCW0iwTytb3hDtAB_zpfMhUWDmZNDWIEs4&v=3.exp&libraries=geometry,drawing,places",
+        googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCW0iwTytb3hDtAB_zpfMhUWDmZNDWIEs4&language=en&v=3.exp&libraries=geometry,drawing,places",
         loadingElement: <div style={{ height: `100%` }} />,
         containerElement: <div style={{ height: `440px` }} />,
         mapElement: <div style={{ height: `100%` }} />,
@@ -124,11 +122,16 @@ const MyMapComponent = compose(
                 let places;
                 const bounds = refs.map.getBounds();
                 const service = new google.maps.places.PlacesService(refs.map.context.__SECRET_MAP_DO_NOT_USE_OR_YOU_WILL_BE_FIRED);
+
+                var pyrmont = new google.maps.LatLng(longLatObject.latitude,longLatObject.longitude);
+                console.log()
                 const request = {
-                    bounds: bounds,
-                    type: ['doctor']
+                    location: pyrmont,
+                    radius: '500',
+                    query: doctorType
                 };
-                service.nearbySearch(request, (results, status) => {
+
+                service.textSearch(request, (results, status) => {
                     if (status == google.maps.places.PlacesServiceStatus.OK) {
                         console.log(results);
                         updatePlaces(results);
@@ -146,7 +149,7 @@ const MyMapComponent = compose(
         onTilesLoaded={props.fetchPlaces}
         ref={props.onMapMounted}
         onBoundsChanged={props.fetchPlaces}
-        defaultZoom={18}
+        defaultZoom={16}
         defaultCenter={{ lat: longLatObject.latitude, lng: longLatObject.longitude }}
     >
         {props.places && props.places.map((place, i) =>

@@ -8,8 +8,9 @@ import ColorPalette from '../../constants/ColorPalette'
 
 
 const SearchBarCont = styled.div`
-    height: 55px;
+    height: 62px;
     width: auto;
+    background-color: ${ColorPalette.primaryBackGorundContainer}
 `;
 
 const LocationInputCont = styled.div`
