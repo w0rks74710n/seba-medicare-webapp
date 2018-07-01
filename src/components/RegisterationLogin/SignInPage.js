@@ -132,6 +132,7 @@ class SignInForm extends Component {
       window.localStorage['jwtToken'] = data.token;
       window.localStorage['userType'] = data.userType;
       window.localStorage['id'] = data.id;
+      window.localStorage['username'] = username;
       data.userType = 'doctor' ? this.props.history.push('/dashboard') : this.props.history.push('/');
     }).catch((e) => {
       console.error(e);
