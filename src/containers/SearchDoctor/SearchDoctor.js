@@ -21,6 +21,8 @@ class SearchDoctor extends Component {
 
     let isAreaOfSpecialitySelected = this.props.searchQueryForDoctor;
     let isZIPCodeSelected = this.props.searchQueryForPlace;
+    let longQuery = this.props.longQuery;
+    let latQuery = this.props.latQuery;
 
     this.state = {
       loading: true,
@@ -31,8 +33,10 @@ class SearchDoctor extends Component {
         isRatingSelected: 'noPreference'},
         searchQuery: {
             isAreaOfSpecialitySelected: isAreaOfSpecialitySelected ? isAreaOfSpecialitySelected: 'noPreference',
-            isZIPCodeSelected:  isZIPCodeSelected ? isZIPCodeSelected: 'noPreference'
+            isZIPCodeSelected:  isZIPCodeSelected ? isZIPCodeSelected : 'noPreference'
         },
+        isLongQuerySet: longQuery ? longQuery : 11.581980499999986,
+        isLatQuerySet: latQuery ? latQuery : 48.1351253,
       data: []
     };
 
@@ -77,7 +81,9 @@ class SearchDoctor extends Component {
         searchQuery: {
             isAreaOfSpecialitySelected: query.doctorType,
             isZIPCodeSelected: query.ZIP
-        }
+        },
+        isLongQuerySet: query.longitude,
+        isLatQuerySet: query.latitude
     }, () => { this.fetchDoctorData() });
   }
 
@@ -92,7 +98,7 @@ class SearchDoctor extends Component {
              <SearchDoctorContainerWithoutSearchbar className={'searchDoctorContainer'}>
                 <FilterSidebar retrieveFilterSidebarState={this.retrieveFilterSidebarState.bind(this)} />
                 <SearchDoctorList data={this.state.data} />
-                <MapSidebar/>
+                <MapSidebar doctorQuery={this.state.searchQuery.isAreaOfSpecialitySelected} longQuery={this.state.isLongQuerySet} latQuery={this.state.isLatQuerySet}/>
             </SearchDoctorContainerWithoutSearchbar>
         </SearchDoctorContainerWithSearchbar>
     );

@@ -17,7 +17,9 @@ class Home extends Component {
         super(props);
         this.state = {
             doctorQuery: this.props.doctorQuery,
-            placeQuery: this.props.placeQuery
+            placeQuery: this.props.placeQuery,
+            longQuery: this.props.longQuery,
+            latQuery: this.props.latQuery
         }
     }
 
@@ -25,7 +27,7 @@ class Home extends Component {
     return(
       <PageContainer>
         <Header />
-        <HomeContent searchQueryForDoctor={this.state.doctorQuery} searchQueryForPlace={this.state.placeQuery} />
+        <HomeContent searchQueryForDoctor={this.state.doctorQuery} searchQueryForPlace={this.state.placeQuery} longQuery={this.state.longQuery} latQuery={this.state.latQuery} />
         <Footer />
       </PageContainer>
     );

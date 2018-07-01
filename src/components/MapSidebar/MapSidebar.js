@@ -33,7 +33,7 @@ const MapContainer = styled.div`
 
 const PartnersContainer = styled.div`
     position: absolute;
-    bottom: -200px;
+    bottom: -162px;
 `;
 
 
@@ -42,6 +42,14 @@ class MapSidebar extends React.Component {
 
     constructor(props) {
         super(props);
+        longLatObject.longitude = this.props.longQuery;
+        longLatObject.latitude = this.props.latQuery;
+
+        if (this.props.doctorQuery == 'noPreference'){
+            doctorType = 'doctor';
+        } else {
+            doctorType = this.props.doctorQuery;
+        }
     }
 
     render() {
@@ -82,6 +90,15 @@ function Partners(props) {
         </div>
     )
 }
+
+var longLatObject = {
+    latitude: null,
+    longitude:null
+};
+
+//cannot be used because the api returns every poi, when it does not know the search query
+//so we always use 'doctor'
+var doctorType = '';
 
 const MyMapComponent = compose(
     withProps({
@@ -130,7 +147,7 @@ const MyMapComponent = compose(
         ref={props.onMapMounted}
         onBoundsChanged={props.fetchPlaces}
         defaultZoom={18}
-        defaultCenter={{ lat: 48.1351253, lng: 11.581980499999986 }}
+        defaultCenter={{ lat: longLatObject.latitude, lng: longLatObject.longitude }}
     >
         {props.places && props.places.map((place, i) =>
             <Marker onClick={() => props.onToggleOpen(i)} key={i} position={{ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }}>

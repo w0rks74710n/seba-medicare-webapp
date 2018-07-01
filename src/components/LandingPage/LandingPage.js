@@ -213,12 +213,13 @@ class LandingPage extends Component {
         this.setState({
             renderHome:true
         });
+        console.log(searchQueryLandingPage)
     }
 
   render() {
 
       if (this.state.renderHome){
-          return <Home doctorQuery={searchQueryLandingPage.doctorType} placeQuery={searchQueryLandingPage.ZIP}/>
+          return <Home doctorQuery={searchQueryLandingPage.doctorType} placeQuery={searchQueryLandingPage.ZIP} latQuery={searchQueryLandingPage.latitude} longQuery={searchQueryLandingPage.longitude}/>
       }
 
       return (
