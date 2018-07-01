@@ -43,8 +43,8 @@ class EditPicturesForm extends Component {
         }, () => {
           DoctorProfileInformationService.updateDoctorProfile(this.state.profilePictures, this.props.id).then((res) => {
             res.successfullyUpdated ?
-              alert('Profile picture updated successfully') :
-              alert('Error while updating profile picture')
+              this.props.success('Success', 'Profile picture updated successfully') :
+              this.props.success('Error', 'An error occurred while saving the data! Please contact support.')
           })
         });
       }

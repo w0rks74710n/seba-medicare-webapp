@@ -162,6 +162,7 @@ class DoctorSearch extends React.Component {
         this.setState({
             value: newValue
         });
+        newValue === '' ? newValue = 'noPreference' : newValue;
         searchQuery.doctorType = newValue;
     };
 
