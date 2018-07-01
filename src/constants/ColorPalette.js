@@ -1,5 +1,5 @@
 export default {
-    primary: '#0045AB',
+    primary: '#3970a9',
     primaryDark: '#011129',
     primaryNavigationText: '#FFFFFF',
     primaryBackGorundContainer: '#f5f5f5',

@@ -8,8 +8,9 @@ import ColorPalette from '../../constants/ColorPalette'
 
 
 const SearchBarCont = styled.div`
-    height: 55px;
+    height: 65px;
     width: auto;
+    border-bottom: 1px solid lightgray;
 `;
 
 const LocationInputCont = styled.div`

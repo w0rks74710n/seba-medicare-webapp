@@ -21,7 +21,7 @@ const Dropdown = styled.li`
   display: block;
   text-decoration: none; 
   position: absolute; 
-  right: 104px;
+  right: 75px;
 
   &:hover {
     cursor: pointer;
