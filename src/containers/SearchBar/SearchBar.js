@@ -5,27 +5,30 @@ import PlacesAutocomplete, { geocodeByAddress, geocodeByPlaceId, getLatLng } fro
 import "../../constants/searchBarLandingPage.css"
 import "../../constants/locationSearchLandingPage.css"
 import ColorPalette from '../../constants/ColorPalette'
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 const SearchBarCont = styled.div`
     height: 65px;
     width: auto;
+    display: flex;
     background-color: ${ColorPalette.primaryBackGorundContainer};
     border-bottom: 1px solid lightgray;
 `;
 
 const LocationInputCont = styled.div`
-    position:relative;
-    top: -25px;
-    left: 545px;
-    height: 40px;
-    width: 210px;  
+    width: 205px; 
+    padding: 15px 0 0 0;
+`;
+
+const SearchButtonCont  = styled.div`
+    width: 150px;
+    padding: 15px 0 0 0;
 `;
 
 const SearchButton = styled.input`
     position:relative;
-    top: -66px;
-    left: 751px;
     font-family: Helvetica, sans-serif;
     font-weight: 600;
     font-size: 20px;
@@ -41,14 +44,50 @@ const SearchButton = styled.input`
     &:hover{
         box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
     }
+    flex:0;
 `;
 
 const DoctorSearchCont = styled.div`
-    position:relative;
-    top: 5px;
-    left: 279px;
-    height:40px;
+    width:265px
+    padding: 5px 0 0 0;
 `;
+
+const BreadCont = styled.div`
+    position:relative;
+    top:10px;
+    width:80px;
+    left:200px;
+    height: 50px;
+    background-color:red;
+    padding: .75rem 1rem;
+    list-style: none;
+    background-color: #e9ecef;
+    border-radius: .25rem;
+    
+`;
+
+const BreadcrumbsDiv = styled.div`
+  padding: 20px 0 0 20px;   
+  font-size: 16px;
+  width:220px;		
+  font-weight: bold;
+  color: ${ ColorPalette.primaryDark };
+`;
+
+const NavLink = styled(Link)`
+  display: inline-block;
+  font-size: 18px;
+  margin: auto;
+  margin-left: 10px;
+  text-decoration: none;
+  color: ${ ColorPalette.primary };
+  
+  &:hover {
+    font-style: italic;
+    color: ${ ColorPalette.accent };
+	}	
+`;
+
 
 class SearchBar extends React.Component {
 
@@ -60,19 +99,35 @@ class SearchBar extends React.Component {
     render() {
         return (
             <SearchBarCont>
+                <BreadcrumbsDiv>You are here:
+                    <NavLink to="/home">Home</NavLink>
+                </BreadcrumbsDiv>
                 <DoctorSearchCont>
                     <DoctorSearch/>
                 </DoctorSearchCont>
                 <LocationInputCont>
                     <LocationSearch/>
                 </LocationInputCont>
-                <SearchButton type="submit" value="Search" onClick={() => this.props.retrieveSearchBarState(searchQuery)}/>
+                <SearchButtonCont>
+                    <SearchButton type="submit" value="Search" onClick={() => this.props.retrieveSearchBarState(searchQuery)}/>
+                </SearchButtonCont>
             </SearchBarCont>
         )
     }
 }
 
 export default SearchBar;
+
+
+const Home = (props) => {
+    return (
+        <div>
+            <Breadcrumb>
+                <BreadcrumbItem active>Home</BreadcrumbItem>
+            </Breadcrumb>
+        </div>
+    );
+};
 
 var searchQuery = {
     doctorType: 'noPreference',
