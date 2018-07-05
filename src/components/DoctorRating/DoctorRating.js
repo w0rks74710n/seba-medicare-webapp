@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import DoctorReviewsService from "../../services/DoctorReviewsService";
 import DoctorProfileInformationService from "../../services/DoctorProfileInformationService";
 import styled from "styled-components";
+import ColorPalette from "../../constants/ColorPalette";
 
 const DoctorRatingComponent = styled.div`
     div, .reviews, .material-icons {
@@ -16,19 +17,26 @@ class DoctorRating extends Component {
         super(props);
         this.state = {
             reviews: [],
-            doctorProfile: null
+            doctorProfile: this.props.doctor
         };
     }
 
-    renderStars() {
+  renderStars() {
+    let ratingIcons = [];
+    let doctorRating = this.state.doctorProfile.services.rating;
 
-    };
+    for (let rating = 0; rating < doctorRating; rating++) {
+      ratingIcons.push(<i className="material-icons" style={{width: '24px', color: ColorPalette.primary}} key={rating}>star_rate</i>);
+    }
 
-    render() {
+    return ratingIcons;
+  }
+
+  render() {
         return (
             <DoctorRatingComponent>
                 <div>{this.renderStars()}</div>
-                <span className="reviews" style={{display: this.props.showNumber ? 'inline-block' : 'none' }}>({this.state.reviews.length} Reviews)</span>
+                <span className="reviews" style={{display: this.props.showNumber ? 'inline-block' : 'none' }}>({this.state.doctorProfile.services.rating} Reviews)</span>
             </DoctorRatingComponent>
         );
     }
