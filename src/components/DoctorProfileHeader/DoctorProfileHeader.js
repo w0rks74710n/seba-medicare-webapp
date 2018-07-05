@@ -147,7 +147,7 @@ class DoctorProfileHeader extends Component {
             </a>
           </Website>
           <Rating className="rating">
-            <DoctorRating doctor={this.props.doctorProfile.doctor_id} showNumber={true}/>
+            <DoctorRating doctor={this.props.doctorProfile.doctor_id} showNumber={false}/>
           </Rating>
         </BasicInfo>
         <QuickButtons>
