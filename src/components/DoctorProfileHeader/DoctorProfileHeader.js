@@ -80,7 +80,9 @@ const Rating = styled.div`
 `;
 
 class DoctorProfileHeader extends Component {
-
+  state = {
+    reviews: []
+  };
   constructor(props){
     super(props);
     this.state = {
@@ -96,17 +98,18 @@ class DoctorProfileHeader extends Component {
         comment: reviewObj.comment
       }
     ).then( res => {
-      if(res.successfullyCreated === "Model"){
-          let reviews = [];
+      if(res.successfullyCreated){
           DoctorReviewsService.getReviews(reviewObj.doctor).then( data => {
-                reviews =  data.review;
+                this.state.setState({
+                  reviews: data.review
+                });
           }).catch( error => {
               console.log(error);
           });
           var avgRating = 0;
-          for(var i = 0; i < reviews.length; i++)
-              avgRating += reviews[i].rating;
-          avgRating /= reviews.length;
+          for(var i = 0; i < this.state.reviews.length; i++)
+              avgRating += this.state.reviews[i].rating;
+          avgRating /= this.state.reviews.length;
           DoctorProfileInformationService.updateDoctorProfile({ services: {
               rating: Math.round(avgRating)
           }}, reviewObj.doctor);

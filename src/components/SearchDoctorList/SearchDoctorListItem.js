@@ -111,14 +111,14 @@ class DoctorListItem extends Component {
     return (
       <DoctorListItemComponent>
         <div className="item-head">
-          <img src={ this.props.images.profilePic } alt=""/>
-          <DoctorRating doctor={ this.props.doctor_id } 
+          <img src={this.props.images.profilePic} alt=""/>
+          <DoctorRating doctor={this.props.doctor_id} 
                         avgRating={this.props.services.rating} 
                         showNumber={false}/>
         </div>
         <div className="item-body">
           <div className="info">
-            <p className="name">{ this.props.contactInformation.fullName }</p>
+            <p className="name">{this.props.contactInformation.fullName}</p>
             <p className="expertise">{ this.props.experience.areaOfSpecialization }</p>
             <p className="social-media-links">
               { this.renderSocialMedia() }
